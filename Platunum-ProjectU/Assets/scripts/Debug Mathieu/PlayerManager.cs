@@ -49,13 +49,13 @@ namespace Manager
         }
 
 
-        public int AddPlayer(int ControllerId)
+        public Player AddPlayer(int ControllerId)
         {
             int id = PlayerList.Count + 1;
             Player player = new Player(id, PlayerColorList[id-1], ClassManager.GetClassById(id-1 % 4), ControllerId);
             PlayerList.Add(player);
             Debug.Log("Controller id:" + ControllerId + " added as Player n°" + id);
-            return id;
+            return player;
         }
 
         public int GetPlayerByControllerId(int controllerId)
