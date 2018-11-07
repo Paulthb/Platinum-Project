@@ -9,6 +9,8 @@ public class Activator : MonoBehaviour {
     bool active = false;
     GameObject note;
     Color old;
+    public bool createMode;
+    public GameObject n;
 
     void Awake()
     {
@@ -21,14 +23,23 @@ public class Activator : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(key))
-            StartCoroutine(Pressed());
+        if (createMode){
+            if (Input.GetKeyDown(key))
+                Instantiate(n, transform.position, Quaternion.identity);
 
-        if (Input.GetKeyDown(key) && active)
-        { 
-            Destroy(note);
-            AddScore();
-            active = false;
+        }
+        else
+        {
+
+            if (Input.GetKeyDown(key))
+                StartCoroutine(Pressed());
+
+            if (Input.GetKeyDown(key) && active)
+            {
+                Destroy(note);
+                AddScore();
+                active = false;
+            }
         }
 	}
 
