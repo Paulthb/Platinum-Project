@@ -7,7 +7,7 @@ public class Activator : MonoBehaviour {
     SpriteRenderer sr;
     public KeyCode key;
     bool active = false;
-    GameObject note;
+    GameObject note, gm;
     Color old;
     public bool createMode;
     public GameObject n;
@@ -17,7 +17,9 @@ public class Activator : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
     }
     
-    void Start () {
+    void Start ()
+    {
+        gm = GameObject.Find("GameManager");
         old = sr.color;
 	}
 
@@ -26,19 +28,22 @@ public class Activator : MonoBehaviour {
         if (createMode){
             if (Input.GetKeyDown(key))
                 Instantiate(n, transform.position, Quaternion.identity);
-
         }
         else
         {
-
             if (Input.GetKeyDown(key))
                 StartCoroutine(Pressed());
-
             if (Input.GetKeyDown(key) && active)
             {
+                Debug.Log("in");
                 Destroy(note);
+                gm.GetComponent<GameManager>().AddStreak();
                 AddScore();
                 active = false;
+            } else if (Input.GetKeyDown(key) && !active)
+            {
+                Debug.Log("else");
+                gm.GetComponent<GameManager>().ResetStreak();
             }
         }
 	}
@@ -49,15 +54,15 @@ public class Activator : MonoBehaviour {
         if (col.gameObject.tag == "Note")
             note = col.gameObject;
     }
-
-    void OnTriggerExit2D(Collider2D col)
+    /*
+    private void OnTriggerExit2D(Collider2D col)
     {
         active = false;
-    }
+    }*/
 
     void AddScore()
     {
-        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + 100);
+        PlayerPrefs.SetInt("Score", PlayerPrefs.GetInt("Score") + gm.GetComponent<GameManager>().GetScore());
     }
 
     IEnumerator Pressed()
