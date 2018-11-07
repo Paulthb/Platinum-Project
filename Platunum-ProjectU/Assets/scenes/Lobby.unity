@@ -968,9 +968,8 @@ MonoBehaviour:
   - {fileID: 1932369548}
   - {fileID: 174244990}
   - {fileID: 847818856}
-  ReadyTimeHold: 1
+  ReadyTimeHold: 3
   timer: 0
-  StartGameBool: 0
   SceneToLoad: Debug_Mathieu
   classManager: {fileID: 80093743}
 --- !u!4 &1411369170
@@ -1003,7 +1002,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1437039579
 RectTransform:
   m_ObjectHideFlags: 0
