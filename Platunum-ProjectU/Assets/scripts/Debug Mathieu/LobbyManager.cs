@@ -135,10 +135,12 @@ namespace Manager
                 if (!PlayerReadyState.Value)
                     flag = false;
             }
-            //Temps total avec tous les joueurs ready
+            //Si tout les joueurs ont étaient détecté ready
             if (flag && ReadyPlayerList.Count > 0)
+            {
                 timer += Time.deltaTime;
-            else
+            }
+            else //un joueur n'est plus pret
                 timer = 0;
             //Si temps total des joueurs ready atteint lancé le niveau
             if (timer >= ReadyTimeHold)
