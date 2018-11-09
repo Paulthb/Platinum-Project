@@ -35,14 +35,12 @@ public class Activator : MonoBehaviour {
                 StartCoroutine(Pressed());
             if (Input.GetKeyDown(key) && active)
             {
-                Debug.Log("in");
                 Destroy(note);
                 gm.GetComponent<GameManager>().AddStreak();
                 AddScore();
                 active = false;
             } else if (Input.GetKeyDown(key) && !active)
             {
-                Debug.Log("else");
                 gm.GetComponent<GameManager>().ResetStreak();
             }
         }
