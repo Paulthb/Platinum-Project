@@ -9,6 +9,8 @@ namespace Manager
         public Color color;
         public Class Class;
         public int ControllerId { get; set; }
+        private KeyCode[] trackKey;
+        public Partition partition; 
 
         // Use this for initialization
         public Player(int Id, Color Color, Class playerClass, int Controller)
@@ -17,19 +19,6 @@ namespace Manager
             color = Color;
             Class = playerClass;
             ControllerId = Controller;
-        }
-
-        /*private void Awake()
-        {
-            if (ControllerId == 0)
-                transform.GetChild(0).GetComponent<CharacterController>().controllerId = 1;
-        }*/
-
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         public int GetId()
@@ -46,19 +35,33 @@ namespace Manager
         {
             return ControllerId;
         }
-        /*public void Load(int Id, Color Color,int IdClass, int Controller)
-        {
 
-            id = Id;
-            color = Color;
-            idClass = IdClass;
-            ControllerId = Controller;
-        }*/
-        /*public void LoadPlayer(int Id, Color PlayerColor, int controllerId)
+        private KeyCode[] LoadTrackKey()
         {
-            id = Id;
-            color = PlayerColor;
-            ControllerId = controllerId;
-        }*/
+            KeyCode[] keyCode = new KeyCode[4];
+            for (int i = 0; i < keyCode.Length; i++)
+            {
+                keyCode[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick"+ControllerId+"Button"+i);
+            }
+            return keyCode;
+        }
+        private void Start()
+        {
+            if (!(ControllerId > 0))
+                ControllerId = id;
+            trackKey = LoadTrackKey();
+        }
+        private void Update()
+        {
+            for (int i = 0; i < trackKey.Length; i++)
+            {
+                if (Input.GetKeyDown(trackKey[i]))
+                {
+                    //Send TrackKey input
+                    Debug.Log("Track id:"+i);
+                    partition.PlayerInputted(i);
+                }
+            }
+        }
     }
 }

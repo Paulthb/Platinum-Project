@@ -11,7 +11,7 @@ public class MusicNodePool : MonoBehaviour
 
 	public int initialAmount;
 
-	private List<MusicNode>[] objList;
+	private List<MusicNode> objList;
 
 	void Awake()
 	{
@@ -20,44 +20,34 @@ public class MusicNodePool : MonoBehaviour
 
 	void Start()
 	{
-
-        int partitionsLen = 2;
-
-        objList = new List<MusicNode>[partitionsLen];
-        for (int j = 0; j < partitionsLen; j++)
+        objList = new List<MusicNode>();
+        for (int i = 0; i < initialAmount; i++)
         {
-            objList[j] = new List<MusicNode>();
-            for (int i = 0; i < initialAmount; i++)
-            {
-                GameObject obj = (GameObject)Instantiate(nodePrefab);
-                obj.SetActive(false);
-                objList[j].Add(obj.GetComponent<MusicNode>());
-            }
+            GameObject obj = (GameObject)Instantiate(nodePrefab);
+            obj.SetActive(false);
+            objList.Add(obj.GetComponent<MusicNode>());
         }
 	}
 
 	public MusicNode GetNode(float posX, float startY, float endY, float removeLineY, float posZ, float beat, int times, Color color)
 	{
+        Debug.Log(startY);
         //check if there is an inactive instance
-        for (int i = 0; i < objList.Length; i++)
+        foreach (MusicNode node in objList)
         {
-            foreach (MusicNode node in objList[i])
+            if (!node.gameObject.activeInHierarchy)
             {
-                if (!node.gameObject.activeInHierarchy)
-                {
-                    node.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color);
-                    node.gameObject.SetActive(true);
-                    return node;
-                }
+                node.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color);
+                node.gameObject.SetActive(true);
+                return node;
             }
         }
 
 		//no inactive instances, instantiate a new GetComponent
 		MusicNode musicNode = ((GameObject) Instantiate(nodePrefab)).GetComponent<MusicNode>();
 		musicNode.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color);
-		objList[0].Add(musicNode);
+		objList.Add(musicNode);
 		return musicNode;
-		
 	}
 
 }

@@ -98,3 +98,77 @@ MonoBehaviour:
         times: 0
       - note: 35
         times: 0
+  - tracks:
+    - notes:
+      - note: 5
+        times: 0
+      - note: 13
+        times: 0
+      - note: 21
+        times: 0
+      - note: 29
+        times: 0
+    - notes:
+      - note: 7
+        times: 0
+      - note: 15
+        times: 0
+      - note: 23
+        times: 0
+      - note: 31
+        times: 0
+    - notes:
+      - note: 9
+        times: 0
+      - note: 17
+        times: 0
+      - note: 25
+        times: 0
+      - note: 33
+        times: 0
+    - notes:
+      - note: 11
+        times: 0
+      - note: 19
+        times: 0
+      - note: 27
+        times: 0
+      - note: 35
+        times: 0
+  - tracks:
+    - notes:
+      - note: 5
+        times: 0
+      - note: 13
+        times: 0
+      - note: 21
+        times: 0
+      - note: 29
+        times: 0
+    - notes:
+      - note: 7
+        times: 0
+      - note: 15
+        times: 0
+      - note: 23
+        times: 0
+      - note: 31
+        times: 0
+    - notes:
+      - note: 9
+        times: 0
+      - note: 17
+        times: 0
+      - note: 25
+        times: 0
+      - note: 33
+        times: 0
+    - notes:
+      - note: 11
+        times: 0
+      - note: 19
+        times: 0
+      - note: 27
+        times: 0
+      - note: 35
+        times: 0

@@ -63,7 +63,7 @@ public class Conductor : MonoBehaviour
 	private MusicNode[,] previousMusicNodes; 
 
 	//keep a reference of the sound tracks
-	private SongInfo.Partition[] partitions;
+	//private SongInfo.Partition[] partitions;
 
 	private float dsptimesong;
 
@@ -86,22 +86,34 @@ public class Conductor : MonoBehaviour
 	private int len;
 	private AudioSource audioSource { get { return GetComponent<AudioSource> (); } }
 
-	void PlayerInputted(int partitionNumber, int trackNumber)
+    private static Conductor instance;
+    public static Conductor Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<Conductor>();
+            if (instance == null)
+                Debug.Log("No tutorial found");
+            return instance;
+        }
+    }
+
+    void PlayerInputted(int partitionNumber, int trackNumber)
 	{
 		//check if multi-times node exists
-		if (previousMusicNodes[partitionNumber, trackNumber] != null)
+		/*if (previousMusicNodes[partitionNumber, trackNumber] != null)
 		{
 			//dispatch beat on hit event (multi-times node is always PERFECT)
 			if (beatOnHitEvent != null) beatOnHitEvent(trackNumber, Rank.PERFECT);
-
 			//check if the node should be removed
 			if (previousMusicNodes[partitionNumber,trackNumber].MultiTimesHit())
 			{
 				//print("Multi-Times Succeed!");
 				previousMusicNodes[partitionNumber, trackNumber] = null;
 			}
-		}
-		else if (queueForTracks[partitionNumber,trackNumber].Count != 0)
+		}*/
+		if (queueForTracks[partitionNumber,trackNumber].Count != 0)
 		{
 			//peek the node in the queue
 			MusicNode frontNode = queueForTracks[partitionNumber,trackNumber].Peek();
@@ -168,10 +180,10 @@ public class Conductor : MonoBehaviour
 		crotchet = 60f / songInfo.bpm;
 
         songLength = songInfo.song.length;
-        partitions = songInfo.partitions;
+        //partitions = songInfo.partitions;
         //initialize arrays
-        len = trackSpawnsOffsetX[0].trackSpawnPosX.Length;
-        partitionLen = partitions.Length;
+        //len = trackSpawnsOffsetX[0].trackSpawnPosX.Length;
+        /*partitionLen = partitions.Length;
 		trackNextIndices = new int[partitionLen,len];
 		nextLayerZ = new float[partitionLen,len];
 		queueForTracks = new Queue<MusicNode>[partitionLen,len];
@@ -185,7 +197,7 @@ public class Conductor : MonoBehaviour
                 previousMusicNodes[j,i] = null;
                 nextLayerZ[j,i] = FirstLayerZ;
             }
-        }
+        }*/
 
 
 		//initialize audioSource
@@ -241,7 +253,7 @@ public class Conductor : MonoBehaviour
 
 		//check if need to instantiate new nodes
 		float beatToShow = songposition / crotchet + BeatsShownOnScreen;
-
+        /*
         //loop the tracks for new MusicNodes
         for (int j = 0; j < partitionLen; j++)
         {
@@ -322,7 +334,7 @@ public class Conductor : MonoBehaviour
                     if (beatOnHitEvent != null) beatOnHitEvent(i, Rank.MISS);
                 }
             }
-        }
+        }*/
 		
 
 
@@ -354,4 +366,19 @@ public class Conductor : MonoBehaviour
 	{
 		PlayerInputControl.inputtedEvent -= PlayerInputted;
 	}
+
+    public float GetSongPosition()
+    {
+        return (float)(AudioSettings.dspTime - dsptimesong - pausedTime) * audioSource.pitch - songInfo.songOffset;
+    }
+
+    public float GetCrochet()
+    {
+        return crotchet;
+    }
+
+    public float GetBeatToShowOnScreen()
+    {
+        return BeatsShownOnScreen;
+    }
 }
