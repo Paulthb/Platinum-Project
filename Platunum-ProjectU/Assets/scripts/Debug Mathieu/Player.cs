@@ -55,10 +55,9 @@ namespace Manager
         {
             for (int i = 0; i < trackKey.Length; i++)
             {
-                if (Input.GetKeyDown(trackKey[i]))
+                if (Input.GetKey(trackKey[i]))
                 {
                     //Send TrackKey input
-                    Debug.Log("Track id:"+i);
                     partition.PlayerInputted(i);
                 }
             }

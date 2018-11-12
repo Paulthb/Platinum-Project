@@ -31,7 +31,6 @@ public class MusicNodePool : MonoBehaviour
 
 	public MusicNode GetNode(float posX, float startY, float endY, float removeLineY, float posZ, float beat, int times, Color color)
 	{
-        Debug.Log(startY);
         //check if there is an inactive instance
         foreach (MusicNode node in objList)
         {

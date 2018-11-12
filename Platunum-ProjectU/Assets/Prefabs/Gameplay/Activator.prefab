@@ -69,6 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   key: 102
+  createMode: 0
+  n: {fileID: 0}
 --- !u!212 &212590535874637614
 SpriteRenderer:
   m_ObjectHideFlags: 1

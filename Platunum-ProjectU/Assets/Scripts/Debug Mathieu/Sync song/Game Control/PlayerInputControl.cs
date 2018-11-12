@@ -42,7 +42,7 @@ public class PlayerInputControl : MonoBehaviour
             //audioSources[i].clip = SongInfoCustom.Instance.recordedBeats[i];
 
             //init inner circle animation
-            Color startColor = new Color(innerCircles[i].color.r, innerCircles[i].color.g, innerCircles[i].color.b, StartAlphaForInner);
+            //Color startColor = new Color(innerCircles[i].color.r, innerCircles[i].color.g, innerCircles[i].color.b, StartAlphaForInner);
             //innerAnimations[i] = new SpriteColorLerp(innerCircles[i], startColor, innerCircles[i].color, audioSources[i].clip.length);
             previousInnerAnimations[i] = null;
         }
@@ -139,10 +139,10 @@ public class PlayerInputControl : MonoBehaviour
         audioSources[i].Play();
 
         //start inner circle animation
-        if (previousInnerAnimations[i] != null)
+        /*if (previousInnerAnimations[i] != null)
         {
             StopCoroutine(previousInnerAnimations[i]);
         }
-        //previousInnerAnimations[i] = StartCoroutine(innerAnimations[i].AnimationCoroutine());
+        previousInnerAnimations[i] = StartCoroutine(innerAnimations[i].AnimationCoroutine());*/
     }
 }

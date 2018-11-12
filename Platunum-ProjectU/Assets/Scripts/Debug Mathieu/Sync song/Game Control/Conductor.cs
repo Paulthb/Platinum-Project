@@ -57,7 +57,7 @@ public class Conductor : MonoBehaviour
 	private int[,] trackNextIndices;
 	
 	//queue, saving the MusicNodes which currently on screen
-	private Queue<MusicNode>[,] queueForTracks;
+	//private Queue<MusicNode>[,] queueForTracks;
 
 	//multi-times notes might be paused on the finish line, but already dequed
 	private MusicNode[,] previousMusicNodes; 
@@ -99,10 +99,10 @@ public class Conductor : MonoBehaviour
         }
     }
 
-    void PlayerInputted(int partitionNumber, int trackNumber)
+    /*void PlayerInputted(int partitionNumber, int trackNumber)
 	{
 		//check if multi-times node exists
-		/*if (previousMusicNodes[partitionNumber, trackNumber] != null)
+		if (previousMusicNodes[partitionNumber, trackNumber] != null)
 		{
 			//dispatch beat on hit event (multi-times node is always PERFECT)
 			if (beatOnHitEvent != null) beatOnHitEvent(trackNumber, Rank.PERFECT);
@@ -112,7 +112,7 @@ public class Conductor : MonoBehaviour
 				//print("Multi-Times Succeed!");
 				previousMusicNodes[partitionNumber, trackNumber] = null;
 			}
-		}*/
+		}
 		if (queueForTracks[partitionNumber,trackNumber].Count != 0)
 		{
 			//peek the node in the queue
@@ -152,7 +152,7 @@ public class Conductor : MonoBehaviour
 				queueForTracks[partitionNumber, trackNumber].Dequeue();
 			}
 		}
-	}
+	}*/
 
 	void Start()
 	{
@@ -174,7 +174,7 @@ public class Conductor : MonoBehaviour
 		songInfo = SongInfoCustom.Instance.currentSong;
 
 		//listen to player input
-		PlayerInputControl.inputtedEvent += PlayerInputted;
+		//PlayerInputControl.inputtedEvent += PlayerInputted;
 
 		//initialize fields
 		crotchet = 60f / songInfo.bpm;
@@ -252,7 +252,7 @@ public class Conductor : MonoBehaviour
 		//print (songposition);
 
 		//check if need to instantiate new nodes
-		float beatToShow = songposition / crotchet + BeatsShownOnScreen;
+		//float beatToShow = songposition / crotchet + BeatsShownOnScreen;
         /*
         //loop the tracks for new MusicNodes
         for (int j = 0; j < partitionLen; j++)
@@ -362,10 +362,10 @@ public class Conductor : MonoBehaviour
 		StartSong();
 	}
 
-	void OnDestroy()
+	/*void OnDestroy()
 	{
 		PlayerInputControl.inputtedEvent -= PlayerInputted;
-	}
+	}*/
 
     public float GetSongPosition()
     {

@@ -83,9 +83,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timesText: {fileID: 0}
-  timesTextBackground: {fileID: 0}
-  backgroundSprites:
-  - {fileID: 21300000, guid: 728af48a79be8f242bf04a821f0d12d1, type: 3}
   ringSprite: {fileID: 212990522157250766}
 --- !u!212 &212745979409207910
 SpriteRenderer:
