@@ -202,7 +202,7 @@ public class PlayingUIController : MonoBehaviour
 
 	IEnumerator PopAvatarCoroutine()
 	{
-		float duration = Conductor.crotchet * PopAnimationCoefficient;
+		float duration = ConductorCustom.crotchet * PopAnimationCoefficient;
 
 		float i = 0f;
 		while (i <= 1f)
@@ -239,7 +239,7 @@ public class PlayingUIController : MonoBehaviour
 		//display pause scene
 		pauseScene.SetActive(true);
 
-		Conductor.paused = true;
+		ConductorCustom.paused = true;
 	}
 
 	//pause scene
@@ -248,7 +248,7 @@ public class PlayingUIController : MonoBehaviour
 		//disable pause scene
 		pauseScene.SetActive(false);
 
-		Conductor.paused = false;
+		ConductorCustom.paused = false;
 	}
 
 	public void RetryButtonOnClick()

@@ -29,4 +29,10 @@ public class PartitionManager : MonoBehaviour {
             return instance;
         }
     }
+
+    //Load Players
+    public void LoadPlayer()
+    {
+
+    }
 }

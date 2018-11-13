@@ -7,6 +7,8 @@ public class Partition : MonoBehaviour {
     public int partitionId;
     public float[] SpawnOffset;
 
+    //Tracks Color
+    private Color[] TracksColors;
     //Gameplay
     //ADD Role
     //Public Role CurrentRole;
@@ -44,6 +46,7 @@ public class Partition : MonoBehaviour {
         //initialize arrays
         TrackCount = SpawnOffset.Length;
         trackNextIndices = new int[TrackCount];
+        TracksColors = new Color[TrackCount];
         nextLayerZ = new float[TrackCount];
         queueForTracks = new Queue<MusicNode>[TrackCount];
         previousMusicNodes = new MusicNode[TrackCount];
@@ -53,6 +56,7 @@ public class Partition : MonoBehaviour {
             queueForTracks[i] = new Queue<MusicNode>();
             previousMusicNodes[i] = null;
             nextLayerZ[i] = FirstLayerZ;
+            TracksColors[i] = PartitionManager.trackColor[i];
         }
         tracks = songInfo.partitions[partitionId-1].tracks; //keep a reference of the tracks
     }
@@ -60,7 +64,7 @@ public class Partition : MonoBehaviour {
     private void Update()
     {
         //check if need to instantiate new nodes
-        float beatToShow = Conductor.songposition / Conductor.crotchet + Conductor.Instance.GetBeatToShowOnScreen();
+        float beatToShow = ConductorCustom.songposition / ConductorCustom.crotchet + ConductorCustom.BeatsShownOnScreen;
         for (int i = 0; i < queueForTracks.Length; i++)
         {
             int nextIndex = trackNextIndices[i];
@@ -74,7 +78,7 @@ public class Partition : MonoBehaviour {
                 float layerZ = nextLayerZ[i];
                 nextLayerZ[i] += LayerOffsetZ;
                 //get a new node
-                MusicNode musicNode = MusicNodePool.instance.GetNode(SpawnOffset[i], partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, PartitionManager.trackColor[i]);
+                MusicNode musicNode = MusicNodePool.instance.GetNode(SpawnOffset[i], partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
 
                 //enqueue
                 queueForTracks[i].Enqueue(musicNode);

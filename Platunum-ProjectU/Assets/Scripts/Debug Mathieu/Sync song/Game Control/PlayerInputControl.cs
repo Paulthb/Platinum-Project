@@ -89,7 +89,7 @@ public class PlayerInputControl : MonoBehaviour
 
     void Update()
     {
-        if (Conductor.paused) return;
+        if (ConductorCustom.paused) return;
 
         //keyboard input
 #if UNITY_EDITOR || UNITY_STANDALONE

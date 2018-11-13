@@ -5,12 +5,12 @@ public class DestroyWhenSongCompleted : MonoBehaviour
 
 	void Awake()
 	{
-		Conductor.songCompletedEvent += DestroyWhenCompleted;
+		ConductorCustom.songCompletedEvent += DestroyWhenCompleted;
 	}
 
 	void OnDestroy()
 	{
-		Conductor.songCompletedEvent -= DestroyWhenCompleted;
+		ConductorCustom.songCompletedEvent -= DestroyWhenCompleted;
 	}
 
 	void DestroyWhenCompleted()

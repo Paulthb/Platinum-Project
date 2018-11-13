@@ -4,13 +4,25 @@ using System;
 
 public class SongInfoCustom : MonoBehaviour 
 {
-	public static SongInfoCustom Instance = null;
+    //Get Instance
+    private static SongInfoCustom instance;
+    public static SongInfoCustom Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<SongInfoCustom>();
+            if (instance == null)
+                Debug.Log("No tutorial found");
+            return instance;
+        }
+    }
 
-	public SongInfo currentSong;
+    public SongInfo currentSong;
 
 	void Start()
 	{
-		Instance = this;
+		instance = this;
 
 		DontDestroyOnLoad(gameObject);
 	}
