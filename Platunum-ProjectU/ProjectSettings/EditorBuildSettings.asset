@@ -6,9 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/scenes/Menu.unity
+    guid: 9f47921fd08fe1a4fa7b5ce86b2d1e5c
+  - enabled: 1
     path: Assets/scenes/Lobby.unity
     guid: f24ea10e3f27eec4cb0903df8bf25ed9
   - enabled: 1
     path: Assets/scenes/Debug_Mathieu.unity
     guid: 01638db5464e571498d2ae24f5f01f8c
+  - enabled: 1
+    path: Assets/scenes/Debug_Mathieu_2.unity
+    guid: 02b0df62a3db5bd45b514ef264f7cbdd
   m_configObjects: {}
