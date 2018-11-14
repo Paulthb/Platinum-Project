@@ -61,6 +61,8 @@ namespace Manager
                     partition.PlayerInputted(i);
                 }
             }
+
+            //Handle Role Switch
         }
     }
 }
