@@ -11,6 +11,18 @@ public class BossBar : MonoBehaviour {
     private float bossPoint = 1000f;
     private float bossMaxPoint = 1000f;
 
+    private static BossBar instance;
+    public static BossBar Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<BossBar>();
+            if (instance == null) 
+                Debug.Log("No BossBar found");
+            return instance;
+        }
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -18,6 +30,7 @@ public class BossBar : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
+    /*
 	void Update ()
     {
         //pour les tests
@@ -25,7 +38,7 @@ public class BossBar : MonoBehaviour {
         {
             TakeDamage();
         }
-    }
+    }*/
 
     private void UpdateBar()
     {
@@ -34,14 +47,14 @@ public class BossBar : MonoBehaviour {
         bossBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
     }
 
-    private void TakeDamage()
+    public void TakeDamage(int damage)
     {
 
-        bossPoint -= 10;
+        bossPoint -= damage;
         if (bossPoint < 0)
         {
             bossPoint = 0;
-            Debug.Log("on est mort !");
+            Debug.Log("le boss est mort !");
         }
 
         UpdateBar();

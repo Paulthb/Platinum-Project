@@ -13,6 +13,7 @@ public class HealthBar : MonoBehaviour {
     [SerializeField]
     private Text rationText;
 
+    // valeurs temporaires, il faut récup en fontion des stats des joueurs
     private float healthPoint = 150f;
     private float armorPoint = 150f;
     private float maxHealthPoint = 150f;
@@ -20,21 +21,45 @@ public class HealthBar : MonoBehaviour {
 
     private bool isArmor = true;
 
+    private static HealthBar instance;
+    public static HealthBar Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<HealthBar>();
+            if (instance == null)
+                Debug.Log("No health found");
+            return instance;
+        }
+    }
 
 	// Use this for initialization
 	void Start ()
     {
         UpdateIsArmor();
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    /*
+    void Update () {
 		
         //pour les tests
         if (Input.GetKeyDown("space"))
         {
             TakeDamage();
         }
+    }*/
+
+    public void WinArmor(int armorPt)
+    {
+        armorPoint += 10;
+        if (armorPoint > maxArmorPoint) //récuperer la somme de armor groupe max
+        {
+            armorPoint = maxArmorPoint;
+            Debug.Log("full armor");
+        }
+        UpdateBar();
     }
 
     private void UpdateBar()

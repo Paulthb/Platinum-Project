@@ -12,7 +12,6 @@ public class PartitionManager : MonoBehaviour {
     public float goodOffsetY;
     public float perfectOffsetY;
 
-
     public enum Rank { PERFECT, GOOD, BAD, MISS };
     public static readonly Color[] trackColor = { Color.green, Color.red, Color.blue, Color.yellow };
 
