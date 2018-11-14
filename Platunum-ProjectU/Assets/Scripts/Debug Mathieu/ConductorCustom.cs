@@ -10,7 +10,6 @@ public class ConductorCustom : MonoBehaviour
     public delegate void SongCompletedAction();
     public static event SongCompletedAction songCompletedEvent;
 
-
     private float songLength;
 
     //if the whole game is paused
@@ -38,7 +37,7 @@ public class ConductorCustom : MonoBehaviour
     public Text countDownText;
 
 
-    private AudioSource audioSource { get { return GetComponent<AudioSource>(); } }
+    private AudioSource audioSource;
 
     //Get Instance
     private static ConductorCustom instance;
@@ -56,6 +55,7 @@ public class ConductorCustom : MonoBehaviour
 
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         //reset static variables
         paused = true;
         pauseTimeStamp = -1f;

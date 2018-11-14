@@ -11,9 +11,22 @@ namespace Manager
         public Color[] PlayerColorList;
         private List<Player> PlayerList = new List<Player>();
         private IDictionary<Player, Transform> PlayerTransformList;
-        public ClassManager ClassManager;
 
         private static bool created = false;
+
+        //Get Instance
+        private static PlayerManager instance;
+        public static PlayerManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                    instance = GameObject.FindObjectOfType<PlayerManager>();
+                if (instance == null)
+                    Debug.Log("No tutorial found");
+                return instance;
+            }
+        }
 
         void Awake()
         {
@@ -49,10 +62,10 @@ namespace Manager
         }
 
 
-        public Player AddPlayer(int ControllerId)
+        public Player AddPlayer(int ControllerId, Personnage playerPersonnage)
         {
             int id = PlayerList.Count + 1;
-            Player player = new Player(id, PlayerColorList[id-1], ClassManager.GetClassById(id-1 % 4), ControllerId);
+            Player player = new Player(id, PlayerColorList[id-1], playerPersonnage, ControllerId);
             PlayerList.Add(player);
             Debug.Log("Controller id:" + ControllerId + " added as Player n°" + id);
             return player;

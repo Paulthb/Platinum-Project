@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256760e9ee1eb81428e4f43c7ebd6b69, type: 3}
-  m_Name: Support
+  m_Script: {fileID: 11500000, guid: 36807c11c7dff1e43986ef28b3a930ab, type: 3}
+  m_Name: Druide
   m_EditorClassIdentifier: 
-  className: Support
-  icon: {fileID: 21300000, guid: c2019d3301788074b9d7b63a15285f8e, type: 3}
-  color: {r: 0, g: 1, b: 0.10735226, a: 0}
+  id: 2
+  name: Druide
+  Sprite: {fileID: 21300000, guid: 570e4db45da2f2448baed1354deb7ecc, type: 3}
+  AvailableRole: 0200000001000000

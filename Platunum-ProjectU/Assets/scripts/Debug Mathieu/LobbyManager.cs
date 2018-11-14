@@ -15,10 +15,14 @@ namespace Manager
         public string SceneToLoad;
         //public bool StartGameBool = false;
         //private static bool created = false;
-        public ClassManager classManager;
 
         //Input list
         private List<KeyCode> keyList;
+
+        //Personnage
+        public Personnage[] PersonnageAvailable;
+        public bool[] SelectedList;
+
         /*
         void Awake()
         {
@@ -31,7 +35,7 @@ namespace Manager
         }*/
         // Use this for initialization
         void Start () {
-            playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>(); 
+            playerManager = PlayerManager.Instance;
             ReadyPlayerList = new Dictionary<int, bool>();
             keyList = new List<KeyCode>();
             //Debug.Log(Input.GetJoystickNames().);
@@ -41,10 +45,13 @@ namespace Manager
                 if (keyName.Contains("Joystick") && char.IsDigit(keyName[8]))
                     keyList.Add(key);
             }
+
+            SelectedList = new bool[PersonnageAvailable.Length];
         }
 	
 	    // Update is called once per frame
 	    void Update () {
+            //Par chaque touche filter on regarde l'etat
             foreach (KeyCode code in keyList)
             {
                 if (Input.GetKeyDown(code))
@@ -52,6 +59,7 @@ namespace Manager
                     string keyCode = code.ToString().Substring(8);
                     int idController = 0;
                     int idButton = -1;
+
                     //Cas Joystick commun
                     if (!char.IsDigit(keyCode[0])){
                         Debug.Log("manette commune");
@@ -76,11 +84,17 @@ namespace Manager
                     {
                         if (!playerManager.IsPlayerAlreadyInLobby(idController))
                         {
-                            Player player = playerManager.AddPlayer(idController);
+                            int i = 0;
+                            while (SelectedList[i])
+                            {
+                                i++;
+                            }
+                            SelectedList[i] = true;
+                            Player player = playerManager.AddPlayer(idController, PersonnageAvailable[i]);
                             ReadyPlayerList.Add(player.id, false);
 
                             //Update PlayerUI
-                            Sprite sprite = player.Class.icon;
+                            Sprite sprite = player.Personnage.Sprite;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
                             PlayerUI[player.id - 1].gameObject.SetActive(true);
@@ -92,25 +106,34 @@ namespace Manager
                             if (!currentReadyState && (idButton == 4 || idButton == 5))
                             {
                                 //Le joueur de se controleur souhaite changer de class
-                                int CurrentClass = classManager.GetClassIdByName(player.Class.name);//récupère la classes du joueur
-                                int newclass = CurrentClass;//la variable newclass déterminera la prochaine classes
+                                int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
+                                SelectedList[CurrentPerso] = false;
+
+                                int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
                                                             // Gère les problèmes de tableau pour evité le out of range
+                                int incrementation = 0;
                                 if (idButton == 5)
                                 {
-                                    newclass = (CurrentClass + 1) % classManager.GetClassCount();
+                                    incrementation++;
+                                    //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
                                 }
                                 else //Button 4
                                 {
-                                    if (CurrentClass > 0)
-                                        newclass = CurrentClass - 1;
+                                    incrementation--;
+                                    /*if (CurrentPerso > 0)
+                                        newPerso = CurrentPerso - 1;
                                     else
-                                        newclass = classManager.GetClassCount() - 1;
-
+                                        newPerso = PersonnageAvailable.Length - 1;*/
                                 }
+                                do
+                                {
+                                    newPerso += incrementation;
+                                } while (SelectedList[newPerso]);
                                 //ajoute la nouvelle classe au joueur
-                                player.Class = classManager.GetClassById(newclass);
+                                SelectedList[newPerso] = true;
+                                player.Personnage = PersonnageAvailable[newPerso];
                                 //UI Update
-                                PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Class.icon;
+                                PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
                             }
                             if (idButton == 0)
                             {
