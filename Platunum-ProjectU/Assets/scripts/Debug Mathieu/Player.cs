@@ -7,17 +7,17 @@ namespace Manager
     {
         public int id;
         public Color color;
-        public Class Class;
+        public Personnage Personnage;
         public int ControllerId { get; set; }
         private KeyCode[] trackKey;
         public Partition partition; 
 
         // Use this for initialization
-        public Player(int Id, Color Color, Class playerClass, int Controller)
+        public Player(int Id, Color Color, Personnage playerPerso, int Controller)
         {
             id = Id;
             color = Color;
-            Class = playerClass;
+            Personnage = playerPerso;
             ControllerId = Controller;
         }
 

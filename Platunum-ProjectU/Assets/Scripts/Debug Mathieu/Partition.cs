@@ -5,7 +5,10 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
-    public float[] SpawnOffset;
+
+    public GameObject TrackPrefab;
+    public float trackWidth = 1;
+    public float SpaceBetweenTracks = 1;
 
     //Tracks Color
     private Color[] TracksColors;
@@ -13,7 +16,8 @@ public class Partition : MonoBehaviour {
     //ADD Role
     //Public Role CurrentRole;
 
-    private SongInfo.Track[] tracks;
+    private SongInfo.Track[] tracksNode;
+    private Track[] tracks;
     //Tracks queue
     private Queue<MusicNode>[] queueForTracks;
     private MusicNode[] previousMusicNodes;
@@ -24,10 +28,10 @@ public class Partition : MonoBehaviour {
     public delegate void BeatOnHitAction(int trackNumber, PartitionManager.Rank rank);
     public static event BeatOnHitAction beatOnHitEvent;
     //input
-    public delegate void InputtedAction(int partitionId, int trackNumber);
-    public static event InputtedAction inputtedEvent;
+    //public delegate void InputtedAction(int partitionId, int trackNumber);
+    //àpublic static event InputtedAction inputtedEvent;
 
-    public ParticleSystemManagerCustom ParticleManager;
+    //public ParticleSystemManagerCustom ParticleManager;
 
     //layer each music node, so that the first one would be at the front
     private const float LayerOffsetZ = 0.001f;
@@ -41,24 +45,41 @@ public class Partition : MonoBehaviour {
 
     private void Start()
     {
-        partitionManager = PartitionManager.Instance;
-        songInfo = SongInfoCustom.Instance.currentSong;
-        //initialize arrays
-        TrackCount = SpawnOffset.Length;
+        TrackCount = SongInfoCustom.Instance.currentSong.partitions[partitionId - 1].tracks.Length;
+
+        tracks = new Track[TrackCount];
         trackNextIndices = new int[TrackCount];
         TracksColors = new Color[TrackCount];
         nextLayerZ = new float[TrackCount];
         queueForTracks = new Queue<MusicNode>[TrackCount];
         previousMusicNodes = new MusicNode[TrackCount];
+
+        float OffsetX = -(trackWidth + SpaceBetweenTracks); 
         for (int i = 0; i < TrackCount; i++)
         {
+            //instantiate tracks
+            GameObject track = Instantiate(TrackPrefab, new Vector3(OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform);
+            tracks[i] = track.GetComponent<Track>();
+            tracks[i].offsetX = OffsetX;
+            tracks[i].SetTrackWidth(trackWidth);
+            OffsetX += SpaceBetweenTracks;
+
+            //Init Variable for each track
             trackNextIndices[i] = 0;
             queueForTracks[i] = new Queue<MusicNode>();
             previousMusicNodes[i] = null;
             nextLayerZ[i] = FirstLayerZ;
             TracksColors[i] = PartitionManager.trackColor[i];
         }
-        tracks = songInfo.partitions[partitionId-1].tracks; //keep a reference of the tracks
+
+        partitionManager = PartitionManager.Instance;
+        songInfo = SongInfoCustom.Instance.currentSong;
+        //initialize arrays
+        //TrackCount = SpawnOffset.Length;
+        for (int i = 0; i < TrackCount; i++)
+        {
+        }
+        tracksNode = songInfo.partitions[partitionId-1].tracks; //keep a reference of the tracks
     }
 
     private void Update()
@@ -68,7 +89,7 @@ public class Partition : MonoBehaviour {
         for (int i = 0; i < queueForTracks.Length; i++)
         {
             int nextIndex = trackNextIndices[i];
-            SongInfo.Track currTrack = tracks[i];
+            SongInfo.Track currTrack = tracksNode[i];
 
             if (nextIndex < currTrack.notes.Length && currTrack.notes[nextIndex].note < beatToShow)
             {
@@ -78,7 +99,7 @@ public class Partition : MonoBehaviour {
                 float layerZ = nextLayerZ[i];
                 nextLayerZ[i] += LayerOffsetZ;
                 //get a new node
-                MusicNode musicNode = MusicNodePool.instance.GetNode(SpawnOffset[i], partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
+                MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
 
                 //enqueue
                 queueForTracks[i].Enqueue(musicNode);
@@ -117,11 +138,11 @@ public class Partition : MonoBehaviour {
         }
     }
 
-    void Inputted(int i)
+    /*void Inputted(int i)
     {
         //inform Conductor and other interested classes
         if (inputtedEvent != null) inputtedEvent(partitionId, i);
-    }
+    }*/
 
     public void PlayerInputted(int trackNumber)
     {
@@ -144,7 +165,7 @@ public class Partition : MonoBehaviour {
                     //print("Perfect");
 
                     //SendBeatHit to particle
-                    ParticleManager.BeatOnHit(trackNumber, PartitionManager.Rank.PERFECT);
+                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
 
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();
@@ -156,7 +177,7 @@ public class Partition : MonoBehaviour {
                     //print("Good");
 
                     //SendBeatHit to particle
-                    ParticleManager.BeatOnHit(trackNumber, PartitionManager.Rank.GOOD);
+                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
 
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();
@@ -168,7 +189,7 @@ public class Partition : MonoBehaviour {
                     //print("Bad");
 
                     //SendBeatHit to particle
-                    ParticleManager.BeatOnHit(trackNumber, PartitionManager.Rank.BAD);
+                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
 
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();

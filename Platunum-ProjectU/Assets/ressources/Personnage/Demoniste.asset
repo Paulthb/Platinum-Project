@@ -8,9 +8,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 256760e9ee1eb81428e4f43c7ebd6b69, type: 3}
-  m_Name: DPS
+  m_Script: {fileID: 11500000, guid: 36807c11c7dff1e43986ef28b3a930ab, type: 3}
+  m_Name: Demoniste
   m_EditorClassIdentifier: 
-  className: DPS
-  icon: {fileID: 21300000, guid: 7d650f05c72000d4490a0baf9e877170, type: 3}
-  color: {r: 1, g: 0, b: 0, a: 0}
+  id: 1
+  name: "D\xE9moniste"
+  Sprite: {fileID: 21300000, guid: 88b0dbcb1229bdc4fb9cd949be274b30, type: 3}
+  AvailableRole: 0000000002000000

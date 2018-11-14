@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Manager;
 
 public class PartitionManager : MonoBehaviour {
     public float startLineY;
@@ -11,6 +12,9 @@ public class PartitionManager : MonoBehaviour {
     public float badOffsetY;
     public float goodOffsetY;
     public float perfectOffsetY;
+
+    public float PartitionSize;
+    public float PartitionSpace;
 
 
     public enum Rank { PERFECT, GOOD, BAD, MISS };
@@ -29,10 +33,14 @@ public class PartitionManager : MonoBehaviour {
             return instance;
         }
     }
+    private void Start()
+    {
+        LoadPlayer();
+    }
 
     //Load Players
     public void LoadPlayer()
     {
-
+        //PlayerManager.GetPlayer();
     }
 }
