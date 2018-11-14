@@ -53,7 +53,7 @@ public class HealthBar : MonoBehaviour {
 
     public void WinArmor(int armorPt)
     {
-        armorPoint += 10;
+        armorPoint += armorPt;
         if (armorPoint > maxArmorPoint) //récuperer la somme de armor groupe max
         {
             armorPoint = maxArmorPoint;
@@ -81,11 +81,11 @@ public class HealthBar : MonoBehaviour {
         UpdateIsArmor();
     }
 
-    private void TakeDamage()
+    public void TakeDamage(int damagePt)
     {
         if (!isArmor)
         {
-            healthPoint -= 10;
+            healthPoint -= damagePt;
             if (healthPoint < 0)
             {
                 healthPoint = 0;
@@ -94,10 +94,11 @@ public class HealthBar : MonoBehaviour {
         }
         else
         {
-            armorPoint -= 10;
+            armorPoint -= damagePt;
             if (armorPoint < 0)
             {
                 armorPoint = 0;
+                isArmor = false;
                 Debug.Log("plus d'armure");
             }
         }
