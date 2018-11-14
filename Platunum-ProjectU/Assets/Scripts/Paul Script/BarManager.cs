@@ -4,6 +4,19 @@ using UnityEngine;
 
 public class BarManager : MonoBehaviour {
 
+    private static BarManager instance;
+    public static BarManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<BarManager>();
+            if (instance == null)
+                Debug.Log("No BarManager found");
+            return instance;
+        }
+    }
+
     public void GiveMana(int mana)
     {
         ManaBar.Instance.WinMana(mana);

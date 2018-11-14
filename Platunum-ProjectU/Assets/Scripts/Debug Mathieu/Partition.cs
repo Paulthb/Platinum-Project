@@ -6,7 +6,6 @@ public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
     public Personnage.Role currentRole;
-    public BarManager barManager;
 
 
     public static float trackWidth = 1;
@@ -163,7 +162,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    barManager.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
                     //print("Perfect");
 
                     //SendBeatHit to particle
@@ -176,7 +175,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
-                    barManager.GetImpact(currentRole, PartitionManager.Rank.GOOD);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
                     //print("Good");
 
                     //SendBeatHit to particle
@@ -189,7 +188,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
-                    barManager.GetImpact(currentRole, PartitionManager.Rank.BAD);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
                     //print("Bad");
 
                     //SendBeatHit to particle
@@ -203,7 +202,7 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
-                barManager.GetImpact(currentRole, PartitionManager.Rank.MISS);
+                BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             }
         }
     }

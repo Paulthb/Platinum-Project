@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scenes/Debug_Mathieu_2.unity
     guid: 02b0df62a3db5bd45b514ef264f7cbdd
+  - enabled: 1
+    path: Assets/scenes/Debug_Jean.unity
+    guid: 65f0ad1439196c94bbde3880cbc9d992
   m_configObjects: {}

@@ -79,7 +79,7 @@ public class PartitionManager : MonoBehaviour {
             partition.idplayer = player.id;
             partition.partitionId = player.id;
             player.SetPartition(partition);
-            partition.role = player.Personnage.AvailableRole[0];
+            partition.currentRole = player.Personnage.AvailableRole[0];
             offsetX += PartitionSpace;
         }
     }
