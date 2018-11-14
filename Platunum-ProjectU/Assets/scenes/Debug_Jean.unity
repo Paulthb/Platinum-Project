@@ -33445,7 +33445,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idplayer: 3
   partitionId: 3
-  role: 0
+  currentRole: 0
+  barManager: {fileID: 0}
   TrackPrefab: {fileID: 0}
   trackWidth: 1
   SpaceBetweenTracks: 1
@@ -38668,7 +38669,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idplayer: 1
   partitionId: 1
-  role: 0
+  currentRole: 0
+  barManager: {fileID: 0}
   TrackPrefab: {fileID: 1495298714884034, guid: c7be8ea6ac5746d45bdbd3f16587a9c3,
     type: 2}
   trackWidth: 1
@@ -44049,7 +44051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idplayer: 1
   partitionId: 1
-  role: 0
+  currentRole: 0
+  barManager: {fileID: 0}
   TrackPrefab: {fileID: 0}
   trackWidth: 1
   SpaceBetweenTracks: 1
@@ -44082,8 +44085,9 @@ GameObject:
   - component: {fileID: 1031758855}
   - component: {fileID: 1031758854}
   - component: {fileID: 1031758853}
+  - component: {fileID: 1031758856}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: BarManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44168,6 +44172,17 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1031758856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1031758851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c698bc22681f64cb18dd672cf5212f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1054781535
 GameObject:
   m_ObjectHideFlags: 0
@@ -91131,7 +91146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idplayer: 2
   partitionId: 2
-  role: 0
+  currentRole: 0
+  barManager: {fileID: 0}
   TrackPrefab: {fileID: 0}
   trackWidth: 1
   SpaceBetweenTracks: 1
@@ -100985,7 +101001,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idplayer: 1
   partitionId: 1
-  role: 0
+  currentRole: 0
+  barManager: {fileID: 0}
   TrackPrefab: {fileID: 0}
   trackWidth: 1
   SpaceBetweenTracks: 1
