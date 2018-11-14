@@ -5,6 +5,8 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
+    public Personnage.Role role;
+
 
     public GameObject TrackPrefab;
     public float trackWidth = 1;
@@ -136,6 +138,8 @@ public class Partition : MonoBehaviour {
                 if (beatOnHitEvent != null) beatOnHitEvent(i, PartitionManager.Rank.MISS);
             }
         }
+
+        //Handle Role Switch
     }
 
     /*void Inputted(int i)
