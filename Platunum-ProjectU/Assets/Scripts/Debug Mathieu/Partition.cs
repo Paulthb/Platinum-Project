@@ -7,10 +7,8 @@ public class Partition : MonoBehaviour {
     public int partitionId;
     public Personnage.Role role;
 
-
-    public GameObject TrackPrefab;
-    public float trackWidth = 1;
-    public float SpaceBetweenTracks = 1;
+    public static float trackWidth = 1;
+    public static float SpaceBetweenTracks = 2;
 
     //Tracks Color
     private Color[] TracksColors;
@@ -60,9 +58,8 @@ public class Partition : MonoBehaviour {
         for (int i = 0; i < TrackCount; i++)
         {
             //instantiate tracks
-            GameObject track = Instantiate(TrackPrefab, new Vector3(OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform);
-            tracks[i] = track.GetComponent<Track>();
-            tracks[i].offsetX = OffsetX;
+            tracks[i] = Instantiate(PartitionManager.Instance.TrackPrefabs, new Vector3(transform.position.x + OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform).GetComponent<Track>();
+            //tracks[i].offsetX = OffsetX;
             tracks[i].SetTrackWidth(trackWidth);
             OffsetX += SpaceBetweenTracks;
 
@@ -138,8 +135,6 @@ public class Partition : MonoBehaviour {
                 if (beatOnHitEvent != null) beatOnHitEvent(i, PartitionManager.Rank.MISS);
             }
         }
-
-        //Handle Role Switch
     }
 
     /*void Inputted(int i)

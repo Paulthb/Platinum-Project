@@ -13,7 +13,7 @@ namespace Manager
         private IDictionary<Player, Transform> PlayerTransformList;
 
         private static bool created = false;
-
+        public Personnage DebugPerso;
         //Get Instance
         private static PlayerManager instance;
         public static PlayerManager Instance
@@ -65,7 +65,9 @@ namespace Manager
         public Player AddPlayer(int ControllerId, Personnage playerPersonnage)
         {
             int id = PlayerList.Count + 1;
-            Player player = new Player(id, PlayerColorList[id-1], playerPersonnage, ControllerId);
+            GameObject playerObject = new GameObject("Player " + id);
+            Player player = Instantiate(playerObject, transform).AddComponent<Player>();
+            player.LoadPlayer(id, PlayerColorList[id-1], playerPersonnage, ControllerId);
             PlayerList.Add(player);
             Debug.Log("Controller id:" + ControllerId + " added as Player n°" + id);
             return player;
@@ -115,6 +117,21 @@ namespace Manager
                 NewPlayer.GetComponent<Player>().Load(item.id, item.idPrefabs, item.ControllerId);
             }*/
             //Do Something when Level is loaded
+        }
+
+        public List<Player> GetPlayers()
+        {
+            return PlayerList;
+        }
+
+        public int GetPlayersCount()
+        {
+            return PlayerList.Count;
+        }
+
+        public void AddeDebugPlayer()
+        {
+            AddPlayer(1, DebugPerso);
         }
     }
 }

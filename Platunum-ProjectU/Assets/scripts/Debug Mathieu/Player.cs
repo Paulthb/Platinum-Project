@@ -10,15 +10,16 @@ namespace Manager
         public Personnage Personnage;
         public int ControllerId { get; set; }
         private KeyCode[] trackKey;
-        public Partition partition; 
+        private Partition partition; 
 
         // Use this for initialization
-        public Player(int Id, Color Color, Personnage playerPerso, int Controller)
+        public void LoadPlayer(int Id, Color Color, Personnage playerPerso, int Controller)
         {
             id = Id;
             color = Color;
             Personnage = playerPerso;
             ControllerId = Controller;
+            trackKey = LoadTrackKey();
         }
 
         public int GetId()
@@ -45,17 +46,11 @@ namespace Manager
             }
             return keyCode;
         }
-        private void Start()
-        {
-            if (!(ControllerId > 0))
-                ControllerId = id;
-            trackKey = LoadTrackKey();
-        }
         private void Update()
         {
             for (int i = 0; i < trackKey.Length; i++)
             {
-                if (Input.GetKey(trackKey[i]))
+                if (Input.GetKey(trackKey[i]) && partition != null)
                 {
                     //Send TrackKey input
                     partition.PlayerInputted(i);
@@ -63,6 +58,11 @@ namespace Manager
             }
 
             //Handle Role Switch
+        }
+
+        public void SetPartition(Partition partition)
+        {
+            this.partition = partition;
         }
     }
 }

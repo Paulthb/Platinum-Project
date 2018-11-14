@@ -127,7 +127,18 @@ namespace Manager
                                 }
                                 do
                                 {
-                                    newPerso += incrementation;
+                                    //newPerso += incrementation;
+                                    if (incrementation > 0)
+                                    {
+                                        newPerso = (newPerso + 1) % PersonnageAvailable.Length;
+                                    }
+                                    else
+                                    {
+                                        if(newPerso>0)
+                                            newPerso--;
+                                        else
+                                            newPerso = (newPerso + 1) % PersonnageAvailable.Length;
+                                    }
                                 } while (SelectedList[newPerso]);
                                 //ajoute la nouvelle classe au joueur
                                 SelectedList[newPerso] = true;

@@ -7,6 +7,11 @@ public class Track : MonoBehaviour {
     private TrackParticle trackParticle;
     public float offsetX;
 
+    private void Start()
+    {
+        offsetX = transform.position.x;
+    }
+
     public void PlayParticle(PartitionManager.Rank rank)
     {
         switch (rank)
