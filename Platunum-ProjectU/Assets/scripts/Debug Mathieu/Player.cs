@@ -61,6 +61,24 @@ namespace Manager
                     partition.PlayerInputted(i);
                 }
             }
+
+            //Handle Role Switch
+
+        }
+
+        private void RoleSwitch()
+        {
+            if (Personnage.AvailableRole.Length > 1)
+            {
+                if (Input.GetKeyDown("Joystick" + ControllerId + "Button4"))
+                {
+                    partition.currentRole = Personnage.AvailableRole[0];
+                }
+                if (Input.GetKeyDown("Joystick" + ControllerId + "Button5"))
+                {
+                    partition.currentRole = Personnage.AvailableRole[1];
+                }
+            }
         }
     }
 }
