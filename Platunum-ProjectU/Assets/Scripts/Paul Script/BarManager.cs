@@ -19,7 +19,7 @@ public class BarManager : MonoBehaviour {
         BossBar.Instance.TakeDamage(damage);
     }
 
-    private void GetImpact(int role, PartitionManager.Rank rank)
+    public void GetImpact(int role, PartitionManager.Rank rank)
     {
         switch (rank)
         {
