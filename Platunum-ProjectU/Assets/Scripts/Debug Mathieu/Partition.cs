@@ -5,7 +5,8 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
-    public Personnage.Role role;
+    public Personnage.Role currentRole;
+
 
 
     public GameObject TrackPrefab;
