@@ -14,42 +14,46 @@ public class BarManager : MonoBehaviour {
         HealthBar.Instance.WinArmor(armorPoint);
     }
 
+    public void HitPlayer(int damagePt)
+    {
+        HealthBar.Instance.TakeDamage(damagePt);
+    }
+
     public void HitBoss(int damage)
     {
         BossBar.Instance.TakeDamage(damage);
     }
 
-    public void GetImpact(int role, PartitionManager.Rank rank)
+    public void GetImpact(Personnage.Role role, PartitionManager.Rank rank)
     {
         switch (rank)
         {
             case PartitionManager.Rank.PERFECT :
-                if (role == 1)      // si la note est Perfect et que le role est mana
+                if (role == Personnage.Role.Support)      // si la note est Perfect et que le role est mana
                     GiveMana(30);
-                else if (role == 2)     // si la note est Perfect et que le role est defense
+                else if (role == Personnage.Role.Tank)     // si la note est Perfect et que le role est defense
                     GiveArmor(30);
                 else HitBoss(30);        // si la note est Perfect et que le role est attack
                 break;
 
             case PartitionManager.Rank.GOOD:
-                if (role == 1)      // si la note est Good et que le role est mana
+                if (role == Personnage.Role.Support)      // si la note est Good et que le role est mana
                     GiveMana(20);
-                else if (role == 2)     // si la note est Good et que le role est defense
+                else if (role == Personnage.Role.Tank)     // si la note est Good et que le role est defense
                     GiveArmor(20);
                 else HitBoss(20);        // si la note est Good et que le role est attack
                 break;
 
             case PartitionManager.Rank.BAD:
-                if (role == 1)      // si la note est Bad et que le role est mana
+                if (role == Personnage.Role.Support)      // si la note est Bad et que le role est mana
                     GiveMana(10);
-                else if (role == 2)     // si la note est Bad et que le role est defense
+                else if (role == Personnage.Role.Tank)     // si la note est Bad et que le role est defense
                     GiveArmor(10);
                 else HitBoss(10);        // si la note est Bad et que le role est attack
                 break;
 
-            case PartitionManager.Rank.MISS:
-                if (role == 2)     // si la note est Miss et que le role est defense
-                    GiveArmor(-10);
+            case PartitionManager.Rank.MISS:    // si la note est Miss et que le role est defense
+                    HitPlayer(8);
                 break;
         }
     }
