@@ -5,6 +5,7 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
+    public SpriteRenderer RoleSprite;
     private Personnage.Role currentRole;
     public Personnage.Role CurrentRole
     {
@@ -12,6 +13,19 @@ public class Partition : MonoBehaviour {
         set
         {
             currentRole = value;
+            switch (currentRole)
+            {
+                case Personnage.Role.Attack:
+                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[0];
+                    break;
+                case Personnage.Role.Defense:
+                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[1];
+                    break;
+                case Personnage.Role.Mana:
+                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[2];
+                    break;
+
+            }
             Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
         }
     }
