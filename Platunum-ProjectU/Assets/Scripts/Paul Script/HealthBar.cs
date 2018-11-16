@@ -14,7 +14,7 @@ public class HealthBar : MonoBehaviour {
     private Text rationText;
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    private float healthPoint = 950f;
+    public float healthPoint = 950f;
     private float armorPoint = 300f;
     private float maxHealthPoint = 950f;
     private float maxArmorPoint = 300f;
@@ -90,6 +90,7 @@ public class HealthBar : MonoBehaviour {
             {
                 healthPoint = 0;
                 Debug.Log("on est mort !");
+                BarManager.Instance.EndGame();
             }
         }
         else

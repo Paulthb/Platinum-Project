@@ -8,6 +8,8 @@ public class BarManager : MonoBehaviour {
     private int manaHitNumber;
     private int attackHitNumber;
 
+    public GameObject GameOverUI;
+
     private static BarManager instance;
     public static BarManager Instance
     {
@@ -23,15 +25,7 @@ public class BarManager : MonoBehaviour {
 
     public void GiveMana(int mana)
     {
-        manaHitNumber += 1;
-        manaSomme += mana;
-        if (manaHitNumber == 3)
-        {
-            //Debug.Log("On gagne " + manaSomme + " pts de mana");
-            ManaBar.Instance.WinMana(manaSomme);
-            manaSomme = 0;
-            manaHitNumber = 0;
-        }
+        ManaBar.Instance.WinMana(mana);
     }
 
     public void GiveArmor(int armorPoint)
@@ -91,5 +85,10 @@ public class BarManager : MonoBehaviour {
                     HitPlayer(8);
                 break;
         }
+    }
+
+    public void EndGame()
+    {
+        GameOverUI.SetActive(true);
     }
 }
