@@ -66,15 +66,13 @@ namespace Manager
         {
             if (Personnage.AvailableRole.Length > 1)
             {
-                if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + ControllerId + "Button4")))
+                if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode( "Joystick" + ControllerId + "Button4")))
                 {
-                    Debug.Log("changement de classe 1");
                     partition.CurrentRole = Personnage.AvailableRole[0];
                     
                 }
-                if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + ControllerId + "Button5")))
+                if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
                 {
-                    Debug.Log("changement de classe 2");
                     partition.CurrentRole = Personnage.AvailableRole[1];
                 }
             }
