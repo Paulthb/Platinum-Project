@@ -6,17 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class GameOverUI : MonoBehaviour {
 
-    public Button pressAbutton;
-
-    public void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick2Button4")))
-        {
-            pressAbutton.onClick.Invoke();
-        }
-    }
-    public void ClickTheButton()
-    {
+        Destroy(PlayerManager.Instance);
+        StartCoroutine(WaitUntilLobby());
         SceneManager.LoadScene("Lobby");
+    }
+
+    IEnumerator WaitUntilLobby()
+    {
+        Debug.Log("Start waiting");
+        yield return new WaitForSeconds(10f);
     }
 }

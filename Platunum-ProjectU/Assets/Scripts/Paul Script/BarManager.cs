@@ -9,6 +9,7 @@ public class BarManager : MonoBehaviour {
     private int attackHitNumber;
 
     public GameObject GameOverUI;
+    public GameObject PartitionManagerUI;
 
     private static BarManager instance;
     public static BarManager Instance
@@ -90,5 +91,6 @@ public class BarManager : MonoBehaviour {
     public void EndGame()
     {
         GameOverUI.SetActive(true);
+        PartitionManagerUI.SetActive(false);
     }
 }
