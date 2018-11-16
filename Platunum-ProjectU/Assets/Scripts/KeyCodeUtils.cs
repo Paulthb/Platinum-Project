@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyCode {
+public class KeyCodeUtils {
 
-	public static KeyCodeUtils GetKeyCode(string KeyString)
+	public static KeyCode GetKeyCode(string KeyString)
     {
         return (KeyCode)System.Enum.Parse(typeof(KeyCode), KeyString);
     }
