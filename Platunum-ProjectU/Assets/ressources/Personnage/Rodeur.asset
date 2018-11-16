@@ -14,4 +14,4 @@ MonoBehaviour:
   id: 3
   name: Rodeur
   Sprite: {fileID: 21300000, guid: f3348612d99b83549b01d4071ba7064a, type: 3}
-  AvailableRole: 0000000001000000
+  AvailableRole: 0100000000000000
