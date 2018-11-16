@@ -1309,7 +1309,11 @@ MonoBehaviour:
   - {r: 0.037095547, g: 0, b: 1, a: 1}
   - {r: 0, g: 1, b: 1, a: 1}
   - {r: 1, g: 0, b: 1, a: 1}
-  DebugPerso: {fileID: 0}
+  RoleSprite:
+  - {fileID: 21300000, guid: 7d650f05c72000d4490a0baf9e877170, type: 3}
+  - {fileID: 21300000, guid: 36c757f06ee587245a853ce0e9ae9a70, type: 3}
+  - {fileID: 21300000, guid: c2019d3301788074b9d7b63a15285f8e, type: 3}
+  DebugPerso: {fileID: 11400000, guid: 1ccb38bbe3cde8943b1b8c5cf91751a3, type: 2}
 --- !u!4 &1783758103
 Transform:
   m_ObjectHideFlags: 0

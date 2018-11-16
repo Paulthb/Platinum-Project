@@ -104,7 +104,7 @@ namespace Manager
                         {
                             Player player = playerManager.GetPlayer(playerManager.GetPlayerByControllerId(idController));
                             bool currentReadyState = ReadyPlayerList[player.id];
-                            if (!currentReadyState && (idButton == 4 || idButton == 5))
+                            if (!currentReadyState && (idButton == 4 || idButton == 5) && PlayerManager.Instance.GetPlayersCount() < 4)
                             {
                                 //Le joueur de se controleur souhaite changer de class
                                 int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
