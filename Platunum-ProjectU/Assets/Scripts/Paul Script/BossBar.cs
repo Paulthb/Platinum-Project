@@ -51,13 +51,12 @@ public class BossBar : MonoBehaviour {
     {
 
         bossPoint -= damage;
-        if (bossPoint < 0)
+        if (bossPoint <= 0)
         {
             bossPoint = 0;
             Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-
         UpdateBar();
     }
 }

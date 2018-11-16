@@ -3,7 +3,7 @@
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -21,10 +21,10 @@ MonoBehaviour:
   arranger: Chao Yu
   songCover: {fileID: 0}
   defaultBeats:
-  - {fileID: 8300000, guid: 9b1664ef0b6844059b7c639c85415cde, type: 3}
-  - {fileID: 8300000, guid: 9b1664ef0b6844059b7c639c85415cde, type: 3}
-  - {fileID: 8300000, guid: 9b1664ef0b6844059b7c639c85415cde, type: 3}
-  - {fileID: 8300000, guid: 9b1664ef0b6844059b7c639c85415cde, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   songOffset: -0.5
   bpm: 155
   partitions:

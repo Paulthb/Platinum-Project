@@ -167,7 +167,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.PERFECT);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
                     //print("Perfect");
 
                     //SendBeatHit to particle
@@ -180,7 +180,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
-                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.GOOD);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
                     //print("Good");
 
                     //SendBeatHit to particle
@@ -193,7 +193,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
-                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.BAD);
+                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
                     //print("Bad");
 
                     //SendBeatHit to particle
@@ -207,12 +207,12 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
-                BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.MISS);
+                BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             }
         }
         else
         {
-            BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.MISS);
+            BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
         }
     }
 }

@@ -59,7 +59,8 @@ public class MusicNode : MonoBehaviour
 		if (transform.position.y < removeLineY)
 		{
 			gameObject.SetActive(false);
-		}
+            BarManager.Instance.GetImpact(null, PartitionManager.Rank.MISS);
+        }
 	}
 
 	//remove (multi-times note failed), might apply some animations later
