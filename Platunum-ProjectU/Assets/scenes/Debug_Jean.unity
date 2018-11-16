@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 480369059}
-  WinGameUI: {fileID: 1795390212}
+  WinGameUI: {fileID: 0}
   PartitionManagerUI: {fileID: 1724199055}
 --- !u!1 &1300149031 stripped
 GameObject:
@@ -1555,7 +1555,13 @@ MonoBehaviour:
   perfectOffsetY: 0.5
   PartitionSize: 10
   PartitionSpace: 20
-  PartitionPrefabs: {fileID: 0}
+  trackColor:
+  - {r: 0, g: 1, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
+  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  PartitionPrefabs: {fileID: 1995187253373804, guid: 450318a919afab545b77acfc48776977,
+    type: 2}
   TrackPrefabs: {fileID: 1495298714884034, guid: c7be8ea6ac5746d45bdbd3f16587a9c3,
     type: 2}
 --- !u!4 &1724199057

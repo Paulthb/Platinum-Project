@@ -4,7 +4,6 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "Nouveau Personnage", menuName = "Personnage")]
 public class Personnage : ScriptableObject {
-    public enum Role { Attack, Defense, Mana };
     public int id;
     public string name;
     public Sprite Sprite;

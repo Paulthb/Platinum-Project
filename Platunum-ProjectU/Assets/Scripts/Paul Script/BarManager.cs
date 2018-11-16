@@ -55,30 +55,30 @@ public class BarManager : MonoBehaviour {
         }
     }
 
-    public void GetImpact(Personnage.Role role, PartitionManager.Rank rank)
+    public void GetImpact(Role.RoleStates role, PartitionManager.Rank rank)
     {
         switch (rank)
         {
             case PartitionManager.Rank.PERFECT :
-                if (role == Personnage.Role.Mana)      // si la note est Perfect et que le role est mana
+                if (role == Role.RoleStates.Mana)      // si la note est Perfect et que le role est mana
                     GiveMana(30);
-                else if (role == Personnage.Role.Defense)     // si la note est Perfect et que le role est defense
+                else if (role == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
                     GiveArmor(30);
                 else HitBoss(30);        // si la note est Perfect et que le role est attack
                 break;
 
             case PartitionManager.Rank.GOOD:
-                if (role == Personnage.Role.Mana)      // si la note est Good et que le role est mana
+                if (role == Role.RoleStates.Mana)      // si la note est Good et que le role est mana
                     GiveMana(20);
-                else if (role == Personnage.Role.Defense)     // si la note est Good et que le role est defense
+                else if (role == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
                     GiveArmor(20);
                 else HitBoss(20);        // si la note est Good et que le role est attack
                 break;
 
             case PartitionManager.Rank.BAD:
-                if (role == Personnage.Role.Mana)      // si la note est Bad et que le role est mana
+                if (role == Role.RoleStates.Mana)      // si la note est Bad et que le role est mana
                     GiveMana(10);
-                else if (role == Personnage.Role.Defense)     // si la note est Bad et que le role est defense
+                else if (role == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
                     GiveArmor(10);
                 else HitBoss(10);        // si la note est Bad et que le role est attack
                 break;

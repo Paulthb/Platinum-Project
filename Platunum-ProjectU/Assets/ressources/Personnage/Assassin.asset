@@ -14,4 +14,5 @@ MonoBehaviour:
   id: 0
   name: Assassin
   Sprite: {fileID: 21300000, guid: 2fac3afea568b9c4a853d81b510909c6, type: 3}
-  AvailableRole: 00000000
+  AvailableRole:
+  - {fileID: 11400000, guid: 0a0c5dfcccc8e7a4bb969233e25f5fcb, type: 2}

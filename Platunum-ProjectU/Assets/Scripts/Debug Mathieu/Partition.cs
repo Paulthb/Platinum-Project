@@ -5,34 +5,6 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
-    public SpriteRenderer RoleSprite;
-    private Personnage.Role currentRole;
-    public Personnage.Role CurrentRole
-    {
-        get { return currentRole; }
-        set
-        {
-            currentRole = value;
-            switch (currentRole)
-            {
-                case Personnage.Role.Attack:
-                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[0];
-                    break;
-                case Personnage.Role.Defense:
-                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[1];
-                    break;
-                case Personnage.Role.Mana:
-                    RoleSprite.sprite = PlayerManager.Instance.RoleSprite[2];
-                    break;
-
-            }
-            Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
-        }
-    }
-
-
-    public static float trackWidth = 1;
-    public static float SpaceBetweenTracks = 2;
 
     //Tracks Color
     private Color[] TracksColors;
@@ -41,7 +13,7 @@ public class Partition : MonoBehaviour {
     //Public Role CurrentRole;
 
     private SongInfo.Track[] tracksNode;
-    private Track[] tracks;
+    public Track[] tracks;
     //Tracks queue
     private Queue<MusicNode>[] queueForTracks;
     private MusicNode[] previousMusicNodes;
@@ -67,32 +39,42 @@ public class Partition : MonoBehaviour {
 
     private int TrackCount;
 
+    public SpriteRenderer RoleSprite;
+    private Role currentRole;
+    public Role CurrentRole
+    {
+        get { return currentRole; }
+        set
+        {
+            currentRole = value;
+            RoleSprite.sprite = currentRole.RoleSprite;
+            Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
+        }
+    }
+
     private void Start()
     {
         TrackCount = SongInfoCustom.Instance.currentSong.partitions[partitionId - 1].tracks.Length;
-
-        tracks = new Track[TrackCount];
+        
         trackNextIndices = new int[TrackCount];
         TracksColors = new Color[TrackCount];
         nextLayerZ = new float[TrackCount];
         queueForTracks = new Queue<MusicNode>[TrackCount];
         previousMusicNodes = new MusicNode[TrackCount];
-
-        float OffsetX = -(trackWidth + SpaceBetweenTracks); 
         for (int i = 0; i < TrackCount; i++)
         {
             //instantiate tracks
-            tracks[i] = Instantiate(PartitionManager.Instance.TrackPrefabs, new Vector3(transform.position.x + OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform).GetComponent<Track>();
+            //tracks[i] = Instantiate(PartitionManager.Instance.TrackPrefabs, new Vector3(transform.position.x + OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform).GetComponent<Track>();
             //tracks[i].offsetX = OffsetX;
-            tracks[i].SetTrackWidth(trackWidth);
-            OffsetX += SpaceBetweenTracks;
+            //tracks[i].SetTrackWidth(trackWidth)
+            //OffsetX += SpaceBetweenTracks;
 
             //Init Variable for each track
             trackNextIndices[i] = 0;
             queueForTracks[i] = new Queue<MusicNode>();
             previousMusicNodes[i] = null;
             nextLayerZ[i] = FirstLayerZ;
-            TracksColors[i] = PartitionManager.trackColor[i];
+            TracksColors[i] = PartitionManager.Instance.trackColor[i];
         }
 
         partitionManager = PartitionManager.Instance;
@@ -185,7 +167,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
+                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.PERFECT);
                     //print("Perfect");
 
                     //SendBeatHit to particle
@@ -198,7 +180,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
+                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.GOOD);
                     //print("Good");
 
                     //SendBeatHit to particle
@@ -211,7 +193,7 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
+                    BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.BAD);
                     //print("Bad");
 
                     //SendBeatHit to particle
@@ -225,12 +207,12 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
-                BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+                BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.MISS);
             }
         }
         else
         {
-            BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+            BarManager.Instance.GetImpact(currentRole.RoleState, PartitionManager.Rank.MISS);
         }
     }
 }

@@ -64,14 +64,12 @@ public class Player : MonoBehaviour
     {
         if (Personnage.AvailableRole.Length > 1)
         {
-            if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode( "Joystick" + ControllerId + "Button4")))
-            {
-                partition.CurrentRole = Personnage.AvailableRole[0];
-                    
-            }
             if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
             {
-                partition.CurrentRole = Personnage.AvailableRole[1];
+                if(partition.CurrentRole == Personnage.AvailableRole[0])
+                    partition.CurrentRole = Personnage.AvailableRole[1];
+                else
+                    partition.CurrentRole = Personnage.AvailableRole[0];
             }
         }
     }

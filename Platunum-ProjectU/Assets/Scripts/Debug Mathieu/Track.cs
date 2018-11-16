@@ -6,6 +6,7 @@ public class Track : MonoBehaviour {
     [SerializeField]
     private TrackParticle trackParticle;
     public float offsetX;
+    public int idTrack;
 
     private void Start()
     {
