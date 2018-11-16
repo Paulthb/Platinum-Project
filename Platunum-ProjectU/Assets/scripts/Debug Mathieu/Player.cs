@@ -55,23 +55,27 @@ namespace Manager
                     //Send TrackKey input
                     partition.PlayerInputted(i);
                 }
+                    
             }
 
-            //Handle Role Switch
-
+            if (partition != null)
+                RoleSwitch();
         }
 
         private void RoleSwitch()
         {
             if (Personnage.AvailableRole.Length > 1)
             {
-                if (Input.GetKeyDown("Joystick" + ControllerId + "Button4"))
+                if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + ControllerId + "Button4")))
                 {
-                    partition.currentRole = Personnage.AvailableRole[0];
+                    Debug.Log("changement de classe 1");
+                    partition.CurrentRole = Personnage.AvailableRole[0];
+                    
                 }
-                if (Input.GetKeyDown("Joystick" + ControllerId + "Button5"))
+                if (Input.GetKeyDown((KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + ControllerId + "Button5")))
                 {
-                    partition.currentRole = Personnage.AvailableRole[1];
+                    Debug.Log("changement de classe 2");
+                    partition.CurrentRole = Personnage.AvailableRole[1];
                 }
             }
         }
