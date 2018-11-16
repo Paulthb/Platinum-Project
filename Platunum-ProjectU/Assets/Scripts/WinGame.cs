@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameOverUI : MonoBehaviour {
+public class WinGame : MonoBehaviour {
 
     private void Start()
     {

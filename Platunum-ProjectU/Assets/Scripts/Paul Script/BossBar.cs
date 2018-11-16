@@ -28,17 +28,17 @@ public class BossBar : MonoBehaviour {
 	void Start () {
 		
 	}
-	
-	// Update is called once per frame
-    /*
-	void Update ()
+
+    // Update is called once per frame
+
+    void Update()
     {
         //pour les tests
         if (Input.GetKeyDown("v"))
         {
-            TakeDamage();
+            TakeDamage(50);
         }
-    }*/
+    }
 
     private void UpdateBar()
     {
@@ -55,6 +55,7 @@ public class BossBar : MonoBehaviour {
         {
             bossPoint = 0;
             Debug.Log("le boss est mort !");
+            BarManager.Instance.WinGame();
         }
 
         UpdateBar();
