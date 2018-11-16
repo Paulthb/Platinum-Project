@@ -5,7 +5,16 @@ using UnityEngine;
 public class Partition : MonoBehaviour {
     public int idplayer;
     public int partitionId;
-    public Personnage.Role currentRole;
+    private Personnage.Role currentRole;
+    public Personnage.Role CurrentRole
+    {
+        get { return currentRole; }
+        set
+        {
+            currentRole = value;
+            Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
+        }
+    }
 
 
     public static float trackWidth = 1;
