@@ -378,7 +378,7 @@ MonoBehaviour:
         times: 0
       - note: 103
         times: 7
-    - tracks:
+  - tracks:
     - notes:
       - note: 5
         times: 0
@@ -553,7 +553,7 @@ MonoBehaviour:
         times: 0
       - note: 103
         times: 7
-    - tracks:
+  - tracks:
     - notes:
       - note: 5
         times: 0

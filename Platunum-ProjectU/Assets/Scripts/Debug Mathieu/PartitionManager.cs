@@ -67,7 +67,7 @@ public class PartitionManager : MonoBehaviour {
         {
             if (playersCount > 1)
             {
-                offsetX = 20;
+                offsetX = -20;
             }
             else
             {
