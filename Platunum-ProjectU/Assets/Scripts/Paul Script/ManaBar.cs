@@ -56,7 +56,7 @@ public class ManaBar : MonoBehaviour {
 
     public void Attack()
     {
-        manaPoint -= 50;
+        manaPoint -= 100;
         if (manaPoint < 0)
         {
             manaPoint = 0;

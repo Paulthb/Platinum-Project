@@ -27,7 +27,7 @@ public class BarManager : MonoBehaviour {
         manaSomme += mana;
         if (manaHitNumber == 3)
         {
-            Debug.Log("On gagne " + manaSomme + " pts de mana");
+            //Debug.Log("On gagne " + manaSomme + " pts de mana");
             ManaBar.Instance.WinMana(manaSomme);
             manaSomme = 0;
             manaHitNumber = 0;
@@ -47,11 +47,13 @@ public class BarManager : MonoBehaviour {
     public void HitBoss(int damage)
     {
         attackHitNumber += 1;
-        BossBar.Instance.TakeDamage(damage);
-        Debug.Log("Le boss a perdu " + damage + " pts de vie");
+        if (ManaBar.Instance.manaPoint > 50)
+            BossBar.Instance.TakeDamage(damage);
+        else Debug.Log("Pas assez de mana pour attaquer");
+        //Debug.Log("Le boss a perdu " + damage + " pts de vie");
         if (attackHitNumber == 3)
         {
-            Debug.Log("On a perdu 50 mana");
+            //Debug.Log("On a perdu 50 mana");
             ManaBar.Instance.Attack();
             attackHitNumber = 0;
         }
