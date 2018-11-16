@@ -50,7 +50,7 @@ namespace Manager
         {
             for (int i = 0; i < trackKey.Length; i++)
             {
-                if (Input.GetKey(trackKey[i]) && partition != null)
+                if (Input.GetKeyDown(trackKey[i]) && partition != null)
                 {
                     //Send TrackKey input
                     partition.PlayerInputted(i);
