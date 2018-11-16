@@ -95,6 +95,7 @@ public class PartitionManager : MonoBehaviour {
 
             //RoleSprite
             GameObject RoleSprite = Instantiate(new GameObject(), new Vector3(offsetX, startLineY - 3, 0), Quaternion.identity, partitionObject.transform);
+            RoleSprite.transform.localScale = new Vector3(2, 2, 2);
             partition.RoleSprite = RoleSprite.AddComponent<SpriteRenderer>();
 
             partition.idplayer = player.id;
