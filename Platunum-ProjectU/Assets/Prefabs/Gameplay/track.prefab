@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4501991132773924}
   - component: {fileID: 212821949532577028}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: activator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4988992101750156}
   - component: {fileID: 114470128676664286}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4184449500345360}
   - component: {fileID: 198557886480328598}
   - component: {fileID: 199623703452005418}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Good
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4536315476662720}
   - component: {fileID: 198012746110993456}
   - component: {fileID: 199382077817369214}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Perfect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4354561605589854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4198630876124398}
   - component: {fileID: 212395513891542816}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: track
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 4896245622279370}
   - component: {fileID: 198797312324484396}
   - component: {fileID: 199162827998500784}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Bad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14052,7 +14052,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: a32c3b99b5022e040b57b87f90a9a1f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.08235294}
   m_FlipX: 0
