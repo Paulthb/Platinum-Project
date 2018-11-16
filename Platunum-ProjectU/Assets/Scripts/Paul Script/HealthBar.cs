@@ -76,7 +76,7 @@ public class HealthBar : MonoBehaviour {
             ratio = armorPoint / maxArmorPoint;
             armorBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
         }
-        rationText.text = (ratio * 100).ToString() + '%';
+        rationText.text = (ratio * 100).ToString("F0") + '%';
 
         UpdateIsArmor();
     }

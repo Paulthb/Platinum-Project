@@ -10,12 +10,12 @@ public class GameOverUI : MonoBehaviour {
     {
         Destroy(PlayerManager.Instance);
         StartCoroutine(WaitUntilLobby());
-        SceneManager.LoadScene("Lobby");
     }
 
     IEnumerator WaitUntilLobby()
     {
         Debug.Log("Start waiting");
         yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("Lobby");
     }
 }

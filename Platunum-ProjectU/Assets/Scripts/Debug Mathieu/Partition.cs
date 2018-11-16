@@ -228,5 +228,9 @@ public class Partition : MonoBehaviour {
                 BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             }
         }
+        else
+        {
+            BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+        }
     }
 }
