@@ -9,7 +9,7 @@ public class ManaBar : MonoBehaviour {
     private Image manaBar;
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    private float manaPoint = 900f;
+    public float manaPoint = 900f;
     private float manaMaxPoint = 900f;
 
     // Update is called once per frame
@@ -54,9 +54,9 @@ public class ManaBar : MonoBehaviour {
         UpdateBar();
     }
 
-    private void Attack()
+    public void Attack()
     {
-        manaPoint -= 10;
+        manaPoint -= 50;
         if (manaPoint < 0)
         {
             manaPoint = 0;

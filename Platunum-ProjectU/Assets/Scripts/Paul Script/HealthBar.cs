@@ -14,10 +14,10 @@ public class HealthBar : MonoBehaviour {
     private Text rationText;
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    private float healthPoint = 150f;
-    private float armorPoint = 150f;
-    private float maxHealthPoint = 150f;
-    private float maxArmorPoint = 150f;
+    private float healthPoint = 950f;
+    private float armorPoint = 300f;
+    private float maxHealthPoint = 950f;
+    private float maxArmorPoint = 300f;
 
     private bool isArmor = true;
 
