@@ -8,7 +8,7 @@ public class BossBar : MonoBehaviour {
     [SerializeField]
     private Image bossBar;
 
-    private float bossPoint = 1000f;
+    public float bossPoint = 1000f;
     private float bossMaxPoint = 1000f;
 
     private static BossBar instance;
