@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour {
 
     private bool goAttack1, goAttack2, goAttack3, goAttack4, goAttack5;
-    public bool goMalediction;
+    public bool goMalediction, goHurlement;
 
     private static BossManager instance;
     public static BossManager Instance
@@ -53,14 +53,14 @@ public class BossManager : MonoBehaviour {
         }
         if (!goAttack2 && BossBar.Instance.bossPoint <= 650)
         {
-            attack = (BossAttack)Random.Range(0, 7);
+            attack = BossAttack.HURLEMENT;
             Attack(attack);
             goAttack2 = true;
             return;
         }
         if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
         {
-            attack = BossAttack.MALEDICTION;
+            attack = BossAttack.HURLEMENT;
             //attack = (BossAttack)Random.Range(0, 7);
             Attack(attack);
             goAttack1 = true;
@@ -82,6 +82,8 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.HURLEMENT:
                 //changer de role et les bloquer sur ce role pdt 10 sec
+                goHurlement = true;
+                StartCoroutine(HurlementTime());
                 break;
             case BossAttack.ULTRASON:
                 //Etouffer le son de la musique pdt x sec
@@ -110,5 +112,10 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(10f);
         goMalediction = false;
+    }
+    IEnumerator HurlementTime()
+    {
+        yield return new WaitForSeconds(10f);
+        goHurlement = false;
     }
 }

@@ -8,7 +8,8 @@ public class Player : MonoBehaviour
     public Personnage Personnage;
     public int ControllerId { get; set; }
     private KeyCode[] trackKey;
-    private Partition partition; 
+    private Partition partition;
+    public bool hasChanged;
 
     // Use this for initialization
     public void LoadPlayer(int Id, Color Color, Personnage playerPerso, int Controller)
@@ -64,12 +65,23 @@ public class Player : MonoBehaviour
     {
         if (Personnage.AvailableRole.Length > 1)
         {
-            if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
+            if (!BossManager.Instance.goHurlement && Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
             {
+                hasChanged = false;
+                Debug.Log("pas hurlement et bouton");
                 if(partition.CurrentRole == Personnage.AvailableRole[0])
                     partition.CurrentRole = Personnage.AvailableRole[1];
                 else
                     partition.CurrentRole = Personnage.AvailableRole[0];
+            }
+            if (BossManager.Instance.goHurlement && !hasChanged)
+            {
+                Debug.Log("changement car hurlement");
+                if (partition.CurrentRole == Personnage.AvailableRole[0])
+                    partition.CurrentRole = Personnage.AvailableRole[1];
+                else
+                    partition.CurrentRole = Personnage.AvailableRole[0];
+                hasChanged = true;
             }
         }
     }
