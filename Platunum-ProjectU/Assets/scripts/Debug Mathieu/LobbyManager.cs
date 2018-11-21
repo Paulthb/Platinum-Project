@@ -102,6 +102,7 @@ namespace Manager
                             HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
                             ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
                             ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+                            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
                             PlayerUI[player.id - 1].gameObject.SetActive(true);
                         }
                         else
@@ -154,6 +155,8 @@ namespace Manager
                                 HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
                                 ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
                                 ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+                                CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
+
                             }
                             if (idButton == 0)
                             {
@@ -234,20 +237,29 @@ namespace Manager
         private void CheckAvailableRole(Player player, Image atkRole, Image shieldRole, Image manaRole)
         {
             Color c = atkRole.color;
+            Color d = shieldRole.color;
+            Color e = manaRole.color;
+
             c.a = 0;
+            d.a = 0;
+            e.a = 0;
+
             atkRole.color = c;
-            shieldRole.color = c;
-            manaRole.color = c;
+            shieldRole.color = d;
+            manaRole.color = e;
 
             c.a = 1;
+            d.a = 1;
+            e.a = 1;
+
             for (int i = 0; i < player.Personnage.AvailableRole.Length; i++)
             {
                 if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Attack)
                     atkRole.color = c;
                 if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Defence)
-                    shieldRole.color = c;
-                if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Attack)
-                    manaRole.color = c;
+                    shieldRole.color = d;
+                if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Mana)
+                    manaRole.color = e;
             }
 
         }
