@@ -216,7 +216,7 @@ public class Conductor : MonoBehaviour
 		audioSource.Play();
 
 		//unpause
-		ConductorCustom.paused = false;
+		Conductor.paused = false;
 		songStarted = true;
 	}
 

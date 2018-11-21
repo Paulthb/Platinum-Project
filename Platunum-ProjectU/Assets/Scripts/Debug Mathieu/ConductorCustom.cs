@@ -13,7 +13,7 @@ public class ConductorCustom : MonoBehaviour
     private float songLength;
 
     //if the whole game is paused
-    public static bool paused = true;
+    public bool paused = true;
     private bool songStarted = false;
 
     public static float pauseTimeStamp = -1f; //negative means not managed
@@ -35,6 +35,8 @@ public class ConductorCustom : MonoBehaviour
     private const int StartCountDown = 3;
     public GameObject countDownCanvas;
     public Text countDownText;
+
+    public bool EditorMode;
 
 
     private AudioSource audioSource;
@@ -87,8 +89,38 @@ public class ConductorCustom : MonoBehaviour
         audioSource.Play();
 
         //unpause
-        ConductorCustom.paused = false;
+        paused = false;
         songStarted = true;
+    }
+
+    public void pause()
+    {
+        paused = !paused;
+    }
+
+    public float GetPausedTime()
+    {
+        return pausedTime;
+    }
+
+    public float GetdspTime()
+    {
+        return dsptimesong;
+    }
+
+    public void SetDspTime(float time)
+    {
+        dsptimesong = time;
+    }
+
+    public bool GetSongStarted()
+    {
+        return songStarted;
+    }
+
+    public void SetSongStarted(bool state)
+    {
+        songStarted = state;
     }
 
     void Update()
@@ -158,5 +190,33 @@ public class ConductorCustom : MonoBehaviour
     public float GetBeatToShowOnScreen()
     {
         return BeatsShownOnScreen;
+    }
+
+    public void RestartSong()
+    {
+        audioSource.time = 0f;
+        dsptimesong = (float)AudioSettings.dspTime;
+        audioSource.Play();
+        paused = false;
+        songStarted = true;
+    }
+    public float startX = 10f;
+    public float endX = -10f;
+    private void OnDrawGizmos()
+    {
+        if (EditorMode)
+        {
+            //BPM Line
+            /*
+            for (int LastBPM = (int)Mathf.Floor(songposition/crotchet); LastBPM < (int)(Mathf.Floor(songposition / crotchet) + BeatsShownOnScreen); LastBPM++)
+            {
+                //Debug.Log("Draw line for" + BPMNumber); 
+                float posX = startX + (endX - startX) * (1f - (LastBPM - songposition / crotchet) / BeatsShownOnScreen);
+                Debug.Log(posX);
+                float posY = 0;
+                float posYEnd = 1;
+                Gizmos.DrawLine(new Vector3(posX, posY, 1), new Vector3(posX, posYEnd, 1));
+            }*/
+        }
     }
 }

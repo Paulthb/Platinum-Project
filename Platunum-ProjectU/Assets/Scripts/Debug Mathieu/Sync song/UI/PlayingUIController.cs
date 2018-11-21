@@ -239,7 +239,7 @@ public class PlayingUIController : MonoBehaviour
 		//display pause scene
 		pauseScene.SetActive(true);
 
-		ConductorCustom.paused = true;
+		ConductorCustom.Instance.paused = true;
 	}
 
 	//pause scene
@@ -248,7 +248,7 @@ public class PlayingUIController : MonoBehaviour
 		//disable pause scene
 		pauseScene.SetActive(false);
 
-		ConductorCustom.paused = false;
+		ConductorCustom.Instance.paused = false;
 	}
 
 	public void RetryButtonOnClick()
