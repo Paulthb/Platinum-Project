@@ -24,13 +24,6 @@ public class BossBar : MonoBehaviour {
         }
     }
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
-    // Update is called once per frame
-
     void Update()
     {
         //pour les tests

@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour {
 
     private bool goAttack1, goAttack2, goAttack3, goAttack4, goAttack5;
+    public bool goMalediction;
 
     private static BossManager instance;
     public static BossManager Instance
@@ -59,7 +60,8 @@ public class BossManager : MonoBehaviour {
         }
         if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
         {
-            attack = (BossAttack)Random.Range(0, 7);
+            attack = BossAttack.MALEDICTION;
+            //attack = (BossAttack)Random.Range(0, 7);
             Attack(attack);
             goAttack1 = true;
             return;
@@ -73,16 +75,21 @@ public class BossManager : MonoBehaviour {
         switch(AttackBoss)
         {
             case BossAttack.MALEDICTION:
-                Debug.Log(AttackBoss);
+                //attendre 10sec en faisant scintiller la piste
+                //les notes réussies font perdre des hp pendant x sec
+                goMalediction = true;
+                StartCoroutine(MaledictionTime());
                 break;
             case BossAttack.HURLEMENT:
-                Debug.Log(AttackBoss);
+                //changer de role et les bloquer sur ce role pdt 10 sec
                 break;
             case BossAttack.ULTRASON:
-                Debug.Log(AttackBoss);
+                //Etouffer le son de la musique pdt x sec
                 break;
             case BossAttack.ULTRALASER:
-                Debug.Log(AttackBoss);
+                //le boss prepare une boule grandissante
+                //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule 
+                //Sinon l'attaque du boss est annulée
                 break;
             case BossAttack.BLOC:
                 Debug.Log(AttackBoss);
@@ -97,5 +104,11 @@ public class BossManager : MonoBehaviour {
                 Debug.Log(AttackBoss);
                 break;
         }
+    }
+
+    IEnumerator MaledictionTime()
+    {
+        yield return new WaitForSeconds(10f);
+        goMalediction = false;
     }
 }
