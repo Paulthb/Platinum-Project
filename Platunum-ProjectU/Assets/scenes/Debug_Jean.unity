@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverUI: {fileID: 480369059}
-  WinGameUI: {fileID: 0}
+  WinGameUI: {fileID: 1795390212}
   PartitionManagerUI: {fileID: 1724199055}
 --- !u!1 &1300149031 stripped
 GameObject:
