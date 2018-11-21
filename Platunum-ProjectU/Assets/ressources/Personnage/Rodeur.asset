@@ -14,6 +14,9 @@ MonoBehaviour:
   id: 3
   name: Rodeur
   Sprite: {fileID: 21300000, guid: f3348612d99b83549b01d4071ba7064a, type: 3}
+  HP: 400
+  Mana: 100
+  Shield: 100
   AvailableRole:
   - {fileID: 11400000, guid: 0a0c5dfcccc8e7a4bb969233e25f5fcb, type: 2}
   - {fileID: 11400000, guid: f65540563ffa6a843b97461df1b8965e, type: 2}
