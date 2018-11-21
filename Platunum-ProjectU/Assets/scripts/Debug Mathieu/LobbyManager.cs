@@ -98,6 +98,11 @@ namespace Manager
                             PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
+                            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+                            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
+                            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
+                            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+                            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
                             PlayerUI[player.id - 1].gameObject.SetActive(true);
                         }
                         else
@@ -146,6 +151,12 @@ namespace Manager
                                 player.Personnage = PersonnageAvailable[newPerso];
                                 //UI Update
                                 PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
+                                PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+                                HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
+                                ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
+                                ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+                                CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
+
                             }
                             if (idButton == 0)
                             {
@@ -200,6 +211,57 @@ namespace Manager
         {
             SceneManager.LoadScene(SceneToLoad);
             //StartGameBool = true;
+        }
+
+        private void HpBar(float playerHp, Transform bar)
+        {
+            float ratio;
+            ratio = playerHp / 400;
+            bar.localScale = new Vector3(ratio, 1, 1);
+        }
+
+        private void ShieldBar(float playerShield, Transform bar)
+        {
+            float ratio;
+            ratio = playerShield / 100;
+            bar.localScale = new Vector3(ratio, 1, 1);
+        }
+
+        private void ManaBar(float playerMana, Transform bar)
+        {
+            float ratio;
+            ratio = playerMana / 350;
+            bar.localScale = new Vector3(ratio, 1, 1);
+        }
+
+        private void CheckAvailableRole(Player player, Image atkRole, Image shieldRole, Image manaRole)
+        {
+            Color c = atkRole.color;
+            Color d = shieldRole.color;
+            Color e = manaRole.color;
+
+            c.a = 0;
+            d.a = 0;
+            e.a = 0;
+
+            atkRole.color = c;
+            shieldRole.color = d;
+            manaRole.color = e;
+
+            c.a = 1;
+            d.a = 1;
+            e.a = 1;
+
+            for (int i = 0; i < player.Personnage.AvailableRole.Length; i++)
+            {
+                if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Attack)
+                    atkRole.color = c;
+                if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Defence)
+                    shieldRole.color = d;
+                if (player.Personnage.AvailableRole[i].RoleState == Role.RoleStates.Mana)
+                    manaRole.color = e;
+            }
+
         }
 
         //déclenche le chargement du niveau

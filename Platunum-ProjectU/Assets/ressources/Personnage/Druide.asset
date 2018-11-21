@@ -14,6 +14,9 @@ MonoBehaviour:
   id: 2
   name: Druide
   Sprite: {fileID: 21300000, guid: 570e4db45da2f2448baed1354deb7ecc, type: 3}
+  HP: 250
+  Mana: 350
+  Shield: 100
   AvailableRole:
   - {fileID: 11400000, guid: eb63f5d94e8e15949be7db473fe588eb, type: 2}
   - {fileID: 11400000, guid: f65540563ffa6a843b97461df1b8965e, type: 2}

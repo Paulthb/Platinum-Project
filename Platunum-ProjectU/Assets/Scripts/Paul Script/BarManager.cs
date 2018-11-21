@@ -60,6 +60,8 @@ public class BarManager : MonoBehaviour {
         switch (rank)
         {
             case PartitionManager.Rank.PERFECT :
+                if (BossManager.Instance.goMalediction)
+                    HitPlayer(4);
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Perfect et que le role est mana
                     GiveMana(30);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
@@ -68,6 +70,8 @@ public class BarManager : MonoBehaviour {
                 break;
 
             case PartitionManager.Rank.GOOD:
+                if (BossManager.Instance.goMalediction)
+                    HitPlayer(4);
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Good et que le role est mana
                     GiveMana(20);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
@@ -76,6 +80,8 @@ public class BarManager : MonoBehaviour {
                 break;
 
             case PartitionManager.Rank.BAD:
+                if (BossManager.Instance.goMalediction)
+                    HitPlayer(4);
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Bad et que le role est mana
                     GiveMana(10);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
@@ -83,7 +89,7 @@ public class BarManager : MonoBehaviour {
                 else HitBoss(10);        // si la note est Bad et que le role est attack
                 break;
 
-            case PartitionManager.Rank.MISS:    // si la note est Miss et que le role est defense
+            case PartitionManager.Rank.MISS:    // si la note est Miss
                     HitPlayer(8);
                 break;
         }

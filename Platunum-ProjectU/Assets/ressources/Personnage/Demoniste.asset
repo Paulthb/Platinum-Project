@@ -14,6 +14,9 @@ MonoBehaviour:
   id: 1
   name: "D\xE9moniste"
   Sprite: {fileID: 21300000, guid: 88b0dbcb1229bdc4fb9cd949be274b30, type: 3}
+  HP: 150
+  Mana: 350
+  Shield: 50
   AvailableRole:
   - {fileID: 11400000, guid: 0a0c5dfcccc8e7a4bb969233e25f5fcb, type: 2}
   - {fileID: 11400000, guid: eb63f5d94e8e15949be7db473fe588eb, type: 2}
