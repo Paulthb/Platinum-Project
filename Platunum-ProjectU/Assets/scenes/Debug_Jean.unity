@@ -660,8 +660,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e078893d28b9c409f972e1dae6b51c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  paused: 1
   countDownCanvas: {fileID: 1947124715}
   countDownText: {fileID: 1947124714}
+  EditorMode: 0
+  startX: 10
+  endX: -10
 --- !u!1001 &655491009
 Prefab:
   m_ObjectHideFlags: 0
@@ -1207,6 +1211,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goMalediction: 0
   goHurlement: 0
+  goInvincibilite: 0
+  Conductor: {fileID: 633760680}
+  damageCoupDeQueue: 20
+  volumeDownUltrason: 0.16
+  maledictionTime: 10
+  hurlementTime: 10
+  ultrasonTime: 10
+  invincibiliteTime: 10
+  brouillardTime: 10
 --- !u!4 &1213096980
 Transform:
   m_ObjectHideFlags: 0

@@ -68,7 +68,6 @@ public class Player : MonoBehaviour
             if (!BossManager.Instance.goHurlement && Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
             {
                 hasChanged = false;
-                Debug.Log("pas hurlement et bouton");
                 if(partition.CurrentRole == Personnage.AvailableRole[0])
                     partition.CurrentRole = Personnage.AvailableRole[1];
                 else
@@ -76,7 +75,6 @@ public class Player : MonoBehaviour
             }
             if (BossManager.Instance.goHurlement && !hasChanged)
             {
-                Debug.Log("changement car hurlement");
                 if (partition.CurrentRole == Personnage.AvailableRole[0])
                     partition.CurrentRole = Personnage.AvailableRole[1];
                 else
@@ -90,4 +88,10 @@ public class Player : MonoBehaviour
     {
         this.partition = partition;
     }
+
+    public Partition GetPartition()
+    {
+        return this.partition;
+    }
+
 }
