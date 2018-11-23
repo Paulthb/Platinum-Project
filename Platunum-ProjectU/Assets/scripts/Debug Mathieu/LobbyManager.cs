@@ -95,7 +95,7 @@ namespace Manager
 
                             //Update PlayerUI
                             Sprite sprite = player.Personnage.Sprite;
-                            PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
+                            //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
                             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
                             PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;

@@ -11,6 +11,9 @@ public class MusicNode : MonoBehaviour
 	[NonSerialized] public float beat;
 	[NonSerialized] public int times;
 	[NonSerialized] public bool paused;
+    [NonSerialized] public bool isStone;
+
+    public SpriteRenderer StoneSprite;
 
 	public void Initialize(float posX, float startY, float endY, float removeLineY, float posZ, float targetBeat, int times, Color color)
 	{
@@ -19,6 +22,7 @@ public class MusicNode : MonoBehaviour
 		this.beat = targetBeat;
 		this.times = times;
 		this.removeLineY = removeLineY;
+        isStone = false;
 
 		paused = false;
 
@@ -60,7 +64,14 @@ public class MusicNode : MonoBehaviour
 		{
 			gameObject.SetActive(false);
             BarManager.Instance.GetImpact(null, PartitionManager.Rank.MISS);
+            if (isStone)
+            {
+                BossManager.Instance.CancelAttackStone();
+                BarManager.Instance.HitPlayer(50);
+            }
         }
+
+        StoneSprite.gameObject.SetActive(isStone);
 	}
 
 	//remove (multi-times note failed), might apply some animations later
@@ -99,4 +110,9 @@ public class MusicNode : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
+
+    public void MissHit()
+    {
+        
+    }
 }

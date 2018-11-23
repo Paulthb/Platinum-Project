@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour {
 
     private bool goAttack1, goAttack2, goAttack3, goAttack4, goAttack5;
-    public bool goMalediction, goHurlement, goInvincibilite;
+    public bool goMalediction, goHurlement, goInvincibilite, goBloc;
     public GameObject Conductor;
     private AudioSource myAudio;
 
@@ -16,6 +16,8 @@ public class BossManager : MonoBehaviour {
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 10f;
     public float brouillardTime = 10f;
+
+    private List<Partition> StoneRemainingPartitions;
 
     private static BossManager instance;
     public static BossManager Instance
@@ -75,7 +77,7 @@ public class BossManager : MonoBehaviour {
         }
         if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
         {
-            attack = BossAttack.BROUILLARD;
+            attack = BossAttack.BLOC;
             //attack = (BossAttack)Random.Range(0, 7);
             Attack(attack);
             goAttack1 = true;
@@ -111,14 +113,14 @@ public class BossManager : MonoBehaviour {
 
                 break;
             case BossAttack.BLOC:
-                Debug.Log(AttackBoss);
+                goBloc = true;
+                InitStoneAttack();
+                TriggerNextAttackStone();
                 break;
             case BossAttack.BROUILLARD:
                 //La partie basse des partitions est cachée
                 foreach (Player player in PlayerManager.Instance.GetPlayers())
-                {
                     player.GetPartition().ShowBrouillard(brouillardTime);
-                }
                     break;
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
@@ -152,6 +154,37 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(invincibiliteTime);
         goInvincibilite = false;
+    }
+
+    private void InitStoneAttack()
+    {
+        StoneRemainingPartitions = new List<Partition>();
+        foreach (Player player in PlayerManager.Instance.GetPlayers())
+        {
+            StoneRemainingPartitions.Add(player.GetPartition());
+        }
+    }
+
+    public void TriggerNextAttackStone()
+    {
+        Debug.Log("nb de partitions " + StoneRemainingPartitions.Count);
+        if(StoneRemainingPartitions.Count == 0)
+        {
+            //Augmenter l'unisson
+            goBloc = false;
+        } else
+        {
+            Partition partitionSelected = StoneRemainingPartitions[Random.Range(0, StoneRemainingPartitions.Count)];
+            partitionSelected.nextNoteIsStone = true;
+            StoneRemainingPartitions.Remove(partitionSelected);
+        }
+
+    }
+
+    public void CancelAttackStone()
+    {
+        goBloc = false;
+        StoneRemainingPartitions.Clear();
     }
     
 }

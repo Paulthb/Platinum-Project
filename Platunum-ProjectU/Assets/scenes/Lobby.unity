@@ -748,9 +748,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerUI:
   - {fileID: 315876035}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 789192629}
+  - {fileID: 1185454431}
+  - {fileID: 302839703}
   ReadyTimeHold: 3
   timer: 0
   SceneToLoad: Debug_Jean

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Partition : MonoBehaviour {
+
+    [System.NonSerialized] public bool nextNoteIsStone = false;
+
     public int idplayer;
     public int partitionId;
 
@@ -107,7 +110,12 @@ public class Partition : MonoBehaviour {
                 nextLayerZ[i] += LayerOffsetZ;
                 //get a new node
                 MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
-
+                if (nextNoteIsStone)
+                {
+                    Debug.Log("next note is stone");
+                    musicNode.isStone = true;
+                    nextNoteIsStone = false;
+                }
                 //enqueue
                 queueForTracks[i].Enqueue(musicNode);
 
@@ -165,6 +173,8 @@ public class Partition : MonoBehaviour {
             float offsetY = Mathf.Abs(frontNode.gameObject.transform.position.y - partitionManager.finishLineY);
             if(offsetY < partitionManager.badOffsetY)
             {
+                if (frontNode.isStone)
+                    BossManager.Instance.TriggerNextAttackStone();
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
@@ -209,6 +219,7 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
+                frontNode.MissHit();
                 BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             }
         }
