@@ -39,6 +39,8 @@ public class Partition : MonoBehaviour {
 
     private int TrackCount;
 
+    public GameObject brouillard;
+
     public SpriteRenderer RoleSprite;
     private Role currentRole;
     public Role CurrentRole
@@ -214,5 +216,17 @@ public class Partition : MonoBehaviour {
         {
             BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
         }
+    }
+
+    public void ShowBrouillard(float duration)
+    {
+        brouillard.SetActive(true);
+        StartCoroutine(BrouillardTime(duration));
+    }
+
+    IEnumerator BrouillardTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        brouillard.SetActive(false);
     }
 }

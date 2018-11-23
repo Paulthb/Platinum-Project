@@ -15,7 +15,7 @@ MonoBehaviour:
   songID: 2
   collection: 0
   songNum: 1
-  easyDifficulty: 1
+  easyDifficulty: 0
   songTitle: Spring
   composer: Antonio Vivaldi
   arranger: Chao Yu

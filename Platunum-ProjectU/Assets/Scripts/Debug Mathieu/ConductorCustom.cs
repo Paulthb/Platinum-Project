@@ -200,23 +200,4 @@ public class ConductorCustom : MonoBehaviour
         paused = false;
         songStarted = true;
     }
-    public float startX = 10f;
-    public float endX = -10f;
-    private void OnDrawGizmos()
-    {
-        if (EditorMode)
-        {
-            //BPM Line
-            /*
-            for (int LastBPM = (int)Mathf.Floor(songposition/crotchet); LastBPM < (int)(Mathf.Floor(songposition / crotchet) + BeatsShownOnScreen); LastBPM++)
-            {
-                //Debug.Log("Draw line for" + BPMNumber); 
-                float posX = startX + (endX - startX) * (1f - (LastBPM - songposition / crotchet) / BeatsShownOnScreen);
-                Debug.Log(posX);
-                float posY = 0;
-                float posYEnd = 1;
-                Gizmos.DrawLine(new Vector3(posX, posY, 1), new Vector3(posX, posYEnd, 1));
-            }*/
-        }
-    }
 }

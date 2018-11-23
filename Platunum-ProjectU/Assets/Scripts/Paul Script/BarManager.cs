@@ -66,7 +66,8 @@ public class BarManager : MonoBehaviour {
                     GiveMana(30);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
                     GiveArmor(30);
-                else HitBoss(30);        // si la note est Perfect et que le role est attack
+                else if(!BossManager.Instance.goInvincibilite)
+                    HitBoss(30);        // si la note est Perfect et que le role est attack
                 break;
 
             case PartitionManager.Rank.GOOD:
@@ -76,7 +77,8 @@ public class BarManager : MonoBehaviour {
                     GiveMana(20);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
                     GiveArmor(20);
-                else HitBoss(20);        // si la note est Good et que le role est attack
+                else if (!BossManager.Instance.goInvincibilite)
+                    HitBoss(20);        // si la note est Good et que le role est attack
                 break;
 
             case PartitionManager.Rank.BAD:
@@ -86,7 +88,8 @@ public class BarManager : MonoBehaviour {
                     GiveMana(10);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
                     GiveArmor(10);
-                else HitBoss(10);        // si la note est Bad et que le role est attack
+                else if (!BossManager.Instance.goInvincibilite)
+                    HitBoss(10);        // si la note est Bad et que le role est attack
                 break;
 
             case PartitionManager.Rank.MISS:    // si la note est Miss
