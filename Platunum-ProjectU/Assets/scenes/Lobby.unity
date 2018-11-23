@@ -583,6 +583,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 1.0000001
       objectReference: {fileID: 0}
+    - target: {fileID: 1160707057558960, guid: 8c62daf35e1be434bb109a47f4d27470, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c62daf35e1be434bb109a47f4d27470, type: 2}
   m_IsPrefabAsset: 0
@@ -748,9 +752,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerUI:
   - {fileID: 315876035}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 789192629}
+  - {fileID: 1185454431}
+  - {fileID: 302839703}
   ReadyTimeHold: 3
   timer: 0
   SceneToLoad: Debug_Jean
