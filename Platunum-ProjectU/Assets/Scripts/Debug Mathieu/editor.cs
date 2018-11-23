@@ -16,6 +16,7 @@ public class editor : MonoBehaviour {
     [Header("UI")]
     public Slider sliderTime;
     public Slider SliderPitch;
+    public Slider TrackLengthSlider;
     public Text txtTps, txtPch;
     public Text txtNom;
     public Image cursorEditor;
@@ -88,7 +89,8 @@ public class editor : MonoBehaviour {
         txtNom.text = song.name;
 
 
-
+        //TrackLength
+        TrackLengthSlider.value = TrackLength;
 
         //initialize fields
         crotchet = 60f / songInfo.bpm;
@@ -349,6 +351,7 @@ public class editor : MonoBehaviour {
     }
     public void NextPartition()
     {
+        Save();
         CurrentIdPartition = (CurrentIdPartition+1) % songInfo.partitions.Length;
         UIPartitionId.text = (CurrentIdPartition+1).ToString();
         CleanPartition();
@@ -356,6 +359,7 @@ public class editor : MonoBehaviour {
     }
     public void PreviousPartition()
     {
+        Save();
         CurrentIdPartition--;
         if(CurrentIdPartition == -1)
         {
@@ -459,5 +463,10 @@ public class editor : MonoBehaviour {
         }
         PlayersPartition[CurrentIdPartition] = newPartition;
         SongInfoCustom.Instance.currentSong.partitions[CurrentIdPartition] = newPartition;
+    }
+
+    public void TrackLengthChange()
+    {
+        TrackLength = TrackLengthSlider.value;
     }
 }
