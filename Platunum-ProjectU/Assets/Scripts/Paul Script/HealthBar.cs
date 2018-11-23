@@ -10,14 +10,19 @@ public class HealthBar : MonoBehaviour {
     [SerializeField]
     private Image armorBar;
 
-    [SerializeField]
-    private Text rationText;
-
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
     public float healthPoint = 300f;
+    private float oldHealthPoint;
     private float armorPoint = 100f;
     private float maxHealthPoint = 300f;
     private float maxArmorPoint = 100f;
+    private float oldArmorPoint;
+    private float currentHealthPoint;
+    private float currentArmorPoint;
+    private float m_ratio;
+
+    private float speed = 40;
+
 
     private bool isArmor = true;
 
@@ -37,19 +42,37 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        currentHealthPoint = healthPoint;
+        currentArmorPoint = armorPoint;
         UpdateIsArmor();
     }
 
     // Update is called once per frame
-    /*
-    void Update () {
-		
+
+    void Update()
+    {
+
+        if (currentHealthPoint != healthPoint || currentArmorPoint != armorPoint)
+        { 
+            if (!isArmor)
+            {
+                currentHealthPoint = currentHealthPoint + Mathf.Sign(healthPoint - currentHealthPoint) * speed * Time.deltaTime;
+                m_ratio = currentHealthPoint / maxHealthPoint;
+                healthBar.fillAmount = m_ratio;
+            }
+            else
+            {
+                currentArmorPoint = currentArmorPoint + Mathf.Sign(armorPoint - currentArmorPoint) * speed * Time.deltaTime;
+                m_ratio = currentArmorPoint / maxArmorPoint;
+                armorBar.fillAmount = m_ratio;
+            }
+        }
         //pour les tests
         if (Input.GetKeyDown("space"))
         {
-            TakeDamage();
+            TakeDamage(10);
         }
-    }*/
+    }
 
     public void WinArmor(int armorPt)
     {
@@ -65,19 +88,18 @@ public class HealthBar : MonoBehaviour {
     private void UpdateBar()
     {
         float ratio;
+        //StartCoroutine(UpdateLerp());
 
         if (!isArmor)
         {
             ratio = healthPoint / maxHealthPoint;
-            healthBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+            healthBar.fillAmount = ratio;
         }
         else
         {
             ratio = armorPoint / maxArmorPoint;
-            armorBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+            armorBar.fillAmount = ratio;
         }
-        rationText.text = (ratio * 100).ToString("F0") + '%';
-
         UpdateIsArmor();
     }
 
@@ -85,6 +107,7 @@ public class HealthBar : MonoBehaviour {
     {
         if (!isArmor)
         {
+            oldHealthPoint = healthPoint;
             healthPoint -= damagePt;
             if (healthPoint < 0)
             {
@@ -95,17 +118,18 @@ public class HealthBar : MonoBehaviour {
         }
         else
         {
+            oldArmorPoint = armorPoint;
             armorPoint -= damagePt;
             if (armorPoint < 0)
             {
+                armorBar.fillAmount = 0;//////////////////////////////////////////
                 armorPoint = 0;
-                isArmor = false;
                 Debug.Log("plus d'armure");
             }
         }
 
-        UpdateBar();
         UpdateIsArmor();
+        //UpdateBar();
     }
 
     private void TakeArmor()

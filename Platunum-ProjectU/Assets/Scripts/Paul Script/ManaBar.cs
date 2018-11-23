@@ -13,15 +13,15 @@ public class ManaBar : MonoBehaviour {
     private float manaMaxPoint = 900f;
 
     // Update is called once per frame
-    /*
-    void Update ()
+
+    void Update()
     {
         //pour les tests
         if (Input.GetKeyDown("c"))
         {
-            TakeDamage();
+            WinMana(-10);
         }
-    }*/
+    }
 
     private static ManaBar instance;
     public static ManaBar Instance
@@ -40,7 +40,7 @@ public class ManaBar : MonoBehaviour {
     {
         float ratio;
         ratio = manaPoint / manaMaxPoint;
-        manaBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        manaBar.fillAmount = ratio;
     }
     
     public void WinMana(int manaPt)

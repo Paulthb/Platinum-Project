@@ -45,6 +45,6 @@ public class HarmonieBar : MonoBehaviour {
     {
         float ratio;
         ratio = harmoniePoint / harmonieMaxPoint;
-        harmonieBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
+        harmonieBar.fillAmount = ratio;
     }
 }
