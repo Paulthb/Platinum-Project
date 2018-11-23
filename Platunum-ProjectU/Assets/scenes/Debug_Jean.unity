@@ -1211,7 +1211,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goMalediction: 0
   goHurlement: 0
+  goInvincibilite: 0
   Conductor: {fileID: 633760680}
+  damageCoupDeQueue: 20
+  volumeDownUltrason: 0.16
+  maledictionTime: 10
+  hurlementTime: 10
+  ultrasonTime: 10
+  invincibiliteTime: 10
+  brouillardTime: 10
 --- !u!4 &1213096980
 Transform:
   m_ObjectHideFlags: 0

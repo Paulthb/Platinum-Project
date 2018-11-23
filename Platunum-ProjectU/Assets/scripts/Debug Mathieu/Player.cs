@@ -88,4 +88,10 @@ public class Player : MonoBehaviour
     {
         this.partition = partition;
     }
+
+    public Partition GetPartition()
+    {
+        return this.partition;
+    }
+
 }

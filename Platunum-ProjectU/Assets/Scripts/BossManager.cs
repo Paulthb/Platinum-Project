@@ -15,6 +15,7 @@ public class BossManager : MonoBehaviour {
     public float hurlementTime = 10f;
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 10f;
+    public float brouillardTime = 10f;
 
     private static BossManager instance;
     public static BossManager Instance
@@ -74,7 +75,7 @@ public class BossManager : MonoBehaviour {
         }
         if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
         {
-            attack = BossAttack.ULTRASON;
+            attack = BossAttack.BROUILLARD;
             //attack = (BossAttack)Random.Range(0, 7);
             Attack(attack);
             goAttack1 = true;
@@ -114,8 +115,11 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.BROUILLARD:
                 //La partie basse des partitions est cachée
-                Debug.Log(AttackBoss);
-                break;
+                foreach (Player player in PlayerManager.Instance.GetPlayers())
+                {
+                    player.GetPartition().ShowBrouillard(brouillardTime);
+                }
+                    break;
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
                 goInvincibilite = true;
@@ -149,4 +153,5 @@ public class BossManager : MonoBehaviour {
         yield return new WaitForSeconds(invincibiliteTime);
         goInvincibilite = false;
     }
+    
 }
