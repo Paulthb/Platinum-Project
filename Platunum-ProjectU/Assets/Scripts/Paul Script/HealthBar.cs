@@ -21,7 +21,7 @@ public class HealthBar : MonoBehaviour {
     private float currentArmorPoint;
     private float m_ratio;
 
-    private float speed = 40;
+    public float speed = 40;
 
 
     private bool isArmor = true;
@@ -82,13 +82,12 @@ public class HealthBar : MonoBehaviour {
             armorPoint = maxArmorPoint;
             Debug.Log("full armor");
         }
-        UpdateBar();
+        //UpdateBar();
     }
 
-    private void UpdateBar()
+    private void UpdateBar()//inutile maintenant
     {
         float ratio;
-        //StartCoroutine(UpdateLerp());
 
         if (!isArmor)
         {
@@ -120,7 +119,7 @@ public class HealthBar : MonoBehaviour {
         {
             oldArmorPoint = armorPoint;
             armorPoint -= damagePt;
-            if (armorPoint < 0)
+            if (armorPoint <= 0)
             {
                 armorBar.fillAmount = 0;//////////////////////////////////////////
                 armorPoint = 0;
