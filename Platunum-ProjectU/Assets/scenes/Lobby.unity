@@ -757,7 +757,7 @@ MonoBehaviour:
   - {fileID: 302839703}
   ReadyTimeHold: 3
   timer: 0
-  SceneToLoad: Debug_Jean
+  SceneToLoad: Level 1
   PersonnageAvailable:
   - {fileID: 11400000, guid: a773b43dd053b7d40bf6414eda0a4b59, type: 2}
   - {fileID: 11400000, guid: 1ccb38bbe3cde8943b1b8c5cf91751a3, type: 2}
