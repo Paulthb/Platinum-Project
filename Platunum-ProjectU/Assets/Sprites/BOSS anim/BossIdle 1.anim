@@ -5,7 +5,7 @@ AnimationClip:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: BossIdle
+  m_Name: BossIdle 1
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -28,15 +28,15 @@ AnimationClip:
       value: {fileID: 21300000, guid: 277090a28dddb8a45a96cd8aae908392, type: 3}
     - time: 0.33333334
       value: {fileID: 21300000, guid: 4aca5c31636ad8341b707d30482e93f9, type: 3}
-    - time: 0.41666666
+    - time: 0.4166667
       value: {fileID: 21300000, guid: 4003ebea1a07ce1499ac8316243c9d7d, type: 3}
     - time: 0.5
       value: {fileID: 21300000, guid: a1e11441d19b18e46b869765f8572a8a, type: 3}
     - time: 0.5833333
       value: {fileID: 21300000, guid: 8475c84b80acc7c4e8c0e0ee2bc1b3b2, type: 3}
-    - time: 0.6666667
+    - time: 0.6666666
       value: {fileID: 21300000, guid: edee2fcb251ac844390fdb0526219e40, type: 3}
-    - time: 0.75
+    - time: 0.74999994
       value: {fileID: 21300000, guid: 00d136343b574224fbd67df90004a2cc, type: 3}
     attribute: m_Sprite
     path: 
@@ -72,7 +72,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.8333333
+    m_StopTime: 0.83333325
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
