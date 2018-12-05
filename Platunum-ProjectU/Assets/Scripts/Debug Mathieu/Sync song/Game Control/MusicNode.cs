@@ -110,9 +110,4 @@ public class MusicNode : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
-
-    public void MissHit()
-    {
-        
-    }
 }

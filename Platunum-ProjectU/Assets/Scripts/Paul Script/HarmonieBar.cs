@@ -11,6 +11,20 @@ public class HarmonieBar : MonoBehaviour {
     private float harmoniePoint = 0f;
     private float harmonieMaxPoint = 100f;
 
+    private static HarmonieBar instance;
+    public static HarmonieBar Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<HarmonieBar>();
+            if (instance == null)
+                Debug.Log("No HarmonieBar found");
+            return instance;
+        }
+    }
+
+
     // Use this for initialization
     void Start ()
     {
@@ -23,15 +37,15 @@ public class HarmonieBar : MonoBehaviour {
         //pour les tests
         if (Input.GetKeyDown("x"))
         {
-            TakeHarmonie();
+            TakeHarmonie(harmoniePoint);
         }
 
     }
 
-    private void TakeHarmonie()
+    public void TakeHarmonie(float harmoniePt)
     {
 
-        harmoniePoint += 10;
+        harmoniePoint += harmoniePt;
         if (harmoniePoint >= 100)
         {
             harmoniePoint = 100;

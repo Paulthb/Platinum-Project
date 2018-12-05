@@ -7,6 +7,7 @@ public class BarManager : MonoBehaviour {
     private int manaSomme;
     private int manaHitNumber;
     private int attackHitNumber;
+    public int noteNumber;
 
     public GameObject GameOverUI;
     public GameObject WinGameUI;
@@ -25,6 +26,11 @@ public class BarManager : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        noteNumber = 0;
+    }
+
     public void GiveMana(int mana)
     {
         ManaBar.Instance.WinMana(mana);
@@ -35,6 +41,11 @@ public class BarManager : MonoBehaviour {
         HealthBar.Instance.WinArmor(armorPoint);
     }
 
+    public void GiveHarmonie(float harmoniePoint)
+    {
+        HarmonieBar.Instance.TakeHarmonie(harmoniePoint);
+    }
+
     public void HitPlayer(int damagePt)
     {
         HealthBar.Instance.TakeDamage(damagePt);
@@ -42,6 +53,9 @@ public class BarManager : MonoBehaviour {
 
     public void HitBoss(int damage)
     {
+        if (BossManager.Instance.goUltralaser)
+            noteNumber += damage;
+
         attackHitNumber += 1;
         if (ManaBar.Instance.manaPoint > 50)
             BossBar.Instance.TakeDamage(damage);
@@ -49,7 +63,6 @@ public class BarManager : MonoBehaviour {
         //Debug.Log("Le boss a perdu " + damage + " pts de vie");
         if (attackHitNumber == 3)
         {
-            //Debug.Log("On a perdu 50 mana");
             ManaBar.Instance.Attack();
             attackHitNumber = 0;
         }

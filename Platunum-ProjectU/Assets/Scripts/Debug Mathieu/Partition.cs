@@ -162,7 +162,7 @@ public class Partition : MonoBehaviour {
     public void PlayerInputted(int trackNumber)
     {
         //Add Animation to the track
-
+        
         if (queueForTracks[trackNumber].Count != 0)
         {
             //peek the node in the queue
@@ -219,7 +219,6 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
-                frontNode.MissHit();
                 BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             }
         }

@@ -5,17 +5,20 @@ using UnityEngine;
 public class BossManager : MonoBehaviour {
 
     private bool goAttack1, goAttack2, goAttack3, goAttack4, goAttack5;
-    public bool goMalediction, goHurlement, goInvincibilite, goBloc;
+    [System.NonSerialized] public bool goMalediction, goHurlement, goInvincibilite, goBloc, goUltralaser;
     public GameObject Conductor;
     private AudioSource myAudio;
 
     public int damageCoupDeQueue = 20;
+    public int noteNb;
     public float volumeDownUltrason = 0.16f;
     public float maledictionTime = 10f;
     public float hurlementTime = 10f;
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 10f;
     public float brouillardTime = 10f;
+    public float ultralaserTime = 10f;
+    public float blocGiveHarmony = 10f;
 
     private List<Partition> StoneRemainingPartitions;
 
@@ -42,7 +45,20 @@ public class BossManager : MonoBehaviour {
     }
 
     void Update () {
-        ChooseAttack();        
+        ChooseAttack();
+        if(goUltralaser)
+        {
+            noteNb = BarManager.Instance.noteNumber;
+            if (noteNb >= 3000)
+                //lancer animation de réduction de cast
+                goUltralaser = false;
+            else
+            {
+                BarManager.Instance.HitPlayer(50);
+                //lancer animation de réduction de cast
+                goUltralaser = false; 
+            }
+        }
     }
 	
     public void ChooseAttack()
@@ -110,7 +126,14 @@ public class BossManager : MonoBehaviour {
                 //le boss prepare une boule grandissante
                 //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule 
                 //Sinon l'attaque du boss est annulée
-
+                noteNb = 0;
+                goUltralaser = true;
+                StartCoroutine(UltralaserTime());
+                //créer un compeur de notes
+                //lancer une coroutine
+                //activer le compteur dans le temps de la coroutine
+                //à l'issue du temps, checker si la team a dépasser telle valeur de notes
+                //si oui, nothing happen, si non hit player
                 break;
             case BossAttack.BLOC:
                 goBloc = true;
@@ -155,6 +178,11 @@ public class BossManager : MonoBehaviour {
         yield return new WaitForSeconds(invincibiliteTime);
         goInvincibilite = false;
     }
+    IEnumerator UltralaserTime()
+    {
+        yield return new WaitForSeconds(ultralaserTime);
+        goUltralaser = false;
+    }
 
     private void InitStoneAttack()
     {
@@ -171,6 +199,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
+            BarManager.Instance.GiveHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {
