@@ -12,7 +12,16 @@ public class ManaBar : MonoBehaviour {
     public float manaPoint = 900f;
     private float manaMaxPoint = 900f;
 
-    // Update is called once per frame
+    private float currentManaPoint;
+    private float m_ratio;
+
+    public float speed = 80;
+
+
+    void Start()
+    {
+        currentManaPoint = manaPoint;
+    }
 
     void Update()
     {
@@ -20,6 +29,14 @@ public class ManaBar : MonoBehaviour {
         if (Input.GetKeyDown("c"))
         {
             WinMana(-10);
+        }
+
+        if (currentManaPoint != manaPoint)
+        {
+
+            currentManaPoint = currentManaPoint + Mathf.Sign(manaPoint - currentManaPoint) * speed * Time.deltaTime;
+            m_ratio = currentManaPoint / manaMaxPoint;
+            manaBar.fillAmount = m_ratio;
         }
     }
 
