@@ -158,6 +158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manaBar: {fileID: 114815851655604764}
   manaPoint: 900
+  speed: 80
 --- !u!212 &212940835476916462
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -240,8 +241,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -0.00000098348, y: 0.142}
-  m_SizeDelta: {x: 35.777, y: 2.519}
+  m_AnchoredPosition: {x: 0.37, y: 0.073}
+  m_SizeDelta: {x: 27.806, y: 1.958}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &224992171361540972
 RectTransform:
@@ -260,7 +261,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -55}
+  m_AnchoredPosition: {x: -6, y: -43}
   m_SizeDelta: {x: 36.063, y: 3.19}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!224 &224996894296270124
@@ -278,6 +279,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000014901, y: 0.142}
+  m_AnchoredPosition: {x: 0.0000014901, y: 5.16}
   m_SizeDelta: {x: 35.777, y: 2.519}
   m_Pivot: {x: 1, y: 0.5}
