@@ -101,7 +101,7 @@ namespace Manager
                 }
 
             }
-            /*
+
             foreach (KeyCode code in keyList)
             {
                 if (Input.GetKeyDown(code))
@@ -134,26 +134,7 @@ namespace Manager
                     {
                         if (!playerManager.IsPlayerAlreadyInLobby(idController))
                         {
-                            int i = 0;
-                            while (SelectedList[i])
-                            {
-                                i++;
-                            }
-                            SelectedList[i] = true;
-                            Player player = playerManager.AddPlayer(idController, PersonnageAvailable[i]);
-                            ReadyPlayerList.Add(player.id, false);
-
-                            //Update PlayerUI
-                            Sprite sprite = player.Personnage.Sprite;
-                            //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
-                            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
-                            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
-                            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-                            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
-                            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
-                            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
-                            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
-                            PlayerUI[player.id - 1].gameObject.SetActive(true);
+                            AddPlayerToLobby(idController);
                         }
                         else
                         {
@@ -167,54 +148,25 @@ namespace Manager
 
                                 int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
                                                             // Gère les problèmes de tableau pour evité le out of range
-                                int incrementation = 0;
                                 if (idButton == 5)
                                 {
-                                    incrementation++;
+                                    changePersonnage(player, 5);
                                     //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
                                 }
                                 else //Button 4
                                 {
-                                    incrementation--;
+                                    changePersonnage(player, 4);
                                 }
-                                do
-                                {
-                                    //newPerso += incrementation;
-                                    if (incrementation > 0)
-                                    {
-                                        newPerso = (newPerso + 1) % PersonnageAvailable.Length;
-                                    }
-                                    else
-                                    {
-                                        if(newPerso>0)
-                                            newPerso--;
-                                        else
-                                            newPerso = (newPerso + 1) % PersonnageAvailable.Length;
-                                    }
-                                } while (SelectedList[newPerso]);
-                                //ajoute la nouvelle classe au joueur
-                                SelectedList[newPerso] = true;
-                                player.Personnage = PersonnageAvailable[newPerso];
-                                //UI Update
-                                PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
-                                PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-                                HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
-                                ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
-                                ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
-                                CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
-
                             }
                             if (idButton == 0)
                             {
-                                //Le joueur de ce controlleur est ready
-                                int PlayerId = playerManager.GetPlayerByControllerId(idController); //recupère l'id
                                 //Change la valeur ready
-                                ChangeReadyState(PlayerId, !currentReadyState);
+                                ChangeReadyState(player.id, !currentReadyState);
                             }
                         }
                     }
                 }
-            }*/
+            }
             CheckReadyPlayer();
         }
 
@@ -373,7 +325,7 @@ namespace Manager
             player.Personnage = PersonnageAvailable[newPerso];
             //UI Update
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
-            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+            //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
             HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
             ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
             ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
