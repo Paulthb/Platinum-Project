@@ -171,6 +171,7 @@ public class Partition : MonoBehaviour {
             if (frontNode.times > 0) return; //multi-times node should be handled in the Update() func
 
             float offsetY = Mathf.Abs(frontNode.gameObject.transform.position.y - partitionManager.finishLineY);
+            //Note porté minimum
             if(offsetY < partitionManager.badOffsetY)
             {
                 if (frontNode.isStone)
