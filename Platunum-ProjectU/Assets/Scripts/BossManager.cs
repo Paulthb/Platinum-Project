@@ -224,6 +224,7 @@ public class BossManager : MonoBehaviour {
     
     public void EndBlocAnim()
     {
+        Debug.Log("vive le nazisme");
         animatorBoss.SetBool("blocPierre", false);
     }
 }

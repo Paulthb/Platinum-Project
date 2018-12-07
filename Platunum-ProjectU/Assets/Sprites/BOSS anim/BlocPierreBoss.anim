@@ -139,7 +139,7 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 1.6
-    functionName: 
+    functionName: EndBlocAnim
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: 8bb56e78cc8cc1b46928987576f9b03a,
       type: 3}
