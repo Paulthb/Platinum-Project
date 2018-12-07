@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   name: Assassin
-  Sprite: {fileID: 21300000, guid: 2fac3afea568b9c4a853d81b510909c6, type: 3}
+  Sprite: {fileID: 21300000, guid: 078e345046a24c340a9343d624bf4989, type: 3}
   HP: 150
   Mana: 100
   Shield: 50

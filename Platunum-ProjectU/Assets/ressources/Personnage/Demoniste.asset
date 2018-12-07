@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   name: "D\xE9moniste"
-  Sprite: {fileID: 21300000, guid: 88b0dbcb1229bdc4fb9cd949be274b30, type: 3}
+  Sprite: {fileID: 21300004, guid: 078e345046a24c340a9343d624bf4989, type: 3}
   HP: 150
   Mana: 350
   Shield: 50

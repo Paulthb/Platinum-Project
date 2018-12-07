@@ -45,6 +45,8 @@ public class Partition : MonoBehaviour {
     public GameObject brouillard;
 
     public SpriteRenderer RoleSprite;
+    public Progress RoleProgress;
+
     private Role currentRole;
     public Role CurrentRole
     {
@@ -53,6 +55,12 @@ public class Partition : MonoBehaviour {
         {
             currentRole = value;
             RoleSprite.sprite = currentRole.RoleSprite;
+            /*
+            RoleProgress.emptyTex = RoleSprite.sprite.texture;
+            RoleProgress.fullTex = RoleSprite.sprite.texture;
+            RoleProgress.pos = RoleSprite.transform.position;
+            RoleProgress.size = RoleSprite.transform.localScale;
+            */
             Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
         }
     }
@@ -171,6 +179,7 @@ public class Partition : MonoBehaviour {
             if (frontNode.times > 0) return; //multi-times node should be handled in the Update() func
 
             float offsetY = Mathf.Abs(frontNode.gameObject.transform.position.y - partitionManager.finishLineY);
+            //Note porté minimum
             if(offsetY < partitionManager.badOffsetY)
             {
                 if (frontNode.isStone)
