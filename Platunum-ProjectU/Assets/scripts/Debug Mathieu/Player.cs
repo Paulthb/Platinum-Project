@@ -6,19 +6,35 @@ public class Player : MonoBehaviour
     public int id;
     public Color color;
     public Personnage Personnage;
+
+    //arduino
+    public gamepads pads;
+
+    //Controller
     public int ControllerId { get; set; }
     private KeyCode[] trackKey;
+
     private Partition partition;
     public bool hasChanged;
 
     // Use this for initialization
-    public void LoadPlayer(int Id, Color Color, Personnage playerPerso, int Controller)
+    public void LoadPlayer(int Id, Color Color, Personnage playerPerso, int Controller, gamepads pads = null)
     {
         id = Id;
         color = Color;
         Personnage = playerPerso;
         ControllerId = Controller;
-        trackKey = LoadTrackKey();
+        if (pads != null)
+        {
+            this.pads = pads;
+            Debug.Log("pads loaded");
+        }
+        else
+            trackKey = LoadTrackKey();
+    }
+
+    public void LoadArduino(gamepads pads)
+    {
     }
 
     public int GetId()
@@ -47,25 +63,45 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        for (int i = 0; i < trackKey.Length; i++)
+        if(partition != null)
         {
-            if (Input.GetKeyDown(trackKey[i]) && partition != null)
+            if (pads != null)
             {
-                //Send TrackKey input
-                partition.PlayerInputted(i);
+                pads.Update();
+                for (int i = 0; i < 4; i++)
+                {
+                    if (pads.GetKeyDown(i))
+                    {
+                        //Send TrackKey input
+                        partition.PlayerInputted(i);
+                    }
+                }
             }
-                    
-        }
+            else
+            {
+                for (int i = 0; i < trackKey.Length; i++)
+                {
+                    if (Input.GetKeyDown(trackKey[i]) && partition != null)
+                    {
+                        //Send TrackKey input
+                        partition.PlayerInputted(i);
+                    }
+                }
+            }
 
-        if (partition != null)
-            RoleSwitch();
+
+            if (partition != null)
+            {
+                RoleSwitch();
+            }
+        }
     }
 
     private void RoleSwitch()
     {
         if (Personnage.AvailableRole.Length > 1)
         {
-            if (!BossManager.Instance.goHurlement && Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
+            if (!BossManager.Instance.goHurlement && (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")) || pads.GetKeyDown(4)))
             {
                 hasChanged = false;
                 if(partition.CurrentRole == Personnage.AvailableRole[0])
@@ -86,6 +122,8 @@ public class Player : MonoBehaviour
 
     public void SetPartition(Partition partition)
     {
+        if(partition != null)
+            Debug.Log("partition loaded");
         this.partition = partition;
     }
 
@@ -93,5 +131,4 @@ public class Player : MonoBehaviour
     {
         return this.partition;
     }
-
 }

@@ -52,31 +52,38 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public bool IsPlayerAlreadyInLobby(int controllerId)
+    public bool IsPlayerAlreadyInLobby(int id)
     {
-        bool AlreadyExist = PlayerList.Exists(item => item.ControllerId == controllerId);
+        bool AlreadyExist = PlayerList.Exists(item => item.ControllerId == id);
+        if(AlreadyExist == false)
+            AlreadyExist = PlayerList.Exists(item => item.pads.portNum == id);
         ///Debug.Log(AlreadyExist);
         return AlreadyExist;
     }
 
 
-    public Player AddPlayer(int ControllerId, Personnage playerPersonnage)
+    public Player AddPlayer(int ControllerId, Personnage playerPersonnage, gamepads gamepads=null)
     {
         int id = PlayerList.Count + 1;
         GameObject playerObject = new GameObject("Player " + id);
         Player player = Instantiate(playerObject, transform).AddComponent<Player>();
-        player.LoadPlayer(id, PlayerColorList[id-1], playerPersonnage, ControllerId);
+        player.LoadPlayer(id, PlayerColorList[id-1], playerPersonnage, ControllerId, gamepads);
         PlayerList.Add(player);
         Debug.Log("Controller id:" + ControllerId + " added as Player n°" + id);
         return player;
     }
 
-    public int GetPlayerByControllerId(int controllerId)
+    public int GetPlayerByControllerId(int id)
     {
         //while(Player)
-        if (PlayerList.Exists(item => item.ControllerId == controllerId))
+        if (PlayerList.Exists(item => item.ControllerId == id))
         {
-            Player player = PlayerList.Find(item => item.ControllerId == controllerId);
+            Player player = PlayerList.Find(item => item.ControllerId == id);
+            return player.id;
+        }
+        else if (PlayerList.Exists(item => item.pads.portNum == id))
+        {
+            Player player = PlayerList.Find(item => item.ControllerId == id);
             return player.id;
         }
         else

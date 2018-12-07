@@ -4,6 +4,8 @@ using System.Text.RegularExpressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System.IO.Ports;
+
 namespace Manager
 {
     public class LobbyManager : MonoBehaviour {
@@ -15,6 +17,9 @@ namespace Manager
         public string SceneToLoad;
         //public bool StartGameBool = false;
         //private static bool created = false;
+
+        //SERIALPORT
+        public gamepads[] Gamepads;
 
         //Input list
         private List<KeyCode> keyList;
@@ -46,12 +51,57 @@ namespace Manager
                     keyList.Add(key);
             }
 
+            Gamepads = new gamepads[SerialPort.GetPortNames().Length];
+            int i = 0;
+            foreach (string str in SerialPort.GetPortNames())
+            {
+                Debug.Log(string.Format("Existing COM port: {0}", str));
+                Gamepads[i] = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
+                i++;
+            }
+
             SelectedList = new bool[PersonnageAvailable.Length];
         }
 	
 	    // Update is called once per frame
 	    void Update () {
             //Par chaque touche filter on regarde l'etat
+            for (int i = 0; i < Gamepads.Length; i++)
+            {
+                Gamepads[i].Update();
+                if(!playerManager.IsPlayerAlreadyInLobby(Gamepads[i].portNum))
+                {
+                    if (Gamepads[i].GetKeyDown(4))
+                    {
+                        //add player
+                        Debug.Log(Gamepads[i].GetKeyDown(4));
+                        AddPlayerToLobby(Gamepads[i].portNum, Gamepads[i]);
+                    }
+                }
+                else
+                {
+                    Player player = playerManager.GetPlayer(playerManager.GetPlayerByControllerId(Gamepads[i].portNum));
+                    bool currentReadyState = ReadyPlayerList[player.id];
+                    //Personnage Gestion
+                    if (Gamepads[i].GetKeyDown(0))
+                    {
+                        changePersonnage(player, 4);
+                    }
+                    if (Gamepads[i].GetKeyDown(3))
+                    {
+                        changePersonnage(player, 5);
+                    }
+                    //Ready Gestion
+                    if (Gamepads[i].GetKeyDown(4))
+                    {
+                        //Player Ready
+                        ChangeReadyState(player.id, !currentReadyState);
+                    }
+
+                }
+
+            }
+            /*
             foreach (KeyCode code in keyList)
             {
                 if (Input.GetKeyDown(code))
@@ -126,10 +176,6 @@ namespace Manager
                                 else //Button 4
                                 {
                                     incrementation--;
-                                    /*if (CurrentPerso > 0)
-                                        newPerso = CurrentPerso - 1;
-                                    else
-                                        newPerso = PersonnageAvailable.Length - 1;*/
                                 }
                                 do
                                 {
@@ -168,7 +214,7 @@ namespace Manager
                         }
                     }
                 }
-            }
+            }*/
             CheckReadyPlayer();
         }
 
@@ -264,6 +310,75 @@ namespace Manager
 
         }
 
+        public void AddPlayerToLobby(int id, gamepads pads = null)
+        {
+            int i = 0;
+            while (SelectedList[i])
+            {
+                i++;
+            }
+            SelectedList[i] = true;
+            Player player = playerManager.AddPlayer(id, PersonnageAvailable[i], pads);
+            ReadyPlayerList.Add(player.id, false);
+
+            //Update PlayerUI
+            Sprite sprite = player.Personnage.Sprite;
+            //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
+            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
+            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
+            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
+            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
+            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
+            PlayerUI[player.id - 1].gameObject.SetActive(true);
+        }
+
+
+        private void changePersonnage(Player player, int idButton)
+        {
+            //Le joueur de se controleur souhaite changer de class
+            int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
+            SelectedList[CurrentPerso] = false;
+
+            int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
+                                        // Gère les problèmes de tableau pour evité le out of range
+            int incrementation = 0;
+            if (idButton == 5)
+            {
+                incrementation++;
+                //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
+            }
+            else //Button 4
+            {
+                incrementation--;
+            }
+            do
+            {
+                //newPerso += incrementation;
+                if (incrementation > 0)
+                {
+                    newPerso = (newPerso + 1) % PersonnageAvailable.Length;
+                }
+                else
+                {
+                    if (newPerso > 0)
+                        newPerso--;
+                    else
+                        newPerso = (newPerso + 1) % PersonnageAvailable.Length;
+                }
+            } while (SelectedList[newPerso]);
+            //ajoute la nouvelle classe au joueur
+            SelectedList[newPerso] = true;
+            player.Personnage = PersonnageAvailable[newPerso];
+            //UI Update
+            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
+            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
+            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
+            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
+        }
         //déclenche le chargement du niveau
         /*
         private void onSceneLoaded(Scene scene, LoadSceneMode mode)
