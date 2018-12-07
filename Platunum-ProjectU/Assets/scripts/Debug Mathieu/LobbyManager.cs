@@ -365,7 +365,7 @@ namespace Manager
                     if (newPerso > 0)
                         newPerso--;
                     else
-                        newPerso = (newPerso + 1) % PersonnageAvailable.Length;
+                        newPerso = PersonnageAvailable.Length -1;
                 }
             } while (SelectedList[newPerso]);
             //ajoute la nouvelle classe au joueur
