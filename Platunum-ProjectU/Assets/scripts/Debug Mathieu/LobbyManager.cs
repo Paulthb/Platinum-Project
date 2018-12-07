@@ -326,7 +326,7 @@ namespace Manager
             //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
-            PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
+            //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
             HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
             ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
             ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
