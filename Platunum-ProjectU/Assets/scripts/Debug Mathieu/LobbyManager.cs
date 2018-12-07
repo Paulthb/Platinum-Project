@@ -69,7 +69,7 @@ namespace Manager
             for (int i = 0; i < Gamepads.Length; i++)
             {
                 Gamepads[i].Update();
-                if(!playerManager.IsPlayerAlreadyInLobby(Gamepads[i].portNum))
+                if(!playerManager.IsPlayerAlreadyInLobby(Gamepads[i].portNum, true))
                 {
                     if (Gamepads[i].GetKeyDown(4))
                     {
@@ -132,7 +132,7 @@ namespace Manager
                     }
                     if (idController != 0)
                     {
-                        if (!playerManager.IsPlayerAlreadyInLobby(idController))
+                        if (!playerManager.IsPlayerAlreadyInLobby(idController, false))
                         {
                             AddPlayerToLobby(idController);
                         }

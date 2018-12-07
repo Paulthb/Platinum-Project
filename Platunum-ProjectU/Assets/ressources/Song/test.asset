@@ -1,0 +1,330 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
+  m_Name: test
+  m_EditorClassIdentifier: 
+  song: {fileID: 8300000, guid: dbf0f514e7cfabd488932003447a48d6, type: 3}
+  songID: 0
+  collection: 0
+  songNum: 0
+  easyDifficulty: 0
+  songTitle: 
+  composer: 
+  arranger: 
+  songCover: {fileID: 0}
+  defaultBeats: []
+  songOffset: 0
+  bpm: 135
+  partitions:
+  - tracks:
+    - notes:
+      - note: 9.75
+        times: 0
+      - note: 14.5
+        times: 0
+      - note: 17.5
+        times: 0
+      - note: 26.5
+        times: 0
+      - note: 33
+        times: 0
+    - notes:
+      - note: 10.25
+        times: 0
+      - note: 18
+        times: 0
+      - note: 19
+        times: 0
+      - note: 26
+        times: 0
+      - note: 27
+        times: 0
+      - note: 29
+        times: 0
+      - note: 30
+        times: 0
+      - note: 33.5
+        times: 0
+      - note: 37.5
+        times: 0
+    - notes:
+      - note: 10.75
+        times: 0
+      - note: 14
+        times: 0
+      - note: 18.5
+        times: 0
+      - note: 22.5
+        times: 0
+      - note: 25.5
+        times: 0
+      - note: 29.5
+        times: 0
+      - note: 34
+        times: 0
+      - note: 38
+        times: 0
+    - notes:
+      - note: 11.25
+        times: 0
+      - note: 13.5
+        times: 0
+      - note: 34.5
+        times: 0
+      - note: 37
+        times: 0
+  - tracks:
+    - notes:
+      - note: 10
+        times: 0
+      - note: 18
+        times: 0
+      - note: 22
+        times: 0
+      - note: 25
+        times: 0
+      - note: 40
+        times: 0
+      - note: 43
+        times: 0
+      - note: 45
+        times: 0
+      - note: 48
+        times: 0
+      - note: 56
+        times: 0
+      - note: 64
+        times: 0
+      - note: 75
+        times: 0
+      - note: 78
+        times: 0
+      - note: 90
+        times: 0
+      - note: 93
+        times: 0
+      - note: 99
+        times: 0
+      - note: 103
+        times: 0
+      - note: 104
+        times: 0
+      - note: 108
+        times: 0
+      - note: 112
+        times: 0
+      - note: 114
+        times: 0
+      - note: 128
+        times: 0
+      - note: 138
+        times: 0
+      - note: 146
+        times: 0
+      - note: 154
+        times: 0
+      - note: 162
+        times: 0
+      - note: 170
+        times: 0
+      - note: 171
+        times: 0
+      - note: 173
+        times: 0
+      - note: 179
+        times: 0
+    - notes:
+      - note: 14
+        times: 0
+      - note: 24
+        times: 0
+      - note: 28
+        times: 0
+      - note: 44
+        times: 0
+      - note: 47
+        times: 0
+      - note: 55
+        times: 0
+      - note: 57.5
+        times: 0
+      - note: 61
+        times: 0
+      - note: 63
+        times: 0
+      - note: 74
+        times: 0
+      - note: 77
+        times: 0
+      - note: 79
+        times: 0
+      - note: 83
+        times: 0
+      - note: 86
+        times: 0
+      - note: 89
+        times: 0
+      - note: 92
+        times: 0
+      - note: 94
+        times: 0
+      - note: 98
+        times: 0
+      - note: 100
+        times: 0
+      - note: 102
+        times: 0
+      - note: 103
+        times: 0
+      - note: 105
+        times: 0
+      - note: 105.5
+        times: 0
+      - note: 110
+        times: 0
+      - note: 116
+        times: 0
+      - note: 118
+        times: 0
+      - note: 129
+        times: 0
+      - note: 134
+        times: 0
+      - note: 140
+        times: 0
+      - note: 148
+        times: 0
+      - note: 153
+        times: 0
+      - note: 156
+        times: 0
+      - note: 164
+        times: 0
+      - note: 169
+        times: 0
+      - note: 172
+        times: 0
+      - note: 176
+        times: 0
+      - note: 178.5
+        times: 0
+    - notes:
+      - note: 16
+        times: 0
+      - note: 20
+        times: 0
+      - note: 32
+        times: 0
+      - note: 46
+        times: 0
+      - note: 52
+        times: 0
+      - note: 54
+        times: 0
+      - note: 62
+        times: 0
+      - note: 76
+        times: 0
+      - note: 80
+        times: 0
+      - note: 82
+        times: 0
+      - note: 84
+        times: 0
+      - note: 88
+        times: 0
+      - note: 91
+        times: 0
+      - note: 95
+        times: 0
+      - note: 97
+        times: 0
+      - note: 101
+        times: 0
+      - note: 106
+        times: 0
+      - note: 113
+        times: 0
+      - note: 117.5
+        times: 0
+      - note: 120
+        times: 0
+      - note: 122
+        times: 0
+      - note: 124
+        times: 0
+      - note: 129.5
+        times: 0
+      - note: 130
+        times: 0
+      - note: 142
+        times: 0
+      - note: 150
+        times: 0
+      - note: 158
+        times: 0
+      - note: 166
+        times: 0
+      - note: 174
+        times: 0
+      - note: 175
+        times: 0
+      - note: 178
+        times: 0
+    - notes:
+      - note: 12
+        times: 0
+      - note: 36
+        times: 0
+      - note: 53
+        times: 0
+      - note: 60
+        times: 0
+      - note: 81
+        times: 0
+      - note: 85
+        times: 0
+      - note: 87
+        times: 0
+      - note: 96
+        times: 0
+      - note: 97.5
+        times: 0
+      - note: 121
+        times: 0
+      - note: 126
+        times: 0
+      - note: 130
+        times: 0
+      - note: 134
+        times: 0
+      - note: 144
+        times: 0
+      - note: 152
+        times: 0
+      - note: 160
+        times: 0
+      - note: 168
+        times: 0
+      - note: 174.5
+        times: 0
+      - note: 177
+        times: 0
+  - tracks:
+    - notes: []
+    - notes: []
+    - notes: []
+    - notes: []
+  - tracks:
+    - notes: []
+    - notes: []
+    - notes: []
+    - notes: []
