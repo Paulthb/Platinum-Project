@@ -11,6 +11,12 @@ public class BossBar : MonoBehaviour {
     public float bossPoint = 1000f;
     private float bossMaxPoint = 1000f;
 
+    private float currentBossPoint;
+
+    private float m_ratio;
+    public float speed = 40;
+    public float damage = 50;
+
     private static BossBar instance;
     public static BossBar Instance
     {
@@ -24,12 +30,24 @@ public class BossBar : MonoBehaviour {
         }
     }
 
+    void Start()
+    {
+        currentBossPoint = bossPoint;
+    }
+
     void Update()
     {
         //pour les tests
         if (Input.GetKeyDown("v"))
         {
-            TakeDamage(50);
+            TakeDamage(damage);
+        }
+
+        if (currentBossPoint != bossPoint)
+        {
+            currentBossPoint = currentBossPoint + Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
+            m_ratio = currentBossPoint / bossMaxPoint;
+            bossBar.fillAmount = m_ratio;
         }
     }
 
@@ -40,7 +58,7 @@ public class BossBar : MonoBehaviour {
         bossBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
 
         bossPoint -= damage;
@@ -50,6 +68,6 @@ public class BossBar : MonoBehaviour {
             Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-        UpdateBar();
+        //UpdateBar();
     }
 }
