@@ -52,12 +52,27 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    public bool IsPlayerAlreadyInLobby(int id)
+    public bool IsPlayerAlreadyInLobby(int id, bool pads)
     {
-        bool AlreadyExist = PlayerList.Exists(item => item.ControllerId == id);
-        if(AlreadyExist == false)
-            AlreadyExist = PlayerList.Exists(item => item.pads.portNum == id);
-        ///Debug.Log(AlreadyExist);
+        bool AlreadyExist = false;
+        if (!pads)
+        {
+            AlreadyExist = PlayerList.Exists(item => item.ControllerId == id);
+        }
+        else
+        {
+            int i = 0;
+            while (!AlreadyExist && i < PlayerList.Count)
+            {
+                if(PlayerList[i].pads != null)
+                {
+                    if (PlayerList[i].pads.portNum == id)
+                        AlreadyExist = true;
+                }
+                i++;
+            }
+            //AlreadyExist = PlayerList.Exists(item => item.pads.portNum == id);
+        }
         return AlreadyExist;
     }
 

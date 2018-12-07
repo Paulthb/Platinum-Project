@@ -56,18 +56,18 @@ public class PartitionManager : MonoBehaviour {
         {
             if(playersCount > 2)
             {
-                offsetX = -30;
+                offsetX = -7.25f;
             }
             else
             {
-                offsetX = -10;
+                offsetX = -5f;
             }
         }
         else
         {
             if (playersCount > 1)
             {
-                offsetX = -20;
+                offsetX = -5;
             }
             else
             {
