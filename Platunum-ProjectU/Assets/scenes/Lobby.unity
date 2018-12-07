@@ -896,7 +896,7 @@ MonoBehaviour:
   - {fileID: 789192629}
   - {fileID: 1185454431}
   - {fileID: 302839703}
-  ReadyTimeHold: 3
+  ReadyTimeHold: 1
   timer: 0
   SceneToLoad: Level 1
   PersonnageAvailable:

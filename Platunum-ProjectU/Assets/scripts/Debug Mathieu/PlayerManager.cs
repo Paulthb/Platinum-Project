@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
+
 public class PlayerManager : MonoBehaviour
 {
     //public GameObject PlayerPrefabs;
     public Color[] PlayerColorList;
-    public Sprite[] RoleSprite;
     private List<Player> PlayerList = new List<Player>();
     private IDictionary<Player, Transform> PlayerTransformList;
 
@@ -21,7 +22,11 @@ public class PlayerManager : MonoBehaviour
             if (instance == null)
                 instance = GameObject.FindObjectOfType<PlayerManager>();
             if (instance == null)
-                Debug.Log("No tutorial found");
+            {
+                instance = Instantiate(new GameObject()).AddComponent<PlayerManager>();
+                instance.PlayerColorList = new Color[4] { Color.green, Color.red, Color.blue, Color.yellow };
+                instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste", null)[0]), typeof(Personnage));
+            }
             return instance;
         }
     }
@@ -149,9 +154,11 @@ public class PlayerManager : MonoBehaviour
         return PlayerList.Count;
     }
 
-    public void AddeDebugPlayer()
+    public void AddDebugPlayer()
     {
-        AddPlayer(1, DebugPerso);
+        string str = System.IO.Ports.SerialPort.GetPortNames()[0];
+        gamepads pads = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
+        AddPlayer(1, DebugPerso, pads);
     }
 }
 

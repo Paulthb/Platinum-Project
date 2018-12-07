@@ -39,6 +39,7 @@ public class PartitionManager : MonoBehaviour {
     }
     private void Start()
     {
+        if(PlayerManager.Instance)
         LoadPlayer();
     }
 
@@ -49,7 +50,7 @@ public class PartitionManager : MonoBehaviour {
         int playersCount = PlayerManager.Instance.GetPlayersCount();
         if (playersCount == 0)
         {
-            PlayerManager.Instance.AddeDebugPlayer();
+            PlayerManager.Instance.AddDebugPlayer();
             playersCount = 1;
         }
         if ( playersCount % 2 == 0)
