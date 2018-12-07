@@ -1811,8 +1811,8 @@ MonoBehaviour:
   badOffsetY: 0.3
   goodOffsetY: 0.2
   perfectOffsetY: 0.1
-  PartitionSize: 0
-  PartitionSpace: 0
+  PartitionSize: 5
+  PartitionSpace: 5
   trackColor:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.11694183, b: 0, a: 1}
@@ -2200,6 +2200,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114941850098801152, guid: 163f8ca9fa38c464cbcdec44b975b579,
+        type: 2}
+      propertyPath: currentSong
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f0a74985d958774bbc4af67f7a29391,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 163f8ca9fa38c464cbcdec44b975b579, type: 2}
   m_IsPrefabAsset: 0
