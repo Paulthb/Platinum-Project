@@ -1,12 +1,11 @@
 fileFormatVersion: 2
-guid: b39eac53c273e4e4e993e2fda75cd9c3
+guid: 078e345046a24c340a9343d624bf4989
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Cadres 2_0
-    21300002: Cadres 2_1
-    21300004: Cadres 2_2
-    21300006: Cadres 2_3
-    21300008: Cadres 2_4
+    21300000: Perso select_0
+    21300002: Perso select_1
+    21300004: Perso select_2
+    21300006: Perso select_3
   externalObjects: {}
   serializedVersion: 7
   mipmaps:
@@ -46,13 +45,13 @@ TextureImporter:
   lightmap: 0
   compressionQuality: 50
   spriteMode: 2
-  spriteExtrude: 2
-  spriteMeshType: 0
+  spriteExtrude: 1
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spriteGenerateFallbackPhysicsShape: 0
+  spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
@@ -100,101 +99,81 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cadres 2_0
+      name: Perso select_0
       rect:
         serializedVersion: 2
-        x: 318
-        y: 246
-        width: 294
-        height: 774
+        x: 372
+        y: 630
+        width: 180
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ebc1c320414eca4595d6a9263cb9598
+      spriteID: b36cabd08e116a141b3476268480b718
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cadres 2_1
+      name: Perso select_1
       rect:
         serializedVersion: 2
-        x: 648
-        y: 246
-        width: 294
-        height: 774
+        x: 702
+        y: 630
+        width: 174
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb64515283e636f418d9a1eaa49ba43e
+      spriteID: 44555f7e94816ea4a965064745299bcb
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cadres 2_2
+      name: Perso select_2
       rect:
         serializedVersion: 2
-        x: 978
-        y: 246
-        width: 294
-        height: 774
+        x: 1008
+        y: 630
+        width: 228
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a11548ae70b1384d8596daa96327f65
+      spriteID: 5cfa57c1fc4b8a5499b83a60f25dfcb3
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cadres 2_3
+      name: Perso select_3
       rect:
         serializedVersion: 2
-        x: 1308
-        y: 246
-        width: 294
-        height: 774
+        x: 1380
+        y: 630
+        width: 138
+        height: 318
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e041df16d0148345bf49a3fdc3acac5
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Cadres 2_4
-      rect:
-        serializedVersion: 2
-        x: 318
-        y: 49
-        width: 1284
-        height: 191
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 689b8e43263019448be5582ba314d8fd
+      spriteID: 4173814c9047d3249824cf30d0750fc8
       vertices: []
       indices: 
       edges: []
@@ -202,7 +181,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 97bcddadaca8ed5479bab455b1f4ed03
+    spriteID: 85bfc45a3bd990644b9c3f57c88e7a82
     vertices: []
     indices: 
     edges: []

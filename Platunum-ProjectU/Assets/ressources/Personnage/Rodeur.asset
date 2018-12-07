@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   name: Rodeur
-  Sprite: {fileID: 21300000, guid: f3348612d99b83549b01d4071ba7064a, type: 3}
+  Sprite: {fileID: 21300006, guid: 078e345046a24c340a9343d624bf4989, type: 3}
   HP: 400
   Mana: 100
   Shield: 100

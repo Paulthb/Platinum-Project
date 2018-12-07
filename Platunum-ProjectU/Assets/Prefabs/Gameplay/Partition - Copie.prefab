@@ -331,6 +331,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4966749901571918}
   - component: {fileID: 212902596451947852}
+  - component: {fileID: 114578684073945048}
   m_Layer: 0
   m_Name: SpriteRole
   m_TagString: Untagged
@@ -1014,6 +1015,22 @@ MonoBehaviour:
     Fail: {fileID: 0}
   offsetX: -1.44
   idTrack: 0
+--- !u!114 &114578684073945048
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592352023914972}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7faee937627eb409cb590e66e89183, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barDisplay: 0
+  pos: {x: 20, y: 40}
+  size: {x: 60, y: 20}
+  emptyTex: {fileID: 0}
+  fullTex: {fileID: 0}
 --- !u!114 &114633577471236054
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1070,6 +1087,7 @@ MonoBehaviour:
   - {fileID: 114633577471236054}
   brouillard: {fileID: 1843338735260664}
   RoleSprite: {fileID: 212902596451947852}
+  RoleProgress: {fileID: 0}
 --- !u!198 &198149970436642954
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -45,6 +45,8 @@ public class Partition : MonoBehaviour {
     public GameObject brouillard;
 
     public SpriteRenderer RoleSprite;
+    public Progress RoleProgress;
+
     private Role currentRole;
     public Role CurrentRole
     {
@@ -53,6 +55,10 @@ public class Partition : MonoBehaviour {
         {
             currentRole = value;
             RoleSprite.sprite = currentRole.RoleSprite;
+            RoleProgress.emptyTex = RoleSprite.sprite.texture;
+            RoleProgress.fullTex = RoleSprite.sprite.texture;
+            RoleProgress.pos = RoleSprite.transform.position;
+            RoleProgress.size = RoleSprite.transform.localScale;
             Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
         }
     }
