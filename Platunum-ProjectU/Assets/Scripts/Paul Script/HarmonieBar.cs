@@ -44,12 +44,12 @@ public class HarmonieBar : MonoBehaviour {
         //pour les tests
         if (Input.GetKeyDown("x"))
         {
-            TakeHarmonie(harmoniePoint);
+            TakeHarmonie(10f);
+            Debug.Log("LAER PDJHFIHGDK !");
         }
 
         if (currentHarmoniePoint != harmoniePoint)
         {
-
             currentHarmoniePoint = currentHarmoniePoint + Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
             m_ratio = currentHarmoniePoint / harmonieMaxPoint;
             harmonieBar.fillAmount = m_ratio;
