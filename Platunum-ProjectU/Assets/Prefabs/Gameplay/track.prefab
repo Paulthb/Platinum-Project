@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1495298714884034
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +107,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1996316188151676
 GameObject:
   m_ObjectHideFlags: 1
@@ -239,6 +239,7 @@ MonoBehaviour:
     Bad: {fileID: 198797312324484396}
     Fail: {fileID: 0}
   offsetX: 0
+  idTrack: 0
 --- !u!198 &198012746110993456
 ParticleSystem:
   m_ObjectHideFlags: 1

@@ -101,6 +101,7 @@ public class Player : MonoBehaviour
     {
         if (Personnage.AvailableRole.Length > 1)
         {
+            Debug.Log(BossManager.Instance);
             if (!BossManager.Instance.goHurlement && (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")) || pads.GetKeyDown(4)))
             {
                 hasChanged = false;
