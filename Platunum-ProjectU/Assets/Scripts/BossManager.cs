@@ -8,6 +8,7 @@ public class BossManager : MonoBehaviour {
     [System.NonSerialized] public bool goMalediction, goHurlement, goInvincibilite, goBloc, goUltralaser;
     public GameObject Conductor;
     private AudioSource myAudio;
+    public Animator animatorBoss;
 
     public int damageCoupDeQueue = 20;
     public int noteNb;
@@ -41,6 +42,7 @@ public class BossManager : MonoBehaviour {
 
     void Start()
     {
+        animatorBoss = GetComponent<Animator>();
         myAudio = Conductor.GetComponent<AudioSource>();
     }
 
@@ -59,6 +61,8 @@ public class BossManager : MonoBehaviour {
                 goUltralaser = false; 
             }
         }
+
+        animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
     }
 	
     public void ChooseAttack()
@@ -94,6 +98,7 @@ public class BossManager : MonoBehaviour {
         if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
         {
             attack = BossAttack.BLOC;
+            
             //attack = (BossAttack)Random.Range(0, 7);
             Attack(attack);
             goAttack1 = true;
@@ -136,6 +141,7 @@ public class BossManager : MonoBehaviour {
                 //si oui, nothing happen, si non hit player
                 break;
             case BossAttack.BLOC:
+                animatorBoss.SetBool("blocPierre", true);
                 goBloc = true;
                 InitStoneAttack();
                 TriggerNextAttackStone();
@@ -216,4 +222,8 @@ public class BossManager : MonoBehaviour {
         StoneRemainingPartitions.Clear();
     }
     
+    public void EndBlocAnim()
+    {
+        animatorBoss.SetBool("blocPierre", false);
+    }
 }

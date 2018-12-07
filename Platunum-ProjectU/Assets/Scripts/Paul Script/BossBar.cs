@@ -11,7 +11,7 @@ public class BossBar : MonoBehaviour {
     public float bossPoint = 1000f;
     private float bossMaxPoint = 1000f;
 
-    private float currentBossPoint;
+    public float currentBossPoint;
 
     private float m_ratio;
     public float speed = 40;
