@@ -253,8 +253,18 @@ public class editor : MonoBehaviour {
     public void GoToPreviousBeat()
     {
         float TimeInCrotchet = audios.time / crotchet;
-        audios.time = Mathf.Floor(TimeInCrotchet) * crotchet;
+        float newTime = Mathf.Floor(TimeInCrotchet) * crotchet;
+        //Debug.Log("currentTime:" + System.Math.Round(audios.time, 4) + "/newTime:" + System.Math.Round(newTime, 4));
+        if (System.Math.Round(audios.time, 3) == System.Math.Round(newTime, 3))
+        {
+            audios.time = newTime - crotchet;
+        }
+        else
+        {
+            audios.time = newTime;
+        }
     }
+
     public void play()
     {
         if (audios.isPlaying)
