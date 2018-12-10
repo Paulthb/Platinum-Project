@@ -33,7 +33,15 @@ public class ManaBar : MonoBehaviour {
 
         if (currentManaPoint != manaPoint)
         {
-            currentManaPoint = currentManaPoint + Mathf.Sign(manaPoint - currentManaPoint) * speed * Time.deltaTime;
+            float ToAdd = Mathf.Sign(manaPoint - currentManaPoint) * speed * Time.deltaTime;
+            if(ToAdd > Mathf.Abs(currentManaPoint - manaPoint))
+            {
+                currentManaPoint = manaPoint;
+            }
+            else
+            {
+                currentManaPoint = currentManaPoint + ToAdd;
+            }
             m_ratio = currentManaPoint / manaMaxPoint;
             manaBar.fillAmount = m_ratio;
         }

@@ -156,9 +156,12 @@ public class PlayerManager : MonoBehaviour
 
     public void AddDebugPlayer()
     {
-        string str = System.IO.Ports.SerialPort.GetPortNames()[0];
-        gamepads pads = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
-        AddPlayer(1, DebugPerso, pads);
+        if(System.IO.Ports.SerialPort.GetPortNames().Length > 0)
+        {
+            string str = System.IO.Ports.SerialPort.GetPortNames()[0];
+            gamepads pads = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
+            AddPlayer(1, DebugPerso, pads);
+        }
     }
 }
 

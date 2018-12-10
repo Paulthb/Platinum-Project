@@ -56,13 +56,28 @@ public class HealthBar : MonoBehaviour {
         { 
             if (!isArmor)
             {
-                currentHealthPoint = currentHealthPoint + Mathf.Sign(healthPoint - currentHealthPoint) * speed * Time.deltaTime;
+                //Fill Gap
+                float ToAdd = Mathf.Sign(healthPoint - currentHealthPoint) * speed * Time.deltaTime;
+
+                //If we overfill
+                if(ToAdd > currentHealthPoint - healthPoint)
+                    currentHealthPoint = healthPoint;//Get Current value
+                else
+                    currentHealthPoint = currentHealthPoint + ToAdd;//Fill the amout toadd
+
+                //Display ratio
                 m_ratio = currentHealthPoint / maxHealthPoint;
                 healthBar.fillAmount = m_ratio;
             }
             else
             {
-                currentArmorPoint = currentArmorPoint + Mathf.Sign(armorPoint - currentArmorPoint) * speed * Time.deltaTime;
+                float ToAdd = Mathf.Sign(armorPoint - currentArmorPoint) * speed * Time.deltaTime;
+
+                if(ToAdd > currentArmorPoint - armorPoint)
+                    currentArmorPoint = armorPoint;
+                else
+                    currentArmorPoint = currentArmorPoint + ToAdd;
+
                 m_ratio = currentArmorPoint / maxArmorPoint;
                 armorBar.fillAmount = m_ratio;
             }

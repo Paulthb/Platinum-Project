@@ -50,7 +50,13 @@ public class HarmonieBar : MonoBehaviour {
 
         if (currentHarmoniePoint != harmoniePoint)
         {
-            currentHarmoniePoint = currentHarmoniePoint + Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
+            float ToAdd = Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
+
+            if(ToAdd > currentHarmoniePoint - harmoniePoint)
+                currentHarmoniePoint = harmoniePoint;
+            else
+                currentHarmoniePoint = currentHarmoniePoint + ToAdd;
+
             m_ratio = currentHarmoniePoint / harmonieMaxPoint;
             harmonieBar.fillAmount = m_ratio;
         }
