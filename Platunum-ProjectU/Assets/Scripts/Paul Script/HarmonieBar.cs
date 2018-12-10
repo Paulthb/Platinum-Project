@@ -52,7 +52,7 @@ public class HarmonieBar : MonoBehaviour {
         {
             float ToAdd = Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
 
-            if(ToAdd > currentHarmoniePoint - harmoniePoint)
+            if(ToAdd > Mathf.Abs(currentHarmoniePoint - harmoniePoint))
                 currentHarmoniePoint = harmoniePoint;
             else
                 currentHarmoniePoint = currentHarmoniePoint + ToAdd;

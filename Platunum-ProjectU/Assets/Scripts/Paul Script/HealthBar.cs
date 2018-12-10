@@ -60,7 +60,7 @@ public class HealthBar : MonoBehaviour {
                 float ToAdd = Mathf.Sign(healthPoint - currentHealthPoint) * speed * Time.deltaTime;
 
                 //If we overfill
-                if(ToAdd > currentHealthPoint - healthPoint)
+                if(ToAdd > Mathf.Abs(currentHealthPoint - healthPoint))
                     currentHealthPoint = healthPoint;//Get Current value
                 else
                     currentHealthPoint = currentHealthPoint + ToAdd;//Fill the amout toadd
@@ -73,7 +73,7 @@ public class HealthBar : MonoBehaviour {
             {
                 float ToAdd = Mathf.Sign(armorPoint - currentArmorPoint) * speed * Time.deltaTime;
 
-                if(ToAdd > currentArmorPoint - armorPoint)
+                if(ToAdd > Mathf.Abs(currentArmorPoint - armorPoint))
                     currentArmorPoint = armorPoint;
                 else
                     currentArmorPoint = currentArmorPoint + ToAdd;

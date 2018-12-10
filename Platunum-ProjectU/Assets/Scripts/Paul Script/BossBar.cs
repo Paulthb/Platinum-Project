@@ -47,7 +47,7 @@ public class BossBar : MonoBehaviour {
         {
             float ToAdd = Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
 
-            if(ToAdd>currentBossPoint - bossPoint)
+            if(ToAdd > Mathf.Abs(currentBossPoint - bossPoint))
                 currentBossPoint = bossPoint;
             else
                 currentBossPoint = currentBossPoint + ToAdd;
