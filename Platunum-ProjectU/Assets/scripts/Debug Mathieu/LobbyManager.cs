@@ -198,7 +198,7 @@ namespace Manager
         {
             if (PlayerId > 0)
             {
-                PlayerUI[PlayerId - 1].Find("StateText").gameObject.SetActive(state);
+                PlayerUI[PlayerId - 1].Find("State").gameObject.SetActive(state);
                 ReadyPlayerList[PlayerId] = state;
             }
         }
@@ -211,24 +211,10 @@ namespace Manager
             //StartGameBool = true;
         }
 
-        private void HpBar(float playerHp, Transform bar)
+        private void LoadRatioStatsToBar(Transform bar ,float value, float maxValue)
         {
             float ratio;
-            ratio = playerHp / 400;
-            bar.localScale = new Vector3(ratio, 1, 1);
-        }
-
-        private void ShieldBar(float playerShield, Transform bar)
-        {
-            float ratio;
-            ratio = playerShield / 100;
-            bar.localScale = new Vector3(ratio, 1, 1);
-        }
-
-        private void ManaBar(float playerMana, Transform bar)
-        {
-            float ratio;
-            ratio = playerMana / 350;
+            ratio = value / maxValue;
             bar.localScale = new Vector3(ratio, 1, 1);
         }
 
@@ -274,16 +260,13 @@ namespace Manager
             ReadyPlayerList.Add(player.id, false);
 
             //Update PlayerUI
-            Sprite sprite = player.Personnage.Sprite;
+            //Sprite sprite = player.Personnage.Sprite;
             //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
-            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
-            PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
+            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
+            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
             //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
-            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
-            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
-            CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
-            PlayerUI[player.id - 1].gameObject.SetActive(true);
+
+            updateUI(player);
         }
 
 
@@ -323,13 +306,27 @@ namespace Manager
             //ajoute la nouvelle classe au joueur
             SelectedList[newPerso] = true;
             player.Personnage = PersonnageAvailable[newPerso];
+            updateUI(player);
+        }
+
+        private void updateUI(Player player)
+        {
             //UI Update
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
-            //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-            HpBar(player.Personnage.HP, PlayerUI[player.id - 1].Find("HPBar"));
-            ShieldBar(player.Personnage.Shield, PlayerUI[player.id - 1].Find("ShieldBar"));
-            ManaBar(player.Personnage.Mana, PlayerUI[player.id - 1].Find("ManaBar"));
+            //LoadSpriteCadre
+            PlayerUI[player.id - 1].Find("Image").GetComponent<Image>().sprite = player.Personnage.cadreSprite;
+            //LoadSpriteReady
+            PlayerUI[player.id - 1].Find("State").GetComponent<Image>().sprite = player.Personnage.spriteReady;
+            //LoadStats
+            LoadRatioStatsToBar(PlayerUI[player.id - 1].Find("HPBar"), player.Personnage.HP, 400);
+            LoadRatioStatsToBar(PlayerUI[player.id - 1].Find("ManaBar"), player.Personnage.Mana, 350);
+            LoadRatioStatsToBar(PlayerUI[player.id - 1].Find("ShieldBar"), player.Personnage.Shield, 100);
+
+            //LoadRole
             CheckAvailableRole(player, PlayerUI[player.id - 1].Find("AtkLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("DefenseLogo").GetComponent<Image>(), PlayerUI[player.id - 1].Find("ManaLogo").GetComponent<Image>());
+            
+            //SetActive
+            PlayerUI[player.id - 1].gameObject.SetActive(true);
         }
         //déclenche le chargement du niveau
         /*
