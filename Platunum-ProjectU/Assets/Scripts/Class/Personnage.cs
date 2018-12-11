@@ -12,4 +12,6 @@ public class Personnage : ScriptableObject {
     public float Shield;
     public Role[] AvailableRole;
     public int idPartition;
+    public Sprite cadreSprite;
+    public Sprite spriteReady;
 }
