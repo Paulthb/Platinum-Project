@@ -87,6 +87,11 @@ public class HealthBar : MonoBehaviour {
         {
             TakeDamage(10);
         }
+        //pour les tests
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            TakeDamage(-10);
+        }
     }
 
     public void WinArmor(int armorPt)

@@ -48,6 +48,12 @@ public class HarmonieBar : MonoBehaviour {
             Debug.Log("LAER PDJHFIHGDK !");
         }
 
+        if (Input.GetKeyDown("x"))
+        {
+            TakeHarmonie(10f);
+            Debug.Log("LAER PDJHFIHGDK !");
+        }
+
         if (currentHarmoniePoint != harmoniePoint)
         {
             float ToAdd = Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;

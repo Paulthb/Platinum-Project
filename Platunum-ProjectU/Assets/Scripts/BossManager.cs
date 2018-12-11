@@ -121,6 +121,12 @@ public class BossManager : MonoBehaviour {
             case BossAttack.HURLEMENT:
                 //changer de role et les bloquer sur ce role pdt 10 sec
                 goHurlement = true;
+                int count = PlayerManager.Instance.GetPlayersCount();
+                for (int i = 0; i < count; i++)
+                {
+                    PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
+                }
+                Debug.Log("HURLEMENT");
                 StartCoroutine(HurlementTime());
                 break;
             case BossAttack.ULTRASON:

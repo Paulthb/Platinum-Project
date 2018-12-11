@@ -20,3 +20,4 @@ MonoBehaviour:
   AvailableRole:
   - {fileID: 11400000, guid: 0a0c5dfcccc8e7a4bb969233e25f5fcb, type: 2}
   - {fileID: 11400000, guid: eb63f5d94e8e15949be7db473fe588eb, type: 2}
+  idPartition: 2

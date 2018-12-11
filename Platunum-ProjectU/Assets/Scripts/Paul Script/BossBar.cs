@@ -42,6 +42,10 @@ public class BossBar : MonoBehaviour {
         {
             TakeDamage(damage);
         }
+        if (Input.GetKeyDown("f"))
+        {
+            TakeDamage(-damage);
+        }
 
         if (currentBossPoint != bossPoint)
         {

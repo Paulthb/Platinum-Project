@@ -31,6 +31,12 @@ public class ManaBar : MonoBehaviour {
             WinMana(-10);
         }
 
+        //pour les tests
+        if (Input.GetKeyDown("d"))
+        {
+            WinMana(10);
+        }
+
         if (currentManaPoint != manaPoint)
         {
             float ToAdd = Mathf.Sign(manaPoint - currentManaPoint) * speed * Time.deltaTime;

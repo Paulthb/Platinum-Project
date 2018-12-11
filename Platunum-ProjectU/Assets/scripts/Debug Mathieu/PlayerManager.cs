@@ -114,8 +114,7 @@ public class PlayerManager : MonoBehaviour
     {
         if (PlayerList.Exists(item => item.id == id))
         {
-            Player player = PlayerList.Find(item => item.id == id);
-            return player;
+          return PlayerList.Find(item => item.id == id);
         }
         else
             return null;
@@ -156,6 +155,11 @@ public class PlayerManager : MonoBehaviour
 
     public void AddDebugPlayer()
     {
+        if(Input.GetJoystickNames().Length > 0)
+        {
+            if(Input.GetJoystickNames()[0] != "")
+                AddPlayer(1, DebugPerso);
+        }
         if(System.IO.Ports.SerialPort.GetPortNames().Length > 0)
         {
             string str = System.IO.Ports.SerialPort.GetPortNames()[0];

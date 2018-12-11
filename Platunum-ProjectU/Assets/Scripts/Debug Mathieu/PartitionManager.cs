@@ -80,7 +80,7 @@ public class PartitionManager : MonoBehaviour {
         {
             Partition partition = Instantiate(PartitionPrefabs, new Vector3(offsetX, finishLineY, 0), Quaternion.identity, transform).GetComponent<Partition>();
             partition.idplayer = player.id;
-            partition.partitionId = player.id;
+            partition.partitionId = player.Personnage.idPartition;
             player.SetPartition(partition);
             partition.CurrentRole = player.Personnage.AvailableRole[0];
             offsetX += PartitionSpace;
