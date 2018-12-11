@@ -141,7 +141,7 @@ public class BossManager : MonoBehaviour {
                 //si oui, nothing happen, si non hit player
                 break;
             case BossAttack.BLOC:
-                animatorBoss.SetBool("blocPierre", true);
+                animatorBoss.SetTrigger("BlocPierreTrigger");
                 goBloc = true;
                 InitStoneAttack();
                 TriggerNextAttackStone();
@@ -220,11 +220,5 @@ public class BossManager : MonoBehaviour {
     {
         goBloc = false;
         StoneRemainingPartitions.Clear();
-    }
-    
-    public void EndBlocAnim()
-    {
-        Debug.Log("vive le nazisme");
-        animatorBoss.SetBool("blocPierre", false);
     }
 }
