@@ -11,4 +11,5 @@ public class Personnage : ScriptableObject {
     public float Mana;
     public float Shield;
     public Role[] AvailableRole;
+    public int idPartition;
 }

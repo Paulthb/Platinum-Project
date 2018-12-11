@@ -42,10 +42,20 @@ public class BossBar : MonoBehaviour {
         {
             TakeDamage(damage);
         }
+        if (Input.GetKeyDown("f"))
+        {
+            TakeDamage(-damage);
+        }
 
         if (currentBossPoint != bossPoint)
         {
-            currentBossPoint = currentBossPoint + Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
+            float ToAdd = Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
+
+            if(ToAdd > Mathf.Abs(currentBossPoint - bossPoint))
+                currentBossPoint = bossPoint;
+            else
+                currentBossPoint = currentBossPoint + ToAdd;
+
             m_ratio = currentBossPoint / bossMaxPoint;
             bossBar.fillAmount = m_ratio;
         }

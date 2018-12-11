@@ -48,9 +48,21 @@ public class HarmonieBar : MonoBehaviour {
             Debug.Log("LAER PDJHFIHGDK !");
         }
 
+        if (Input.GetKeyDown("x"))
+        {
+            TakeHarmonie(10f);
+            Debug.Log("LAER PDJHFIHGDK !");
+        }
+
         if (currentHarmoniePoint != harmoniePoint)
         {
-            currentHarmoniePoint = currentHarmoniePoint + Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
+            float ToAdd = Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
+
+            if(ToAdd > Mathf.Abs(currentHarmoniePoint - harmoniePoint))
+                currentHarmoniePoint = harmoniePoint;
+            else
+                currentHarmoniePoint = currentHarmoniePoint + ToAdd;
+
             m_ratio = currentHarmoniePoint / harmonieMaxPoint;
             harmonieBar.fillAmount = m_ratio;
         }

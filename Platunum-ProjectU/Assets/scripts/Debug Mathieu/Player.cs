@@ -90,35 +90,30 @@ public class Player : MonoBehaviour
             }
 
 
-            if (partition != null)
+            if (partition != null && Personnage.AvailableRole.Length > 1)
             {
-                RoleSwitch();
+                //RoleSwitch();
+                if (!BossManager.Instance.goHurlement)
+                {
+                    if(pads != null)
+                    {
+                        if (pads.GetKeyDown(4))
+                            SwitchRole();
+                    }
+                    else if(Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5"))){
+                        SwitchRole();
+                    }
+                }
             }
         }
     }
 
-    private void RoleSwitch()
+    public void SwitchRole()
     {
-        if (Personnage.AvailableRole.Length > 1)
-        {
-            Debug.Log(BossManager.Instance);
-            if (!BossManager.Instance.goHurlement && (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")) || pads.GetKeyDown(4)))
-            {
-                hasChanged = false;
-                if(partition.CurrentRole == Personnage.AvailableRole[0])
-                    partition.CurrentRole = Personnage.AvailableRole[1];
-                else
-                    partition.CurrentRole = Personnage.AvailableRole[0];
-            }
-            if (BossManager.Instance.goHurlement && !hasChanged)
-            {
-                if (partition.CurrentRole == Personnage.AvailableRole[0])
-                    partition.CurrentRole = Personnage.AvailableRole[1];
-                else
-                    partition.CurrentRole = Personnage.AvailableRole[0];
-                hasChanged = true;
-            }
-        }
+        if (partition.CurrentRole == Personnage.AvailableRole[0])
+            partition.CurrentRole = Personnage.AvailableRole[1];
+        else
+            partition.CurrentRole = Personnage.AvailableRole[0];
     }
 
     public void SetPartition(Partition partition)
