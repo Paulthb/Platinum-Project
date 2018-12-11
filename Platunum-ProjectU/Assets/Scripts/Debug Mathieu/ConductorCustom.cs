@@ -39,7 +39,7 @@ public class ConductorCustom : MonoBehaviour
     public bool EditorMode;
 
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     //Get Instance
     private static ConductorCustom instance;

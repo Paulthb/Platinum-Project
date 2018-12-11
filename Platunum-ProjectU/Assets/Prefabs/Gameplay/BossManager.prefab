@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4018387297986944
 Transform:
   m_ObjectHideFlags: 1
@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Conductor: {fileID: 0}
+  animatorBoss: {fileID: 0}
   damageCoupDeQueue: 20
   noteNb: 0
   volumeDownUltrason: 0.16
@@ -62,3 +63,8 @@ MonoBehaviour:
   brouillardTime: 10
   ultralaserTime: 10
   blocGiveHarmony: 10
+  ListAttack:
+  - Time: 5
+    Attack: 0
+  - Time: 10
+    Attack: 1

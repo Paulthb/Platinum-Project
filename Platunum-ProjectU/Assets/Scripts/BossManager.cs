@@ -21,6 +21,10 @@ public class BossManager : MonoBehaviour {
     public float ultralaserTime = 10f;
     public float blocGiveHarmony = 10f;
 
+    public List<AttackBoss> ListAttack;
+    public Queue<AttackBoss> QueueAttack;
+    private AttackBoss nextAttack;
+
     private List<Partition> StoneRemainingPartitions;
 
     private static BossManager instance;
@@ -44,11 +48,23 @@ public class BossManager : MonoBehaviour {
     {
         animatorBoss = GetComponent<Animator>();
         myAudio = Conductor.GetComponent<AudioSource>();
+        QueueAttack = new Queue<AttackBoss>(ListAttack);
+        nextAttack = QueueAttack.Peek();
+        QueueAttack.Dequeue();
     }
 
     void Update () {
-        ChooseAttack();
-        if(goUltralaser)
+        if (QueueAttack.Count > 0)
+        {
+            if (ConductorCustom.Instance.audioSource.time >= nextAttack.Time)
+            {
+                Attack(nextAttack.Attack);
+                nextAttack = QueueAttack.Peek();
+                QueueAttack.Dequeue();
+            }
+        }
+
+        if (goUltralaser)
         {
             noteNb = BarManager.Instance.noteNumber;
             if (noteNb >= 3000)
@@ -64,53 +80,11 @@ public class BossManager : MonoBehaviour {
 
         animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
     }
-	
-    public void ChooseAttack()
-    {
-        if (!goAttack5 && BossBar.Instance.bossPoint <= 100)
-        {
-            attack = (BossAttack)Random.Range(0, 7);
-            Attack(attack);
-            goAttack5 = true;
-            return;
-        }
-        if (!goAttack4 && BossBar.Instance.bossPoint <= 250)
-        {
-            attack = (BossAttack)Random.Range(0, 7);
-            Attack(attack);
-            goAttack4 = true;
-            return;
-        }
-        if (!goAttack3 && BossBar.Instance.bossPoint <= 450)
-        {
-            attack = (BossAttack)Random.Range(0, 7);
-            Attack(attack);
-            goAttack3 = true;
-            return;
-        }
-        if (!goAttack2 && BossBar.Instance.bossPoint <= 650)
-        {
-            attack = BossAttack.HURLEMENT;
-            Attack(attack);
-            goAttack2 = true;
-            return;
-        }
-        if (!goAttack1 && BossBar.Instance.bossPoint <= 850)
-        {
-            attack = BossAttack.BLOC;
-            
-            //attack = (BossAttack)Random.Range(0, 7);
-            Attack(attack);
-            goAttack1 = true;
-            return;
-        }
-        else
-            return;
-    }
 
     public void Attack (BossAttack AttackBoss)
     {
-        switch(AttackBoss)
+        Debug.Log(AttackBoss);
+        switch (AttackBoss)
         {
             case BossAttack.MALEDICTION:
                 //attendre 10sec en faisant scintiller la piste
@@ -126,7 +100,6 @@ public class BossManager : MonoBehaviour {
                 {
                     PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
                 }
-                Debug.Log("HURLEMENT");
                 StartCoroutine(HurlementTime());
                 break;
             case BossAttack.ULTRASON:
@@ -207,7 +180,7 @@ public class BossManager : MonoBehaviour {
 
     public void TriggerNextAttackStone()
     {
-        Debug.Log("nb de partitions " + StoneRemainingPartitions.Count);
+        //Debug.Log("nb de partitions " + StoneRemainingPartitions.Count);
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
@@ -227,4 +200,12 @@ public class BossManager : MonoBehaviour {
         goBloc = false;
         StoneRemainingPartitions.Clear();
     }
+}
+
+[System.Serializable]
+public class AttackBoss
+{
+    public float Time;
+    public BossManager.BossAttack Attack;
+
 }
