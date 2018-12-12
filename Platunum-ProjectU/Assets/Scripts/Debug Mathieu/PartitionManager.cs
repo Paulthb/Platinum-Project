@@ -81,6 +81,7 @@ public class PartitionManager : MonoBehaviour {
             Partition partition = Instantiate(PartitionPrefabs, new Vector3(offsetX, finishLineY, 0), Quaternion.identity, transform).GetComponent<Partition>();
             partition.idplayer = player.id;
             partition.partitionId = player.Personnage.idPartition;
+            partition.maxNbNote = player.Personnage.PartitionJaugeMax;
             player.SetPartition(partition);
             partition.CurrentRole = player.Personnage.AvailableRole[0];
             if (player.Personnage.AvailableRole.Length > 1)
