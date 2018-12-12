@@ -16,7 +16,7 @@ public class BossManager : MonoBehaviour {
     public float maledictionTime = 10f;
     public float hurlementTime = 10f;
     public float ultrasonTime = 10f;
-    public float invincibiliteTime = 10f;
+    public float invincibiliteTime = 4f;
     public float brouillardTime = 10f;
     public float ultralaserTime = 10f;
     public float blocGiveHarmony = 10f;
@@ -132,6 +132,8 @@ public class BossManager : MonoBehaviour {
                     break;
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
+                animatorBoss.SetTrigger("invincibilité");
+                animatorBoss.SetBool("invincibilitéLoop", true);
                 goInvincibilite = true;
                 StartCoroutine(InvincibiliteTime());
                 break;
@@ -161,6 +163,7 @@ public class BossManager : MonoBehaviour {
     IEnumerator InvincibiliteTime()
     {
         yield return new WaitForSeconds(invincibiliteTime);
+        animatorBoss.SetBool("invincibilitéLoop", false);
         goInvincibilite = false;
     }
     IEnumerator UltralaserTime()

@@ -44,9 +44,9 @@ public class Partition : MonoBehaviour {
 
     public GameObject brouillard;
 
-    public SpriteRenderer RoleSprite;
-    public SpriteRenderer BackgroundRoleSprite;
-    public Progress RoleProgress;
+    public SpriteRenderer roleSprite;
+    public SpriteRenderer backgroundRoleSprite;
+    public SpriteRenderer BackgroundSteleSprite;
 
     private Role currentRole;
     public Role CurrentRole
@@ -55,7 +55,8 @@ public class Partition : MonoBehaviour {
         set
         {
             currentRole = value;
-            RoleSprite.sprite = currentRole.RoleSprite;
+            roleSprite.sprite = currentRole.RoleSprite;
+            backgroundRoleSprite.sprite = currentRole.RoleSprite;
             /*
             RoleProgress.emptyTex = RoleSprite.sprite.texture;
             RoleProgress.fullTex = RoleSprite.sprite.texture;
@@ -252,6 +253,11 @@ public class Partition : MonoBehaviour {
 
     public void ChangeRole(Role role)
     {
-        BackgroundRoleSprite.sprite = role.BackgroundStele;
+        BackgroundSteleSprite.sprite = role.BackgroundStele;
+    }
+
+    public void ChargeRole()
+    {
+
     }
 }
