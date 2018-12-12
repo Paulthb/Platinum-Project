@@ -53,14 +53,12 @@ public class BarManager : MonoBehaviour {
 
     public void HitBoss(int damage)
     {
-        if (BossManager.Instance.goUltralaser)
-            noteNumber += damage;
-
-        attackHitNumber += 1;
         if (ManaBar.Instance.manaPoint > 50)
             BossBar.Instance.TakeDamage(damage);
         else Debug.Log("Pas assez de mana pour attaquer");
         //Debug.Log("Le boss a perdu " + damage + " pts de vie");
+
+        attackHitNumber++;
         if (attackHitNumber == 3)
         {
             ManaBar.Instance.Attack();
@@ -78,9 +76,9 @@ public class BarManager : MonoBehaviour {
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Perfect et que le role est mana
                     GiveMana(30);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
-                    GiveArmor(30);
+                    GiveArmor(15);
                 else if(!BossManager.Instance.goInvincibilite)
-                    HitBoss(30);        // si la note est Perfect et que le role est attack
+                    HitBoss(200);        // si la note est Perfect et que le role est attack
                 break;
 
             case PartitionManager.Rank.GOOD:
@@ -89,9 +87,9 @@ public class BarManager : MonoBehaviour {
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Good et que le role est mana
                     GiveMana(20);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
-                    GiveArmor(20);
+                    GiveArmor(10);
                 else if (!BossManager.Instance.goInvincibilite)
-                    HitBoss(20);        // si la note est Good et que le role est attack
+                    HitBoss(100);        // si la note est Good et que le role est attack
                 break;
 
             case PartitionManager.Rank.BAD:
@@ -100,9 +98,9 @@ public class BarManager : MonoBehaviour {
                 if (role.RoleState == Role.RoleStates.Mana)      // si la note est Bad et que le role est mana
                     GiveMana(10);
                 else if (role.RoleState == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
-                    GiveArmor(10);
+                    GiveArmor(5);
                 else if (!BossManager.Instance.goInvincibilite)
-                    HitBoss(10);        // si la note est Bad et que le role est attack
+                    HitBoss(50);        // si la note est Bad et que le role est attack
                 break;
 
             case PartitionManager.Rank.MISS:    // si la note est Miss

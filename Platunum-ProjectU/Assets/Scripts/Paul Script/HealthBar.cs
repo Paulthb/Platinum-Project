@@ -102,24 +102,6 @@ public class HealthBar : MonoBehaviour {
             armorPoint = maxArmorPoint;
             Debug.Log("full armor");
         }
-        //UpdateBar();
-    }
-
-    private void UpdateBar()//inutile maintenant
-    {
-        float ratio;
-
-        if (!isArmor)
-        {
-            ratio = healthPoint / maxHealthPoint;
-            healthBar.fillAmount = ratio;
-        }
-        else
-        {
-            ratio = armorPoint / maxArmorPoint;
-            armorBar.fillAmount = ratio;
-        }
-        UpdateIsArmor();
     }
 
     public void TakeDamage(int damagePt)
@@ -148,11 +130,6 @@ public class HealthBar : MonoBehaviour {
         }
 
         UpdateIsArmor();
-        //UpdateBar();
-    }
-
-    private void TakeArmor()
-    {
     }
 
     private void UpdateIsArmor()

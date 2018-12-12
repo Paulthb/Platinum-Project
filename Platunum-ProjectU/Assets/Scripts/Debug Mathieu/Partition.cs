@@ -51,12 +51,16 @@ public class Partition : MonoBehaviour {
 
     private int CountNote = 0;
     public int maxNbNote;
+    public int powerStack = 0;
+    private int attackHitNumber = 0;
+
     private Role currentRole;
     public Role CurrentRole
     {
         get { return currentRole; }
         set
         {
+            RoleFire();
             currentRole = value;
             roleSprite.sprite = currentRole.RoleSprite;
             backgroundRoleSprite.sprite = currentRole.RoleSprite;
@@ -66,7 +70,7 @@ public class Partition : MonoBehaviour {
             RoleProgress.pos = RoleSprite.transform.position;
             RoleProgress.size = RoleSprite.transform.localScale;
             */
-            Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
+            //Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
         }
     }
 
@@ -103,6 +107,8 @@ public class Partition : MonoBehaviour {
         {
         }
         tracksNode = songInfo.partitions[partitionId].tracks; //keep a reference of the tracks
+
+        roleSprite.fillAmount = 0;
     }
 
     private void Update()
@@ -125,7 +131,7 @@ public class Partition : MonoBehaviour {
                 MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
                 if (nextNoteIsStone)
                 {
-                    Debug.Log("next note is stone");
+                    
                     musicNode.isStone = true;
                     nextNoteIsStone = false;
                 }
@@ -187,23 +193,16 @@ public class Partition : MonoBehaviour {
             //Note porté minimum
             if(offsetY < partitionManager.badOffsetY)
             {
-                CountNote++;
-                //if countnote >= MaxNbNote
-                //  100%
-                /* else if(currentRole.RoleState != Role.RoleStates.Attack)
-                {
-                    //Add intermediaire gain
-                    //10% de gain
-                }*/
-
+                
                 if (frontNode.isStone)
                     BossManager.Instance.TriggerNextAttackStone();
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
+                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
                     //print("Perfect");
+                    ChargeRole(PartitionManager.Rank.PERFECT);
 
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
@@ -215,9 +214,9 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
+                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
                     //print("Good");
-
+                    ChargeRole(PartitionManager.Rank.GOOD);
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
 
@@ -228,9 +227,9 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
-                    BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
+                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
                     //print("Bad");
-
+                    ChargeRole(PartitionManager.Rank.BAD);
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
 
@@ -242,13 +241,16 @@ public class Partition : MonoBehaviour {
             {
                 //trop tot / trop tard
                 //Baisse d'unisson
-                BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+                //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+                ChargeRole(PartitionManager.Rank.MISS);
             }
         }
+        /*
         else
         {
-            BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
-        }
+            //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+            ChargeRole(PartitionManager.Rank.MISS);
+        }*/
     }
 
     public void ShowBrouillard(float duration)
@@ -268,8 +270,113 @@ public class Partition : MonoBehaviour {
         BackgroundSteleSprite.sprite = role.BackgroundStele;
     }
 
-    public void ChargeRole()
+    public void ChargeRole(PartitionManager.Rank rank)
     {
+        CountNote++;
+        attackHitNumber++;
+        roleSprite.fillAmount += 0.1f;
 
+        if (CountNote <= maxNbNote)
+        {
+            switch (rank)
+            {
+                case PartitionManager.Rank.PERFECT:
+                    if (BossManager.Instance.goMalediction)
+                        HealthBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                    {
+                        Debug.Log("powerStack up");
+                        powerStack += 200;
+                        if (attackHitNumber == 3)
+                        {
+                            ManaBar.Instance.Attack();
+                            attackHitNumber = 0;
+                        }
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Mana)      // si la note est Perfect et que le role est mana
+                    {
+                        powerStack += 30;
+                        ManaBar.Instance.WinMana(30);
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
+                    {
+                        powerStack += 15;
+                        HealthBar.Instance.WinArmor(15);
+                    }
+                    break;
+
+                case PartitionManager.Rank.GOOD:
+                    if (BossManager.Instance.goMalediction)
+                        HealthBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                    {
+                        Debug.Log("powerStack up");
+                        powerStack += 200;
+                        if (attackHitNumber == 3)
+                        {
+                            ManaBar.Instance.Attack();
+                            attackHitNumber = 0;
+                        }
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Mana)      // si la note est Good et que le role est mana
+                    {
+                        powerStack += 100;
+                        ManaBar.Instance.WinMana(20);
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
+                    {
+                        powerStack += 10;
+                        HealthBar.Instance.WinArmor(10);
+                    }
+                    break;
+
+                case PartitionManager.Rank.BAD:
+                    if (BossManager.Instance.goMalediction)
+                        HealthBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                    {
+                        Debug.Log("powerStack up");
+                        powerStack += 50;
+                        if (attackHitNumber == 3)
+                        {
+                            ManaBar.Instance.Attack();
+                            attackHitNumber = 0;
+                        }
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Mana)      // si la note est Bad et que le role est mana
+                    {
+                        powerStack += 10;
+                        ManaBar.Instance.WinMana(10);
+                    }
+                    else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
+                    {
+                        powerStack += 5;
+                        HealthBar.Instance.WinArmor(5);
+                    }
+                    break;
+
+                case PartitionManager.Rank.MISS:    // si la note est Miss
+                    HealthBar.Instance.TakeDamage(8);
+                    break;
+            }
+            if (CountNote == maxNbNote)
+                RoleFire();
+        }
+        
+    }
+
+    public void RoleFire()
+    {
+        Debug.Log(maxNbNote);
+        if (currentRole.RoleState == Role.RoleStates.Attack)
+            BossBar.Instance.TakeDamage(powerStack);
+        else if (currentRole.RoleState == Role.RoleStates.Mana)
+            ManaBar.Instance.WinMana(powerStack);
+        else if (currentRole.RoleState == Role.RoleStates.Defence)
+            HealthBar.Instance.WinArmor(powerStack);
+
+        powerStack = 0;
+        CountNote = 0;
+        roleSprite.fillAmount = 0;
     }
 }

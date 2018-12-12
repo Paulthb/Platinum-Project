@@ -83,7 +83,7 @@ public class BossManager : MonoBehaviour {
 
     public void Attack (BossAttack AttackBoss)
     {
-        Debug.Log(AttackBoss);
+        //Debug.Log(AttackBoss);
         switch (AttackBoss)
         {
             case BossAttack.MALEDICTION:
