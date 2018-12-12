@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 4415202573161280}
   - component: {fileID: 212763504018933968}
   m_Layer: 0
-  m_Name: Second Role
+  m_Name: BackgroundStele
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
