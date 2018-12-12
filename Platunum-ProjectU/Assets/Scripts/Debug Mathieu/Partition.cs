@@ -276,7 +276,6 @@ public class Partition : MonoBehaviour {
         CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
-        Debug.Log("current:"+CountNote+"/max:"+maxNbNote+"/ratio:" + (CountNote / maxNbNote));
         if (CountNote <= maxNbNote)
         {
             switch (rank)

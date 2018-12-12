@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour {
     private AudioSource myAudio;
     public Animator animatorBoss;
 
+    public float StackDmg;
     public int damageCoupDeQueue = 20;
     public int noteNb;
     public float volumeDownUltrason = 0.16f;
@@ -18,8 +19,14 @@ public class BossManager : MonoBehaviour {
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 4f;
     public float brouillardTime = 10f;
-    public float ultralaserTime = 10f;
     public float blocGiveHarmony = 10f;
+
+    //Ultralaser
+    [Header("Ultralaser Settings")]
+    public float ultralaserTime = 20f;
+    public int resistUltralaser = 3500;
+    public int ultralaserDamage = 250;
+    private float ultralaserTimer = 0;
 
     public List<AttackBoss> ListAttack;
     public Queue<AttackBoss> QueueAttack;
@@ -66,13 +73,17 @@ public class BossManager : MonoBehaviour {
 
         if (goUltralaser)
         {
-            noteNb = BarManager.Instance.noteNumber;
-            if (noteNb >= 3000)
+            ultralaserTimer += Time.deltaTime;
+            if (StackDmg >= resistUltralaser)
+            {
                 //lancer animation de réduction de cast
                 goUltralaser = false;
-            else
+                StackDmg = 0;
+                ultralaserTimer = 0;
+            }
+            else if(ultralaserTimer >= ultralaserTime)
             {
-                BarManager.Instance.HitPlayer(50);
+                HealthBar.Instance.TakeDamage(50);
                 //lancer animation de réduction de cast
                 goUltralaser = false; 
             }
@@ -139,7 +150,7 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.QUEUE:
                 //Coup de queue qui fait des dégâts à l'équipe
-                BarManager.Instance.HitPlayer(damageCoupDeQueue);
+                HealthBar.Instance.TakeDamage(damageCoupDeQueue);
                 break;
         }
     }
@@ -187,7 +198,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
-            BarManager.Instance.GiveHarmonie(blocGiveHarmony);
+            HarmonieBar.Instance.TakeHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {
