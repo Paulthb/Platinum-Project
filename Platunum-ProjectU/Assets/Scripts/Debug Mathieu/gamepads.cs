@@ -31,6 +31,8 @@ public class gamepads
         string[] val = Serial.ReadLine().Split(',');
         for (int i = 0; i < val.Length; i++)
         {
+            if(i==4)
+                Debug.Log("pads n°" + portNum + "/ Value:"+val[i]);
             btn[i] = int.Parse(val[i]);
         }
     }
