@@ -26,14 +26,6 @@ MonoBehaviour:
   partitions:
   - tracks:
     - notes:
-      - note: 0.25
-        times: 0
-      - note: 0.5
-        times: 0
-      - note: 0.75
-        times: 0
-      - note: 1
-        times: 0
       - note: 9.75
         times: 0
       - note: 14.5
