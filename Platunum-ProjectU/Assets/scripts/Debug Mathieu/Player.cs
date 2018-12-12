@@ -111,9 +111,15 @@ public class Player : MonoBehaviour
     public void SwitchRole()
     {
         if (partition.CurrentRole == Personnage.AvailableRole[0])
+        {
             partition.CurrentRole = Personnage.AvailableRole[1];
+            partition.ChangeRole(Personnage.AvailableRole[0]);
+        }
         else
+        {
             partition.CurrentRole = Personnage.AvailableRole[0];
+            partition.ChangeRole(Personnage.AvailableRole[1]);
+        }
     }
 
     public void SetPartition(Partition partition)

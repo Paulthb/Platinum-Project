@@ -7,4 +7,5 @@ public class Role : ScriptableObject {
     public enum RoleStates { Attack, Defence, Mana};
     public RoleStates RoleState;
     public Sprite RoleSprite;
+    public Sprite BackgroundStele;
 }

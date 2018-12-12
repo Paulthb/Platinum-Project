@@ -45,6 +45,7 @@ public class Partition : MonoBehaviour {
     public GameObject brouillard;
 
     public SpriteRenderer RoleSprite;
+    public SpriteRenderer BackgroundRoleSprite;
     public Progress RoleProgress;
 
     private Role currentRole;
@@ -67,7 +68,7 @@ public class Partition : MonoBehaviour {
 
     private void Start()
     {
-        TrackCount = SongInfoCustom.Instance.currentSong.partitions[partitionId - 1].tracks.Length;
+        TrackCount = SongInfoCustom.Instance.currentSong.partitions[partitionId].tracks.Length;
         
         trackNextIndices = new int[TrackCount];
         TracksColors = new Color[TrackCount];
@@ -97,7 +98,7 @@ public class Partition : MonoBehaviour {
         for (int i = 0; i < TrackCount; i++)
         {
         }
-        tracksNode = songInfo.partitions[partitionId-1].tracks; //keep a reference of the tracks
+        tracksNode = songInfo.partitions[partitionId].tracks; //keep a reference of the tracks
     }
 
     private void Update()
@@ -247,5 +248,10 @@ public class Partition : MonoBehaviour {
     {
         yield return new WaitForSeconds(duration);
         brouillard.SetActive(false);
+    }
+
+    public void ChangeRole(Role role)
+    {
+        BackgroundRoleSprite.sprite = role.BackgroundStele;
     }
 }

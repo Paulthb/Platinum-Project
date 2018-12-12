@@ -83,6 +83,10 @@ public class PartitionManager : MonoBehaviour {
             partition.partitionId = player.Personnage.idPartition;
             player.SetPartition(partition);
             partition.CurrentRole = player.Personnage.AvailableRole[0];
+            if (player.Personnage.AvailableRole.Length > 1)
+                partition.ChangeRole(player.Personnage.AvailableRole[1]);
+            else
+                partition.transform.Find("BackgroundStele").gameObject.SetActive(false);
             offsetX += PartitionSpace;
         }
     }
