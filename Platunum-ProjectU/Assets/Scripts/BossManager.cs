@@ -20,7 +20,7 @@ public class BossManager : MonoBehaviour {
     public float invincibiliteTime = 4f;
     public float brouillardTime = 10f;
     public float blocGiveHarmony = 10f;
-
+    public int damageLanceFlamme = 100;
     //Ultralaser
     [Header("Ultralaser Settings")]
     public float ultralaserTime = 20f;
@@ -76,6 +76,7 @@ public class BossManager : MonoBehaviour {
             ultralaserTimer += Time.deltaTime;
             if (StackDmg >= resistUltralaser)
             {
+                Debug.Log("Ultralaser Cancel");
                 //lancer animation de réduction de cast
                 goUltralaser = false;
                 StackDmg = 0;
@@ -83,7 +84,8 @@ public class BossManager : MonoBehaviour {
             }
             else if(ultralaserTimer >= ultralaserTime)
             {
-                HealthBar.Instance.TakeDamage(50);
+                Debug.Log("Ultralaser Success");
+                HealthBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
             }
@@ -151,7 +153,7 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
-                BarManager.Instance.HitPlayer(damageLanceFlamme);
+                HealthBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
         }
     }
