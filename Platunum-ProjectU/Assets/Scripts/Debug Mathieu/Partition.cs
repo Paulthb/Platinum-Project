@@ -49,8 +49,8 @@ public class Partition : MonoBehaviour {
     public Image backgroundRoleSprite;
     public SpriteRenderer BackgroundSteleSprite;
 
-    private int CountNote = 0;
-    public int maxNbNote;
+    private float CountNote = 0;
+    public float maxNbNote;
     public int powerStack = 0;
     private int attackHitNumber = 0;
 
@@ -60,10 +60,11 @@ public class Partition : MonoBehaviour {
         get { return currentRole; }
         set
         {
-            RoleFire();
+            if(currentRole != null)
+                RoleFire();
             currentRole = value;
             roleSprite.sprite = currentRole.RoleSprite;
-            backgroundRoleSprite.sprite = currentRole.RoleSprite;
+            backgroundRoleSprite.sprite = currentRole.RoleSpriteVide;
             /*
             RoleProgress.emptyTex = RoleSprite.sprite.texture;
             RoleProgress.fullTex = RoleSprite.sprite.texture;
@@ -274,8 +275,8 @@ public class Partition : MonoBehaviour {
     {
         CountNote++;
         attackHitNumber++;
-        roleSprite.fillAmount += 0.1f;
-
+        roleSprite.fillAmount = (CountNote / maxNbNote);
+        Debug.Log("current:"+CountNote+"/max:"+maxNbNote+"/ratio:" + (CountNote / maxNbNote));
         if (CountNote <= maxNbNote)
         {
             switch (rank)
@@ -359,15 +360,13 @@ public class Partition : MonoBehaviour {
                     HealthBar.Instance.TakeDamage(8);
                     break;
             }
-            if (CountNote == maxNbNote)
-                RoleFire();
         }
-        
+        if (CountNote == maxNbNote)
+            RoleFire();
     }
 
     public void RoleFire()
     {
-        Debug.Log(maxNbNote);
         if (currentRole.RoleState == Role.RoleStates.Attack)
             BossBar.Instance.TakeDamage(powerStack);
         else if (currentRole.RoleState == Role.RoleStates.Mana)
