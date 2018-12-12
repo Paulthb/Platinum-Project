@@ -199,6 +199,8 @@ MonoBehaviour:
         times: 0
       - note: 388.5
         times: 0
+      - note: 409.5
+        times: 0
     - notes:
       - note: 14
         times: 0
@@ -392,6 +394,8 @@ MonoBehaviour:
         times: 0
       - note: 391.5
         times: 0
+      - note: 410
+        times: 0
     - notes:
       - note: 16
         times: 0
@@ -553,6 +557,12 @@ MonoBehaviour:
         times: 0
       - note: 396.5
         times: 0
+      - note: 404
+        times: 0
+      - note: 407
+        times: 0
+      - note: 409
+        times: 0
     - notes:
       - note: 12
         times: 0
@@ -649,6 +659,8 @@ MonoBehaviour:
       - note: 393
         times: 0
       - note: 397.5
+        times: 0
+      - note: 402
         times: 0
   - tracks:
     - notes: []
