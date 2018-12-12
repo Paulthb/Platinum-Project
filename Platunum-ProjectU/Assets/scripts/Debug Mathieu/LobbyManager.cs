@@ -80,9 +80,17 @@ namespace Manager
 	    // Update is called once per frame
 	    void Update () {
             //Par chaque touche filter on regarde l'etat
-            Debug.Log("update");
+            //Debug.Log("update");
             for (int i = 0; i < Gamepads.Length; i++)
+            {
                 Gamepads[i].Update();
+                /*Debug.Log("" +
+                            Gamepads[i].GetKeyDown(0) +
+                            Gamepads[i].GetKeyDown(1) +
+                            Gamepads[i].GetKeyDown(2) +
+                            Gamepads[i].GetKeyDown(3) +
+                            Gamepads[i].GetKeyDown(4));*/
+            }
             for (int i = 0; i < Gamepads.Length; i++)
             {
                 if(!playerManager.IsPlayerAlreadyInLobby(Gamepads[i].portNum, true))

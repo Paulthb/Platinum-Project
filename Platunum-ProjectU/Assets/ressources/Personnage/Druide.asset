@@ -20,7 +20,7 @@ MonoBehaviour:
   AvailableRole:
   - {fileID: 11400000, guid: eb63f5d94e8e15949be7db473fe588eb, type: 2}
   - {fileID: 11400000, guid: f65540563ffa6a843b97461df1b8965e, type: 2}
-  idPartition: 1
+  idPartition: 0
   cadreSprite: {fileID: 21300002, guid: b39eac53c273e4e4e993e2fda75cd9c3, type: 3}
   spriteReady: {fileID: 21300002, guid: e94fa8ef6fd57734a8b81d16298ee173, type: 3}
-  PartitionJaugeMax: 0
+  PartitionJaugeMax: 10

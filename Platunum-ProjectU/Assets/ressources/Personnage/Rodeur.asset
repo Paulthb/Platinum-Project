@@ -23,4 +23,4 @@ MonoBehaviour:
   idPartition: 1
   cadreSprite: {fileID: 21300006, guid: b39eac53c273e4e4e993e2fda75cd9c3, type: 3}
   spriteReady: {fileID: 21300006, guid: e94fa8ef6fd57734a8b81d16298ee173, type: 3}
-  PartitionJaugeMax: 0
+  PartitionJaugeMax: 10

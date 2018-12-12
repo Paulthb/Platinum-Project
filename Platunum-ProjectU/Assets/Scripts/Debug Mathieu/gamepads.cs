@@ -14,6 +14,8 @@ public class gamepads
     public gamepads(int portNum, int speed = 9600)
     {
         btn = new int[5];
+        for (int i = 0; i < btn.Length; i++)
+            btn[i] = 1;
         btnReleased = new bool[5];
         for (int i = 0; i < btnReleased.Length; i++)
             btnReleased[i] = true;
@@ -32,11 +34,11 @@ public class gamepads
         }
         try
         {
-             String[] val = Serial.ReadLine().Split(',');
+            String[] val = Serial.ReadLine().Split(',');
             for (int i = 0; i < val.Length; i++)
             {
-                if (i == 4)
-                    Debug.Log("pads n°" + portNum + "/ Value:" + val[i]);
+                //if (i == 4)
+                //    Debug.Log("pads n°" + portNum + "/ Value:" + val[i]);
                 btn[i] = int.Parse(val[i]);
             }
         }
@@ -44,6 +46,7 @@ public class gamepads
         {
             for (int i = 0; i < btn.Length; i++)
             {
+                Debug.Log("catched");
                 btn[i] = 1;
             }
         }
