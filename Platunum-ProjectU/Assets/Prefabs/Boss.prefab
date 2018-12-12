@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Conductor: {fileID: 0}
   animatorBoss: {fileID: 0}
-  damageCoupDeQueue: 20
+  damageLanceFlamme: 20
   noteNb: 0
   volumeDownUltrason: 0.16
   maledictionTime: 10
@@ -85,7 +85,7 @@ MonoBehaviour:
   blocGiveHarmony: 10
   ListAttack:
   - Time: 5
-    Attack: 6
+    Attack: 7
   - Time: 20
     Attack: 4
   - Time: 35

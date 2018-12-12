@@ -10,7 +10,7 @@ public class BossManager : MonoBehaviour {
     private AudioSource myAudio;
     public Animator animatorBoss;
 
-    public int damageCoupDeQueue = 20;
+    public int damageLanceFlamme = 20;
     public int noteNb;
     public float volumeDownUltrason = 0.16f;
     public float maledictionTime = 10f;
@@ -40,7 +40,7 @@ public class BossManager : MonoBehaviour {
         }
     }
 
-    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, QUEUE };
+    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, LANCEFLAMME };
 
     private BossAttack attack;
 
@@ -137,9 +137,10 @@ public class BossManager : MonoBehaviour {
                 goInvincibilite = true;
                 StartCoroutine(InvincibiliteTime());
                 break;
-            case BossAttack.QUEUE:
-                //Coup de queue qui fait des dégâts à l'équipe
-                BarManager.Instance.HitPlayer(damageCoupDeQueue);
+            case BossAttack.LANCEFLAMME:
+                //Lance flamme qui fait des dégâts à l'équipe
+                animatorBoss.SetTrigger("LanceFlamme");
+                BarManager.Instance.HitPlayer(damageLanceFlamme);
                 break;
         }
     }
