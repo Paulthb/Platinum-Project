@@ -79,13 +79,13 @@ MonoBehaviour:
   maledictionTime: 10
   hurlementTime: 10
   ultrasonTime: 10
-  invincibiliteTime: 10
+  invincibiliteTime: 4
   brouillardTime: 10
   ultralaserTime: 10
   blocGiveHarmony: 10
   ListAttack:
   - Time: 5
-    Attack: 4
+    Attack: 6
   - Time: 20
     Attack: 4
   - Time: 35
