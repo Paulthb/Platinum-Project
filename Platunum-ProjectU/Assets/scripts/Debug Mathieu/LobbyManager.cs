@@ -15,8 +15,15 @@ namespace Manager
         public float ReadyTimeHold;
         public float timer;
         public string SceneToLoad;
+        private float hpTeam = 0;
+        private float shieldTeam = 0;
+        private float manaTeam = 0;
+        private bool barTeamActive = false;
         //public bool StartGameBool = false;
         //private static bool created = false;
+        public Transform HPBarTeam;
+        public Transform ShieldBarTeam;
+        public Transform ManaBarTeam;
 
         //SERIALPORT
         public gamepads[] Gamepads;
@@ -61,7 +68,14 @@ namespace Manager
             }
 
             SelectedList = new bool[PersonnageAvailable.Length];
-        }
+
+            LoadRatioStatsToBar(HPBarTeam, hpTeam, 950);
+            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
+            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
+            HPBarTeam.gameObject.SetActive(true);
+            ShieldBarTeam.gameObject.SetActive(true);
+            ManaBarTeam.gameObject.SetActive(true);
+    }
 	
 	    // Update is called once per frame
 	    void Update () {
@@ -168,6 +182,11 @@ namespace Manager
                 }
             }
             CheckReadyPlayer();
+        }
+
+        private void CountTeamStats()
+        {
+            
         }
 
         private void CheckReadyPlayer()
@@ -306,11 +325,13 @@ namespace Manager
             //ajoute la nouvelle classe au joueur
             SelectedList[newPerso] = true;
             player.Personnage = PersonnageAvailable[newPerso];
+
             updateUI(player);
         }
 
         private void updateUI(Player player)
         {
+            hpTeam = shieldTeam = manaTeam = 0;
             //UI Update
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
             //LoadSpriteCadre
@@ -327,6 +348,28 @@ namespace Manager
             
             //SetActive
             PlayerUI[player.id - 1].gameObject.SetActive(true);
+
+            if (PlayerManager.Instance.GetPlayersCount() == 1)
+            {
+                hpTeam = player.Personnage.HP;
+                manaTeam = player.Personnage.Mana;
+                shieldTeam = player.Personnage.Shield;
+                
+            }
+            else if(PlayerManager.Instance.GetPlayersCount() > 1){
+                List<Player> listPlayerVisible = PlayerManager.Instance.GetPlayers();
+                foreach(Player playerVisible in listPlayerVisible)
+                {
+                    hpTeam += playerVisible.Personnage.HP;
+                    shieldTeam += playerVisible.Personnage.Shield;
+                    manaTeam += playerVisible.Personnage.Mana;
+                }
+                //Debug.Log(hpTeam + " " + manaTeam + " " + shieldTeam);
+            }
+
+            LoadRatioStatsToBar(HPBarTeam, hpTeam, 950);
+            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
+            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
         }
         //déclenche le chargement du niveau
         /*
