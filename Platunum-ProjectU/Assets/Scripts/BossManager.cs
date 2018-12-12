@@ -47,7 +47,7 @@ public class BossManager : MonoBehaviour {
         }
     }
 
-    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, QUEUE };
+    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, LANCEFLAMME };
 
     private BossAttack attack;
 
@@ -85,7 +85,7 @@ public class BossManager : MonoBehaviour {
             {
                 HealthBar.Instance.TakeDamage(50);
                 //lancer animation de réduction de cast
-                goUltralaser = false; 
+                goUltralaser = false;
             }
         }
 
@@ -119,7 +119,7 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.ULTRALASER:
                 //le boss prepare une boule grandissante
-                //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule 
+                //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule
                 //Sinon l'attaque du boss est annulée
                 noteNb = 0;
                 goUltralaser = true;
@@ -148,9 +148,10 @@ public class BossManager : MonoBehaviour {
                 goInvincibilite = true;
                 StartCoroutine(InvincibiliteTime());
                 break;
-            case BossAttack.QUEUE:
-                //Coup de queue qui fait des dégâts à l'équipe
-                HealthBar.Instance.TakeDamage(damageCoupDeQueue);
+            case BossAttack.LANCEFLAMME:
+                //Lance flamme qui fait des dégâts à l'équipe
+                animatorBoss.SetTrigger("LanceFlamme");
+                BarManager.Instance.HitPlayer(damageLanceFlamme);
                 break;
         }
     }
