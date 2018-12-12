@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEditor;
 
 public class editor : MonoBehaviour {
     private bool PlayMode = false;
@@ -473,6 +474,17 @@ public class editor : MonoBehaviour {
         }
         PlayersPartition[CurrentIdPartition] = newPartition;
         SongInfoCustom.Instance.currentSong.partitions[CurrentIdPartition] = newPartition;
+        /*
+        SongInfo newSong = new SongInfo();
+        string path = AssetDatabase.GetAssetPath(SongInfoCustom.Instance.currentSong);
+        AssetDatabase.DeleteAsset(path);
+        AssetDatabase.CreateAsset(newSong, path);
+        */
+        EditorUtility.CopySerialized(SongInfoCustom.Instance.currentSong, SongInfoCustom.Instance.currentSong);
+        AssetDatabase.Refresh();
+        AssetDatabase.SaveAssets();
+
+        //AssetDatabase.GetAssetPath(SongInfoCustom.Instance.currentSong);
     }
 
     public void TrackLengthChange()
