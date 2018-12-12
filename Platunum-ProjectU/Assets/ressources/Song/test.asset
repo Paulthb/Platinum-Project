@@ -499,6 +499,10 @@ MonoBehaviour:
         times: 0
       - note: 409.5
         times: 0
+      - note: 411
+        times: 0
+      - note: 411.25
+        times: 0
     - notes:
       - note: 14
         times: 0
@@ -690,6 +694,20 @@ MonoBehaviour:
         times: 0
       - note: 410
         times: 0
+      - note: 410.75
+        times: 0
+      - note: 411
+        times: 0
+      - note: 411.25
+        times: 0
+      - note: 411.5
+        times: 0
+      - note: 411.75
+        times: 0
+      - note: 412
+        times: 0
+      - note: 412.25
+        times: 0
     - notes:
       - note: 16
         times: 0
@@ -859,6 +877,20 @@ MonoBehaviour:
         times: 0
       - note: 409
         times: 0
+      - note: 410.75
+        times: 0
+      - note: 411
+        times: 0
+      - note: 411.25
+        times: 0
+      - note: 411.5
+        times: 0
+      - note: 411.75
+        times: 0
+      - note: 412
+        times: 0
+      - note: 412.25
+        times: 0
     - notes:
       - note: 12
         times: 0
@@ -961,6 +993,10 @@ MonoBehaviour:
       - note: 397.5
         times: 0
       - note: 402
+        times: 0
+      - note: 411
+        times: 0
+      - note: 411.25
         times: 0
   - tracks:
     - notes: []
