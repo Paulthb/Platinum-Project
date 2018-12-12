@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Partition : MonoBehaviour {
 
@@ -40,14 +41,16 @@ public class Partition : MonoBehaviour {
     private PartitionManager partitionManager;
     private SongInfo songInfo;
 
-    private int TrackCount;
+    private int TrackCount; 
 
     public GameObject brouillard;
 
-    public SpriteRenderer roleSprite;
-    public SpriteRenderer backgroundRoleSprite;
+    public Image roleSprite;
+    public Image backgroundRoleSprite;
     public SpriteRenderer BackgroundSteleSprite;
 
+    private int CountNote = 0;
+    public int maxNbNote;
     private Role currentRole;
     public Role CurrentRole
     {
@@ -184,6 +187,15 @@ public class Partition : MonoBehaviour {
             //Note porté minimum
             if(offsetY < partitionManager.badOffsetY)
             {
+                CountNote++;
+                //if countnote >= MaxNbNote
+                //  100%
+                /* else if(currentRole.RoleState != Role.RoleStates.Attack)
+                {
+                    //Add intermediaire gain
+                    //10% de gain
+                }*/
+
                 if (frontNode.isStone)
                     BossManager.Instance.TriggerNextAttackStone();
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit

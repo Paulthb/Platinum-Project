@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO.Ports;
+using System;
 
 public class gamepads
 {
     public int portNum;
-    SerialPort Serial;// = new SerialPort("COM3", 9600);
+    SerialPort Serial;
     public int[] btn;
     public bool[] btnReleased;
 
@@ -17,6 +18,7 @@ public class gamepads
         for (int i = 0; i < btnReleased.Length; i++)
             btnReleased[i] = true;
         Serial = new SerialPort("COM"+portNum, speed);
+        Serial.ReadTimeout = 50;
         this.portNum = portNum; 
         //StartCoroutine(delais());
     }
@@ -28,12 +30,22 @@ public class gamepads
         {
             Serial.Open();
         }
-        string[] val = Serial.ReadLine().Split(',');
-        for (int i = 0; i < val.Length; i++)
+        try
         {
-            if(i==4)
-                Debug.Log("pads n°" + portNum + "/ Value:"+val[i]);
-            btn[i] = int.Parse(val[i]);
+             String[] val = Serial.ReadLine().Split(',');
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (i == 4)
+                    Debug.Log("pads n°" + portNum + "/ Value:" + val[i]);
+                btn[i] = int.Parse(val[i]);
+            }
+        }
+        catch(TimeoutException e)
+        {
+            for (int i = 0; i < btn.Length; i++)
+            {
+                btn[i] = 1;
+            }
         }
     }
 
@@ -68,5 +80,10 @@ public class gamepads
         {
             return false;
         }
+    }
+
+    public void SetLed(int ledId)
+    {
+        Serial.Write(ledId.ToString());
     }
 }

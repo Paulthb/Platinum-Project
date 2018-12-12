@@ -66,15 +66,17 @@ namespace Manager
 	    // Update is called once per frame
 	    void Update () {
             //Par chaque touche filter on regarde l'etat
+            Debug.Log("update");
+            for (int i = 0; i < Gamepads.Length; i++)
+                Gamepads[i].Update();
             for (int i = 0; i < Gamepads.Length; i++)
             {
-                Gamepads[i].Update();
                 if(!playerManager.IsPlayerAlreadyInLobby(Gamepads[i].portNum, true))
                 {
                     if (Gamepads[i].GetKeyDown(4))
                     {
                         //add player
-                        Debug.Log(Gamepads[i].GetKeyDown(4));
+                        //Debug.Log(Gamepads[i].GetKeyDown(4));
                         AddPlayerToLobby(Gamepads[i].portNum, Gamepads[i]);
                     }
                 }
@@ -267,6 +269,7 @@ namespace Manager
             //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
 
             updateUI(player);
+            player.pads.SetLed(player.id);
         }
 
 

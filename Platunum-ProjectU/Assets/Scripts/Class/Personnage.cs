@@ -14,4 +14,5 @@ public class Personnage : ScriptableObject {
     public int idPartition;
     public Sprite cadreSprite;
     public Sprite spriteReady;
+    public int PartitionJaugeMax;
 }
