@@ -26,60 +26,362 @@ MonoBehaviour:
   partitions:
   - tracks:
     - notes:
-      - note: 9.75
+      - note: 10
         times: 0
-      - note: 14.5
-        times: 0
-      - note: 17.5
-        times: 0
-      - note: 26.5
-        times: 0
-      - note: 33
-        times: 0
-    - notes:
-      - note: 10.25
+      - note: 15
         times: 0
       - note: 18
         times: 0
       - note: 19
         times: 0
-      - note: 26
-        times: 0
-      - note: 27
-        times: 0
-      - note: 29
-        times: 0
-      - note: 30
-        times: 0
-      - note: 33.5
-        times: 0
-      - note: 37.5
-        times: 0
-    - notes:
-      - note: 10.75
-        times: 0
-      - note: 14
-        times: 0
-      - note: 18.5
-        times: 0
-      - note: 22.5
-        times: 0
-      - note: 25.5
-        times: 0
-      - note: 29.5
+      - note: 27.5
         times: 0
       - note: 34
         times: 0
-      - note: 38
+      - note: 39
+        times: 0
+      - note: 42
+        times: 0
+      - note: 50
+        times: 0
+      - note: 66
+        times: 0
+      - note: 72
+        times: 0
+      - note: 79.5
+        times: 0
+      - note: 80.5
+        times: 0
+      - note: 84.5
+        times: 0
+      - note: 88.5
+        times: 0
+      - note: 89.5
+        times: 0
+      - note: 93.5
+        times: 0
+      - note: 97
+        times: 0
+      - note: 100
+        times: 0
+      - note: 104
+        times: 0
+      - note: 108
+        times: 0
+      - note: 111.5
+        times: 0
+      - note: 121
+        times: 0
+      - note: 125.5
+        times: 0
+      - note: 128.5
+        times: 0
+      - note: 131
+        times: 0
+      - note: 133
+        times: 0
+      - note: 135.5
+        times: 0
+      - note: 143
+        times: 0
+      - note: 151
+        times: 0
+      - note: 159
+        times: 0
+      - note: 163
+        times: 0
+      - note: 167
+        times: 0
+      - note: 175
+        times: 0
+      - note: 183
+        times: 0
+      - note: 187
+        times: 0
+      - note: 195
+        times: 0
+      - note: 198
+        times: 0
+      - note: 206
         times: 0
     - notes:
-      - note: 11.25
+      - note: 10.5
         times: 0
-      - note: 13.5
+      - note: 18.5
+        times: 0
+      - note: 26
+        times: 0
+      - note: 30.5
         times: 0
       - note: 34.5
         times: 0
-      - note: 37
+      - note: 38
+        times: 0
+      - note: 42
+        times: 0
+      - note: 50
+        times: 0
+      - note: 58
+        times: 0
+      - note: 71.5
+        times: 0
+      - note: 76.5
+        times: 0
+      - note: 78.5
+        times: 0
+      - note: 81.5
+        times: 0
+      - note: 85.5
+        times: 0
+      - note: 87.5
+        times: 0
+      - note: 90.5
+        times: 0
+      - note: 94.5
+        times: 0
+      - note: 96.5
+        times: 0
+      - note: 100.5
+        times: 0
+      - note: 101.5
+        times: 0
+      - note: 103.5
+        times: 0
+      - note: 105
+        times: 0
+      - note: 107.5
+        times: 0
+      - note: 110.5
+        times: 0
+      - note: 112.5
+        times: 0
+      - note: 117.5
+        times: 0
+      - note: 120.5
+        times: 0
+      - note: 122.5
+        times: 0
+      - note: 126.5
+        times: 0
+      - note: 128
+        times: 0
+      - note: 129.5
+        times: 0
+      - note: 130.5
+        times: 0
+      - note: 131.5
+        times: 0
+      - note: 135
+        times: 0
+      - note: 143
+        times: 0
+      - note: 151
+        times: 0
+      - note: 155
+        times: 0
+      - note: 159
+        times: 0
+      - note: 163
+        times: 0
+      - note: 171
+        times: 0
+      - note: 175
+        times: 0
+      - note: 179
+        times: 0
+      - note: 187
+        times: 0
+      - note: 191
+        times: 0
+      - note: 195
+        times: 0
+      - note: 198
+        times: 0
+      - note: 206
+        times: 0
+    - notes:
+      - note: 11
+        times: 0
+      - note: 14.5
+        times: 0
+      - note: 19.5
+        times: 0
+      - note: 23
+        times: 0
+      - note: 26.5
+        times: 0
+      - note: 35
+        times: 0
+      - note: 38.5
+        times: 0
+      - note: 42
+        times: 0
+      - note: 50
+        times: 0
+      - note: 58
+        times: 0
+      - note: 70
+        times: 0
+      - note: 71
+        times: 0
+      - note: 73
+        times: 0
+      - note: 75.5
+        times: 0
+      - note: 77.5
+        times: 0
+      - note: 82.5
+        times: 0
+      - note: 86.5
+        times: 0
+      - note: 92.5
+        times: 0
+      - note: 95
+        times: 0
+      - note: 96
+        times: 0
+      - note: 99
+        times: 0
+      - note: 101
+        times: 0
+      - note: 103
+        times: 0
+      - note: 105.5
+        times: 0
+      - note: 107
+        times: 0
+      - note: 109
+        times: 0
+      - note: 111
+        times: 0
+      - note: 112
+        times: 0
+      - note: 117.75
+        times: 0
+      - note: 120
+        times: 0
+      - note: 124.5
+        times: 0
+      - note: 127
+        times: 0
+      - note: 132
+        times: 0
+      - note: 134.5
+        times: 0
+      - note: 137
+        times: 0
+      - note: 139
+        times: 0
+      - note: 147
+        times: 0
+      - note: 155
+        times: 0
+      - note: 159
+        times: 0
+      - note: 167
+        times: 0
+      - note: 171
+        times: 0
+      - note: 175
+        times: 0
+      - note: 179
+        times: 0
+      - note: 183
+        times: 0
+      - note: 187
+        times: 0
+      - note: 191
+        times: 0
+      - note: 195
+        times: 0
+      - note: 206
+        times: 0
+    - notes:
+      - note: 11.5
+        times: 0
+      - note: 14
+        times: 0
+      - note: 27
+        times: 0
+      - note: 30
+        times: 0
+      - note: 31
+        times: 0
+      - note: 35.5
+        times: 0
+      - note: 42
+        times: 0
+      - note: 58
+        times: 0
+      - note: 66
+        times: 0
+      - note: 70.5
+        times: 0
+      - note: 72.5
+        times: 0
+      - note: 74.5
+        times: 0
+      - note: 83.5
+        times: 0
+      - note: 91.5
+        times: 0
+      - note: 95.5
+        times: 0
+      - note: 97.5
+        times: 0
+      - note: 98.5
+        times: 0
+      - note: 99.5
+        times: 0
+      - note: 102.5
+        times: 0
+      - note: 106.5
+        times: 0
+      - note: 108.5
+        times: 0
+      - note: 113
+        times: 0
+      - note: 118
+        times: 0
+      - note: 119.5
+        times: 0
+      - note: 123.5
+        times: 0
+      - note: 127.5
+        times: 0
+      - note: 129
+        times: 0
+      - note: 132.5
+        times: 0
+      - note: 133.5
+        times: 0
+      - note: 136
+        times: 0
+      - note: 137.5
+        times: 0
+      - note: 139
+        times: 0
+      - note: 147
+        times: 0
+      - note: 155
+        times: 0
+      - note: 163
+        times: 0
+      - note: 167
+        times: 0
+      - note: 171
+        times: 0
+      - note: 179
+        times: 0
+      - note: 183
+        times: 0
+      - note: 187
+        times: 0
+      - note: 191
+        times: 0
+      - note: 198
+        times: 0
+      - note: 206
         times: 0
   - tracks:
     - notes:
@@ -113,15 +415,11 @@ MonoBehaviour:
         times: 0
       - note: 99
         times: 0
-      - note: 103
-        times: 0
-      - note: 104
-        times: 0
       - note: 108
         times: 0
-      - note: 112
-        times: 0
       - note: 114
+        times: 0
+      - note: 116
         times: 0
       - note: 128
         times: 0
@@ -240,15 +538,11 @@ MonoBehaviour:
         times: 0
       - note: 102
         times: 0
-      - note: 103
-        times: 0
-      - note: 105
-        times: 0
-      - note: 105.5
+      - note: 106
         times: 0
       - note: 110
         times: 0
-      - note: 116
+      - note: 112
         times: 0
       - note: 118
         times: 0
@@ -425,7 +719,9 @@ MonoBehaviour:
         times: 0
       - note: 101
         times: 0
-      - note: 106
+      - note: 104
+        times: 0
+      - note: 105.5
         times: 0
       - note: 113
         times: 0
@@ -571,6 +867,10 @@ MonoBehaviour:
       - note: 96
         times: 0
       - note: 97.5
+        times: 0
+      - note: 103
+        times: 0
+      - note: 105
         times: 0
       - note: 121
         times: 0
