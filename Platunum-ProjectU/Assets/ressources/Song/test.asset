@@ -104,6 +104,22 @@ MonoBehaviour:
         times: 0
       - note: 206
         times: 0
+      - note: 209
+        times: 0
+      - note: 209.25
+        times: 0
+      - note: 209.5
+        times: 0
+      - note: 209.75
+        times: 0
+      - note: 210
+        times: 0
+      - note: 210.25
+        times: 0
+      - note: 210.5
+        times: 0
+      - note: 210.75
+        times: 0
     - notes:
       - note: 10.5
         times: 0
