@@ -45,13 +45,11 @@ public class HarmonieBar : MonoBehaviour {
         if (Input.GetKeyDown("x"))
         {
             TakeHarmonie(10f);
-            Debug.Log("LAER PDJHFIHGDK !");
         }
 
         if (Input.GetKeyDown("x"))
         {
             TakeHarmonie(10f);
-            Debug.Log("LAER PDJHFIHGDK !");
         }
 
         if (currentHarmoniePoint != harmoniePoint)
@@ -76,7 +74,6 @@ public class HarmonieBar : MonoBehaviour {
         if (harmoniePoint >= 100)
         {
             harmoniePoint = 100;
-            Debug.Log("on passe en fois 2 !");
         }
 
         UpdateBar();

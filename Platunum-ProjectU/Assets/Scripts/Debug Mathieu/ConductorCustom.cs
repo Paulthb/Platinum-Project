@@ -134,7 +134,6 @@ public class ConductorCustom : MonoBehaviour
             if (pauseTimeStamp < 0f) //not managed
             {
                 pauseTimeStamp = (float)AudioSettings.dspTime;
-                //print("pausetimestamp:" + pauseTimeStamp.ToString());
                 audioSource.Pause();
             }
 
@@ -143,8 +142,6 @@ public class ConductorCustom : MonoBehaviour
         else if (pauseTimeStamp > 0f) //resume not managed
         {
             pausedTime += (float)AudioSettings.dspTime - pauseTimeStamp;
-            //print("resumetimestamp:"+AudioSettings.dspTime.ToString());
-            //print("offset"+pausedTime.ToString());
             audioSource.Play();
 
             pauseTimeStamp = -1f;

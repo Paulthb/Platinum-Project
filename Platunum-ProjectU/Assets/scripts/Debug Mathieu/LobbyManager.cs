@@ -18,7 +18,6 @@ namespace Manager
         private float hpTeam = 0;
         private float shieldTeam = 0;
         private float manaTeam = 0;
-        private bool barTeamActive = false;
         public Transform HPBarTeam;
         public Transform ShieldBarTeam;
         public Transform ManaBarTeam;
@@ -152,7 +151,6 @@ namespace Manager
                                 if (idButton == 5)
                                 {
                                     changePersonnage(player, 5);
-                                    //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
                                 }
                                 else //Button 4
                                 {

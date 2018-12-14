@@ -7,14 +7,6 @@ public class GameManager : MonoBehaviour {
     int multiplier = 2;
     int streak = 0;
 
-	void Start () {
-		
-	}
-	
-	void Update () {
-
-    }
-
     void OnTriggerEnter2D(Collider2D col)
     {
         Destroy(col.gameObject);

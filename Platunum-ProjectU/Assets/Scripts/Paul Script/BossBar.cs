@@ -80,9 +80,7 @@ public class BossBar : MonoBehaviour {
         if (bossPoint <= 0)
         {
             bossPoint = 0;
-            Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-        //UpdateBar();
     }
 }

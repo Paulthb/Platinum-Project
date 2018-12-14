@@ -120,29 +120,6 @@ public class PlayerManager : MonoBehaviour
             return null;
     }
 
-    public void LoadScene()
-    {
-        /*for (int i = 0; i < PlayerList.Count; i++)
-        {
-            GameObject NewPlayer = Instantiate()
-            Transform playerTransform = transform.GetChild(i);
-            playerTransform.gameObject.SetActive(true);
-            Transform CurrentSpawn = GameObject.Find("SpawnTransformFolder").transform.GetChild(i);
-            Transform Character = playerTransform.GetChild(0);
-            //Character.GetComponent<SpriteRenderer>().color = playerTransform.GetComponent<Manager.Player>().color;
-            Character.position = CurrentSpawn.position;
-            Transform anchor = playerTransform.GetChild(1);
-            anchor.position = new Vector3(CurrentSpawn.position.x, CurrentSpawn.position.y + anchor.position.y, CurrentSpawn.position.z);
-        }*/
-        /*foreach (var item in PlayerList)
-        {
-            Transform CurrentSpawn = GameObject.Find("SpawnTransformFolder").transform.GetChild(item.id);
-            GameObject NewPlayer = Instantiate(GameObject.Find("LobbyManager").GetComponent<LobbyManager>().GetPrefabsById(item.idPrefabs), CurrentSpawn.position, Quaternion.identity, transform);
-            NewPlayer.GetComponent<Player>().Load(item.id, item.idPrefabs, item.ControllerId);
-        }*/
-        //Do Something when Level is loaded
-    }
-
     public List<Player> GetPlayers()
     {
         return PlayerList;
