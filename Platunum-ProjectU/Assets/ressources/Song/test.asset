@@ -10,15 +10,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
   m_Name: test
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   song: {fileID: 8300000, guid: cf36b592ac3bd854e8c376f333824f66, type: 3}
   songID: 0
   collection: 0
   songNum: 0
   easyDifficulty: 0
-  songTitle:
-  composer:
-  arranger:
+  songTitle: 
+  composer: 
+  arranger: 
   songCover: {fileID: 0}
   defaultBeats: []
   songOffset: 0
@@ -681,6 +681,8 @@ MonoBehaviour:
         times: 0
       - note: 676
         times: 0
+      - note: 682
+        times: 0
       - note: 685
         times: 0
       - note: 686
@@ -1037,6 +1039,8 @@ MonoBehaviour:
       - note: 672
         times: 0
       - note: 676
+        times: 0
+      - note: 682
         times: 0
       - note: 684
         times: 0
@@ -1585,6 +1589,8 @@ MonoBehaviour:
         times: 0
       - note: 630
         times: 0
+      - note: 632
+        times: 0
       - note: 640
         times: 0
       - note: 642
@@ -1616,6 +1622,8 @@ MonoBehaviour:
       - note: 671.5
         times: 0
       - note: 680
+        times: 0
+      - note: 682
         times: 0
       - note: 687
         times: 0
@@ -2381,6 +2389,8 @@ MonoBehaviour:
         times: 0
       - note: 598
         times: 0
+      - note: 632
+        times: 0
       - note: 638
         times: 0
       - note: 646
@@ -2648,6 +2658,8 @@ MonoBehaviour:
         times: 0
       - note: 674
         times: 0
+      - note: 682
+        times: 0
       - note: 683
         times: 0
       - note: 684
@@ -2824,6 +2836,8 @@ MonoBehaviour:
         times: 0
       - note: 630
         times: 0
+      - note: 632
+        times: 0
       - note: 636.25
         times: 0
       - note: 640
@@ -2837,6 +2851,8 @@ MonoBehaviour:
       - note: 664.25
         times: 0
       - note: 680.25
+        times: 0
+      - note: 682
         times: 0
       - note: 686.25
         times: 0
@@ -3059,7 +3075,7 @@ MonoBehaviour:
         times: 0
       - note: 624.25
         times: 0
-      - note: 632.25
+      - note: 632
         times: 0
       - note: 636
         times: 0
@@ -3078,6 +3094,8 @@ MonoBehaviour:
       - note: 676
         times: 0
       - note: 680.25
+        times: 0
+      - note: 682
         times: 0
       - note: 684.5
         times: 0
@@ -3292,6 +3310,8 @@ MonoBehaviour:
         times: 0
       - note: 624
         times: 0
+      - note: 632
+        times: 0
       - note: 640.25
         times: 0
       - note: 644
@@ -3305,6 +3325,8 @@ MonoBehaviour:
       - note: 678.25
         times: 0
       - note: 680
+        times: 0
+      - note: 682
         times: 0
       - note: 684.25
         times: 0
@@ -3483,7 +3505,7 @@ MonoBehaviour:
         times: 0
       - note: 678
         times: 0
-      - note: 682.25
+      - note: 682
         times: 0
       - note: 686.25
         times: 0
@@ -3743,11 +3765,15 @@ MonoBehaviour:
         times: 0
       - note: 619.5
         times: 0
+      - note: 632
+        times: 0
       - note: 640.25
         times: 0
       - note: 656.25
         times: 0
       - note: 668.25
+        times: 0
+      - note: 682
         times: 0
       - note: 684.25
         times: 0
@@ -4172,6 +4198,8 @@ MonoBehaviour:
         times: 0
       - note: 626.25
         times: 0
+      - note: 632
+        times: 0
       - note: 632.75
         times: 0
       - note: 644.25
@@ -4192,7 +4220,7 @@ MonoBehaviour:
         times: 0
       - note: 676.25
         times: 0
-      - note: 682.25
+      - note: 682
         times: 0
       - note: 685.25
         times: 0
@@ -4461,7 +4489,7 @@ MonoBehaviour:
         times: 0
       - note: 627.25
         times: 0
-      - note: 632.25
+      - note: 632
         times: 0
       - note: 638.25
         times: 0
@@ -4476,6 +4504,8 @@ MonoBehaviour:
       - note: 664
         times: 0
       - note: 678.25
+        times: 0
+      - note: 682
         times: 0
       - note: 693.25
         times: 0
@@ -4626,6 +4656,8 @@ MonoBehaviour:
         times: 0
       - note: 618.25
         times: 0
+      - note: 632
+        times: 0
       - note: 636.75
         times: 0
       - note: 645.5
@@ -4635,4 +4667,6 @@ MonoBehaviour:
       - note: 663.75
         times: 0
       - note: 670.75
+        times: 0
+      - note: 682
         times: 0
