@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System.IO.Ports;
 
 public class editor : MonoBehaviour {
     private bool PlayMode = false;
@@ -61,6 +62,10 @@ public class editor : MonoBehaviour {
     public int trackNb;
     public float[] OffsetYTracks;
 
+
+    //PADS
+    private gamepads pads;
+
     //Get Instance
     private static editor instance;
     public static editor Instance
@@ -76,6 +81,9 @@ public class editor : MonoBehaviour {
     }
 
     void Start () {
+
+        if(SerialPort.GetPortNames().Length >0)
+            pads = new gamepads((int)char.GetNumericValue(SerialPort.GetPortNames()[0][SerialPort.GetPortNames()[0].Length-1]));
         //Load Song
         audios = GetComponent<AudioSource>();
         songInfo = SongInfoCustom.Instance.currentSong;
@@ -189,6 +197,16 @@ public class editor : MonoBehaviour {
             {
                 LookForNode(3);
             }
+
+            pads.Update();
+            for (int i = 0; i < 4; i++)
+            {
+                if (pads.GetKeyDown(i))
+                {
+                    //Send TrackKey input
+                    LookForNode(i);
+                }
+            }
         }
     }
 
@@ -222,7 +240,6 @@ public class editor : MonoBehaviour {
     {
         if(sliderTime.value < song.length)
         {
-            //ConductorCustom.Instance.SetDspTime(ConductorCustom.Instance.GetdspTime() + (audios.time - slider.value));
             audios.time = sliderTime.value;
         }
         else
@@ -241,8 +258,7 @@ public class editor : MonoBehaviour {
     {
         float TimeInCrotchet = audios.time / crotchet;
         float newTime = Mathf.Ceil(TimeInCrotchet) * crotchet;
-
-        //Debug.Log("currentTime:" + System.Math.Round(audios.time, 4) + "/newTime:" + System.Math.Round(newTime, 4));
+        
         if (System.Math.Round(audios.time, 3) == System.Math.Round(newTime, 3)) {
             audios.time = newTime + crotchet;
         }
@@ -255,7 +271,6 @@ public class editor : MonoBehaviour {
     {
         float TimeInCrotchet = audios.time / crotchet;
         float newTime = Mathf.Floor(TimeInCrotchet) * crotchet;
-        //Debug.Log("currentTime:" + System.Math.Round(audios.time, 4) + "/newTime:" + System.Math.Round(newTime, 4));
         if (System.Math.Round(audios.time, 3) == System.Math.Round(newTime, 3))
         {
             audios.time = newTime - crotchet;
@@ -331,7 +346,6 @@ public class editor : MonoBehaviour {
         {
             LecteurEditorPos = LecteurFolder.GetComponent<RectTransform>().anchoredPosition;
             LecteurFolder.GetComponent<RectTransform>().anchoredPosition = LecteurPlayPos;
-            //UIFolder.gameObject.SetActive(false);
             PlayMode = true;
             cursorEditor.enabled = false;
             cursorPlay.enabled = true;
@@ -474,17 +488,9 @@ public class editor : MonoBehaviour {
         }
         PlayersPartition[CurrentIdPartition] = newPartition;
         SongInfoCustom.Instance.currentSong.partitions[CurrentIdPartition] = newPartition;
-        /*
-        SongInfo newSong = new SongInfo();
-        string path = AssetDatabase.GetAssetPath(SongInfoCustom.Instance.currentSong);
-        AssetDatabase.DeleteAsset(path);
-        AssetDatabase.CreateAsset(newSong, path);
-        */
         EditorUtility.CopySerialized(SongInfoCustom.Instance.currentSong, SongInfoCustom.Instance.currentSong);
         AssetDatabase.Refresh();
         AssetDatabase.SaveAssets();
-
-        //AssetDatabase.GetAssetPath(SongInfoCustom.Instance.currentSong);
     }
 
     public void TrackLengthChange()

@@ -8,14 +8,16 @@ public class BossBar : MonoBehaviour {
     [SerializeField]
     private Image bossBar;
 
-    public float bossPoint = 1000f;
-    private float bossMaxPoint = 1000f;
+    private float bossPoint = 1000f;
+    public float bossMaxPoint = 1000f;
 
     public float currentBossPoint;
 
     private float m_ratio;
     public float speed = 40;
     public float damage = 50;
+
+    private BossManager bossManager;
 
     private static BossBar instance;
     public static BossBar Instance
@@ -32,7 +34,9 @@ public class BossBar : MonoBehaviour {
 
     void Start()
     {
+        bossPoint = bossMaxPoint;
         currentBossPoint = bossPoint;
+        bossManager = BossManager.Instance;
     }
 
     void Update()
@@ -72,12 +76,12 @@ public class BossBar : MonoBehaviour {
     {
 
         bossPoint -= damage;
+        if (bossManager.goUltralaser)
+            bossManager.StackDmg += damage;
         if (bossPoint <= 0)
         {
             bossPoint = 0;
-            Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-        //UpdateBar();
     }
 }

@@ -40,22 +40,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        /*
-        //Spawn Player
-        PlayerList.Add(new Player(1, Color.red, 1));
-        PlayerList.Add(new Player(2, Color.blue, 2));
-        PlayerList.Add(new Player(3, Color.green, 3));
-        PlayerList.Add(new Player(4, Color.magenta, 4));
-        foreach (Player player in PlayerList)
-        {
-            GameObject playerObject = Instantiate(PlayerPrefabs, SpawnPositions[player.GetId() - 1].position, Quaternion.identity, PlayerFolder);
-            playerObject.GetComponent<SpriteRenderer>().color = player.GetColor();
-        }*/
-    }
-
 
     public bool IsPlayerAlreadyInLobby(int id, bool pads)
     {
@@ -76,7 +60,6 @@ public class PlayerManager : MonoBehaviour
                 }
                 i++;
             }
-            //AlreadyExist = PlayerList.Exists(item => item.pads.portNum == id);
         }
         return AlreadyExist;
     }
@@ -118,29 +101,6 @@ public class PlayerManager : MonoBehaviour
         }
         else
             return null;
-    }
-
-    public void LoadScene()
-    {
-        /*for (int i = 0; i < PlayerList.Count; i++)
-        {
-            GameObject NewPlayer = Instantiate()
-            Transform playerTransform = transform.GetChild(i);
-            playerTransform.gameObject.SetActive(true);
-            Transform CurrentSpawn = GameObject.Find("SpawnTransformFolder").transform.GetChild(i);
-            Transform Character = playerTransform.GetChild(0);
-            //Character.GetComponent<SpriteRenderer>().color = playerTransform.GetComponent<Manager.Player>().color;
-            Character.position = CurrentSpawn.position;
-            Transform anchor = playerTransform.GetChild(1);
-            anchor.position = new Vector3(CurrentSpawn.position.x, CurrentSpawn.position.y + anchor.position.y, CurrentSpawn.position.z);
-        }*/
-        /*foreach (var item in PlayerList)
-        {
-            Transform CurrentSpawn = GameObject.Find("SpawnTransformFolder").transform.GetChild(item.id);
-            GameObject NewPlayer = Instantiate(GameObject.Find("LobbyManager").GetComponent<LobbyManager>().GetPrefabsById(item.idPrefabs), CurrentSpawn.position, Quaternion.identity, transform);
-            NewPlayer.GetComponent<Player>().Load(item.id, item.idPrefabs, item.ControllerId);
-        }*/
-        //Do Something when Level is loaded
     }
 
     public List<Player> GetPlayers()

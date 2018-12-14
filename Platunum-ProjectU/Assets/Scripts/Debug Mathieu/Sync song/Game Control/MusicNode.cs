@@ -63,11 +63,15 @@ public class MusicNode : MonoBehaviour
 		if (transform.position.y < removeLineY)
 		{
 			gameObject.SetActive(false);
-            BarManager.Instance.GetImpact(null, PartitionManager.Rank.MISS);
+            //BarManager.Instance.GetImpact(null, PartitionManager.Rank.MISS);
             if (isStone)
             {
                 BossManager.Instance.CancelAttackStone();
-                BarManager.Instance.HitPlayer(50);
+                HealthBar.Instance.TakeDamage(50);
+            }
+            else
+            {
+                HealthBar.Instance.TakeDamage(8);
             }
         }
 

@@ -15,8 +15,12 @@ namespace Manager
         public float ReadyTimeHold;
         public float timer;
         public string SceneToLoad;
-        //public bool StartGameBool = false;
-        //private static bool created = false;
+        private float hpTeam = 0;
+        private float shieldTeam = 0;
+        private float manaTeam = 0;
+        public Transform HPBarTeam;
+        public Transform ShieldBarTeam;
+        public Transform ManaBarTeam;
 
         //SERIALPORT
         public gamepads[] Gamepads;
@@ -27,23 +31,12 @@ namespace Manager
         //Personnage
         public Personnage[] PersonnageAvailable;
         public bool[] SelectedList;
-
-        /*
-        void Awake()
-        {
-            if (!created)
-            {
-                DontDestroyOnLoad(this.gameObject);
-                created = true;
-            }
-            SceneManager.sceneLoaded += onSceneLoaded;
-        }*/
+        
         // Use this for initialization
         void Start () {
             playerManager = PlayerManager.Instance;
             ReadyPlayerList = new Dictionary<int, bool>();
             keyList = new List<KeyCode>();
-            //Debug.Log(Input.GetJoystickNames().);
             foreach (KeyCode key in System.Enum.GetValues(typeof(KeyCode)))
             {
                 string keyName = key.ToString();
@@ -55,27 +48,26 @@ namespace Manager
             int i = 0;
             foreach (string str in SerialPort.GetPortNames())
             {
-                Debug.Log(string.Format("Existing COM port: {0}", str));
                 Gamepads[i] = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
                 i++;
             }
 
             SelectedList = new bool[PersonnageAvailable.Length];
-        }
+
+            LoadRatioStatsToBar(HPBarTeam, hpTeam, 950);
+            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
+            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
+            HPBarTeam.gameObject.SetActive(true);
+            ShieldBarTeam.gameObject.SetActive(true);
+            ManaBarTeam.gameObject.SetActive(true);
+    }
 	
 	    // Update is called once per frame
 	    void Update () {
             //Par chaque touche filter on regarde l'etat
-            //Debug.Log("update");
             for (int i = 0; i < Gamepads.Length; i++)
             {
                 Gamepads[i].Update();
-                /*Debug.Log("" +
-                            Gamepads[i].GetKeyDown(0) +
-                            Gamepads[i].GetKeyDown(1) +
-                            Gamepads[i].GetKeyDown(2) +
-                            Gamepads[i].GetKeyDown(3) +
-                            Gamepads[i].GetKeyDown(4));*/
             }
             for (int i = 0; i < Gamepads.Length; i++)
             {
@@ -83,8 +75,7 @@ namespace Manager
                 {
                     if (Gamepads[i].GetKeyDown(4))
                     {
-                        //add player
-                        //Debug.Log(Gamepads[i].GetKeyDown(4));
+                        //add player=
                         AddPlayerToLobby(Gamepads[i].portNum, Gamepads[i]);
                     }
                 }
@@ -122,7 +113,6 @@ namespace Manager
 
                     //Cas Joystick commun
                     if (!char.IsDigit(keyCode[0])){
-                        Debug.Log("manette commune");
                         //String to int
                         idController = 0;
                         idButton = int.Parse(keyCode.Substring(6));
@@ -161,7 +151,6 @@ namespace Manager
                                 if (idButton == 5)
                                 {
                                     changePersonnage(player, 5);
-                                    //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
                                 }
                                 else //Button 4
                                 {
@@ -268,14 +257,7 @@ namespace Manager
             SelectedList[i] = true;
             Player player = playerManager.AddPlayer(id, PersonnageAvailable[i], pads);
             ReadyPlayerList.Add(player.id, false);
-
-            //Update PlayerUI
-            //Sprite sprite = player.Personnage.Sprite;
-            //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
-            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
-            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
-            //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-
+            
             updateUI(player);
             player.pads.SetLed(player.id);
         }
@@ -293,7 +275,6 @@ namespace Manager
             if (idButton == 5)
             {
                 incrementation++;
-                //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
             }
             else //Button 4
             {
@@ -317,11 +298,13 @@ namespace Manager
             //ajoute la nouvelle classe au joueur
             SelectedList[newPerso] = true;
             player.Personnage = PersonnageAvailable[newPerso];
+
             updateUI(player);
         }
 
         private void updateUI(Player player)
         {
+            hpTeam = shieldTeam = manaTeam = 0;
             //UI Update
             PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = player.Personnage.Sprite;
             //LoadSpriteCadre
@@ -338,6 +321,27 @@ namespace Manager
             
             //SetActive
             PlayerUI[player.id - 1].gameObject.SetActive(true);
+
+            if (PlayerManager.Instance.GetPlayersCount() == 1)
+            {
+                hpTeam = player.Personnage.HP;
+                manaTeam = player.Personnage.Mana;
+                shieldTeam = player.Personnage.Shield;
+                
+            }
+            else if(PlayerManager.Instance.GetPlayersCount() > 1){
+                List<Player> listPlayerVisible = PlayerManager.Instance.GetPlayers();
+                foreach(Player playerVisible in listPlayerVisible)
+                {
+                    hpTeam += playerVisible.Personnage.HP;
+                    shieldTeam += playerVisible.Personnage.Shield;
+                    manaTeam += playerVisible.Personnage.Mana;
+                }
+            }
+
+            LoadRatioStatsToBar(HPBarTeam, hpTeam, 950);
+            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
+            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
         }
         //déclenche le chargement du niveau
         /*

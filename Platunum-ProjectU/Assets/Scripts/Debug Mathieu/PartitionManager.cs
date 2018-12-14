@@ -24,6 +24,16 @@ public class PartitionManager : MonoBehaviour {
     public GameObject PartitionPrefabs;
     public GameObject TrackPrefabs;
 
+    public GameObject AssassinPrefab;
+    public GameObject DemonistePrefab;
+    public GameObject DruidePrefab;
+    public GameObject RodeurPrefab;
+
+    private SpriteRenderer assRenderer;
+    private SpriteRenderer demRenderer;
+    private SpriteRenderer druRenderer;
+    private SpriteRenderer rodRenderer;
+
     //Get instance
     private static PartitionManager instance;
     public static PartitionManager Instance
@@ -39,8 +49,8 @@ public class PartitionManager : MonoBehaviour {
     }
     private void Start()
     {
-        if(PlayerManager.Instance)
-        LoadPlayer();
+        if (PlayerManager.Instance)
+            LoadPlayer();
     }
 
     //Load Players
@@ -89,6 +99,45 @@ public class PartitionManager : MonoBehaviour {
             else
                 partition.transform.Find("BackgroundStele").gameObject.SetActive(false);
             offsetX += PartitionSpace;
+
+            Debug.Log(player.id);
+
+            if (player.Personnage.id == 0)
+            {
+                GameObject Assassin = Instantiate(AssassinPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                assRenderer = Assassin.gameObject.GetComponent<SpriteRenderer>();
+                if (partition.idplayer >= 3)
+                    assRenderer.flipX = true;
+                else
+                    assRenderer.flipX = false;
+            }
+            else if (player.Personnage.id == 1)
+            {
+                GameObject Demoniste = Instantiate(DemonistePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                demRenderer = Demoniste.gameObject.GetComponent<SpriteRenderer>();
+                if (partition.idplayer >= 3)
+                    demRenderer.flipX = true;
+                else
+                    demRenderer.flipX = false;
+            }
+            else if (player.Personnage.id == 2)
+            {
+                GameObject Druide = Instantiate(DruidePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                druRenderer = Druide.gameObject.GetComponent<SpriteRenderer>();
+                if (partition.idplayer >= 3)
+                    druRenderer.flipX = true;
+                else
+                    druRenderer.flipX = false;
+            }
+            else if (player.Personnage.id == 3)
+            {
+                GameObject Rodeur = Instantiate(RodeurPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                rodRenderer = Rodeur.gameObject.GetComponent<SpriteRenderer>();
+                if (partition.idplayer >= 3)
+                    rodRenderer.flipX = true;
+                else
+                    rodRenderer.flipX = false;
+            }
         }
     }
 }

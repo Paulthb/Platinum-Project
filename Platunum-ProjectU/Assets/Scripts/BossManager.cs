@@ -10,16 +10,22 @@ public class BossManager : MonoBehaviour {
     private AudioSource myAudio;
     public Animator animatorBoss;
 
+    public float StackDmg;
     public int damageCoupDeQueue = 20;
-    public int noteNb;
     public float volumeDownUltrason = 0.16f;
     public float maledictionTime = 10f;
     public float hurlementTime = 10f;
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 4f;
     public float brouillardTime = 10f;
-    public float ultralaserTime = 10f;
     public float blocGiveHarmony = 10f;
+    public int damageLanceFlamme = 100;
+    //Ultralaser
+    [Header("Ultralaser Settings")]
+    public float ultralaserTime = 20f;
+    public int resistUltralaser = 3500;
+    public int ultralaserDamage = 250;
+    private float ultralaserTimer = 0;
 
     public List<AttackBoss> ListAttack;
     public Queue<AttackBoss> QueueAttack;
@@ -40,7 +46,7 @@ public class BossManager : MonoBehaviour {
         }
     }
 
-    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, QUEUE };
+    public enum BossAttack { MALEDICTION = 0, HURLEMENT, ULTRASON, ULTRALASER, BLOC, BROUILLARD, INVINCIBLITE, LANCEFLAMME };
 
     private BossAttack attack;
 
@@ -66,24 +72,32 @@ public class BossManager : MonoBehaviour {
 
         if (goUltralaser)
         {
-            noteNb = BarManager.Instance.noteNumber;
-            if (noteNb >= 3000)
+            ultralaserTimer += Time.deltaTime;
+            if (StackDmg >= resistUltralaser)
+            {
+                Debug.Log("Ultralaser Cancel");
+                animatorBoss.SetBool("UltralaserLoop", false);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
-            else
+                StackDmg = 0;
+                ultralaserTimer = 0;
+            }
+            else if(ultralaserTimer >= ultralaserTime)
             {
-                BarManager.Instance.HitPlayer(50);
+                Debug.Log("Ultralaser Success");
+                animatorBoss.SetBool("UltralaserLoop", false);
+                animatorBoss.SetTrigger("UltralaserShoot");
+                HealthBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
-                goUltralaser = false; 
+                goUltralaser = false;
             }
         }
-
         animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
     }
 
     public void Attack (BossAttack AttackBoss)
     {
-        Debug.Log(AttackBoss);
+        //Debug.Log(AttackBoss);
         switch (AttackBoss)
         {
             case BossAttack.MALEDICTION:
@@ -108,12 +122,13 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.ULTRALASER:
                 //le boss prepare une boule grandissante
-                //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule 
+                //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule
                 //Sinon l'attaque du boss est annulée
-                noteNb = 0;
+                animatorBoss.SetTrigger("ultralaserStart");
+                animatorBoss.SetBool("UltralaserLoop", true);
                 goUltralaser = true;
                 StartCoroutine(UltralaserTime());
-                //créer un compeur de notes
+                //créer un compeur de dégats
                 //lancer une coroutine
                 //activer le compteur dans le temps de la coroutine
                 //à l'issue du temps, checker si la team a dépasser telle valeur de notes
@@ -137,9 +152,10 @@ public class BossManager : MonoBehaviour {
                 goInvincibilite = true;
                 StartCoroutine(InvincibiliteTime());
                 break;
-            case BossAttack.QUEUE:
-                //Coup de queue qui fait des dégâts à l'équipe
-                BarManager.Instance.HitPlayer(damageCoupDeQueue);
+            case BossAttack.LANCEFLAMME:
+                //Lance flamme qui fait des dégâts à l'équipe
+                animatorBoss.SetTrigger("LanceFlamme");
+                HealthBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
         }
     }
@@ -187,7 +203,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
-            BarManager.Instance.GiveHarmonie(blocGiveHarmony);
+            HarmonieBar.Instance.TakeHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {
