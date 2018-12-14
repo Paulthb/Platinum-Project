@@ -13,7 +13,7 @@ public class BarUI : MonoBehaviour {
     //Time
     public float SpeedBar = 50;
     float CooldownTimer;
-    public float TimeToApply;
+    public float PercentagePerSecond;
     public float CooldownBar;
 
     //UI
@@ -47,7 +47,7 @@ public class BarUI : MonoBehaviour {
                     //speed -= TimeToApply * Time.deltaTime;
                     //TempValue = Mathf.Lerp(Value, OldValue, speed);
                     //Debug.Log(TempValue - buffer - Value);
-                    TempValue -= (TimeToApply * 3) * Time.deltaTime;
+                    TempValue -= (PercentagePerSecond/100*MaxValue) * Time.deltaTime;
                     if (TempValue < Value)
                         TempValue = Value;
                 }
@@ -63,7 +63,7 @@ public class BarUI : MonoBehaviour {
             float fillAmount = Mathf.Lerp(OldValue, Value, speed - 1);
             TempValue = fillAmount;
             Current.fillAmount = TempValue / MaxValue;*/
-            TempValue += (TimeToApply * 3) * Time.deltaTime;
+            TempValue += (PercentagePerSecond * 3) * Time.deltaTime;
             if (TempValue > Value)
                 TempValue = Value;
 
