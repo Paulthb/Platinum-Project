@@ -11,11 +11,11 @@ public class HealthBar : MonoBehaviour {
     private Image armorBar;
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    public float healthPoint = 300f;
+    private float healthPoint = 300f;
     private float oldHealthPoint;
     private float armorPoint = 100f;
-    private float maxHealthPoint = 300f;
-    private float maxArmorPoint = 100f;
+    public float maxHealthPoint = 300f;
+    public float maxArmorPoint = 100f;
     private float oldArmorPoint;
     private float currentHealthPoint;
     private float currentArmorPoint;
@@ -41,6 +41,8 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        healthPoint = maxHealthPoint;
+        armorPoint = maxArmorPoint;
         currentHealthPoint = healthPoint;
         currentArmorPoint = armorPoint;
         UpdateIsArmor();

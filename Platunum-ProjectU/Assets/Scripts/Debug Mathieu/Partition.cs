@@ -52,7 +52,7 @@ public class Partition : MonoBehaviour {
     private float CountNote = 0;
     public float maxNbNote;
     public int powerStack = 0;
-    private int attackHitNumber = 0;
+    public int attackHitNumber = 0;
 
     private Role currentRole;
     public Role CurrentRole
