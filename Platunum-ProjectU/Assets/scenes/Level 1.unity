@@ -157,6 +157,10 @@ Prefab:
       propertyPath: Conductor
       value: 
       objectReference: {fileID: 638975753}
+    - target: {fileID: 1497632778153392, guid: 0423560d0c53d4347b2091d98d410d77, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0423560d0c53d4347b2091d98d410d77, type: 2}
   m_IsPrefabAsset: 0
@@ -249,7 +253,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &165767467
 GameObject:
@@ -291,7 +295,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &206222793 stripped
 RectTransform:
@@ -910,7 +914,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396785779
 GameObject:
@@ -1194,7 +1198,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &638975756
 AudioSource:
@@ -1321,7 +1325,7 @@ Transform:
   - {fileID: 564240038}
   - {fileID: 1164918755}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &866337756
 GameObject:
@@ -1352,8 +1356,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 516378803}
-  m_RootOrder: 2
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &866337758
 ParticleSystemRenderer:
@@ -6116,8 +6120,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -30.830017, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 516378803}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1032151941
 ParticleSystemRenderer:
@@ -10761,8 +10765,8 @@ Transform:
   m_LocalPosition: {x: 0, y: -22.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 516378803}
-  m_RootOrder: 1
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1088006933
 ParticleSystemRenderer:
@@ -15654,7 +15658,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4053073561891286, guid: 31ac89783cf4c7c4dbe6b806ddb245f0, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1995187253373804, guid: 31ac89783cf4c7c4dbe6b806ddb245f0, type: 2}
       propertyPath: m_IsActive
@@ -16139,7 +16143,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4727054965752940, guid: 163f8ca9fa38c464cbcdec44b975b579, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114941850098801152, guid: 163f8ca9fa38c464cbcdec44b975b579,
         type: 2}
