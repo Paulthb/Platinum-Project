@@ -17,6 +17,8 @@ public class BossBar : MonoBehaviour {
     public float speed = 40;
     public float damage = 50;
 
+    private BossManager bossManager;
+
     private static BossBar instance;
     public static BossBar Instance
     {
@@ -33,6 +35,7 @@ public class BossBar : MonoBehaviour {
     void Start()
     {
         currentBossPoint = bossPoint;
+        bossManager = BossManager.Instance;
     }
 
     void Update()
@@ -72,6 +75,8 @@ public class BossBar : MonoBehaviour {
     {
 
         bossPoint -= damage;
+        if (bossManager.goUltralaser)
+            bossManager.StackDmg += damage;
         if (bossPoint <= 0)
         {
             bossPoint = 0;

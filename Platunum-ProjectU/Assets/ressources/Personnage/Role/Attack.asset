@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Name: Attack
   m_EditorClassIdentifier: 
   RoleState: 0
-  RoleSprite: {fileID: 21300000, guid: 26a5cedaf2e7f6a42b8248fd16970eb1, type: 3}
+  RoleSprite: {fileID: 21300000, guid: 50c7646943acdc24e873bafde5aa306c, type: 3}
+  RoleSpriteVide: {fileID: 21300000, guid: 26a5cedaf2e7f6a42b8248fd16970eb1, type: 3}
   BackgroundStele: {fileID: 21300004, guid: a3241802a1d5afe4790f614a3814a34c, type: 3}

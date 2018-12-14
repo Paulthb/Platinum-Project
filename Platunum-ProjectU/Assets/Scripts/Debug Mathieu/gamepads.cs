@@ -46,7 +46,6 @@ public class gamepads
         {
             for (int i = 0; i < btn.Length; i++)
             {
-                Debug.Log("catched");
                 btn[i] = 1;
             }
         }

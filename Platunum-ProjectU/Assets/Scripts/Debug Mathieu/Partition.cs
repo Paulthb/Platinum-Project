@@ -230,7 +230,7 @@ public class Partition : MonoBehaviour {
                 //trop tot / trop tard
                 //Baisse d'unisson
                 //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
-                ChargeRole(PartitionManager.Rank.MISS);
+                HealthBar.Instance.TakeDamage(8);
             }
         }
         /*
