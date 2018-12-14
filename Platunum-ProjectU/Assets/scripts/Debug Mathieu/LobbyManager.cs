@@ -59,8 +59,8 @@ namespace Manager
             LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
             HPBarTeam.gameObject.SetActive(true);
             ShieldBarTeam.gameObject.SetActive(true);
-            ManaBarTeam.gameObject.SetActive(true);
-    }
+            ManaBarTeam.gameObject.SetActive(true);            
+        }
 	
 	    // Update is called once per frame
 	    void Update () {
@@ -259,6 +259,8 @@ namespace Manager
             ReadyPlayerList.Add(player.id, false);
             
             updateUI(player);
+            //reset led avant de lui attribuer l'id
+            player.pads.SetLed(0);
             player.pads.SetLed(player.id);
         }
 
