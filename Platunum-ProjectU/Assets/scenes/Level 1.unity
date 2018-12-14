@@ -637,6 +637,18 @@ Prefab:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114083088064582826, guid: 275cac46f83aef1458e237a9074472f5,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300006, guid: 544742d661a62c44ba9476f2cdc3fdcc,
+        type: 3}
+    - target: {fileID: 114815851655604764, guid: 275cac46f83aef1458e237a9074472f5,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300010, guid: 544742d661a62c44ba9476f2cdc3fdcc,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 212940835476916462, guid: 275cac46f83aef1458e237a9074472f5, type: 2}
     - {fileID: 114115965717906538, guid: 275cac46f83aef1458e237a9074472f5, type: 2}
@@ -878,7 +890,7 @@ Prefab:
     - target: {fileID: 224453069824128688, guid: a989b329bf29e5d4b8820750408242ce,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 13
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224453069824128688, guid: a989b329bf29e5d4b8820750408242ce,
         type: 2}
@@ -11057,6 +11069,12 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114833371118517582, guid: 2bdb70e3249793c4e99dc0459d6819ac,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ce990ab2ea945824d86f55712fd7fd13,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bdb70e3249793c4e99dc0459d6819ac, type: 2}
   m_IsPrefabAsset: 0
@@ -20731,6 +20749,24 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114788182952145988, guid: 8538b05797acbf740b6bcc92135da460,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300004, guid: 544742d661a62c44ba9476f2cdc3fdcc,
+        type: 3}
+    - target: {fileID: 114141340521531336, guid: 8538b05797acbf740b6bcc92135da460,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300008, guid: 544742d661a62c44ba9476f2cdc3fdcc,
+        type: 3}
+    - target: {fileID: 114594469238636902, guid: 8538b05797acbf740b6bcc92135da460,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300002, guid: 544742d661a62c44ba9476f2cdc3fdcc,
+        type: 3}
     m_RemovedComponents:
     - {fileID: 212293583562833336, guid: 8538b05797acbf740b6bcc92135da460, type: 2}
     - {fileID: 114451308285625106, guid: 8538b05797acbf740b6bcc92135da460, type: 2}
