@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BarUI : MonoBehaviour {
+    //Settings
+    public bool StartEmpty;
+
     //Value
     private float TempValue;
     private float OldValue;
@@ -11,7 +14,6 @@ public class BarUI : MonoBehaviour {
     public float MaxValue;
 
     //Time
-    public float SpeedBar = 50;
     float CooldownTimer;
     public float PercentagePerSecond;
     public float CooldownBar;
@@ -25,9 +27,18 @@ public class BarUI : MonoBehaviour {
     
     // Use this for initialization
     protected void BarStart () {
-        Value = MaxValue;
-        OldValue = MaxValue;
-        TempValue = MaxValue;
+        if (!StartEmpty)
+        {
+            Value = MaxValue;
+            OldValue = MaxValue;
+            TempValue = MaxValue;
+        }
+        else
+        {
+            Value = 0;
+            OldValue = 0;
+            TempValue = 0;
+        }
         CooldownTimer = 0;
         Temp = BarFolder.GetChild(0).GetComponent<Image>();
         Current = BarFolder.GetChild(1).GetComponent<Image>();
