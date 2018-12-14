@@ -1828,6 +1828,14 @@ MonoBehaviour:
   PartitionPrefabs: {fileID: 1995187253373804, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
     type: 2}
   TrackPrefabs: {fileID: 0}
+  AssassinPrefab: {fileID: 1886689825392944, guid: c2fa41550df0a994482f22295262352d,
+    type: 2}
+  DemonistePrefab: {fileID: 1824871945837922, guid: a0d7edfc3cd21444e919494c5eb09bec,
+    type: 2}
+  DruidePrefab: {fileID: 1064805687329126, guid: 07b68613f85dfc74797a8c8f9bf50f10,
+    type: 2}
+  RodeurPrefab: {fileID: 1478463967543830, guid: 3bbd1fc789ebe8044bf1f38c47ce2dc4,
+    type: 2}
 --- !u!224 &1828539143 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224649169029932462, guid: 90cd631fc8d7ff646a56bf470513d092,

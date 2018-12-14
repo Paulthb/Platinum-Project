@@ -169,11 +169,6 @@ namespace Manager
             CheckReadyPlayer();
         }
 
-        private void CountTeamStats()
-        {
-            
-        }
-
         private void CheckReadyPlayer()
         {
             bool flag = true;
@@ -262,14 +257,7 @@ namespace Manager
             SelectedList[i] = true;
             Player player = playerManager.AddPlayer(id, PersonnageAvailable[i], pads);
             ReadyPlayerList.Add(player.id, false);
-
-            //Update PlayerUI
-            //Sprite sprite = player.Personnage.Sprite;
-            //PlayerUI[player.id - 1].GetComponent<Image>().color = player.color;
-            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().sprite = sprite;
-            //PlayerUI[player.id - 1].Find("Sprite").GetComponent<Image>().preserveAspect = true;
-            //PlayerUI[player.id - 1].Find("ClassName").GetComponent<Text>().text = player.Personnage.name;
-
+            
             updateUI(player);
             player.pads.SetLed(player.id);
         }
@@ -287,7 +275,6 @@ namespace Manager
             if (idButton == 5)
             {
                 incrementation++;
-                //newPerso = (CurrentPerso + 1) % PersonnageAvailable.Length;
             }
             else //Button 4
             {

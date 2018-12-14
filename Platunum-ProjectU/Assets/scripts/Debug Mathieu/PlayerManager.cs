@@ -40,22 +40,6 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    // Use this for initialization
-    void Start()
-    {
-        /*
-        //Spawn Player
-        PlayerList.Add(new Player(1, Color.red, 1));
-        PlayerList.Add(new Player(2, Color.blue, 2));
-        PlayerList.Add(new Player(3, Color.green, 3));
-        PlayerList.Add(new Player(4, Color.magenta, 4));
-        foreach (Player player in PlayerList)
-        {
-            GameObject playerObject = Instantiate(PlayerPrefabs, SpawnPositions[player.GetId() - 1].position, Quaternion.identity, PlayerFolder);
-            playerObject.GetComponent<SpriteRenderer>().color = player.GetColor();
-        }*/
-    }
-
 
     public bool IsPlayerAlreadyInLobby(int id, bool pads)
     {
@@ -76,7 +60,6 @@ public class PlayerManager : MonoBehaviour
                 }
                 i++;
             }
-            //AlreadyExist = PlayerList.Exists(item => item.pads.portNum == id);
         }
         return AlreadyExist;
     }
