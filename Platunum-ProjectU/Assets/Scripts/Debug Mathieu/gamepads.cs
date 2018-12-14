@@ -20,7 +20,7 @@ public class gamepads
         for (int i = 0; i < btnReleased.Length; i++)
             btnReleased[i] = true;
         Serial = new SerialPort("COM"+portNum, speed);
-        Serial.ReadTimeout = 50;
+        //Serial.ReadTimeout = 10;//50
         this.portNum = portNum; 
         //StartCoroutine(delais());
     }
@@ -35,11 +35,13 @@ public class gamepads
         try
         {
             String[] val = Serial.ReadLine().Split(',');
-            for (int i = 0; i < val.Length; i++)
+            
+            for (int i = 1; i < val.Length; i++)
             {
                 //if (i == 4)
                 //    Debug.Log("pads n°" + portNum + "/ Value:" + val[i]);
-                btn[i] = int.Parse(val[i]);
+                btn[i-1] = int.Parse(val[i]);
+                Debug.Log((val[i]));
             }
         }
         catch(TimeoutException e)
@@ -53,6 +55,7 @@ public class gamepads
 
     public bool GetKeyDown(int id)
     {
+        Debug.Log(btn[id]);
         if(btn[id] == 0)
         {
             if(btnReleased[id] == true)
@@ -87,5 +90,6 @@ public class gamepads
     public void SetLed(int ledId)
     {
         Serial.Write(ledId.ToString());
+        
     }
 }
