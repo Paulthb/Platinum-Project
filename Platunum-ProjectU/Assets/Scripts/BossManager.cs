@@ -92,7 +92,8 @@ public class BossManager : MonoBehaviour {
                 goUltralaser = false;
             }
         }
-        animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
+
+        animatorBoss.SetFloat("BossLife", BossBar.Instance.Value);
     }
 
     public void Attack (BossAttack AttackBoss)
