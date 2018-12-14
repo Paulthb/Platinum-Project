@@ -3,28 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBar : MonoBehaviour {
-
-    [SerializeField]
-    private Image healthBar;
-    [SerializeField]
-    private Image armorBar;
-
+public class HealthBar : BarUI {
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    private float healthPoint = 300f;
-    private float oldHealthPoint;
-    private float armorPoint = 100f;
-    public float maxHealthPoint = 300f;
-    public float maxArmorPoint = 100f;
-    private float oldArmorPoint;
-    private float currentHealthPoint;
-    private float currentArmorPoint;
-    private float m_ratio;
-
-    public float speed = 40;
-
-    private bool isArmor = true;
-
     private static HealthBar instance;
     public static HealthBar Instance
     {
@@ -41,100 +21,27 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        healthPoint = maxHealthPoint;
-        armorPoint = maxArmorPoint;
-        currentHealthPoint = healthPoint;
-        currentArmorPoint = armorPoint;
-        UpdateIsArmor();
+        BarStart();
     }
 
     // Update is called once per frame
 
     void Update()
     {
-
-        if (currentHealthPoint != healthPoint || currentArmorPoint != armorPoint)
-        { 
-            if (!isArmor)
-            {
-                //Fill Gap
-                float ToAdd = Mathf.Sign(healthPoint - currentHealthPoint) * speed * Time.deltaTime;
-
-                //If we overfill
-                if(ToAdd > Mathf.Abs(currentHealthPoint - healthPoint))
-                    currentHealthPoint = healthPoint;//Get Current value
-                else
-                    currentHealthPoint = currentHealthPoint + ToAdd;//Fill the amout toadd
-
-                //Display ratio
-                m_ratio = currentHealthPoint / maxHealthPoint;
-                healthBar.fillAmount = m_ratio;
-            }
-            else
-            {
-                float ToAdd = Mathf.Sign(armorPoint - currentArmorPoint) * speed * Time.deltaTime;
-
-                if(ToAdd > Mathf.Abs(currentArmorPoint - armorPoint))
-                    currentArmorPoint = armorPoint;
-                else
-                    currentArmorPoint = currentArmorPoint + ToAdd;
-
-                m_ratio = currentArmorPoint / maxArmorPoint;
-                armorBar.fillAmount = m_ratio;
-            }
-        }
-        //pour les tests
-        if (Input.GetKeyDown("space"))
-        {
-            TakeDamage(10);
-        }
-        //pour les tests
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            TakeDamage(-10);
-        }
+        BarUpdate();
     }
 
-    public void WinArmor(int armorPt)
+    public void TakeDamage(float damagePt)
     {
-        armorPoint += armorPt;
-        if (armorPoint > maxArmorPoint) //récuperer la somme de armor groupe max
+        Value -= damagePt;
+        if (Value < 0)
         {
-            armorPoint = maxArmorPoint;
+            Value = 0;
+            BarManager.Instance.EndGame();
         }
-    }
-
-    public void TakeDamage(int damagePt)
-    {
-        if (!isArmor)
+        else if(Value > MaxValue)
         {
-            oldHealthPoint = healthPoint;
-            healthPoint -= damagePt;
-            if (healthPoint < 0)
-            {
-                healthPoint = 0;
-                BarManager.Instance.EndGame();
-            }
+            Value = MaxValue;
         }
-        else
-        {
-            oldArmorPoint = armorPoint;
-            armorPoint -= damagePt;
-            if (armorPoint <= 0)
-            {
-                armorBar.fillAmount = 0;
-                armorPoint = 0;
-            }
-        }
-
-        UpdateIsArmor();
-    }
-
-    private void UpdateIsArmor()
-    {
-        if (armorPoint <= 0)
-            isArmor = false;
-        else
-            isArmor = true;
     }
 }
