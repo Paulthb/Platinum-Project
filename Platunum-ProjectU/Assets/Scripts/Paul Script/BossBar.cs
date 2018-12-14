@@ -8,8 +8,8 @@ public class BossBar : MonoBehaviour {
     [SerializeField]
     private Image bossBar;
 
-    public float bossPoint = 1000f;
-    private float bossMaxPoint = 1000f;
+    private float bossPoint = 1000f;
+    public float bossMaxPoint = 1000f;
 
     public float currentBossPoint;
 
@@ -34,6 +34,7 @@ public class BossBar : MonoBehaviour {
 
     void Start()
     {
+        bossPoint = bossMaxPoint;
         currentBossPoint = bossPoint;
         bossManager = BossManager.Instance;
     }
