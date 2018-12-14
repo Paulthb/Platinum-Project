@@ -77,7 +77,6 @@ public class ManaBar : MonoBehaviour {
         if (manaPoint > manaMaxPoint) //récuperer la somme de mana groupe max
         {
             manaPoint = manaMaxPoint;
-            Debug.Log("full mana");
         }
         UpdateBar();
     }
@@ -88,7 +87,6 @@ public class ManaBar : MonoBehaviour {
         if (manaPoint < 0)
         {
             manaPoint = 0;
-            Debug.Log("on ne peut plus attaquer");
         }
 
         UpdateBar();

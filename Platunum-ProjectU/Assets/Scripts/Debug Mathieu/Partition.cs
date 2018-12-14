@@ -65,13 +65,6 @@ public class Partition : MonoBehaviour {
             currentRole = value;
             roleSprite.sprite = currentRole.RoleSprite;
             backgroundRoleSprite.sprite = currentRole.RoleSpriteVide;
-            /*
-            RoleProgress.emptyTex = RoleSprite.sprite.texture;
-            RoleProgress.fullTex = RoleSprite.sprite.texture;
-            RoleProgress.pos = RoleSprite.transform.position;
-            RoleProgress.size = RoleSprite.transform.localScale;
-            */
-            //Debug.Log("changement de rôle pour le " + idplayer + " en : " + currentRole);
         }
     }
 
@@ -86,12 +79,6 @@ public class Partition : MonoBehaviour {
         previousMusicNodes = new MusicNode[TrackCount];
         for (int i = 0; i < TrackCount; i++)
         {
-            //instantiate tracks
-            //tracks[i] = Instantiate(PartitionManager.Instance.TrackPrefabs, new Vector3(transform.position.x + OffsetX, PartitionManager.Instance.finishLineY, transform.position.z), Quaternion.identity, transform).GetComponent<Track>();
-            //tracks[i].offsetX = OffsetX;
-            //tracks[i].SetTrackWidth(trackWidth)
-            //OffsetX += SpaceBetweenTracks;
-
             //Init Variable for each track
             trackNextIndices[i] = 0;
             queueForTracks[i] = new Queue<MusicNode>();
@@ -276,7 +263,6 @@ public class Partition : MonoBehaviour {
         CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
-        Debug.Log("current:"+CountNote+"/max:"+maxNbNote+"/ratio:" + (CountNote / maxNbNote));
         if (CountNote <= maxNbNote)
         {
             switch (rank)
@@ -286,7 +272,6 @@ public class Partition : MonoBehaviour {
                         HealthBar.Instance.TakeDamage(4);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
                     {
-                        Debug.Log("powerStack up");
                         powerStack += 200;
                         if (attackHitNumber == 3)
                         {
@@ -311,7 +296,6 @@ public class Partition : MonoBehaviour {
                         HealthBar.Instance.TakeDamage(4);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
                     {
-                        Debug.Log("powerStack up");
                         powerStack += 200;
                         if (attackHitNumber == 3)
                         {
@@ -336,7 +320,6 @@ public class Partition : MonoBehaviour {
                         HealthBar.Instance.TakeDamage(4);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
                     {
-                        Debug.Log("powerStack up");
                         powerStack += 50;
                         if (attackHitNumber == 3)
                         {
