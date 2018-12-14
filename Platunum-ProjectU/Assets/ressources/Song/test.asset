@@ -228,6 +228,24 @@ MonoBehaviour:
         times: 0
       - note: 480
         times: 0
+      - note: 492
+        times: 0
+      - note: 494
+        times: 0
+      - note: 496
+        times: 0
+      - note: 508
+        times: 0
+      - note: 510
+        times: 0
+      - note: 512
+        times: 0
+      - note: 524
+        times: 0
+      - note: 526
+        times: 0
+      - note: 528
+        times: 0
     - notes:
       - note: 10.5
         times: 0
@@ -457,6 +475,34 @@ MonoBehaviour:
         times: 0
       - note: 480
         times: 0
+      - note: 484
+        times: 0
+      - note: 488
+        times: 0
+      - note: 494
+        times: 0
+      - note: 496
+        times: 0
+      - note: 500
+        times: 0
+      - note: 504
+        times: 0
+      - note: 510
+        times: 0
+      - note: 512
+        times: 0
+      - note: 516
+        times: 0
+      - note: 520
+        times: 0
+      - note: 526
+        times: 0
+      - note: 528
+        times: 0
+      - note: 531
+        times: 0
+      - note: 532
+        times: 0
     - notes:
       - note: 11
         times: 0
@@ -675,6 +721,36 @@ MonoBehaviour:
       - note: 479
         times: 0
       - note: 480
+        times: 0
+      - note: 484
+        times: 0
+      - note: 488
+        times: 0
+      - note: 492
+        times: 0
+      - note: 496
+        times: 0
+      - note: 500
+        times: 0
+      - note: 504
+        times: 0
+      - note: 508
+        times: 0
+      - note: 512
+        times: 0
+      - note: 516
+        times: 0
+      - note: 520
+        times: 0
+      - note: 524
+        times: 0
+      - note: 528
+        times: 0
+      - note: 530.5
+        times: 0
+      - note: 531.5
+        times: 0
+      - note: 532
         times: 0
     - notes:
       - note: 11.5
@@ -898,6 +974,40 @@ MonoBehaviour:
       - note: 477
         times: 0
       - note: 480
+        times: 0
+      - note: 484
+        times: 0
+      - note: 488
+        times: 0
+      - note: 492
+        times: 0
+      - note: 494
+        times: 0
+      - note: 496
+        times: 0
+      - note: 500
+        times: 0
+      - note: 504
+        times: 0
+      - note: 508
+        times: 0
+      - note: 510
+        times: 0
+      - note: 512
+        times: 0
+      - note: 516
+        times: 0
+      - note: 520
+        times: 0
+      - note: 524
+        times: 0
+      - note: 526
+        times: 0
+      - note: 528
+        times: 0
+      - note: 530
+        times: 0
+      - note: 532
         times: 0
   - tracks:
     - notes:
