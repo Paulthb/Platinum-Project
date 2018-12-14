@@ -34,7 +34,7 @@ public class ManaBar : BarUI {
             return instance;
         }
     }
-    
+
 
     void Start()
     {
@@ -47,7 +47,7 @@ public class ManaBar : BarUI {
         ratio = manaPoint / manaMaxPoint;
         manaBar.fillAmount = ratio;
     }*/
-    
+
     public void WinMana(int manaPt)
     {
         base.Value += manaPt;

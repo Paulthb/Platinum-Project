@@ -24,7 +24,6 @@ public class PrimaryBeat : MonoBehaviour {
     {
         if (nodes[trackId][subNode])
         {
-            Debug.Log("node delete");
             Destroy(nodes[trackId][subNode].gameObject);
             nodes[trackId][subNode] = null;
         }

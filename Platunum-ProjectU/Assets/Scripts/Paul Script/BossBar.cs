@@ -7,7 +7,7 @@ public class BossBar : BarUI {
     public float damage = 50;
 
     private BossManager bossManager;
-    
+
     private static BossBar instance;
     public static BossBar Instance
     {
@@ -15,7 +15,7 @@ public class BossBar : BarUI {
         {
             if (instance == null)
                 instance = GameObject.FindObjectOfType<BossBar>();
-            if (instance == null) 
+            if (instance == null)
                 Debug.Log("No BossBar found");
             return instance;
         }
@@ -72,6 +72,5 @@ public class BossBar : BarUI {
             Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-        //UpdateBar();
     }
 }

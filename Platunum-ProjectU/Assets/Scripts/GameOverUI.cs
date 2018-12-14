@@ -14,7 +14,6 @@ public class GameOverUI : MonoBehaviour {
 
     IEnumerator WaitUntilLobby()
     {
-        Debug.Log("Start waiting");
         yield return new WaitForSeconds(10f);
         SceneManager.LoadScene("Lobby");
     }

@@ -9,7 +9,7 @@ public class HarmonieBar : MonoBehaviour {
     private Image harmonieBar;
 
     private float harmoniePoint = 0f;
-    private float harmonieMaxPoint = 100f;
+    public float harmonieMaxPoint = 100f;
 
     private float currentHarmoniePoint;
     private float  m_ratio;
@@ -34,6 +34,7 @@ public class HarmonieBar : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
+        harmoniePoint = harmonieMaxPoint;
         currentHarmoniePoint = harmoniePoint;
         UpdateBar();
     }
@@ -45,13 +46,11 @@ public class HarmonieBar : MonoBehaviour {
         if (Input.GetKeyDown("x"))
         {
             TakeHarmonie(10f);
-            Debug.Log("LAER PDJHFIHGDK !");
         }
 
         if (Input.GetKeyDown("x"))
         {
             TakeHarmonie(10f);
-            Debug.Log("LAER PDJHFIHGDK !");
         }
 
         if (currentHarmoniePoint != harmoniePoint)
@@ -76,7 +75,6 @@ public class HarmonieBar : MonoBehaviour {
         if (harmoniePoint >= 100)
         {
             harmoniePoint = 100;
-            Debug.Log("on passe en fois 2 !");
         }
 
         UpdateBar();

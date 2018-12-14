@@ -27,7 +27,6 @@ public class Player : MonoBehaviour
         if (pads != null)
         {
             this.pads = pads;
-            //Debug.Log("pads loaded");
         }
         else
             trackKey = LoadTrackKey();
