@@ -12,7 +12,6 @@ public class BossManager : MonoBehaviour {
 
     public float StackDmg;
     public int damageCoupDeQueue = 20;
-    public int noteNb;
     public float volumeDownUltrason = 0.16f;
     public float maledictionTime = 10f;
     public float hurlementTime = 10f;
@@ -77,6 +76,7 @@ public class BossManager : MonoBehaviour {
             if (StackDmg >= resistUltralaser)
             {
                 Debug.Log("Ultralaser Cancel");
+                animatorBoss.SetBool("UltralaserLoop", false);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
                 StackDmg = 0;
@@ -85,12 +85,13 @@ public class BossManager : MonoBehaviour {
             else if(ultralaserTimer >= ultralaserTime)
             {
                 Debug.Log("Ultralaser Success");
+                animatorBoss.SetBool("UltralaserLoop", false);
+                animatorBoss.SetTrigger("UltralaserShoot");
                 HealthBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
             }
         }
-
         animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
     }
 
@@ -123,10 +124,11 @@ public class BossManager : MonoBehaviour {
                 //le boss prepare une boule grandissante
                 //Les joueurs doivent réussir tant de notes sinon ils se prennent la boule
                 //Sinon l'attaque du boss est annulée
-                noteNb = 0;
+                animatorBoss.SetTrigger("ultralaserStart");
+                animatorBoss.SetBool("UltralaserLoop", true);
                 goUltralaser = true;
                 StartCoroutine(UltralaserTime());
-                //créer un compeur de notes
+                //créer un compeur de dégats
                 //lancer une coroutine
                 //activer le compteur dans le temps de la coroutine
                 //à l'issue du temps, checker si la team a dépasser telle valeur de notes

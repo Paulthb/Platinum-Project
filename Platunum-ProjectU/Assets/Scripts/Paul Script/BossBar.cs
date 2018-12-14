@@ -8,8 +8,8 @@ public class BossBar : MonoBehaviour {
     [SerializeField]
     private Image bossBar;
 
-    public float bossPoint = 1000f;
-    private float bossMaxPoint = 1000f;
+    private float bossPoint = 1000f;
+    public float bossMaxPoint = 1000f;
 
     public float currentBossPoint;
 
@@ -34,6 +34,7 @@ public class BossBar : MonoBehaviour {
 
     void Start()
     {
+        bossPoint = bossMaxPoint;
         currentBossPoint = bossPoint;
         bossManager = BossManager.Instance;
     }
@@ -80,9 +81,7 @@ public class BossBar : MonoBehaviour {
         if (bossPoint <= 0)
         {
             bossPoint = 0;
-            Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
-        //UpdateBar();
     }
 }

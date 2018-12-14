@@ -10,7 +10,7 @@ public class ManaBar : MonoBehaviour {
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
     public float manaPoint = 900f;
-    private float manaMaxPoint = 900f;
+    public float manaMaxPoint = 900f;
 
     private float currentManaPoint;
     private float m_ratio;
@@ -20,6 +20,7 @@ public class ManaBar : MonoBehaviour {
 
     void Start()
     {
+        manaPoint = manaMaxPoint;
         currentManaPoint = manaPoint;
     }
 
@@ -77,7 +78,6 @@ public class ManaBar : MonoBehaviour {
         if (manaPoint > manaMaxPoint) //récuperer la somme de mana groupe max
         {
             manaPoint = manaMaxPoint;
-            Debug.Log("full mana");
         }
         UpdateBar();
     }
@@ -88,7 +88,6 @@ public class ManaBar : MonoBehaviour {
         if (manaPoint < 0)
         {
             manaPoint = 0;
-            Debug.Log("on ne peut plus attaquer");
         }
 
         UpdateBar();

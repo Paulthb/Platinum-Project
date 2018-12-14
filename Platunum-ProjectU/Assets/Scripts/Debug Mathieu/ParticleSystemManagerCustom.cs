@@ -12,21 +12,16 @@ public class ParticleSystemManagerCustom : MonoBehaviour
 		if (rank == PartitionManager.Rank.PERFECT)
 		{
 			particleSet[track].perfect.Play();
-			/*perfectionEffect.Play();
-			comboEffect.Play();*/
 		}
 		else if (rank == PartitionManager.Rank.GOOD)
 		{
 			particleSet[track].good.Play();
-			//comboEffect.Play();
 		}
 		else if (rank == PartitionManager.Rank.BAD)
 		{
 			particleSet[track].bad.Play();
 		}
-
-
-		//do nothing if missed
+        
 	}
 
     //Parametrage sur unity editor

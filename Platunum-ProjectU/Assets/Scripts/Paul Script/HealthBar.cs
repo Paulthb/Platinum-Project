@@ -11,18 +11,17 @@ public class HealthBar : MonoBehaviour {
     private Image armorBar;
 
     // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    public float healthPoint = 300f;
+    private float healthPoint = 300f;
     private float oldHealthPoint;
     private float armorPoint = 100f;
-    private float maxHealthPoint = 300f;
-    private float maxArmorPoint = 100f;
+    public float maxHealthPoint = 300f;
+    public float maxArmorPoint = 100f;
     private float oldArmorPoint;
     private float currentHealthPoint;
     private float currentArmorPoint;
     private float m_ratio;
 
     public float speed = 40;
-
 
     private bool isArmor = true;
 
@@ -42,6 +41,8 @@ public class HealthBar : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        healthPoint = maxHealthPoint;
+        armorPoint = maxArmorPoint;
         currentHealthPoint = healthPoint;
         currentArmorPoint = armorPoint;
         UpdateIsArmor();
@@ -100,7 +101,6 @@ public class HealthBar : MonoBehaviour {
         if (armorPoint > maxArmorPoint) //récuperer la somme de armor groupe max
         {
             armorPoint = maxArmorPoint;
-            Debug.Log("full armor");
         }
     }
 
@@ -113,7 +113,6 @@ public class HealthBar : MonoBehaviour {
             if (healthPoint < 0)
             {
                 healthPoint = 0;
-                Debug.Log("on est mort !");
                 BarManager.Instance.EndGame();
             }
         }
@@ -123,9 +122,8 @@ public class HealthBar : MonoBehaviour {
             armorPoint -= damagePt;
             if (armorPoint <= 0)
             {
-                armorBar.fillAmount = 0;//////////////////////////////////////////
+                armorBar.fillAmount = 0;
                 armorPoint = 0;
-                Debug.Log("plus d'armure");
             }
         }
 
