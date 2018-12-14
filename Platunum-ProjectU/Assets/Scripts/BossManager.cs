@@ -198,7 +198,8 @@ public class BossManager : MonoBehaviour {
     IEnumerator BrouillardTime()
     {
         yield return new WaitForSeconds(brouillardTime);
-        animatorBoss.SetTrigger("BrouillardFin");
+        animatorBrouillard.SetTrigger("BrouillardFinTrigger");
+        yield return new WaitForSeconds(0.7f);
         brouillardObject.SetActive(false);
     }
 
