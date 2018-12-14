@@ -8,7 +8,9 @@ public class BossManager : MonoBehaviour {
     [System.NonSerialized] public bool goMalediction, goHurlement, goInvincibilite, goBloc, goUltralaser;
     public GameObject Conductor;
     private AudioSource myAudio;
-    public Animator animatorBoss;
+    private Animator animatorBoss;
+    public GameObject brouillardObject;
+    public Animator animatorBrouillard;
 
     public float StackDmg;
     public int damageCoupDeQueue = 20;
@@ -109,6 +111,7 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.HURLEMENT:
                 //changer de role et les bloquer sur ce role pdt 10 sec
+                animatorBoss.SetTrigger("HurlementTrigger");
                 goHurlement = true;
                 int count = PlayerManager.Instance.GetPlayersCount();
                 for (int i = 0; i < count; i++)
@@ -143,6 +146,9 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.BROUILLARD:
                 //La partie basse des partitions est cachée
+                animatorBoss.SetTrigger("BrouillardTrigger");
+                brouillardObject.SetActive(true);
+                StartCoroutine(BrouillardTime());
                 foreach (Player player in PlayerManager.Instance.GetPlayers())
                     player.GetPartition().ShowBrouillard(brouillardTime);
                     break;
@@ -187,6 +193,13 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(ultralaserTime);
         goUltralaser = false;
+    }
+
+    IEnumerator BrouillardTime()
+    {
+        yield return new WaitForSeconds(brouillardTime);
+        animatorBoss.SetTrigger("BrouillardFin");
+        brouillardObject.SetActive(false);
     }
 
     private void InitStoneAttack()
