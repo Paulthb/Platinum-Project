@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
+using System.IO.Ports;
 
 public class editor : MonoBehaviour {
     private bool PlayMode = false;
@@ -61,6 +62,10 @@ public class editor : MonoBehaviour {
     public int trackNb;
     public float[] OffsetYTracks;
 
+
+    //PADS
+    private gamepads pads;
+
     //Get Instance
     private static editor instance;
     public static editor Instance
@@ -76,6 +81,9 @@ public class editor : MonoBehaviour {
     }
 
     void Start () {
+
+        if(SerialPort.GetPortNames().Length >0)
+            pads = new gamepads((int)char.GetNumericValue(SerialPort.GetPortNames()[0][SerialPort.GetPortNames()[0].Length-1]));
         //Load Song
         audios = GetComponent<AudioSource>();
         songInfo = SongInfoCustom.Instance.currentSong;
@@ -188,6 +196,16 @@ public class editor : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Joystick1Button3) || Input.GetKeyDown(KeyCode.R))
             {
                 LookForNode(3);
+            }
+
+            pads.Update();
+            for (int i = 0; i < 4; i++)
+            {
+                if (pads.GetKeyDown(i))
+                {
+                    //Send TrackKey input
+                    LookForNode(i);
+                }
             }
         }
     }
