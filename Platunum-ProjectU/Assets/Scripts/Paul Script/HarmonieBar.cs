@@ -3,18 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HarmonieBar : MonoBehaviour {
-
-    [SerializeField]
-    private Image harmonieBar;
-
-    private float harmoniePoint = 0f;
-    public float harmonieMaxPoint = 100f;
-
-    private float currentHarmoniePoint;
-    private float  m_ratio;
-
-    public float speed = 40;
+public class HarmonieBar : BarUI {
 
 
     private static HarmonieBar instance;
@@ -34,9 +23,7 @@ public class HarmonieBar : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        harmoniePoint = harmonieMaxPoint;
-        currentHarmoniePoint = harmoniePoint;
-        UpdateBar();
+        BarStart();
     }
 	
 	// Update is called once per frame
@@ -52,38 +39,16 @@ public class HarmonieBar : MonoBehaviour {
         {
             TakeHarmonie(10f);
         }
-
-        if (currentHarmoniePoint != harmoniePoint)
-        {
-            float ToAdd = Mathf.Sign(harmoniePoint - currentHarmoniePoint) * speed * Time.deltaTime;
-
-            if(ToAdd > Mathf.Abs(currentHarmoniePoint - harmoniePoint))
-                currentHarmoniePoint = harmoniePoint;
-            else
-                currentHarmoniePoint = currentHarmoniePoint + ToAdd;
-
-            m_ratio = currentHarmoniePoint / harmonieMaxPoint;
-            harmonieBar.fillAmount = m_ratio;
-        }
-
+        BarUpdate();
     }
 
     public void TakeHarmonie(float harmoniePt)
     {
 
-        harmoniePoint += harmoniePt;
-        if (harmoniePoint >= 100)
+        Value += harmoniePt;
+        if (Value >= 100)
         {
-            harmoniePoint = 100;
+            Value = 100;
         }
-
-        UpdateBar();
-    }
-
-    private void UpdateBar()
-    {
-        float ratio;
-        ratio = harmoniePoint / harmonieMaxPoint;
-        harmonieBar.fillAmount = ratio;
     }
 }

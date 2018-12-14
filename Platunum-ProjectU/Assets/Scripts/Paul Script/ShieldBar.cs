@@ -18,6 +18,11 @@ public class ShieldBar : BarUI {
         }
     }
 
+    private void Start()
+    {
+        BarStart();
+    }
+
     void Update()
     {
         //pour les tests
