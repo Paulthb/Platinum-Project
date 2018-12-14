@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  song: {fileID: 8300000, guid: 1006e766afc33b94ba2db8f1cfa677dc, type: 3}
+  song: {fileID: 8300000, guid: cf36b592ac3bd854e8c376f333824f66, type: 3}
   songID: 0
   collection: 0
   songNum: 0
@@ -308,19 +308,11 @@ MonoBehaviour:
         times: 0
       - note: 659.5
         times: 0
-      - note: 660
-        times: 0
-      - note: 660.5
-        times: 0
       - note: 661
         times: 0
       - note: 661.5
         times: 0
-      - note: 662
-        times: 0
       - note: 662.5
-        times: 0
-      - note: 663
         times: 0
       - note: 663.5
         times: 0
@@ -683,15 +675,7 @@ MonoBehaviour:
         times: 0
       - note: 661
         times: 0
-      - note: 661.5
-        times: 0
-      - note: 662
-        times: 0
-      - note: 662.5
-        times: 0
       - note: 663
-        times: 0
-      - note: 663.5
         times: 0
       - note: 666
         times: 0
@@ -1046,10 +1030,6 @@ MonoBehaviour:
         times: 0
       - note: 660.5
         times: 0
-      - note: 662
-        times: 0
-      - note: 662.5
-        times: 0
       - note: 663
         times: 0
       - note: 666
@@ -1395,7 +1375,7 @@ MonoBehaviour:
         times: 0
       - note: 660
         times: 0
-      - note: 661.5
+      - note: 662
         times: 0
       - note: 662.5
         times: 0
