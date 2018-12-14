@@ -118,7 +118,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossBar: {fileID: 114676007090419570}
-  bossPoint: 1000
+  bossMaxPoint: 100000
+  currentBossPoint: 0
   speed: 120
   damage: 50
 --- !u!114 &114676007090419570
