@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  song: {fileID: 8300000, guid: 121b6e94d48b4f047bed2dc3fdf0347f, type: 3}
+  song: {fileID: 8300000, guid: cf36b592ac3bd854e8c376f333824f66, type: 3}
   songID: 0
   collection: 0
   songNum: 0
@@ -1455,6 +1455,8 @@ MonoBehaviour:
         times: 0
       - note: 187
         times: 0
+      - note: 206
+        times: 0
       - note: 218.5
         times: 0
       - note: 221.5
@@ -1544,6 +1546,8 @@ MonoBehaviour:
       - note: 515.5
         times: 0
       - note: 526
+        times: 0
+      - note: 528
         times: 0
       - note: 540.5
         times: 0
@@ -1703,6 +1707,8 @@ MonoBehaviour:
       - note: 204
         times: 0
       - note: 205
+        times: 0
+      - note: 206
         times: 0
       - note: 208
         times: 0
@@ -1903,6 +1909,8 @@ MonoBehaviour:
       - note: 520
         times: 0
       - note: 526.5
+        times: 0
+      - note: 528
         times: 0
       - note: 531
         times: 0
@@ -2125,6 +2133,8 @@ MonoBehaviour:
         times: 0
       - note: 204.5
         times: 0
+      - note: 206
+        times: 0
       - note: 208.5
         times: 0
       - note: 212.5
@@ -2325,6 +2335,8 @@ MonoBehaviour:
         times: 0
       - note: 522
         times: 0
+      - note: 528
+        times: 0
       - note: 530
         times: 0
       - note: 534.5
@@ -2458,6 +2470,8 @@ MonoBehaviour:
         times: 0
       - note: 197
         times: 0
+      - note: 206
+        times: 0
       - note: 213
         times: 0
       - note: 215
@@ -2582,6 +2596,8 @@ MonoBehaviour:
         times: 0
       - note: 517
         times: 0
+      - note: 528
+        times: 0
       - note: 530.5
         times: 0
       - note: 535
@@ -2684,6 +2700,8 @@ MonoBehaviour:
         times: 0
       - note: 174
         times: 0
+      - note: 206
+        times: 0
       - note: 218.25
         times: 0
       - note: 226.25
@@ -2773,6 +2791,8 @@ MonoBehaviour:
       - note: 508.25
         times: 0
       - note: 512.25
+        times: 0
+      - note: 528
         times: 0
       - note: 532.25
         times: 0
@@ -2882,6 +2902,8 @@ MonoBehaviour:
       - note: 186.25
         times: 0
       - note: 190
+        times: 0
+      - note: 206
         times: 0
       - note: 210.25
         times: 0
@@ -3005,7 +3027,7 @@ MonoBehaviour:
         times: 0
       - note: 520
         times: 0
-      - note: 528.25
+      - note: 528
         times: 0
       - note: 532.25
         times: 0
@@ -3122,7 +3144,7 @@ MonoBehaviour:
         times: 0
       - note: 190
         times: 0
-      - note: 206.25
+      - note: 206
         times: 0
       - note: 213.75
         times: 0
@@ -3240,7 +3262,7 @@ MonoBehaviour:
         times: 0
       - note: 520.25
         times: 0
-      - note: 528.25
+      - note: 528
         times: 0
       - note: 535.75
         times: 0
@@ -3327,7 +3349,7 @@ MonoBehaviour:
         times: 0
       - note: 190.25
         times: 0
-      - note: 206.25
+      - note: 206
         times: 0
       - note: 210.25
         times: 0
@@ -3428,6 +3450,8 @@ MonoBehaviour:
       - note: 496.25
         times: 0
       - note: 508.25
+        times: 0
+      - note: 528
         times: 0
       - note: 535.25
         times: 0
@@ -3673,7 +3697,7 @@ MonoBehaviour:
         times: 0
       - note: 181.75
         times: 0
-      - note: 206.25
+      - note: 206
         times: 0
       - note: 210.25
         times: 0
@@ -3808,6 +3832,8 @@ MonoBehaviour:
       - note: 519.25
         times: 0
       - note: 519.75
+        times: 0
+      - note: 528
         times: 0
       - note: 537.25
         times: 0
@@ -4096,7 +4122,7 @@ MonoBehaviour:
         times: 0
       - note: 185.75
         times: 0
-      - note: 206.25
+      - note: 206
         times: 0
       - note: 209.25
         times: 0
@@ -4278,7 +4304,7 @@ MonoBehaviour:
         times: 0
       - note: 523.75
         times: 0
-      - note: 528.25
+      - note: 528
         times: 0
       - note: 530.75
         times: 0
@@ -4543,6 +4569,8 @@ MonoBehaviour:
         times: 0
       - note: 189.75
         times: 0
+      - note: 206
+        times: 0
       - note: 208.75
         times: 0
       - note: 213.25
@@ -4626,6 +4654,8 @@ MonoBehaviour:
       - note: 507.25
         times: 0
       - note: 507.75
+        times: 0
+      - note: 528
         times: 0
       - note: 531.25
         times: 0
@@ -4756,6 +4786,8 @@ MonoBehaviour:
         times: 0
       - note: 197.75
         times: 0
+      - note: 206
+        times: 0
       - note: 208.25
         times: 0
       - note: 213.75
@@ -4811,6 +4843,8 @@ MonoBehaviour:
       - note: 511.75
         times: 0
       - note: 512.25
+        times: 0
+      - note: 528
         times: 0
       - note: 530.25
         times: 0
