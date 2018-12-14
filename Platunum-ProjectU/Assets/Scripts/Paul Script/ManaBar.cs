@@ -3,52 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ManaBar : MonoBehaviour {
-
-    [SerializeField]
-    private Image manaBar;
-
-    // valeurs temporaires, il faut récup en fontion des stats des joueurs
-    public float manaPoint = 900f;
-    private float manaMaxPoint = 900f;
-
-    private float currentManaPoint;
-    private float m_ratio;
-
-    public float speed = 80;
-
-
-    void Start()
-    {
-        currentManaPoint = manaPoint;
-    }
+public class ManaBar : BarUI {
 
     void Update()
     {
         //pour les tests
         if (Input.GetKeyDown("c"))
         {
-            WinMana(-10);
+            ResetCooldownTimer();
+            WinMana(-50);
         }
 
         //pour les tests
         if (Input.GetKeyDown("d"))
         {
-            WinMana(10);
+            WinMana(50);
         }
-
-        if (currentManaPoint != manaPoint)
-        {
-            float ToAdd = Mathf.Sign(manaPoint - currentManaPoint) * speed * Time.deltaTime;
-
-            if(ToAdd > Mathf.Abs(currentManaPoint - manaPoint))
-                currentManaPoint = manaPoint;
-            else
-                currentManaPoint = currentManaPoint + ToAdd;
-
-            m_ratio = currentManaPoint / manaMaxPoint;
-            manaBar.fillAmount = m_ratio;
-        }
+        BarUpdate();
     }
 
     private static ManaBar instance;
@@ -63,34 +34,41 @@ public class ManaBar : MonoBehaviour {
             return instance;
         }
     }
+    
 
-    private void UpdateBar()
+    void Start()
+    {
+        instance = ManaBar.Instance;
+        BarStart();
+    }
+    /*private void UpdateBar()
     {
         float ratio;
         ratio = manaPoint / manaMaxPoint;
         manaBar.fillAmount = ratio;
-    }
+    }*/
     
     public void WinMana(int manaPt)
     {
-        manaPoint += manaPt;
-        if (manaPoint > manaMaxPoint) //récuperer la somme de mana groupe max
+        base.Value += manaPt;
+        if (base.Value > MaxValue) //récuperer la somme de mana groupe max
         {
-            manaPoint = manaMaxPoint;
+            base.Value = MaxValue;
             Debug.Log("full mana");
         }
-        UpdateBar();
+        //UpdateBar();
     }
 
     public void Attack()
     {
-        manaPoint -= 50;
-        if (manaPoint < 0)
+        ResetCooldownTimer();
+        base.Value -= 50;
+        if (base.Value < 0)
         {
-            manaPoint = 0;
+            base.Value = 0;
             Debug.Log("on ne peut plus attaquer");
         }
 
-        UpdateBar();
+        //UpdateBar();
     }
 }
