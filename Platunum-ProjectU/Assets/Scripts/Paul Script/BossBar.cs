@@ -3,18 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossBar : MonoBehaviour {
-
-    [SerializeField]
-    private Image bossBar;
-
-    private float bossPoint = 1000f;
-    public float bossMaxPoint = 1000f;
-
-    public float currentBossPoint;
-
-    private float m_ratio;
-    public float speed = 40;
+public class BossBar : BarUI {
     public float damage = 50;
 
     private BossManager bossManager;
@@ -26,7 +15,7 @@ public class BossBar : MonoBehaviour {
         {
             if (instance == null)
                 instance = GameObject.FindObjectOfType<BossBar>();
-            if (instance == null) 
+            if (instance == null)
                 Debug.Log("No BossBar found");
             return instance;
         }
@@ -34,9 +23,8 @@ public class BossBar : MonoBehaviour {
 
     void Start()
     {
-        bossPoint = bossMaxPoint;
-        currentBossPoint = bossPoint;
         bossManager = BossManager.Instance;
+        BarStart();
     }
 
     void Update()
@@ -50,8 +38,8 @@ public class BossBar : MonoBehaviour {
         {
             TakeDamage(-damage);
         }
-
-        if (currentBossPoint != bossPoint)
+        BarUpdate();
+        /*if (currentBossPoint != bossPoint)
         {
             float ToAdd = Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
 
@@ -62,25 +50,26 @@ public class BossBar : MonoBehaviour {
 
             m_ratio = currentBossPoint / bossMaxPoint;
             bossBar.fillAmount = m_ratio;
-        }
+        }*/
     }
 
-    private void UpdateBar()
+    /*private void UpdateBar()
     {
         float ratio;
         ratio = bossPoint / bossMaxPoint;
         bossBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-    }
+    }*/
 
     public void TakeDamage(float damage)
     {
 
-        bossPoint -= damage;
+        Value -= damage;
         if (bossManager.goUltralaser)
             bossManager.StackDmg += damage;
-        if (bossPoint <= 0)
+        if (Value <= 0)
         {
-            bossPoint = 0;
+            Value = 0;
+            Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
     }

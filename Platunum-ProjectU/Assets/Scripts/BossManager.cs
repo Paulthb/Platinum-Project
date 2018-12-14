@@ -87,12 +87,13 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Success");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserShoot");
-                HealthBar.Instance.TakeDamage(ultralaserDamage);
+                ShieldBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
             }
         }
-        animatorBoss.SetFloat("BossLife", BossBar.Instance.currentBossPoint);
+
+        animatorBoss.SetFloat("BossLife", BossBar.Instance.Value);
     }
 
     public void Attack (BossAttack AttackBoss)
@@ -155,7 +156,7 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
-                HealthBar.Instance.TakeDamage(damageLanceFlamme);
+                ShieldBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
         }
     }

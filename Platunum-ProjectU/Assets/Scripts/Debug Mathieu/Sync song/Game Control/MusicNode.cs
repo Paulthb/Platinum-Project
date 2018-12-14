@@ -67,11 +67,11 @@ public class MusicNode : MonoBehaviour
             if (isStone)
             {
                 BossManager.Instance.CancelAttackStone();
-                HealthBar.Instance.TakeDamage(50);
+                ShieldBar.Instance.TakeDamage(50);
             }
             else
             {
-                HealthBar.Instance.TakeDamage(8);
+                ShieldBar.Instance.TakeDamage(8);
             }
         }
 

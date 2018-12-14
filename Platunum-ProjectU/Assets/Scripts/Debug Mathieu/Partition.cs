@@ -230,7 +230,7 @@ public class Partition : MonoBehaviour {
                 //trop tot / trop tard
                 //Baisse d'unisson
                 //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
-                HealthBar.Instance.TakeDamage(8);
+                ShieldBar.Instance.TakeDamage(8);
             }
         }
         /*
@@ -269,8 +269,8 @@ public class Partition : MonoBehaviour {
             {
                 case PartitionManager.Rank.PERFECT:
                     if (BossManager.Instance.goMalediction)
-                        HealthBar.Instance.TakeDamage(4);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                        ShieldBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value > 50)
                     {
                         powerStack += 200;
                         if (attackHitNumber == 3)
@@ -287,14 +287,14 @@ public class Partition : MonoBehaviour {
                     else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Perfect et que le role est defense
                     {
                         powerStack += 15;
-                        HealthBar.Instance.WinArmor(15);
+                        ShieldBar.Instance.WinArmor(15);
                     }
                     break;
 
                 case PartitionManager.Rank.GOOD:
                     if (BossManager.Instance.goMalediction)
-                        HealthBar.Instance.TakeDamage(4);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                        ShieldBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value > 50)
                     {
                         powerStack += 200;
                         if (attackHitNumber == 3)
@@ -311,14 +311,14 @@ public class Partition : MonoBehaviour {
                     else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Good et que le role est defense
                     {
                         powerStack += 10;
-                        HealthBar.Instance.WinArmor(10);
+                        ShieldBar.Instance.WinArmor(10);
                     }
                     break;
 
                 case PartitionManager.Rank.BAD:
                     if (BossManager.Instance.goMalediction)
-                        HealthBar.Instance.TakeDamage(4);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.manaPoint > 50)
+                        ShieldBar.Instance.TakeDamage(4);
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value > 50)
                     {
                         powerStack += 50;
                         if (attackHitNumber == 3)
@@ -335,12 +335,12 @@ public class Partition : MonoBehaviour {
                     else if (currentRole.RoleState == Role.RoleStates.Defence)     // si la note est Bad et que le role est defense
                     {
                         powerStack += 5;
-                        HealthBar.Instance.WinArmor(5);
+                        ShieldBar.Instance.WinArmor(5);
                     }
                     break;
 
                 case PartitionManager.Rank.MISS:    // si la note est Miss
-                    HealthBar.Instance.TakeDamage(8);
+                    ShieldBar.Instance.TakeDamage(8);
                     break;
             }
         }
@@ -355,7 +355,7 @@ public class Partition : MonoBehaviour {
         else if (currentRole.RoleState == Role.RoleStates.Mana)
             ManaBar.Instance.WinMana(powerStack);
         else if (currentRole.RoleState == Role.RoleStates.Defence)
-            HealthBar.Instance.WinArmor(powerStack);
+            ShieldBar.Instance.WinArmor(powerStack);
 
         powerStack = 0;
         CountNote = 0;
