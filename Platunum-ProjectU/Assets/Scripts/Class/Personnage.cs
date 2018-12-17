@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Nouveau Personnage", menuName = "Personnage")]
 public class Personnage : ScriptableObject {
     public int id;
-    public string name;
+    public new string name;
     public Sprite Sprite;
     public float HP;
     public float Mana;
