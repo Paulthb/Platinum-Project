@@ -129,6 +129,7 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.ULTRASON:
                 //Etouffer le son de la musique pdt x sec
+                animatorBoss.SetTrigger("UltrasonTrigger");
                 StartCoroutine(UltrasonTime());
                 break;
             case BossAttack.ULTRALASER:
