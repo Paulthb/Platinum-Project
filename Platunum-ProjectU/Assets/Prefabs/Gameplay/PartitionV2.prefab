@@ -1588,12 +1588,13 @@ MonoBehaviour:
   roleSprite: {fileID: 114239400949078816}
   backgroundRoleSprite: {fileID: 114751394598576118}
   BackgroundSteleSprite: {fileID: 212763504018933968}
+  BackgroundSprite: {fileID: 212388805551231246}
   maxNbNote: 0
   powerStack: 0
   attackHitNumber: 0
   MissDamage: 8
   MaledictionDamage: 4
-  ManaBurnPerAttack: 50
+  ManaBurnPerAttack: 40
   AttackCountBurnMana: 1
   ATKPerfectPowerToStack: 200
   ATKGoodPowerToStack: 100
@@ -1604,6 +1605,9 @@ MonoBehaviour:
   SHIELDPerfectPowerToStack: 10
   SHIELDGoodPowerToStack: 5
   SHIELDBadPowerToStack: 2
+  HARMONIEPerfect: 10
+  HARMONIEGood: 8
+  HARMONIEBad: 3
 --- !u!198 &198003980719525804
 ParticleSystem:
   m_ObjectHideFlags: 1

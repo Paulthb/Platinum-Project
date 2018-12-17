@@ -49,6 +49,7 @@ public class Partition : MonoBehaviour {
     public Image roleSprite;
     public Image backgroundRoleSprite;
     public SpriteRenderer BackgroundSteleSprite;
+    public SpriteRenderer BackgroundSprite;
 
     //Count & Stack
     private float CountNote = 0;
