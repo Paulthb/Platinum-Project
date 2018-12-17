@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class HarmonieBar : BarUI {
-
+    private int multiplier = 1;
+    private bool emptying = false;
+    private float Timer = 0f;
+    public float multiplierDuration = 20f;
 
     private static HarmonieBar instance;
     public static HarmonieBar Instance
@@ -32,23 +35,46 @@ public class HarmonieBar : BarUI {
         //pour les tests
         if (Input.GetKeyDown("x"))
         {
-            TakeHarmonie(10f);
+            GiveHarmonie(10f);
         }
 
         if (Input.GetKeyDown("x"))
         {
-            TakeHarmonie(10f);
+            GiveHarmonie(10f);
+        }
+        if (emptying)
+        {
+            Value -= (MaxValue / multiplierDuration) * Time.deltaTime;
+            if (Value <= 0)
+            {
+                emptying = false;
+                multiplier = 1;
+            }
         }
         BarUpdate();
     }
 
-    public void TakeHarmonie(float harmoniePt)
+    public void GiveHarmonie(float harmoniePt)
     {
-
-        Value += harmoniePt;
-        if (Value >= 100)
+        if (!emptying)
         {
-            Value = 100;
+            Value += harmoniePt;
+            if (Value >= MaxValue)
+            {
+                Value = MaxValue;
+                TriggerMultiplier();
+            }
         }
+    }
+
+    private void TriggerMultiplier()
+    {
+        multiplier = 2;
+        emptying = true;
+    }
+
+    public int GetMultiplier()
+    {
+        return multiplier;
     }
 }

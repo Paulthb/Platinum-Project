@@ -12,6 +12,11 @@ public class BossManager : MonoBehaviour {
     public GameObject brouillardObject;
     public Animator animatorBrouillard;
 
+    public GameObject StelePrefab;
+    public GameObject SteleArrierePrefab;
+    private GameObject MaledictionCadre;
+    private GameObject MaledictionArriere;
+
     public float StackDmg;
     public int damageCoupDeQueue = 20;
     public float volumeDownUltrason = 0.16f;
@@ -170,7 +175,11 @@ public class BossManager : MonoBehaviour {
 
     IEnumerator MaledictionTime()
     {
+        yield return new WaitForSeconds(2f);
+        LoopAnimMalediction();
         yield return new WaitForSeconds(maledictionTime);
+        Destroy(MaledictionCadre);
+        Destroy(MaledictionArriere);
         goMalediction = false;
     }
     IEnumerator HurlementTime()
@@ -221,7 +230,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
-            HarmonieBar.Instance.TakeHarmonie(blocGiveHarmony);
+            HarmonieBar.Instance.GiveHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {
@@ -236,6 +245,24 @@ public class BossManager : MonoBehaviour {
     {
         goBloc = false;
         StoneRemainingPartitions.Clear();
+    }
+
+    public void LoopAnimMalediction()
+    {
+        Player playerMaudit = PlayerManager.Instance.GetPlayer(1);
+        Vector3 CadrePosition = playerMaudit.GetPartition().BackgroundSprite.transform.position;
+        Vector3 SteleArrierePosition = playerMaudit.GetPartition().BackgroundSteleSprite.transform.position;
+
+        // Créé le cadre maudit
+        MaledictionCadre = Instantiate(StelePrefab, CadrePosition, Quaternion.identity) as GameObject;
+        MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
+
+        //Créé le cadre arrière maudit si 2 roles sont possibles
+        if (playerMaudit.Personnage.AvailableRole.Length > 1)
+        {
+            MaledictionArriere = Instantiate(SteleArrierePrefab, SteleArrierePosition, Quaternion.identity) as GameObject;
+            MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
+        }
     }
 }
 
