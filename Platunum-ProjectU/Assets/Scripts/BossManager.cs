@@ -117,7 +117,8 @@ public class BossManager : MonoBehaviour {
                 int count = PlayerManager.Instance.GetPlayersCount();
                 for (int i = 0; i < count; i++)
                 {
-                    PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
+                    if(PlayerManager.Instance.GetPlayer(i + 1).Personnage.id != 0)
+                        PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
                 }
                 StartCoroutine(HurlementTime());
                 break;
