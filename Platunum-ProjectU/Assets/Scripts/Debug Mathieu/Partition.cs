@@ -78,6 +78,11 @@ public class Partition : MonoBehaviour {
     public int SHIELDGoodPowerToStack;
     public int SHIELDBadPowerToStack;
 
+    [Header("Harmonie")]
+    public int HARMONIEPerfect;
+    public int HARMONIEGood;
+    public int HARMONIEBad;
+
     private Role currentRole;
     public Role CurrentRole
     {
@@ -205,7 +210,6 @@ public class Partition : MonoBehaviour {
             //Note porté minimum
             if(offsetY < partitionManager.badOffsetY)
             {
-                
                 if (frontNode.isStone)
                     BossManager.Instance.TriggerNextAttackStone();
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit
@@ -218,6 +222,12 @@ public class Partition : MonoBehaviour {
 
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
+
+                    //Harmonie
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    {
+                        HarmonieBar.Instance.Value += HARMONIEPerfect;
+                    }
 
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();
@@ -232,6 +242,12 @@ public class Partition : MonoBehaviour {
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
 
+                    //Harmonie
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    {
+                        HarmonieBar.Instance.Value += HARMONIEGood;
+                    }
+
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();
                 }
@@ -244,6 +260,12 @@ public class Partition : MonoBehaviour {
                     ChargeRole(PartitionManager.Rank.BAD);
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
+
+                    //Harmonie
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    {
+                        HarmonieBar.Instance.Value += HARMONIEBad;
+                    }
 
                     //Remove node
                     queueForTracks[trackNumber].Dequeue();
