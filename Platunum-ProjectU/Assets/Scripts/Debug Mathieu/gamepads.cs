@@ -11,7 +11,7 @@ public class gamepads
     public int[] btn;
     public bool[] btnReleased;
 
-    public gamepads(int portNum, int speed = 9600)
+    public gamepads(int portNum, int speed = 57600)
     {
         btn = new int[5];
         for (int i = 0; i < btn.Length; i++)

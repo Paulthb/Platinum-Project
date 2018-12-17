@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ManaBar : BarUI {
-
+    public Text debugText;
+    public bool debug;
     void Update()
     {
         //pour les tests
@@ -20,6 +21,7 @@ public class ManaBar : BarUI {
             WinMana(50);
         }
         BarUpdate();
+        debugText.text = Value + "/" + MaxValue;
     }
 
     private static ManaBar instance;
@@ -40,14 +42,16 @@ public class ManaBar : BarUI {
     {
         instance = ManaBar.Instance;
         BarStart();
+        debugText = transform.GetChild(2).GetComponent<Text>();
+        debugText.gameObject.SetActive(debug);
     }
 
     public void WinMana(int manaPt)
     {
         base.Value += manaPt;
-        if (base.Value > MaxValue) //récuperer la somme de mana groupe max
+        if (Value > MaxValue) //récuperer la somme de mana groupe max
         {
-            base.Value = MaxValue;
+            Value = MaxValue;
         }
     }
 
@@ -55,10 +59,10 @@ public class ManaBar : BarUI {
     {
         
         ResetCooldownTimer();
-        base.Value -= 50;
+        Value -= 50;
         if (base.Value < 0)
         {
-            base.Value = 0;
+            Value = 0;
         }
 
         //UpdateBar();

@@ -137,8 +137,8 @@ MonoBehaviour:
   resistUltralaser: 3500
   ultralaserDamage: 250
   ListAttack:
-  - Time: 5
-    Attack: 5
+  - Time: 7
+    Attack: 0
   - Time: 60
     Attack: 4
   - Time: 35

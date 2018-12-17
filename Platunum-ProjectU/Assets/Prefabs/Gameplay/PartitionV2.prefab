@@ -1591,6 +1591,19 @@ MonoBehaviour:
   maxNbNote: 0
   powerStack: 0
   attackHitNumber: 0
+  MissDamage: 8
+  MaledictionDamage: 4
+  ManaBurnPerAttack: 50
+  AttackCountBurnMana: 1
+  ATKPerfectPowerToStack: 200
+  ATKGoodPowerToStack: 100
+  ATKBadPowerToStack: 50
+  MANAPerfectPowerToStack: 30
+  MANAGoodPowerToStack: 20
+  MANABadPowerToStack: 10
+  SHIELDPerfectPowerToStack: 10
+  SHIELDGoodPowerToStack: 5
+  SHIELDBadPowerToStack: 2
 --- !u!198 &198003980719525804
 ParticleSystem:
   m_ObjectHideFlags: 1
