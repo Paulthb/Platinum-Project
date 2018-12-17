@@ -27,12 +27,14 @@ public class BarManager : MonoBehaviour {
 
     public void EndGame()
     {
+        BossBar.Instance.transform.gameObject.SetActive(false);
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
     }
 
     public void WinGame()
     {
+        BossBar.Instance.transform.gameObject.SetActive(false);
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
     }
