@@ -11,7 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
   m_Name: test
   m_EditorClassIdentifier: 
-  song: {fileID: 8300000, guid: cf36b592ac3bd854e8c376f333824f66, type: 3}
+  song: {fileID: 8300000, guid: 9f6b7de2a4aca97459f8af0f6f161ef4, type: 3}
   songID: 0
   collection: 0
   songNum: 0
@@ -1551,6 +1551,8 @@ MonoBehaviour:
         times: 0
       - note: 526
         times: 0
+      - note: 527
+        times: 0
       - note: 528
         times: 0
       - note: 540.5
@@ -1618,8 +1620,6 @@ MonoBehaviour:
       - note: 670
         times: 0
       - note: 671
-        times: 0
-      - note: 671.5
         times: 0
       - note: 680
         times: 0
@@ -2016,16 +2016,6 @@ MonoBehaviour:
         times: 0
       - note: 663
         times: 0
-      - note: 666.5
-        times: 0
-      - note: 667.5
-        times: 0
-      - note: 668.5
-        times: 0
-      - note: 669.5
-        times: 0
-      - note: 670.5
-        times: 0
       - note: 671
         times: 0
       - note: 672
@@ -2038,27 +2028,15 @@ MonoBehaviour:
         times: 0
       - note: 682
         times: 0
-      - note: 682.5
-        times: 0
       - note: 683
-        times: 0
-      - note: 683.5
         times: 0
       - note: 684
         times: 0
-      - note: 684.5
-        times: 0
       - note: 685
-        times: 0
-      - note: 685.5
         times: 0
       - note: 686
         times: 0
-      - note: 686.5
-        times: 0
       - note: 687
-        times: 0
-      - note: 687.5
         times: 0
       - note: 688
         times: 0
@@ -3622,24 +3600,6 @@ MonoBehaviour:
       - note: 176.25
         times: 0
       - note: 177.25
-        times: 0
-      - note: 177.75
-        times: 0
-      - note: 178.25
-        times: 0
-      - note: 178.75
-        times: 0
-      - note: 179.25
-        times: 0
-      - note: 179.75
-        times: 0
-      - note: 180.25
-        times: 0
-      - note: 180.75
-        times: 0
-      - note: 181.25
-        times: 0
-      - note: 181.75
         times: 0
       - note: 206
         times: 0
