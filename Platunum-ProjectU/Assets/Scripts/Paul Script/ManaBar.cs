@@ -45,9 +45,9 @@ public class ManaBar : BarUI {
     public void WinMana(int manaPt)
     {
         base.Value += manaPt;
-        if (base.Value > MaxValue) //récuperer la somme de mana groupe max
+        if (Value > MaxValue) //récuperer la somme de mana groupe max
         {
-            base.Value = MaxValue;
+            Value = MaxValue;
         }
     }
 
@@ -55,10 +55,10 @@ public class ManaBar : BarUI {
     {
         
         ResetCooldownTimer();
-        base.Value -= 50;
+        Value -= 50;
         if (base.Value < 0)
         {
-            base.Value = 0;
+            Value = 0;
         }
 
         //UpdateBar();
