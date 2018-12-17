@@ -38,10 +38,7 @@ public class gamepads
             
             for (int i = 1; i < val.Length; i++)
             {
-                //if (i == 4)
-                //    Debug.Log("pads n°" + portNum + "/ Value:" + val[i]);
                 btn[i-1] = int.Parse(val[i]);
-                Debug.Log((val[i]));
             }
         }
         catch(TimeoutException e)
@@ -55,7 +52,6 @@ public class gamepads
 
     public bool GetKeyDown(int id)
     {
-        Debug.Log(btn[id]);
         if(btn[id] == 0)
         {
             if(btnReleased[id] == true)
