@@ -212,7 +212,7 @@ public class editor : MonoBehaviour {
 
     public void LookForNode(int track)
     {
-        int initialBeat = (int)Mathf.Floor(audios.time / crotchet);
+        int initialBeat = (int)Mathf.Floor(audios.time / crotchet)-1;
         int beatId = initialBeat;
         int nextSubBeatId = (int)Mathf.Floor(audios.time % crotchet / (crotchet / BeatDividing));
         do
@@ -229,6 +229,7 @@ public class editor : MonoBehaviour {
         {
             float CursorPosX = cameraTransform.position.x - offsetX;
             float distance = Mathf.Abs(beats[beatId].nodes[track][nextSubBeatId].position.x - CursorPosX);
+            Debug.Log(distance);
             if (distance < (crotchetSize / BeatDividing)*2)
             {
                 beats[beatId].nodes[track][nextSubBeatId].GetComponent<SpriteRenderer>().color = Color.red;
