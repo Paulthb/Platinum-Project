@@ -14,6 +14,8 @@ public class BossManager : MonoBehaviour {
 
     public GameObject StelePrefab;
     public GameObject SteleArrierePrefab;
+    private GameObject MaledictionCadre;
+    private GameObject MaledictionArriere;
 
     public float StackDmg;
     public int damageCoupDeQueue = 20;
@@ -109,19 +111,6 @@ public class BossManager : MonoBehaviour {
             case BossAttack.MALEDICTION:
                 //attendre 10sec en faisant scintiller la piste
                 //les notes réussies font perdre des hp pendant x sec
-
-                // Créé le cadre maudit
-                Player playerMaudit = PlayerManager.Instance.GetPlayer(1);
-                GameObject MaledictionCadre = Instantiate(StelePrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
-                MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
-
-                //Créé le cadre arrière maudit si 2 roles sont possibles
-                if (playerMaudit.Personnage.AvailableRole.Length > 1)
-                {
-                    GameObject MaledictionArriere = Instantiate(SteleArrierePrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
-                    MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
-                }
-
                 goMalediction = true;
                 animatorBoss.SetTrigger("MaledictionTrigger");
                 StartCoroutine(MaledictionTime());
@@ -186,9 +175,10 @@ public class BossManager : MonoBehaviour {
     IEnumerator MaledictionTime()
     {
         yield return new WaitForSeconds(2f);
-        animatorBoss.SetBool("MaledictionLoop", true);
+        LoopAnimMalediction();
         yield return new WaitForSeconds(maledictionTime);
-        animatorBoss.SetBool("MaledictionLoop", false);
+        Destroy(MaledictionCadre);
+        Destroy(MaledictionArriere);
         goMalediction = false;
     }
     IEnumerator HurlementTime()
@@ -254,6 +244,24 @@ public class BossManager : MonoBehaviour {
     {
         goBloc = false;
         StoneRemainingPartitions.Clear();
+    }
+
+    public void LoopAnimMalediction()
+    {
+        Player playerMaudit = PlayerManager.Instance.GetPlayer(1);
+        Vector3 CadrePosition = playerMaudit.GetPartition().BackgroundSprite.transform.position;
+        Vector3 SteleArrierePosition = playerMaudit.GetPartition().BackgroundSteleSprite.transform.position;
+
+        // Créé le cadre maudit
+        MaledictionCadre = Instantiate(StelePrefab, CadrePosition, Quaternion.identity) as GameObject;
+        MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
+
+        //Créé le cadre arrière maudit si 2 roles sont possibles
+        if (playerMaudit.Personnage.AvailableRole.Length > 1)
+        {
+            MaledictionArriere = Instantiate(SteleArrierePrefab, SteleArrierePosition, Quaternion.identity) as GameObject;
+            MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
+        }
     }
 }
 

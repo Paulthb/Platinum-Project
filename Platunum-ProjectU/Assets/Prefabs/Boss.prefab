@@ -38,6 +38,7 @@ GameObject:
   - component: {fileID: 4039593076580948}
   - component: {fileID: 212762763057237548}
   - component: {fileID: 114712632539440780}
+  - component: {fileID: 95909928872599080}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -90,6 +91,24 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!95 &95909928872599080
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1577556619746500}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3a032c9574de70747849afc815c19785, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114712632539440780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,21 +132,45 @@ MonoBehaviour:
   volumeDownUltrason: 0.16
   maledictionTime: 10
   hurlementTime: 10
-  ultrasonTime: 10
+  ultrasonTime: 5
   invincibiliteTime: 4
   brouillardTime: 0
   blocGiveHarmony: 10
-  damageLanceFlamme: 20
-  ultralaserTime: 10
+  damageLanceFlamme: 400
+  ultralaserTime: 5
   resistUltralaser: 3500
-  ultralaserDamage: 250
+  ultralaserDamage: 400
   ListAttack:
   - Time: 5
     Attack: 0
+  - Time: 25
+    Attack: 4
+  - Time: 40
+    Attack: 4
   - Time: 60
+    Attack: 5
+  - Time: 80
+    Attack: 6
+  - Time: 100
+    Attack: 0
+  - Time: 130
+    Attack: 6
+  - Time: 160
+    Attack: 7
+  - Time: 180
     Attack: 4
-  - Time: 35
+  - Time: 200
+    Attack: 3
+  - Time: 240
+    Attack: 2
+  - Time: 250
     Attack: 4
+  - Time: 270
+    Attack: 3
+  - Time: 280
+    Attack: 1
+  - Time: 300
+    Attack: 7
 --- !u!212 &212176988724678056
 SpriteRenderer:
   m_ObjectHideFlags: 1
