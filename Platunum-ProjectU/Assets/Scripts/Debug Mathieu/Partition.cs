@@ -224,7 +224,7 @@ public class Partition : MonoBehaviour {
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
 
                     //Harmonie
-                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
                     {
                         HarmonieBar.Instance.GiveHarmonie(HARMONIEPerfect);
                     }
@@ -243,7 +243,7 @@ public class Partition : MonoBehaviour {
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
 
                     //Harmonie
-                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
                     {
                         HarmonieBar.Instance.GiveHarmonie(HARMONIEGood);
                     }
@@ -262,7 +262,7 @@ public class Partition : MonoBehaviour {
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
 
                     //Harmonie
-                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
+                    if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
                     {
                         HarmonieBar.Instance.GiveHarmonie(HARMONIEBad);
                     }
