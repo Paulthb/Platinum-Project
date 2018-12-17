@@ -20,6 +20,11 @@ public class BarManager : MonoBehaviour {
         }
     }
 
+    private void Start()
+    {
+        ConductorCustom.songCompletedEvent += EndGame;
+    }
+
     public void EndGame()
     {
         GameOverUI.SetActive(true);

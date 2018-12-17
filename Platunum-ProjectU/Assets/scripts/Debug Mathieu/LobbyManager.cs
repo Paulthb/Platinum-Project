@@ -145,9 +145,6 @@ namespace Manager
                                 //Le joueur de se controleur souhaite changer de class
                                 int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
                                 SelectedList[CurrentPerso] = false;
-
-                                int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
-                                                            // Gère les problèmes de tableau pour evité le out of range
                                 if (idButton == 5)
                                 {
                                     changePersonnage(player, 5);

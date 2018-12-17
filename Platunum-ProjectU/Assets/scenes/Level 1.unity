@@ -15664,6 +15664,71 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: MissDamage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: MaledictionDamage
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: ManaBurnPerAttack
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: AttackCountBurnMana
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: ATKPerfectPowerToStack
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: ATKGoodPowerToStack
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: ATKBadPowerToStack
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: MANAPerfectPowerToStack
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: MANAGoodPowerToStack
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: MANABadPowerToStack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: SHIELDPerfectPowerToStack
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: SHIELDGoodPowerToStack
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114955011120518292, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+        type: 2}
+      propertyPath: SHIELDBadPowerToStack
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ac89783cf4c7c4dbe6b806ddb245f0, type: 2}
   m_IsPrefabAsset: 0
