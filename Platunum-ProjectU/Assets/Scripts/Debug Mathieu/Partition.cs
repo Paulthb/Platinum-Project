@@ -299,7 +299,7 @@ public class Partition : MonoBehaviour {
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value >= ManaBurnPerAttack)
                     {
                         powerStack += ATKPerfectPowerToStack;
-                        if (attackHitNumber == AttackCountBurnMana)
+                        if (attackHitNumber >= AttackCountBurnMana)
                         {
                             ManaBar.Instance.Attack();
                             attackHitNumber = 0;

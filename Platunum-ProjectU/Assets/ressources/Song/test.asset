@@ -10,15 +10,15 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: abec092973df242ce926eb6586c0a3a9, type: 3}
   m_Name: test
-  m_EditorClassIdentifier:
+  m_EditorClassIdentifier: 
   song: {fileID: 8300000, guid: cf36b592ac3bd854e8c376f333824f66, type: 3}
   songID: 0
   collection: 0
   songNum: 0
   easyDifficulty: 0
-  songTitle:
-  composer:
-  arranger:
+  songTitle: 
+  composer: 
+  arranger: 
   songCover: {fileID: 0}
   defaultBeats: []
   songOffset: 0
@@ -2974,8 +2974,6 @@ MonoBehaviour:
       - note: 477.75
         times: 0
       - note: 478.75
-        times: 0
-      - note: 479.75
         times: 0
       - note: 480.25
         times: 0
