@@ -42,7 +42,6 @@ public class ManaBar : BarUI {
     {
         instance = ManaBar.Instance;
         BarStart();
-        debugText = transform.GetChild(2).GetComponent<Text>();
         debugText.gameObject.SetActive(debug);
     }
 
