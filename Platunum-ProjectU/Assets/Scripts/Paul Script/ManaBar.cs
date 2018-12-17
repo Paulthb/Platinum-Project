@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ManaBar : BarUI {
-
+    public Text debugText;
+    public bool debug;
     void Update()
     {
         //pour les tests
@@ -20,6 +21,7 @@ public class ManaBar : BarUI {
             WinMana(50);
         }
         BarUpdate();
+        debugText.text = Value + "/" + MaxValue;
     }
 
     private static ManaBar instance;
@@ -40,6 +42,8 @@ public class ManaBar : BarUI {
     {
         instance = ManaBar.Instance;
         BarStart();
+        debugText = transform.GetChild(2).GetComponent<Text>();
+        debugText.gameObject.SetActive(debug);
     }
 
     public void WinMana(int manaPt)
