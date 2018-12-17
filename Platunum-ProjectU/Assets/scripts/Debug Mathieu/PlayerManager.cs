@@ -25,7 +25,10 @@ public class PlayerManager : MonoBehaviour
             {
                 instance = Instantiate(new GameObject()).AddComponent<PlayerManager>();
                 instance.PlayerColorList = new Color[4] { Color.green, Color.red, Color.blue, Color.yellow };
-                instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste", null)[0]), typeof(Personnage));
+
+                #if UNITY_EDITOR
+                    instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste", null)[0]), typeof(Personnage));
+                #endif
             }
             return instance;
         }

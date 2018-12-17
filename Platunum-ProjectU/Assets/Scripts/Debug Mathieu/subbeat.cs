@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class subbeat : MonoBehaviour {
     private PrimaryBeat parentBeat;
     public int subNode;
@@ -15,3 +16,4 @@ public class subbeat : MonoBehaviour {
         parentBeat.OnClick(trackId, subNode);
     }
 }
+#endif
