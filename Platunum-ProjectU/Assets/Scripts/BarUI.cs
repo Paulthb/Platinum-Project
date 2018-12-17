@@ -74,7 +74,7 @@ public class BarUI : MonoBehaviour {
             float fillAmount = Mathf.Lerp(OldValue, Value, speed - 1);
             TempValue = fillAmount;
             Current.fillAmount = TempValue / MaxValue;*/
-            TempValue += (PercentagePerSecond * 3) * Time.deltaTime;
+            TempValue += (PercentagePerSecond / 100 * MaxValue) * Time.deltaTime;
             if (TempValue > Value)
                 TempValue = Value;
 
