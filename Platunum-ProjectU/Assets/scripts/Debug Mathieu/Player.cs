@@ -111,13 +111,13 @@ public class Player : MonoBehaviour
     {
         if (partition.CurrentRole == Personnage.AvailableRole[0])
         {
-            partition.CurrentRole = Personnage.AvailableRole[1];
             partition.ChangeRole(Personnage.AvailableRole[0]);
+            partition.CurrentRole = Personnage.AvailableRole[1];
         }
         else
         {
-            partition.CurrentRole = Personnage.AvailableRole[0];
             partition.ChangeRole(Personnage.AvailableRole[1]);
+            partition.CurrentRole = Personnage.AvailableRole[0];
         }
     }
 

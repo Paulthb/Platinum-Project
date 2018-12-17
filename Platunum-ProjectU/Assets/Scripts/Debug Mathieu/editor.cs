@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEditor;
 using System.IO.Ports;
-
+#if UNITY_EDITOR
 public class editor : MonoBehaviour {
     private bool PlayMode = false;
 
@@ -499,3 +499,4 @@ public class editor : MonoBehaviour {
         TrackLength = TrackLengthSlider.value;
     }
 }
+#endif

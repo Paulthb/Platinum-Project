@@ -281,14 +281,16 @@ public class Partition : MonoBehaviour {
     public void ChangeRole(Role role)
     {
         BackgroundSteleSprite.sprite = role.BackgroundStele;
+        RoleFire();
     }
 
     public void ChargeRole(PartitionManager.Rank rank)
     {
+        Debug.Log("test");
         CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
-        if (CountNote <= maxNbNote)
+        if (CountNote < maxNbNote)
         {
             switch (rank)
             {
@@ -298,7 +300,7 @@ public class Partition : MonoBehaviour {
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value >= ManaBurnPerAttack)
                     {
                         powerStack += ATKPerfectPowerToStack;
-                        if (attackHitNumber == AttackCountBurnMana)
+                        if (attackHitNumber >= AttackCountBurnMana)
                         {
                             ManaBar.Instance.Attack();
                             attackHitNumber = 0;
@@ -369,7 +371,7 @@ public class Partition : MonoBehaviour {
                     break;
             }
         }
-        if (CountNote == maxNbNote)
+        else
             RoleFire();
     }
 
