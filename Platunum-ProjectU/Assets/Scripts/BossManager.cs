@@ -148,7 +148,6 @@ public class BossManager : MonoBehaviour {
             case BossAttack.BROUILLARD:
                 //La partie basse des partitions est cachée
                 animatorBoss.SetTrigger("BrouillardTrigger");
-                brouillardObject.SetActive(true);
                 StartCoroutine(BrouillardTime());
                 foreach (Player player in PlayerManager.Instance.GetPlayers())
                     player.GetPartition().ShowBrouillard(brouillardTime);
@@ -198,9 +197,11 @@ public class BossManager : MonoBehaviour {
 
     IEnumerator BrouillardTime()
     {
+        yield return new WaitForSeconds(2f);
+        brouillardObject.SetActive(true);
         yield return new WaitForSeconds(brouillardTime);
         animatorBrouillard.SetTrigger("BrouillardFinTrigger");
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(1f);
         brouillardObject.SetActive(false);
     }
 
