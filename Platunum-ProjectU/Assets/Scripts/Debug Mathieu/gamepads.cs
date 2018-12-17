@@ -46,10 +46,7 @@ public class gamepads
         }
         catch(TimeoutException e)
         {
-            for (int i = 0; i < btn.Length; i++)
-            {
-                btn[i] = 1;
-            }
+            Debug.Log(e.ToString());
         }
     }
 

@@ -45,6 +45,7 @@ public class ShieldBar : BarUI {
         {
             Value = MaxValue;
         }
+        UpdateIsArmor();
     }
 
     public void TakeDamage(int damagePt)

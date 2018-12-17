@@ -23,7 +23,7 @@ public class PlayerInputControl : MonoBehaviour
 
     //animation
     public SpriteRenderer[] innerCircles;
-    private SpriteColorLerp[] innerAnimations;
+    //private SpriteColorLerp[] innerAnimations;
     private Coroutine[] previousInnerAnimations;
     private const float StartAlphaForInner = 0.7f;
 
@@ -34,7 +34,7 @@ public class PlayerInputControl : MonoBehaviour
         //init audio sources (cache them), and configure the recorded clips & tap animation
         audioSources = new AudioSource[trackLength];
         previousInnerAnimations = new Coroutine[trackLength];
-        innerAnimations = new SpriteColorLerp[trackLength];
+        //innerAnimations = new SpriteColorLerp[trackLength];
         for (int i = 0; i < trackLength; i++)
         {
             audioSources[i] = tappingSpheres[i].GetComponent<AudioSource>();
