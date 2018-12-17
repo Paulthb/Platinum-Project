@@ -100,8 +100,6 @@ public class PartitionManager : MonoBehaviour {
                 partition.transform.Find("BackgroundStele").gameObject.SetActive(false);
             offsetX += PartitionSpace;
 
-            Debug.Log(player.id);
-
             if (player.Personnage.id == 0)
             {
                 GameObject Assassin = Instantiate(AssassinPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
