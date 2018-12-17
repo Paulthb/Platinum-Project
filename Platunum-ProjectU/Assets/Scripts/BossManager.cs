@@ -107,6 +107,7 @@ public class BossManager : MonoBehaviour {
                 //attendre 10sec en faisant scintiller la piste
                 //les notes réussies font perdre des hp pendant x sec
                 goMalediction = true;
+                animatorBoss.SetTrigger("MaledictionTrigger");
                 StartCoroutine(MaledictionTime());
                 break;
             case BossAttack.HURLEMENT:
