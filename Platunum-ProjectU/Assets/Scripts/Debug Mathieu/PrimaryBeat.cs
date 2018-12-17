@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+#if UNITY_EDITOR
 public class PrimaryBeat : MonoBehaviour {
     public int beatId;
     public Transform[][] nodes;
@@ -33,3 +34,4 @@ public class PrimaryBeat : MonoBehaviour {
         }
     }
 }
+#endif
