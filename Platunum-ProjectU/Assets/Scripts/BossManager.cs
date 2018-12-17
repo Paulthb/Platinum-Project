@@ -12,6 +12,9 @@ public class BossManager : MonoBehaviour {
     public GameObject brouillardObject;
     public Animator animatorBrouillard;
 
+    public GameObject StelePrefab;
+    public GameObject SteleArrierePrefab;
+
     public float StackDmg;
     public int damageCoupDeQueue = 20;
     public float volumeDownUltrason = 0.16f;
@@ -106,6 +109,19 @@ public class BossManager : MonoBehaviour {
             case BossAttack.MALEDICTION:
                 //attendre 10sec en faisant scintiller la piste
                 //les notes réussies font perdre des hp pendant x sec
+
+                // Créé le cadre maudit
+                Player playerMaudit = PlayerManager.Instance.GetPlayer(1);
+                GameObject MaledictionCadre = Instantiate(StelePrefab, new Vector3(0,0,0), Quaternion.identity) as GameObject;
+                MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
+
+                //Créé le cadre arrière maudit si 2 roles sont possibles
+                if (playerMaudit.Personnage.AvailableRole.Length > 1)
+                {
+                    GameObject MaledictionArriere = Instantiate(SteleArrierePrefab, new Vector3(0, 0, 0), Quaternion.identity) as GameObject;
+                    MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
+                }
+
                 goMalediction = true;
                 animatorBoss.SetTrigger("MaledictionTrigger");
                 StartCoroutine(MaledictionTime());
@@ -170,7 +186,10 @@ public class BossManager : MonoBehaviour {
 
     IEnumerator MaledictionTime()
     {
+        yield return new WaitForSeconds(2f);
+        animatorBoss.SetBool("MaledictionLoop", true);
         yield return new WaitForSeconds(maledictionTime);
+        animatorBoss.SetBool("MaledictionLoop", false);
         goMalediction = false;
     }
     IEnumerator HurlementTime()

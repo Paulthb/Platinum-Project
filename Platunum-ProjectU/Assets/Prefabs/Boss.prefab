@@ -37,7 +37,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4039593076580948}
   - component: {fileID: 212762763057237548}
-  - component: {fileID: 95234020966449678}
   - component: {fileID: 114712632539440780}
   m_Layer: 0
   m_Name: Boss
@@ -73,24 +72,6 @@ Transform:
   m_Father: {fileID: 4039593076580948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95234020966449678
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1577556619746500}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3a032c9574de70747849afc815c19785, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95433652181260296
 Animator:
   serializedVersion: 3
@@ -123,6 +104,10 @@ MonoBehaviour:
   Conductor: {fileID: 0}
   brouillardObject: {fileID: 1497632778153392}
   animatorBrouillard: {fileID: 95433652181260296}
+  StelePrefab: {fileID: 1910494177635856, guid: b594d50133f07994e9c34dbd74516ba0,
+    type: 2}
+  SteleArrierePrefab: {fileID: 1238683316337496, guid: 91dc692bfddd8c44ca33e68a5b98b442,
+    type: 2}
   StackDmg: 0
   damageCoupDeQueue: 20
   volumeDownUltrason: 0.16
@@ -130,14 +115,14 @@ MonoBehaviour:
   hurlementTime: 10
   ultrasonTime: 10
   invincibiliteTime: 4
-  brouillardTime: 10
+  brouillardTime: 0
   blocGiveHarmony: 10
   damageLanceFlamme: 20
   ultralaserTime: 10
   resistUltralaser: 3500
   ultralaserDamage: 250
   ListAttack:
-  - Time: 7
+  - Time: 5
     Attack: 0
   - Time: 60
     Attack: 4

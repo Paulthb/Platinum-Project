@@ -1588,6 +1588,7 @@ MonoBehaviour:
   roleSprite: {fileID: 114239400949078816}
   backgroundRoleSprite: {fileID: 114751394598576118}
   BackgroundSteleSprite: {fileID: 212763504018933968}
+  BackgroundSprite: {fileID: 212388805551231246}
   maxNbNote: 0
   powerStack: 0
   attackHitNumber: 0
