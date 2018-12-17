@@ -20,7 +20,7 @@ public class gamepads
         for (int i = 0; i < btnReleased.Length; i++)
             btnReleased[i] = true;
         Serial = new SerialPort("COM"+portNum, speed);
-        //Serial.ReadTimeout = 10;//50
+        Serial.ReadTimeout = 50;//50
         this.portNum = portNum; 
         //StartCoroutine(delais());
     }
