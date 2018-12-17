@@ -278,8 +278,11 @@ namespace Manager
             
             updateUI(player);
             //reset led avant de lui attribuer l'id
-            player.pads.SetLed(0);
-            player.pads.SetLed(player.id);
+            if(pads != null)
+            {
+                player.pads.SetLed(0);
+                player.pads.SetLed(player.id);
+            }
         }
 
 
