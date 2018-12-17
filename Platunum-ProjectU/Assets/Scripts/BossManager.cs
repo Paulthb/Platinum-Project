@@ -33,6 +33,8 @@ public class BossManager : MonoBehaviour {
     public int resistUltralaser = 3500;
     public int ultralaserDamage = 250;
     private float ultralaserTimer = 0;
+    //Stone
+    private int StoneLife = 4;
 
     public List<AttackBoss> ListAttack;
     public Queue<AttackBoss> QueueAttack;
@@ -227,17 +229,22 @@ public class BossManager : MonoBehaviour {
 
     public void TriggerNextAttackStone()
     {
+        StoneLife--;
         //Debug.Log("nb de partitions " + StoneRemainingPartitions.Count);
-        if(StoneRemainingPartitions.Count == 0)
+        if(StoneLife == 0)
         {
             //Augmenter l'unisson
             HarmonieBar.Instance.GiveHarmonie(blocGiveHarmony);
             goBloc = false;
-        } else
+        }
+        else
         {
             Partition partitionSelected = StoneRemainingPartitions[Random.Range(0, StoneRemainingPartitions.Count)];
             partitionSelected.nextNoteIsStone = true;
-            StoneRemainingPartitions.Remove(partitionSelected);
+            if (StoneRemainingPartitions.Count > 1)
+            {
+                StoneRemainingPartitions.Remove(partitionSelected);
+            }
         }
 
     }

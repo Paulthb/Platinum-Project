@@ -13,6 +13,7 @@ public class MusicNode : MonoBehaviour
 	[NonSerialized] public bool paused;
     [NonSerialized] public bool isStone;
 
+    public Sprite[] StoneSrpiteTab;
     public SpriteRenderer StoneSprite;
 
 	public void Initialize(float posX, float startY, float endY, float removeLineY, float posZ, float targetBeat, int times, Color color)
@@ -74,7 +75,6 @@ public class MusicNode : MonoBehaviour
                 ShieldBar.Instance.TakeDamage(8);
             }
         }
-
         StoneSprite.gameObject.SetActive(isStone);
 	}
 
@@ -114,4 +114,9 @@ public class MusicNode : MonoBehaviour
 	{
 		gameObject.SetActive(false);
 	}
+
+    public void HitOnBloc()
+    {
+
+    }
 }
