@@ -275,7 +275,7 @@ Prefab:
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[13].Time
-      value: 280
+      value: 290
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
@@ -285,7 +285,7 @@ Prefab:
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[14].Time
-      value: 300
+      value: 310
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
@@ -578,7 +578,7 @@ Prefab:
     - target: {fileID: 114929713751608796, guid: 275cac46f83aef1458e237a9074472f5,
         type: 2}
       propertyPath: MaxValue
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1708430592339212, guid: 275cac46f83aef1458e237a9074472f5, type: 2}
       propertyPath: m_Name
@@ -16423,7 +16423,7 @@ Prefab:
     - target: {fileID: 114216942767866556, guid: 90cd631fc8d7ff646a56bf470513d092,
         type: 2}
       propertyPath: MaxValue
-      value: 150000
+      value: 100000
       objectReference: {fileID: 0}
     - target: {fileID: 114705498491384354, guid: 90cd631fc8d7ff646a56bf470513d092,
         type: 2}
