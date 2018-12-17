@@ -844,6 +844,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114583813870625388, guid: a989b329bf29e5d4b8820750408242ce,
+        type: 2}
+      propertyPath: PercentagePerSecond
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a989b329bf29e5d4b8820750408242ce, type: 2}
   m_IsPrefabAsset: 0

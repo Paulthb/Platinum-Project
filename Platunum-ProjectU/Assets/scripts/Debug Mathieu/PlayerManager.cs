@@ -116,6 +116,17 @@ public class PlayerManager : MonoBehaviour
         return PlayerList.Count;
     }
 
+    public int PlayersByRole(Role.RoleStates roleStates)
+    {
+        int count = 0;
+        for (int i = 0; i < PlayerList.Count; i++)
+        {
+            if (PlayerList[i].GetPartition().CurrentRole.RoleState == roleStates)
+                count++;
+        }
+        return count;
+    }
+
     public void AddDebugPlayer()
     {
         if(Input.GetJoystickNames().Length > 0)

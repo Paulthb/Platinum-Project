@@ -122,7 +122,8 @@ public class BossManager : MonoBehaviour {
                 int count = PlayerManager.Instance.GetPlayersCount();
                 for (int i = 0; i < count; i++)
                 {
-                    PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
+                    if(PlayerManager.Instance.GetPlayer(i + 1).Personnage.id != 0)
+                        PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
                 }
                 StartCoroutine(HurlementTime());
                 break;
@@ -229,7 +230,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
-            HarmonieBar.Instance.TakeHarmonie(blocGiveHarmony);
+            HarmonieBar.Instance.GiveHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {
