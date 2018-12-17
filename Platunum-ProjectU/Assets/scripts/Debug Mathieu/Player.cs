@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
         {
             this.pads = pads;
         }
-        else
+        else if(Controller >=0)
             trackKey = LoadTrackKey();
     }
 
@@ -53,12 +53,16 @@ public class Player : MonoBehaviour
 
     private KeyCode[] LoadTrackKey()
     {
-        KeyCode[] keyCode = new KeyCode[4];
-        for (int i = 0; i < keyCode.Length; i++)
+        if(ControllerId >= 0)
         {
-            keyCode[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick"+ControllerId+"Button"+i);
+            KeyCode[] keyCode = new KeyCode[4];
+            for (int i = 0; i < keyCode.Length; i++)
+            {
+                keyCode[i] = (KeyCode)System.Enum.Parse(typeof(KeyCode), "Joystick" + ControllerId + "Button" + i);
+            }
+            return keyCode;
         }
-        return keyCode;
+        return null;
     }
     private void Update()
     {
@@ -78,13 +82,27 @@ public class Player : MonoBehaviour
             }
             else
             {
-                for (int i = 0; i < trackKey.Length; i++)
+                if(ControllerId >= 0)
                 {
-                    if (Input.GetKeyDown(trackKey[i]) && partition != null)
+                    for (int i = 0; i < trackKey.Length; i++)
                     {
-                        //Send TrackKey input
-                        partition.PlayerInputted(i);
+                        if (Input.GetKeyDown(trackKey[i]) && partition != null)
+                        {
+                            //Send TrackKey input
+                            partition.PlayerInputted(i);
+                        }
                     }
+                }
+                else
+                {
+                    if(Input.GetKeyDown(KeyCode.A))
+                        partition.PlayerInputted(0);
+                    if (Input.GetKeyDown(KeyCode.Z))
+                        partition.PlayerInputted(1);
+                    if (Input.GetKeyDown(KeyCode.E))
+                        partition.PlayerInputted(2);
+                    if (Input.GetKeyDown(KeyCode.R))
+                        partition.PlayerInputted(3);
                 }
             }
 
@@ -99,8 +117,19 @@ public class Player : MonoBehaviour
                         if (pads.GetKeyDown(4))
                             SwitchRole();
                     }
-                    else if(Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5"))){
-                        SwitchRole();
+                    else if(ControllerId >= 0)
+                    {
+                        if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
+                        {
+                            SwitchRole();
+                        }
+                    }
+                    else
+                    {
+                        if (Input.GetKeyDown(KeyCode.Space))
+                        {
+                            SwitchRole();
+                        }
                     }
                 }
             }

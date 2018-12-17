@@ -64,6 +64,27 @@ namespace Manager
 	
 	    // Update is called once per frame
 	    void Update () {
+            //DEBUG AZERTY
+            if (Input.GetKeyDown(KeyCode.LeftControl) && !playerManager.IsPlayerAlreadyInLobby(-1, false))
+            {
+                Debug.Log("add debug azerty");
+                AddPlayerToLobby(-1);
+            }
+            if (playerManager.IsPlayerAlreadyInLobby(-1, false))
+            {
+                Player player = playerManager.GetPlayer(playerManager.GetPlayerByControllerId(-1));
+                bool currentReadyState = ReadyPlayerList[player.id];
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    ChangeReadyState(player.id, !currentReadyState);
+                }
+                if(Input.GetKeyDown(KeyCode.A))
+                    changePersonnage(player, 4);
+
+                if (Input.GetKeyDown(KeyCode.R))
+                    changePersonnage(player, 5);
+            }
+            //GAMEPADS
             //Par chaque touche filter on regarde l'etat
             for (int i = 0; i < Gamepads.Length; i++)
             {
