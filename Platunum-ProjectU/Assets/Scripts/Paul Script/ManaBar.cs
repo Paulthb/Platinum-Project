@@ -47,7 +47,7 @@ public class ManaBar : BarUI {
 
     public void WinMana(int manaPt)
     {
-        base.Value += manaPt;
+        base.Value += manaPt * HarmonieBar.Instance.GetMultiplier();
         if (Value > MaxValue) //récuperer la somme de mana groupe max
         {
             Value = MaxValue;

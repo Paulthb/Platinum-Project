@@ -226,7 +226,7 @@ public class Partition : MonoBehaviour {
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
                     {
-                        HarmonieBar.Instance.Value += HARMONIEPerfect;
+                        HarmonieBar.Instance.GiveHarmonie(HARMONIEPerfect);
                     }
 
                     //Remove node
@@ -245,7 +245,7 @@ public class Partition : MonoBehaviour {
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
                     {
-                        HarmonieBar.Instance.Value += HARMONIEGood;
+                        HarmonieBar.Instance.GiveHarmonie(HARMONIEGood);
                     }
 
                     //Remove node
@@ -264,7 +264,7 @@ public class Partition : MonoBehaviour {
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 0)
                     {
-                        HarmonieBar.Instance.Value += HARMONIEBad;
+                        HarmonieBar.Instance.GiveHarmonie(HARMONIEBad);
                     }
 
                     //Remove node

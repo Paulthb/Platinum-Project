@@ -221,7 +221,7 @@ public class BossManager : MonoBehaviour {
         if(StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
-            HarmonieBar.Instance.TakeHarmonie(blocGiveHarmony);
+            HarmonieBar.Instance.GiveHarmonie(blocGiveHarmony);
             goBloc = false;
         } else
         {

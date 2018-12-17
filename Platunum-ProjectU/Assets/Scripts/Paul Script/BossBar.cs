@@ -63,7 +63,7 @@ public class BossBar : BarUI {
     public void TakeDamage(float damage)
     {
 
-        Value -= damage;
+        Value -= damage * HarmonieBar.Instance.GetMultiplier();
         if (bossManager.goUltralaser)
             bossManager.StackDmg += damage;
         if (Value <= 0)
