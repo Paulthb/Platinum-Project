@@ -18,7 +18,7 @@ public class PartitionManager : MonoBehaviour {
     public float PartitionSpace;
 
 
-    public enum Rank { PERFECT, GOOD, BAD, MISS };
+    public enum Rank { PERFECT, GOOD, BAD, MISS, HARMONIE };
     public Color[] trackColor = { Color.green, Color.red, Color.blue, Color.yellow };
 
     public GameObject PartitionPrefabs;
