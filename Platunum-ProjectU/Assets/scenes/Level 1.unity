@@ -167,6 +167,16 @@ Prefab:
       propertyPath: SteleArrierePrefab
       value: 
       objectReference: {fileID: 1421577683}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[0].Attack
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[4].Attack
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0423560d0c53d4347b2091d98d410d77, type: 2}
   m_IsPrefabAsset: 0
@@ -893,6 +903,16 @@ Prefab:
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114583813870625388, guid: a989b329bf29e5d4b8820750408242ce,
+        type: 2}
+      propertyPath: multiplierDuration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114583813870625388, guid: a989b329bf29e5d4b8820750408242ce,
+        type: 2}
+      propertyPath: MaxValue
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a989b329bf29e5d4b8820750408242ce, type: 2}
