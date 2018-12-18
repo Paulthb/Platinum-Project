@@ -101,6 +101,7 @@ public class Partition : MonoBehaviour {
 
     private void Start()
     {
+
         TrackCount = SongInfoCustom.Instance.currentSong.partitions[partitionId].tracks.Length;
         
         trackNextIndices = new int[TrackCount];
@@ -132,61 +133,64 @@ public class Partition : MonoBehaviour {
 
     private void Update()
     {
-        //check if need to instantiate new nodes
-        float beatToShow = ConductorCustom.songposition / ConductorCustom.crotchet + ConductorCustom.BeatsShownOnScreen;
-        for (int i = 0; i < queueForTracks.Length; i++)
+        if (!ConductorCustom.Instance.paused)
         {
-            int nextIndex = trackNextIndices[i];
-            SongInfo.Track currTrack = tracksNode[i];
-
-            if (nextIndex < currTrack.notes.Length && currTrack.notes[nextIndex].note < beatToShow)
+            //check if need to instantiate new nodes
+            float beatToShow = ConductorCustom.songposition / ConductorCustom.crotchet + ConductorCustom.BeatsShownOnScreen;
+            for (int i = 0; i < queueForTracks.Length; i++)
             {
-                SongInfo.Note currNote = currTrack.notes[nextIndex];
+                int nextIndex = trackNextIndices[i];
+                SongInfo.Track currTrack = tracksNode[i];
 
-                //set z position
-                float layerZ = nextLayerZ[i];
-                nextLayerZ[i] += LayerOffsetZ;
-                //get a new node
-                MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i], idplayer);
-                if (nextNoteIsStone)
+                if (nextIndex < currTrack.notes.Length && currTrack.notes[nextIndex].note < beatToShow)
                 {
-                    
-                    musicNode.isStone = true;
-                    nextNoteIsStone = false;
+                    SongInfo.Note currNote = currTrack.notes[nextIndex];
+
+                    //set z position
+                    float layerZ = nextLayerZ[i];
+                    nextLayerZ[i] += LayerOffsetZ;
+                    //get a new node
+                    MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i], idplayer);
+                    if (nextNoteIsStone)
+                    {
+
+                        musicNode.isStone = true;
+                        nextNoteIsStone = false;
+                    }
+                    //enqueue
+                    queueForTracks[i].Enqueue(musicNode);
+
+                    //update the next index
+                    trackNextIndices[i]++;
                 }
-                //enqueue
-                queueForTracks[i].Enqueue(musicNode);
-
-                //update the next index
-                trackNextIndices[i]++;
             }
-        }
 
-        for (int i = 0; i < queueForTracks.Length; i++)
-        {
-            //empty queue, continue
-            if (queueForTracks[i].Count == 0) continue;
-
-            MusicNode currNode = queueForTracks[i].Peek();
-
-            //multi-times note
-            if (currNode.transform.position.y <= partitionManager.finishLineY - partitionManager.goodOffsetY)   //single time note
+            for (int i = 0; i < queueForTracks.Length; i++)
             {
-                //have previous note stuck on the finish line
-                if (previousMusicNodes[i] != null)
-                {
-                    previousMusicNodes[i].MultiTimesFailed();
-                    previousMusicNodes[i] = null;
+                //empty queue, continue
+                if (queueForTracks[i].Count == 0) continue;
 
-                    //dispatch miss event
+                MusicNode currNode = queueForTracks[i].Peek();
+
+                //multi-times note
+                if (currNode.transform.position.y <= partitionManager.finishLineY - partitionManager.goodOffsetY)   //single time note
+                {
+                    //have previous note stuck on the finish line
+                    if (previousMusicNodes[i] != null)
+                    {
+                        previousMusicNodes[i].MultiTimesFailed();
+                        previousMusicNodes[i] = null;
+
+                        //dispatch miss event
+                        if (beatOnHitEvent != null) beatOnHitEvent(i, PartitionManager.Rank.MISS);
+                    }
+
+                    //deque
+                    queueForTracks[i].Dequeue();
+
+                    //dispatch miss event (if a multi-times note is missed, its next single note would also be missed)
                     if (beatOnHitEvent != null) beatOnHitEvent(i, PartitionManager.Rank.MISS);
                 }
-
-                //deque
-                queueForTracks[i].Dequeue();
-
-                //dispatch miss event (if a multi-times note is missed, its next single note would also be missed)
-                if (beatOnHitEvent != null) beatOnHitEvent(i, PartitionManager.Rank.MISS);
             }
         }
     }

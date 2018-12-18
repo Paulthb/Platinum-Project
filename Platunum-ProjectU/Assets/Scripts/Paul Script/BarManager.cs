@@ -6,6 +6,7 @@ public class BarManager : MonoBehaviour {
     public GameObject GameOverUI;
     public GameObject WinGameUI;
     public GameObject PartitionManagerUI;
+    public bool endGame;
 
     private static BarManager instance;
     public static BarManager Instance
@@ -22,12 +23,14 @@ public class BarManager : MonoBehaviour {
 
     private void Start()
     {
+        endGame = false;
         ConductorCustom.songCompletedEvent += EndGame;
     }
 
     public void EndGame()
     {
-        ConductorCustom.Instance.audioSource.Stop();
+        endGame = true;
+        ConductorCustom.Instance.pause();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
@@ -35,7 +38,8 @@ public class BarManager : MonoBehaviour {
 
     public void WinGame()
     {
-        ConductorCustom.Instance.audioSource.Stop();
+        endGame = true;
+        ConductorCustom.Instance.pause();
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);

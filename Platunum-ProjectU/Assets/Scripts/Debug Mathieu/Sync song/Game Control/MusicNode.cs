@@ -82,80 +82,83 @@ public class MusicNode : MonoBehaviour
             // Son en fct du perso
             
             player = PlayerManager.Instance.GetPlayer(idPlayer);
-            if (player.Personnage.id == 0)
+            if (!BarManager.Instance.endGame)
             {
-                int i = UnityEngine.Random.Range(1, 5);
-                switch (i)
+                if (player.Personnage.id == 0)
                 {
-                    case 1:
-                        SoundMgr.Instance.PlaySound("FailPiano1");
-                        break;
-                    case 2:
-                        SoundMgr.Instance.PlaySound("FailPiano2");
-                        break;
-                    case 3:
-                        SoundMgr.Instance.PlaySound("FailPiano3");
-                        break;
-                    case 4:
-                        SoundMgr.Instance.PlaySound("FailPiano4");
-                        break;
+                    int i = UnityEngine.Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundMgr.Instance.PlaySound("FailPiano1");
+                            break;
+                        case 2:
+                            SoundMgr.Instance.PlaySound("FailPiano2");
+                            break;
+                        case 3:
+                            SoundMgr.Instance.PlaySound("FailPiano3");
+                            break;
+                        case 4:
+                            SoundMgr.Instance.PlaySound("FailPiano4");
+                            break;
+                    }
                 }
-            }
-            else if (player.Personnage.id == 1)
-            {
-                int i = UnityEngine.Random.Range(1, 5);
-                switch (i)
+                else if (player.Personnage.id == 1)
                 {
-                    case 1:
-                        SoundMgr.Instance.PlaySound("FailBass1");
-                        break;
-                    case 2:
-                        SoundMgr.Instance.PlaySound("FailBass2");
-                        break;
-                    case 3:
-                        SoundMgr.Instance.PlaySound("FailBass3");
-                        break;
-                    case 4:
-                        SoundMgr.Instance.PlaySound("FailBass4");
-                        break;
+                    int i = UnityEngine.Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundMgr.Instance.PlaySound("FailBass1");
+                            break;
+                        case 2:
+                            SoundMgr.Instance.PlaySound("FailBass2");
+                            break;
+                        case 3:
+                            SoundMgr.Instance.PlaySound("FailBass3");
+                            break;
+                        case 4:
+                            SoundMgr.Instance.PlaySound("FailBass4");
+                            break;
+                    }
                 }
-            }
-            else if (player.Personnage.id == 2)
-            {
-                int i = UnityEngine.Random.Range(1, 5);
-                switch (i)
+                else if (player.Personnage.id == 2)
                 {
-                    case 1:
-                        SoundMgr.Instance.PlaySound("FailGuitar1");
-                        break;
-                    case 2:
-                        SoundMgr.Instance.PlaySound("FailGuitar2");
-                        break;
-                    case 3:
-                        SoundMgr.Instance.PlaySound("FailGuitar3");
-                        break;
-                    case 4:
-                        SoundMgr.Instance.PlaySound("FailGuitar4");
-                        break;
+                    int i = UnityEngine.Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundMgr.Instance.PlaySound("FailGuitar1");
+                            break;
+                        case 2:
+                            SoundMgr.Instance.PlaySound("FailGuitar2");
+                            break;
+                        case 3:
+                            SoundMgr.Instance.PlaySound("FailGuitar3");
+                            break;
+                        case 4:
+                            SoundMgr.Instance.PlaySound("FailGuitar4");
+                            break;
+                    }
                 }
-            }
-            else if (player.Personnage.id == 3)
-            {
-                int i = UnityEngine.Random.Range(1, 5);
-                switch (i)
+                else if (player.Personnage.id == 3)
                 {
-                    case 1:
-                        SoundMgr.Instance.PlaySound("FailBell1");
-                        break;
-                    case 2:
-                        SoundMgr.Instance.PlaySound("FailBell2");
-                        break;
-                    case 3:
-                        SoundMgr.Instance.PlaySound("FailBell3");
-                        break;
-                    case 4:
-                        SoundMgr.Instance.PlaySound("FailBell4");
-                        break;
+                    int i = UnityEngine.Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundMgr.Instance.PlaySound("FailBell1");
+                            break;
+                        case 2:
+                            SoundMgr.Instance.PlaySound("FailBell2");
+                            break;
+                        case 3:
+                            SoundMgr.Instance.PlaySound("FailBell3");
+                            break;
+                        case 4:
+                            SoundMgr.Instance.PlaySound("FailBell4");
+                            break;
+                    }
                 }
             }
         }

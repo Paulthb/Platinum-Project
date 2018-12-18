@@ -1058,6 +1058,7 @@ MonoBehaviour:
   GameOverUI: {fileID: 2125573306}
   WinGameUI: {fileID: 1541507772}
   PartitionManagerUI: {fileID: 1583683581}
+  endGame: 0
 --- !u!114 &396785782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16198,7 +16199,7 @@ Prefab:
     - target: {fileID: 114215355384783644, guid: 8538b05797acbf740b6bcc92135da460,
         type: 2}
       propertyPath: MaxValue
-      value: 800000
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 114215355384783644, guid: 8538b05797acbf740b6bcc92135da460,
         type: 2}
