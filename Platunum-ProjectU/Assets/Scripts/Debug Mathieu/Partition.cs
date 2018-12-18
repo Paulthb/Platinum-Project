@@ -209,7 +209,9 @@ public class Partition : MonoBehaviour {
                 if (frontNode.isStone)
                 {
                     BossManager.Instance.TriggerNextAttackStone();
-                    frontNode.updateSprite(BossManager.Instance.GetStoneLife());
+                    int life = BossManager.Instance.GetStoneLife();
+                    if(life>0)
+                        frontNode.updateSprite(life-1);
                 }
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit
                 {

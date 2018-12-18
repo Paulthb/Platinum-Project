@@ -134,10 +134,9 @@ MonoBehaviour:
   timesText: {fileID: 0}
   ringSprite: {fileID: 212990522157250766}
   StoneSrpiteTab:
-  - {fileID: 21300000, guid: 64ae6a0e5bd2982469730c4eba6fb01b, type: 3}
-  - {fileID: 21300000, guid: c7f6ba033b67caf4f8f5244ab0fdc42d, type: 3}
-  - {fileID: 21300000, guid: e3cb92f4b22181942b58e845acee7e55, type: 3}
-  - {fileID: 21300000, guid: 5e71e24c3cf910b44bd85807ce842fd9, type: 3}
+  - {fileID: 21300000, guid: ab2f40c7c12e2324d9d44cf005b73dca, type: 3}
+  - {fileID: 21300000, guid: a11c945c9f0fd584d934eddfc6551efb, type: 3}
+  - {fileID: 21300000, guid: d377d64caeb79724eab3da17deb638c7, type: 3}
   StoneSprite: {fileID: 212469082175478872}
 --- !u!212 &212469082175478872
 SpriteRenderer:
@@ -174,7 +173,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: e01d29f94d75a56448ee765b1a277ad9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a469ef83b3c7a5142bf744de8aef17e4, type: 3}
   m_Color: {r: 1, g: 0.46381214, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
