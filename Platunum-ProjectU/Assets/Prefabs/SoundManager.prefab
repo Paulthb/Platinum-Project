@@ -48,9 +48,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1679901278477494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc5aee6228b42fc4898ce5217c2e61f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 11500000, guid: 8e04626d32b60d84498d99a91beaa4a7, type: 3}
+  m_Name:
+  m_EditorClassIdentifier:
   sounds:
   - name: FailBass1
     clip: {fileID: 8300000, guid: 76654645823cf6846a5a11e02f3b3e79, type: 3}
