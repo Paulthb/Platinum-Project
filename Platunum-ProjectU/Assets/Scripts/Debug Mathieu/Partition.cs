@@ -9,6 +9,7 @@ public class Partition : MonoBehaviour {
 
     public int idplayer;
     public int partitionId;
+    private Player player;
 
     //Tracks Color
     private Color[] TracksColors;
@@ -146,7 +147,7 @@ public class Partition : MonoBehaviour {
                 float layerZ = nextLayerZ[i];
                 nextLayerZ[i] += LayerOffsetZ;
                 //get a new node
-                MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i]);
+                MusicNode musicNode = MusicNodePool.instance.GetNode(tracks[i].offsetX, partitionManager.startLineY, partitionManager.finishLineY, partitionManager.removeLineY, layerZ, currNote.note, currNote.times, TracksColors[i], idplayer);
                 if (nextNoteIsStone)
                 {
                     
@@ -190,12 +191,6 @@ public class Partition : MonoBehaviour {
         }
     }
 
-    /*void Inputted(int i)
-    {
-        //inform Conductor and other interested classes
-        if (inputtedEvent != null) inputtedEvent(partitionId, i);
-    }*/
-
     public void PlayerInputted(int trackNumber)
     {
         //Add Animation to the track
@@ -217,8 +212,6 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.PERFECT);
-                    //print("Perfect");
                     ChargeRole(PartitionManager.Rank.PERFECT);
 
                     //SendBeatHit to particle
@@ -237,8 +230,6 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
-                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.GOOD);
-                    //print("Good");
                     ChargeRole(PartitionManager.Rank.GOOD);
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
@@ -256,8 +247,6 @@ public class Partition : MonoBehaviour {
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
-                    //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.BAD);
-                    //print("Bad");
                     ChargeRole(PartitionManager.Rank.BAD);
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
@@ -273,11 +262,88 @@ public class Partition : MonoBehaviour {
                 }
             }
             else
-            {
-                //trop tot / trop tard
-                //Baisse d'unisson
-                //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
+            {   
+                // ---> MISS : trop tot / trop tard
                 ShieldBar.Instance.TakeDamage(8);
+
+                player = PlayerManager.Instance.GetPlayer(idplayer);
+                // Son en fct du perso
+                if (player.Personnage.id == 0)
+                {
+                    int i = Random.Range(1, 5);
+                    switch(i)
+                    {
+                        case 1:
+                            SoundManager.Instance.PlaySound("FailPiano1");
+                            break;
+                        case 2:
+                            SoundManager.Instance.PlaySound("FailPiano2");
+                            break;
+                        case 3:
+                            SoundManager.Instance.PlaySound("FailPiano3");
+                            break;
+                        case 4:
+                            SoundManager.Instance.PlaySound("FailPiano4");
+                            break;
+                    } 
+                }
+                else if (player.Personnage.id == 1)
+                {
+                    int i = Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundManager.Instance.PlaySound("FailBass1");
+                            break;
+                        case 2:
+                            SoundManager.Instance.PlaySound("FailBass2");
+                            break;
+                        case 3:
+                            SoundManager.Instance.PlaySound("FailBass3");
+                            break;
+                        case 4:
+                            SoundManager.Instance.PlaySound("FailBass4");
+                            break;
+                    }
+                }
+                else if (player.Personnage.id == 2)
+                {
+                    int i = Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundManager.Instance.PlaySound("FailGuitar1");
+                            break;
+                        case 2:
+                            SoundManager.Instance.PlaySound("FailGuitar2");
+                            break;
+                        case 3:
+                            SoundManager.Instance.PlaySound("FailGuitar3");
+                            break;
+                        case 4:
+                            SoundManager.Instance.PlaySound("FailGuitar4");
+                            break;
+                    }
+                }
+                else if (player.Personnage.id == 3)
+                {
+                    int i = Random.Range(1, 5);
+                    switch (i)
+                    {
+                        case 1:
+                            SoundManager.Instance.PlaySound("FailBell1");
+                            break;
+                        case 2:
+                            SoundManager.Instance.PlaySound("FailBell2");
+                            break;
+                        case 3:
+                            SoundManager.Instance.PlaySound("FailBell3");
+                            break;
+                        case 4:
+                            SoundManager.Instance.PlaySound("FailBell4");
+                            break;
+                    }
+                }
             }
         }
         /*

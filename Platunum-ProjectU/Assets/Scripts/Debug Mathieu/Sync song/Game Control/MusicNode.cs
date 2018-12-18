@@ -1,5 +1,7 @@
-﻿using System;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MusicNode : MonoBehaviour
 {
@@ -16,7 +18,10 @@ public class MusicNode : MonoBehaviour
     public Sprite[] StoneSrpiteTab;
     public SpriteRenderer StoneSprite;
 
-	public void Initialize(float posX, float startY, float endY, float removeLineY, float posZ, float targetBeat, int times, Color color)
+    private Player player;
+    private int idPlayer;
+
+    public void Initialize(float posX, float startY, float endY, float removeLineY, float posZ, float targetBeat, int times, Color color, int id)
 	{
 		this.startY = startY;
 		this.endY = endY;
@@ -24,7 +29,7 @@ public class MusicNode : MonoBehaviour
 		this.times = times;
 		this.removeLineY = removeLineY;
         isStone = false;
-
+        idPlayer = id;
 		paused = false;
 
 		//set position
@@ -73,6 +78,85 @@ public class MusicNode : MonoBehaviour
             else
             {
                 ShieldBar.Instance.TakeDamage(8);
+            }
+            // Son en fct du perso
+            
+            player = PlayerManager.Instance.GetPlayer(idPlayer);
+            if (player.Personnage.id == 0)
+            {
+                int i = UnityEngine.Random.Range(1, 5);
+                switch (i)
+                {
+                    case 1:
+                        SoundManager.Instance.PlaySound("FailPiano1");
+                        break;
+                    case 2:
+                        SoundManager.Instance.PlaySound("FailPiano2");
+                        break;
+                    case 3:
+                        SoundManager.Instance.PlaySound("FailPiano3");
+                        break;
+                    case 4:
+                        SoundManager.Instance.PlaySound("FailPiano4");
+                        break;
+                }
+            }
+            else if (player.Personnage.id == 1)
+            {
+                int i = UnityEngine.Random.Range(1, 5);
+                switch (i)
+                {
+                    case 1:
+                        SoundManager.Instance.PlaySound("FailBass1");
+                        break;
+                    case 2:
+                        SoundManager.Instance.PlaySound("FailBass2");
+                        break;
+                    case 3:
+                        SoundManager.Instance.PlaySound("FailBass3");
+                        break;
+                    case 4:
+                        SoundManager.Instance.PlaySound("FailBass4");
+                        break;
+                }
+            }
+            else if (player.Personnage.id == 2)
+            {
+                int i = UnityEngine.Random.Range(1, 5);
+                switch (i)
+                {
+                    case 1:
+                        SoundManager.Instance.PlaySound("FailGuitar1");
+                        break;
+                    case 2:
+                        SoundManager.Instance.PlaySound("FailGuitar2");
+                        break;
+                    case 3:
+                        SoundManager.Instance.PlaySound("FailGuitar3");
+                        break;
+                    case 4:
+                        SoundManager.Instance.PlaySound("FailGuitar4");
+                        break;
+                }
+            }
+            else if (player.Personnage.id == 3)
+            {
+                int i = UnityEngine.Random.Range(1, 5);
+                switch (i)
+                {
+                    case 1:
+                        SoundManager.Instance.PlaySound("FailBell1");
+                        break;
+                    case 2:
+                        SoundManager.Instance.PlaySound("FailBell2");
+                        break;
+                    case 3:
+                        SoundManager.Instance.PlaySound("FailBell3");
+                        break;
+                    case 4:
+                        SoundManager.Instance.PlaySound("FailBell4");
+                        break;
+                }
             }
         }
         StoneSprite.gameObject.SetActive(isStone);

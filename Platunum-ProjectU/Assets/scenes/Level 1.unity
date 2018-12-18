@@ -1367,37 +1367,69 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Fail bass 1
+  - name: FailBass1
     clip: {fileID: 8300000, guid: 76654645823cf6846a5a11e02f3b3e79, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bass 2
+  - name: FailBass2
     clip: {fileID: 8300000, guid: 08329822a586305468ebdbe7c2aace94, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bass 3
+  - name: FailBass3
     clip: {fileID: 8300000, guid: df37f466b2416504ab6b8e144aa5c64d, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bass 4
+  - name: FailBass4
     clip: {fileID: 8300000, guid: aab99be0b038dd443adc2a77efdfb559, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bell 1
+  - name: FailBell1
     clip: {fileID: 8300000, guid: c1784f56d766d474e8adebab300700b7, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bell 2
+  - name: FailBell2
     clip: {fileID: 8300000, guid: 2a895032e55e6d344b75e12286af7e12, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bell 3
+  - name: FailBell3
     clip: {fileID: 8300000, guid: 5498307174c451a42835da92a471cc4b, type: 3}
     volume: 0.6
     pitch: 1
-  - name: Fail bell 4
+  - name: FailBell4
     clip: {fileID: 8300000, guid: 2f99b98bb361ea1409a98fe9dfd07411, type: 3}
     volume: 0.6
+    pitch: 1
+  - name: FailGuitar1
+    clip: {fileID: 8300000, guid: 8457820554870404f9174a81033be5c5, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar2
+    clip: {fileID: 8300000, guid: 5cdc48d31eab40a4bac68f44bae5213c, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar3
+    clip: {fileID: 8300000, guid: e9244c4d6c4c5d245b8be168c0c6d979, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar4
+    clip: {fileID: 8300000, guid: 2194b3f39b7674841a578596d50484a6, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailPiano1
+    clip: {fileID: 8300000, guid: 88ed6051c69a33f488ed00502b63c1ea, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano2
+    clip: {fileID: 8300000, guid: f6f3b23ef98875346b196c7fcf543c2e, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano3
+    clip: {fileID: 8300000, guid: 2ee67aa6d9920684f96340bc9f64c289, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano4
+    clip: {fileID: 8300000, guid: afa2326584a319047a0bc17206b9a9ae, type: 3}
+    volume: 2
     pitch: 1
 --- !u!4 &819342545
 Transform:
