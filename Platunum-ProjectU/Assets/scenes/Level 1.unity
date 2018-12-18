@@ -159,14 +159,14 @@ Prefab:
       objectReference: {fileID: 638975753}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
-      propertyPath: ListAttack.Array.data[1].Attack
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: StelePrefab
+      value: 
+      objectReference: {fileID: 896483164}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
-      propertyPath: ListAttack.Array.data[2].Attack
-      value: 6
-      objectReference: {fileID: 0}
+      propertyPath: SteleArrierePrefab
+      value: 
+      objectReference: {fileID: 1421577683}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0423560d0c53d4347b2091d98d410d77, type: 2}
   m_IsPrefabAsset: 0
@@ -6039,6 +6039,11 @@ MonoBehaviour:
   PercentagePerSecond: 20
   CooldownBar: 0.5
   MaxValue: 800
+--- !u!1 &896483164 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607851186781622, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1335900051}
 --- !u!1001 &967487118
 Prefab:
   m_ObjectHideFlags: 0
@@ -15800,6 +15805,11 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31ac89783cf4c7c4dbe6b806ddb245f0, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &1421577683 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1954038213805236, guid: 31ac89783cf4c7c4dbe6b806ddb245f0,
+    type: 2}
+  m_PrefabInternal: {fileID: 1335900051}
 --- !u!1 &1489812468
 GameObject:
   m_ObjectHideFlags: 0

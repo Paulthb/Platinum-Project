@@ -123,10 +123,8 @@ MonoBehaviour:
   Conductor: {fileID: 0}
   brouillardObject: {fileID: 1497632778153392}
   animatorBrouillard: {fileID: 95433652181260296}
-  StelePrefab: {fileID: 1910494177635856, guid: 0258ac46394e1fe4f85b84898dd2e81d,
-    type: 2}
-  SteleArrierePrefab: {fileID: 1238683316337496, guid: 543e4be7671028045a7881f25707ba8c,
-    type: 2}
+  StelePrefab: {fileID: 0}
+  SteleArrierePrefab: {fileID: 0}
   StackDmg: 0
   damageCoupDeQueue: 20
   volumeDownUltrason: 0.16
@@ -144,9 +142,9 @@ MonoBehaviour:
   - Time: 5
     Attack: 4
   - Time: 25
-    Attack: 4
+    Attack: 0
   - Time: 40
-    Attack: 4
+    Attack: 6
   - Time: 60
     Attack: 5
   - Time: 80
