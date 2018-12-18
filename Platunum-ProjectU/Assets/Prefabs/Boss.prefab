@@ -134,6 +134,7 @@ MonoBehaviour:
   hurlementTime: 10
   ultrasonTime: 5
   invincibiliteTime: 4
+  beforeInvincibilite: 1.5
   brouillardTime: 0
   blocGiveHarmony: 10
   damageLanceFlamme: 400
@@ -144,9 +145,9 @@ MonoBehaviour:
   ultralaserDamage: 400
   ListAttack:
   - Time: 6
-    Attack: 1
+    Attack: 5
   - Time: 20
-    Attack: 1
+    Attack: 5
   - Time: 40
     Attack: 6
   - Time: 60
