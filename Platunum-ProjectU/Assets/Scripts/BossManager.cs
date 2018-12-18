@@ -27,6 +27,7 @@ public class BossManager : MonoBehaviour {
     public float brouillardTime = 10f;
     public float blocGiveHarmony = 10f;
     public int damageLanceFlamme = 100;
+    public float damageLanceFlammeTime = 2f;
     //Ultralaser
     [Header("Ultralaser Settings")]
     public float ultralaserTime = 20f;
@@ -173,7 +174,8 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
-                ShieldBar.Instance.TakeDamage(damageLanceFlamme);
+                StartCoroutine(LanceflammeDamageTime());
+                //ShieldBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
         }
     }
@@ -214,6 +216,12 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(ultralaserDamageTime);
         ShieldBar.Instance.TakeDamage(ultralaserDamage);
+    }
+
+    IEnumerator LanceflammeDamageTime()
+    {
+        yield return new WaitForSeconds(damageLanceFlammeTime);
+        ShieldBar.Instance.TakeDamage(damageLanceFlamme);
     }
 
     IEnumerator BrouillardTime()
