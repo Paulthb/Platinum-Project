@@ -102,7 +102,7 @@ public class BossManager : MonoBehaviour {
             }
         }
 
-        animatorBoss.SetFloat("BossLife", BossBar.Instance.Value);
+        animatorBoss.SetFloat("BossLife", BossBar.Instance.GetValue());
     }
 
     public void Attack (BossAttack AttackBoss)

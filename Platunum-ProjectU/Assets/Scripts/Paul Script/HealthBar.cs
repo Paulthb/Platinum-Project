@@ -33,15 +33,15 @@ public class HealthBar : BarUI {
 
     public void TakeDamage(float damagePt)
     {
-        Value -= damagePt;
+        SoustractToValue(damagePt);
         if (Value < 0)
         {
-            Value = 0;
+            SetValue(0);
             BarManager.Instance.EndGame();
         }
         else if(Value > MaxValue)
         {
-            Value = MaxValue;
+            SetValue(MaxValue);
         }
     }
 }

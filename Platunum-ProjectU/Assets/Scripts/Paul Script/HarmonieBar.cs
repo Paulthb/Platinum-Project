@@ -8,7 +8,7 @@ public class HarmonieBar : BarUI {
     private bool emptying = false;
     private float Timer = 0f;
     public float multiplierDuration = 20f;
-
+    public Text multiplierText;
     private static HarmonieBar instance;
     public static HarmonieBar Instance
     {
@@ -44,11 +44,12 @@ public class HarmonieBar : BarUI {
         }
         if (emptying)
         {
-            Value -= (MaxValue / multiplierDuration) * Time.deltaTime;
+            SoustractToValue((MaxValue / multiplierDuration) * Time.deltaTime);
             if (Value <= 0)
             {
                 emptying = false;
                 multiplier = 1;
+                multiplierText.enabled = false;
             }
         }
         BarUpdate();
@@ -58,10 +59,10 @@ public class HarmonieBar : BarUI {
     {
         if (!emptying)
         {
-            Value += harmoniePt;
+            AddToValue(harmoniePt);
             if (Value >= MaxValue)
             {
-                Value = MaxValue;
+                SetValue(MaxValue);
                 TriggerMultiplier();
             }
         }
@@ -71,6 +72,7 @@ public class HarmonieBar : BarUI {
     {
         multiplier = 2;
         emptying = true;
+        multiplierText.enabled = true;
     }
 
     public int GetMultiplier()
