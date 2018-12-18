@@ -27,19 +27,17 @@ public class BarManager : MonoBehaviour {
 
     public void EndGame()
     {
+        ConductorCustom.Instance.audioSource.Stop();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
-        //Destroy(SongInfoCustom.Instance.gameObject);
-        Destroy(PlayerManager.Instance.gameObject);
     }
 
     public void WinGame()
     {
+        ConductorCustom.Instance.audioSource.Stop();
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
-        //Destroy(SongInfoCustom.Instance.gameObject);
-        Destroy(PlayerManager.Instance.gameObject);
     }
 }

@@ -149,7 +149,15 @@ public class PlayerManager : MonoBehaviour
     public void EndGame()
     {
         foreach (Player player in PlayerList)
-            player.pads.CloseSerial();
+        {
+            if (player.pads != null)
+            {
+                player.pads.CloseSerial();
+            }
+        }
+        PlayerList.Clear();
+        foreach (Transform child in transform)
+            Destroy(child.gameObject);
     }
 }
 
