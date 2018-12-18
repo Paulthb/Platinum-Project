@@ -379,7 +379,6 @@ public class Partition : MonoBehaviour {
 
     public void ChargeRole(PartitionManager.Rank rank)
     {
-        Debug.Log("test");
         CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
