@@ -274,16 +274,16 @@ public class Partition : MonoBehaviour {
                     switch(i)
                     {
                         case 1:
-                            SoundManager.Instance.PlaySound("FailPiano1");
+                            SoundMgr.Instance.PlaySound("FailPiano1");
                             break;
                         case 2:
-                            SoundManager.Instance.PlaySound("FailPiano2");
+                            SoundMgr.Instance.PlaySound("FailPiano2");
                             break;
                         case 3:
-                            SoundManager.Instance.PlaySound("FailPiano3");
+                            SoundMgr.Instance.PlaySound("FailPiano3");
                             break;
                         case 4:
-                            SoundManager.Instance.PlaySound("FailPiano4");
+                            SoundMgr.Instance.PlaySound("FailPiano4");
                             break;
                     } 
                 }
@@ -293,16 +293,16 @@ public class Partition : MonoBehaviour {
                     switch (i)
                     {
                         case 1:
-                            SoundManager.Instance.PlaySound("FailBass1");
+                            SoundMgr.Instance.PlaySound("FailBass1");
                             break;
                         case 2:
-                            SoundManager.Instance.PlaySound("FailBass2");
+                            SoundMgr.Instance.PlaySound("FailBass2");
                             break;
                         case 3:
-                            SoundManager.Instance.PlaySound("FailBass3");
+                            SoundMgr.Instance.PlaySound("FailBass3");
                             break;
                         case 4:
-                            SoundManager.Instance.PlaySound("FailBass4");
+                            SoundMgr.Instance.PlaySound("FailBass4");
                             break;
                     }
                 }
@@ -312,16 +312,16 @@ public class Partition : MonoBehaviour {
                     switch (i)
                     {
                         case 1:
-                            SoundManager.Instance.PlaySound("FailGuitar1");
+                            SoundMgr.Instance.PlaySound("FailGuitar1");
                             break;
                         case 2:
-                            SoundManager.Instance.PlaySound("FailGuitar2");
+                            SoundMgr.Instance.PlaySound("FailGuitar2");
                             break;
                         case 3:
-                            SoundManager.Instance.PlaySound("FailGuitar3");
+                            SoundMgr.Instance.PlaySound("FailGuitar3");
                             break;
                         case 4:
-                            SoundManager.Instance.PlaySound("FailGuitar4");
+                            SoundMgr.Instance.PlaySound("FailGuitar4");
                             break;
                     }
                 }
@@ -331,16 +331,16 @@ public class Partition : MonoBehaviour {
                     switch (i)
                     {
                         case 1:
-                            SoundManager.Instance.PlaySound("FailBell1");
+                            SoundMgr.Instance.PlaySound("FailBell1");
                             break;
                         case 2:
-                            SoundManager.Instance.PlaySound("FailBell2");
+                            SoundMgr.Instance.PlaySound("FailBell2");
                             break;
                         case 3:
-                            SoundManager.Instance.PlaySound("FailBell3");
+                            SoundMgr.Instance.PlaySound("FailBell3");
                             break;
                         case 4:
-                            SoundManager.Instance.PlaySound("FailBell4");
+                            SoundMgr.Instance.PlaySound("FailBell4");
                             break;
                     }
                 }
