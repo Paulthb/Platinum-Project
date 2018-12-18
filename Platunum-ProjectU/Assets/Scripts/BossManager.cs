@@ -34,7 +34,7 @@ public class BossManager : MonoBehaviour {
     public int ultralaserDamage = 250;
     private float ultralaserTimer = 0;
     //Stone
-    private int StoneLife = 4;
+    private int StoneLife = 5;
 
     public List<AttackBoss> ListAttack;
     public Queue<AttackBoss> QueueAttack;
@@ -225,6 +225,7 @@ public class BossManager : MonoBehaviour {
         {
             StoneRemainingPartitions.Add(player.GetPartition());
         }
+        StoneLife = 5;
     }
 
     public void TriggerNextAttackStone()
@@ -241,7 +242,7 @@ public class BossManager : MonoBehaviour {
         {
             Partition partitionSelected = StoneRemainingPartitions[Random.Range(0, StoneRemainingPartitions.Count)];
             partitionSelected.nextNoteIsStone = true;
-            if (StoneRemainingPartitions.Count > 1)
+            if (PlayerManager.Instance.GetPlayersCount() > 1)
             {
                 StoneRemainingPartitions.Remove(partitionSelected);
             }
