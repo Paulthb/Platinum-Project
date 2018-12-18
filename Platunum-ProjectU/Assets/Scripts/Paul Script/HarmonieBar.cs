@@ -34,6 +34,7 @@ public class HarmonieBar : BarUI {
     // Use this for initialization
     void Start ()
     {
+        multiplierText.transform.localScale = Vector3.one * minScale;
         BarStart();
     }
 	
