@@ -173,7 +173,7 @@ public class Partition : MonoBehaviour {
                 MusicNode currNode = queueForTracks[i].Peek();
 
                 //multi-times note
-                if (currNode.transform.position.y <= partitionManager.finishLineY - partitionManager.goodOffsetY)   //single time note
+                if (currNode.transform.position.y <= partitionManager.finishLineY - partitionManager.badOffsetY)   //single time note
                 {
                     //have previous note stuck on the finish line
                     if (previousMusicNodes[i] != null)
