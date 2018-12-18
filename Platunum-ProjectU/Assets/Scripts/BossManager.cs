@@ -115,12 +115,14 @@ public class BossManager : MonoBehaviour {
                 //les notes réussies font perdre des hp pendant x sec
                 goMalediction = true;
                 animatorBoss.SetTrigger("MaledictionTrigger");
+                SoundMgr.Instance.PlaySound("AttqPoison");
                 StartCoroutine(MaledictionTime());
                 break;
             case BossAttack.HURLEMENT:
                 //changer de role et les bloquer sur ce role pdt 10 sec
                 animatorBoss.SetTrigger("HurlementTrigger");
                 goHurlement = true;
+                SoundMgr.Instance.PlaySound("AttqHurlement");
                 int count = PlayerManager.Instance.GetPlayersCount();
                 for (int i = 0; i < count; i++)
                 {

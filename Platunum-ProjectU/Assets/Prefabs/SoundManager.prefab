@@ -116,3 +116,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0cbe66f449e31b34682f193353be9a99, type: 3}
     volume: 2
     pitch: 1
+  - name: AttqHurlement
+    clip: {fileID: 8300000, guid: 9b02cf7acb6996a4aa4ab64fbfeeaa31, type: 3}
+    volume: 2
+    pitch: 1
+  - name: AttqPoison
+    clip: {fileID: 8300000, guid: e34b528068b982544b08768e2b1fec2c, type: 3}
+    volume: 2
+    pitch: 1
+  - name: AttqUltralaser
+    clip: {fileID: 8300000, guid: 0cbe66f449e31b34682f193353be9a99, type: 3}
+    volume: 2
+    pitch: 1
