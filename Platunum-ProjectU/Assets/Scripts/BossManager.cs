@@ -35,7 +35,6 @@ public class BossManager : MonoBehaviour {
     public int resistUltralaser = 3500;
     public int ultralaserDamage = 250;
     private float ultralaserTimer = 0;
-    private Coroutine Ultralaser;
     //Stone
     private int StoneLife = 5;
 
@@ -149,7 +148,6 @@ public class BossManager : MonoBehaviour {
                 animatorBoss.SetTrigger("ultralaserStart");
                 animatorBoss.SetBool("UltralaserLoop", true);
                 goUltralaser = true;
-                Ultralaser = StartCoroutine(UltralaserTime());
                 //créer un compeur de dégats
                 //lancer une coroutine
                 //activer le compteur dans le temps de la coroutine
@@ -221,7 +219,6 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(ultralaserDamageTime);
         ShieldBar.Instance.TakeDamage(ultralaserDamage);
-        //StopCoroutine(Ultralaser);
     }
 
     IEnumerator LanceflammeDamageTime()
