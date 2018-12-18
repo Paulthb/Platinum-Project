@@ -30,6 +30,7 @@ public class BossManager : MonoBehaviour {
     //Ultralaser
     [Header("Ultralaser Settings")]
     public float ultralaserTime = 20f;
+    public float ultralaserDamageTime = 2f;
     public int resistUltralaser = 3500;
     public int ultralaserDamage = 250;
     private float ultralaserTimer = 0;
@@ -96,7 +97,8 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Success");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserShoot");
-                ShieldBar.Instance.TakeDamage(ultralaserDamage);
+                StartCoroutine(UltralaserDamageTime());
+                //ShieldBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
             }
@@ -206,6 +208,12 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(ultralaserTime);
         goUltralaser = false;
+    }
+
+    IEnumerator UltralaserDamageTime()
+    {
+        yield return new WaitForSeconds(ultralaserDamageTime);
+        ShieldBar.Instance.TakeDamage(ultralaserDamage);
     }
 
     IEnumerator BrouillardTime()
