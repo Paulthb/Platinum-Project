@@ -24,6 +24,7 @@ public class BossManager : MonoBehaviour {
     public float hurlementTime = 10f;
     public float ultrasonTime = 10f;
     public float invincibiliteTime = 4f;
+    public float beforeInvincibilite = 1.5f;
     public float brouillardTime = 10f;
     public float blocGiveHarmony = 10f;
     public int damageLanceFlamme = 100;
@@ -88,6 +89,7 @@ public class BossManager : MonoBehaviour {
             {
                 Debug.Log("Ultralaser Cancel");
                 animatorBoss.SetBool("UltralaserLoop", false);
+                animatorBoss.SetTrigger("UltralaserBreak");
                 //lancer animation de réduction de cast
                 goUltralaser = false;
                 StackDmg = 0;
@@ -170,9 +172,10 @@ public class BossManager : MonoBehaviour {
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
                 animatorBoss.SetTrigger("invincibilité");
-                animatorBoss.SetBool("invincibilitéLoop", true);
-                goInvincibilite = true;
-                StartCoroutine(InvincibiliteTime());
+                StartCoroutine(TimeBeforeInvincibilite());
+                //animatorBoss.SetBool("invincibilitéLoop", true);
+                //goInvincibilite = true;
+                //StartCoroutine(InvincibiliteTime());
                 break;
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
@@ -225,6 +228,14 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(damageLanceFlammeTime);
         ShieldBar.Instance.TakeDamage(damageLanceFlamme);
+    }
+
+    IEnumerator TimeBeforeInvincibilite()
+    {
+        yield return new WaitForSeconds(beforeInvincibilite);
+        animatorBoss.SetBool("invincibilitéLoop", true);
+        goInvincibilite = true;
+        StartCoroutine(InvincibiliteTime());
     }
 
     IEnumerator BrouillardTime()
