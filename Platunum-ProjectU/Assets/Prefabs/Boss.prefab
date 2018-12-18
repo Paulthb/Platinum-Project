@@ -123,9 +123,9 @@ MonoBehaviour:
   Conductor: {fileID: 0}
   brouillardObject: {fileID: 1497632778153392}
   animatorBrouillard: {fileID: 95433652181260296}
-  StelePrefab: {fileID: 1976950334496676, guid: 1978e32e565d9a2499c1b74c87ad86a6,
-    type: 2}
-  SteleArrierePrefab: {fileID: 1618802557976480, guid: cea7db3c46d4c7742bcbaaa5effa43c8,
+  StelePrefab: {fileID: 0}
+  SteleArrierePrefab: {fileID: 0}
+  HurlementStelePrefab: {fileID: 1283569599398744, guid: 899c446673118a24483fcbbe38c2ece5,
     type: 2}
   StackDmg: 0
   damageCoupDeQueue: 20
@@ -137,20 +137,22 @@ MonoBehaviour:
   brouillardTime: 0
   blocGiveHarmony: 10
   damageLanceFlamme: 400
+  damageLanceFlammeTime: 2
   ultralaserTime: 5
+  ultralaserDamageTime: 2
   resistUltralaser: 3500
   ultralaserDamage: 400
   ListAttack:
   - Time: 6
-    Attack: 0
-  - Time: 25
-    Attack: 0
+    Attack: 1
+  - Time: 20
+    Attack: 1
   - Time: 40
     Attack: 6
   - Time: 60
     Attack: 5
   - Time: 80
-    Attack: 6
+    Attack: 3
   - Time: 100
     Attack: 0
   - Time: 130
