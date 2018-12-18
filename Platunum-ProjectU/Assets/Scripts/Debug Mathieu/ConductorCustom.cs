@@ -57,6 +57,7 @@ public class ConductorCustom : MonoBehaviour
 
     void Start()
     {
+        //pausedTime += (float)AudioSettings.dspTime - pauseTimeStamp;
         audioSource = GetComponent<AudioSource>();
         //reset static variables
         paused = true;
