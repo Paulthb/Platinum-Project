@@ -14,8 +14,10 @@ public class BossManager : MonoBehaviour {
 
     public GameObject StelePrefab;
     public GameObject SteleArrierePrefab;
+    public GameObject HurlementStelePrefab;
     private GameObject MaledictionCadre;
     private GameObject MaledictionArriere;
+    private GameObject HurlementSteleArriere;
 
     public float StackDmg;
     public int damageCoupDeQueue = 20;
@@ -133,8 +135,15 @@ public class BossManager : MonoBehaviour {
                 int count = PlayerManager.Instance.GetPlayersCount();
                 for (int i = 0; i < count; i++)
                 {
-                    if(PlayerManager.Instance.GetPlayer(i + 1).Personnage.id != 0)
-                        PlayerManager.Instance.GetPlayer(i+1).SwitchRole();
+                    Player player = PlayerManager.Instance.GetPlayer(i + 1);
+                    Vector3 SteleArrierePosition = player.GetPartition().BackgroundSteleSprite.transform.position;
+                    if (PlayerManager.Instance.GetPlayer(i + 1).Personnage.id != 0)
+                    {
+                        PlayerManager.Instance.GetPlayer(i + 1).SwitchRole();
+                        HurlementSteleArriere = Instantiate(HurlementStelePrefab, SteleArrierePosition + new Vector3(0.1f,0,0), Quaternion.identity) as GameObject;
+                        HurlementSteleArriere.transform.parent = player.GetPartition().BackgroundSteleSprite.transform;
+                    }
+                        
                 }
                 StartCoroutine(HurlementTime());
                 break;
@@ -198,6 +207,7 @@ public class BossManager : MonoBehaviour {
     IEnumerator HurlementTime()
     {
         yield return new WaitForSeconds(hurlementTime);
+        Destroy(HurlementSteleArriere);
         goHurlement = false;
     }
     IEnumerator UltrasonTime()
