@@ -27,8 +27,7 @@ public class PlayerManager : MonoBehaviour
                 instance.PlayerColorList = new Color[4] { Color.green, Color.red, Color.blue, Color.yellow };
 
                 #if UNITY_EDITOR
-                    Debug.Log("load debug perso");
-                    instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste")[0]), typeof(Personnage));
+                    instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste", null)[1]), typeof(Personnage));
                 #endif
             }
             return instance;
@@ -143,7 +142,6 @@ public class PlayerManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("debug azerty");
             AddPlayer(-1, DebugPerso);
         }
     }
