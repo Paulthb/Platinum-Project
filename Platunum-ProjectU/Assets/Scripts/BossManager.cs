@@ -27,9 +27,11 @@ public class BossManager : MonoBehaviour {
     public float brouillardTime = 10f;
     public float blocGiveHarmony = 10f;
     public int damageLanceFlamme = 100;
+    public float damageLanceFlammeTime = 2f;
     //Ultralaser
     [Header("Ultralaser Settings")]
     public float ultralaserTime = 20f;
+    public float ultralaserDamageTime = 2f;
     public int resistUltralaser = 3500;
     public int ultralaserDamage = 250;
     private float ultralaserTimer = 0;
@@ -96,7 +98,8 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Success");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserShoot");
-                ShieldBar.Instance.TakeDamage(ultralaserDamage);
+                StartCoroutine(UltralaserDamageTime());
+                //ShieldBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
                 goUltralaser = false;
             }
@@ -160,9 +163,9 @@ public class BossManager : MonoBehaviour {
                 //La partie basse des partitions est cachée
                 animatorBoss.SetTrigger("BrouillardTrigger");
                 StartCoroutine(BrouillardTime());
-                foreach (Player player in PlayerManager.Instance.GetPlayers())
-                    player.GetPartition().ShowBrouillard(brouillardTime);
-                    break;
+                //foreach (Player player in PlayerManager.Instance.GetPlayers())
+                //    player.GetPartition().ShowBrouillard(brouillardTime);
+                break;
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
                 animatorBoss.SetTrigger("invincibilité");
@@ -173,7 +176,8 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
-                ShieldBar.Instance.TakeDamage(damageLanceFlamme);
+                StartCoroutine(LanceflammeDamageTime());
+                //ShieldBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
         }
     }
@@ -210,12 +214,28 @@ public class BossManager : MonoBehaviour {
         goUltralaser = false;
     }
 
+    IEnumerator UltralaserDamageTime()
+    {
+        yield return new WaitForSeconds(ultralaserDamageTime);
+        ShieldBar.Instance.TakeDamage(ultralaserDamage);
+    }
+
+    IEnumerator LanceflammeDamageTime()
+    {
+        yield return new WaitForSeconds(damageLanceFlammeTime);
+        ShieldBar.Instance.TakeDamage(damageLanceFlamme);
+    }
+
     IEnumerator BrouillardTime()
     {
         yield return new WaitForSeconds(2f);
         brouillardObject.SetActive(true);
+        foreach (Player player in PlayerManager.Instance.GetPlayers())
+            player.GetPartition().ShowBrouillard(brouillardTime);
+
         yield return new WaitForSeconds(brouillardTime);
         animatorBrouillard.SetTrigger("BrouillardFinTrigger");
+
         yield return new WaitForSeconds(1f);
         brouillardObject.SetActive(false);
     }

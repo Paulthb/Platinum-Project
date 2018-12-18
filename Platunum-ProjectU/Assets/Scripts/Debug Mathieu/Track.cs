@@ -17,6 +17,9 @@ public class Track : MonoBehaviour {
     {
         switch (rank)
         {
+            case PartitionManager.Rank.HARMONIE:
+                trackParticle.Harmonie.Play();
+                break;
             case PartitionManager.Rank.PERFECT:
                 trackParticle.Perfect.Play();
                 break;
@@ -43,4 +46,5 @@ public class TrackParticle
     public ParticleSystem Good;
     public ParticleSystem Bad;
     public ParticleSystem Fail;
+    public ParticleSystem Harmonie;
 }

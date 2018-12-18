@@ -30,6 +30,8 @@ public class BarManager : MonoBehaviour {
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
+        //Destroy(SongInfoCustom.Instance.gameObject);
+        Destroy(PlayerManager.Instance.gameObject);
     }
 
     public void WinGame()
@@ -37,5 +39,7 @@ public class BarManager : MonoBehaviour {
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
+        //Destroy(SongInfoCustom.Instance.gameObject);
+        Destroy(PlayerManager.Instance.gameObject);
     }
 }

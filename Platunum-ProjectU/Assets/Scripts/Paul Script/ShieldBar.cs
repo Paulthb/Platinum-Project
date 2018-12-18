@@ -25,12 +25,12 @@ public class ShieldBar : BarUI {
     void Update()
     {
         //pour les tests
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKey(KeyCode.LeftControl))
         {
             TakeDamage(10);
         }
         //pour les tests
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             TakeDamage(-10);
         }

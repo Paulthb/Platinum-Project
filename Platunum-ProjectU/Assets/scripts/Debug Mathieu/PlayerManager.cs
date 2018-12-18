@@ -145,5 +145,11 @@ public class PlayerManager : MonoBehaviour
             AddPlayer(-1, DebugPerso);
         }
     }
+
+    public void EndGame()
+    {
+        foreach (Player player in PlayerList)
+            player.pads.CloseSerial();
+    }
 }
 

@@ -220,7 +220,12 @@ public class Partition : MonoBehaviour {
                         ChargeRole(PartitionManager.Rank.PERFECT);
 
                     //SendBeatHit to particle
-                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
+                    if (HarmonieBar.Instance.GetMultiplier() == 2){
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.HARMONIE);
+                    }
+                    else{
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);
+                    }
 
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
@@ -236,8 +241,16 @@ public class Partition : MonoBehaviour {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.GoodHit();
                     ChargeRole(PartitionManager.Rank.GOOD);
+
                     //SendBeatHit to particle
-                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
+                    if (HarmonieBar.Instance.GetMultiplier() == 2)
+                    {
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.HARMONIE);
+                    }
+                    else
+                    {
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.GOOD);
+                    }
 
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
@@ -253,8 +266,16 @@ public class Partition : MonoBehaviour {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.BadHit();
                     ChargeRole(PartitionManager.Rank.BAD);
+
                     //SendBeatHit to particle
-                    tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
+                    if (HarmonieBar.Instance.GetMultiplier() == 2)
+                    {
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.HARMONIE);
+                    }
+                    else
+                    {
+                        tracks[trackNumber].PlayParticle(PartitionManager.Rank.BAD);
+                    }
 
                     //Harmonie
                     if (PlayerManager.Instance.PlayersByRole(currentRole.RoleState) > 1)
@@ -378,7 +399,7 @@ public class Partition : MonoBehaviour {
     }
 
     public void ChargeRole(PartitionManager.Rank rank)
-    {
+    {   
         CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
