@@ -13,7 +13,7 @@ public class SongInfoCustom : MonoBehaviour
             if (instance == null)
                 instance = GameObject.FindObjectOfType<SongInfoCustom>();
             if (instance == null)
-                Debug.Log("No tutorial found");
+                Debug.Log("No songinfo found");
             return instance;
         }
     }

@@ -418,7 +418,7 @@ Prefab:
     - target: {fileID: 114929713751608796, guid: 275cac46f83aef1458e237a9074472f5,
         type: 2}
       propertyPath: PercentagePerSecond
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114929713751608796, guid: 275cac46f83aef1458e237a9074472f5,
         type: 2}
@@ -446,7 +446,7 @@ Prefab:
     - target: {fileID: 114929713751608796, guid: 275cac46f83aef1458e237a9074472f5,
         type: 2}
       propertyPath: ResetCooldown
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 275cac46f83aef1458e237a9074472f5, type: 2}
@@ -6035,8 +6035,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   StartEmpty: 0
-  ResetCooldown: 1
-  PercentagePerSecond: 20
+  ResetCooldown: 0
+  PercentagePerSecond: 25
   CooldownBar: 0.5
   MaxValue: 800
 --- !u!1 &896483164 stripped
@@ -16183,7 +16183,7 @@ Prefab:
     - target: {fileID: 114215355384783644, guid: 8538b05797acbf740b6bcc92135da460,
         type: 2}
       propertyPath: PercentagePerSecond
-      value: 20
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 114215355384783644, guid: 8538b05797acbf740b6bcc92135da460,
         type: 2}
@@ -16226,7 +16226,7 @@ Prefab:
     - target: {fileID: 114215355384783644, guid: 8538b05797acbf740b6bcc92135da460,
         type: 2}
       propertyPath: ResetCooldown
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8538b05797acbf740b6bcc92135da460, type: 2}
