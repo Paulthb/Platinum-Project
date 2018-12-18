@@ -6,12 +6,10 @@ using UnityEngine.UI;
 public class HarmonieBar : BarUI {
     private int multiplier = 1;
     private bool emptying = false;
-    private float Timer = 0f;
     public float multiplierDuration = 20f;
     public Text multiplierText;
 
     //UI
-    private float speed = 0.1f;
     private float TimerUI = 0;
     private float targetScale = 1.25f;
     public float minScale = 1;

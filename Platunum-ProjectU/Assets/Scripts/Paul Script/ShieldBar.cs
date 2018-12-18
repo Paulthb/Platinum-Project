@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ShieldBar : BarUI {
-    private bool isArmor = true;
 
     private static ShieldBar instance;
     public static ShieldBar Instance
@@ -45,7 +44,7 @@ public class ShieldBar : BarUI {
         {
             SetValue(MaxValue);
         }
-        UpdateIsArmor();
+
     }
 
     public void TakeDamage(int damagePt)
@@ -60,16 +59,5 @@ public class ShieldBar : BarUI {
         {
             SetValue(MaxValue);
         }
-        UpdateIsArmor();
-    }
-
-
-
-    private void UpdateIsArmor()
-    {
-        if (Value <= 0)
-            isArmor = false;
-        else
-            isArmor = true;
     }
 }

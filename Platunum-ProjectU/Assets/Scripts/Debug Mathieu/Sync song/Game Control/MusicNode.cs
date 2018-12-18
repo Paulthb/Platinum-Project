@@ -206,6 +206,7 @@ public class MusicNode : MonoBehaviour
 
     public void updateSprite(int idSprite)
     {
+        Debug.Log(idSprite);
         StoneSprite.sprite = StoneSrpiteTab[idSprite];
     }
 }

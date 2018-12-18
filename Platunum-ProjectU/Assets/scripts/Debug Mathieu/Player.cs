@@ -152,9 +152,10 @@ public class Player : MonoBehaviour
 
     public void SetPartition(Partition partition)
     {
-        if(partition != null)
-            Debug.Log("partition loaded");
-        this.partition = partition;
+        if (partition != null)
+            this.partition = partition;
+        else
+            Debug.Log("Error Partition loading");
     }
 
     public Partition GetPartition()
