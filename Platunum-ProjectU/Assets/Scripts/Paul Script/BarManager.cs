@@ -27,14 +27,14 @@ public class BarManager : MonoBehaviour {
 
     public void EndGame()
     {
-        BossBar.Instance.transform.gameObject.SetActive(false);
+        BossBar.Instance.hide();
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
     }
 
     public void WinGame()
     {
-        BossBar.Instance.transform.gameObject.SetActive(false);
+        BossBar.Instance.hide();
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
     }

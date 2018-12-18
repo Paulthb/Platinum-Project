@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class BossBar : BarUI {
     public float damage = 50;
-
     private BossManager bossManager;
+    public Transform back;
 
     private static BossBar instance;
     public static BossBar Instance
@@ -39,26 +39,7 @@ public class BossBar : BarUI {
             TakeDamage(-damage);
         }
         BarUpdate();
-        /*if (currentBossPoint != bossPoint)
-        {
-            float ToAdd = Mathf.Sign(bossPoint - currentBossPoint) * speed * Time.deltaTime;
-
-            if(ToAdd > Mathf.Abs(currentBossPoint - bossPoint))
-                currentBossPoint = bossPoint;
-            else
-                currentBossPoint = currentBossPoint + ToAdd;
-
-            m_ratio = currentBossPoint / bossMaxPoint;
-            bossBar.fillAmount = m_ratio;
-        }*/
     }
-
-    /*private void UpdateBar()
-    {
-        float ratio;
-        ratio = bossPoint / bossMaxPoint;
-        bossBar.rectTransform.localScale = new Vector3(ratio, 1, 1);
-    }*/
 
     public void TakeDamage(float damage)
     {
@@ -71,5 +52,11 @@ public class BossBar : BarUI {
             Debug.Log("le boss est mort !");
             BarManager.Instance.WinGame();
         }
+    }
+
+    public void hide()
+    {
+        back.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

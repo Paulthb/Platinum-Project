@@ -8,7 +8,7 @@ public class Sound
     public string name;
     public AudioClip clip;
 
-    [Range(0f,1f)]
+    [Range(0f,2f)]
     public float volume = 0.6f;
     [Range(0.5f, 1.5f)]
     public float pitch = 1f;
@@ -33,8 +33,30 @@ public class Sound
 public class SoundManager : MonoBehaviour {
 
     [SerializeField]
-    Sound[] sounds;
-    
+    public Sound[] sounds;
+
+    private static SoundManager instance;
+    public static SoundManager Instance
+    {
+        get
+        {
+            if (instance == null)
+                instance = GameObject.FindObjectOfType<SoundManager>();
+            if (instance == null)
+                Debug.Log("No BossManager found");
+            return instance;
+        }
+    }
+
+    void Start()
+    {
+        for(int i=0; i < sounds.Length; i++)
+        {
+            GameObject _go = new GameObject("Sound_" + i + "_" + sounds[i].name);
+            sounds[i].SetSource(_go.AddComponent<AudioSource>());
+        }
+    }
+
     public void PlaySound(string _name)
     {
         for (int i = 0; i < sounds.Length; i++)

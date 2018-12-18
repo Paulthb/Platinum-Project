@@ -29,14 +29,14 @@ public class MusicNodePool : MonoBehaviour
         }
 	}
 
-	public MusicNode GetNode(float posX, float startY, float endY, float removeLineY, float posZ, float beat, int times, Color color)
+	public MusicNode GetNode(float posX, float startY, float endY, float removeLineY, float posZ, float beat, int times, Color color, int id)
 	{
         //check if there is an inactive instance
         foreach (MusicNode node in objList)
         {
             if (!node.gameObject.activeInHierarchy)
             {
-                node.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color);
+                node.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color, id);
                 node.gameObject.SetActive(true);
                 return node;
             }
@@ -44,7 +44,7 @@ public class MusicNodePool : MonoBehaviour
 
 		//no inactive instances, instantiate a new GetComponent
 		MusicNode musicNode = ((GameObject) Instantiate(nodePrefab)).GetComponent<MusicNode>();
-		musicNode.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color);
+		musicNode.Initialize(posX, startY, endY, removeLineY, posZ, beat, times, color, id);
 		objList.Add(musicNode);
 		return musicNode;
 	}
