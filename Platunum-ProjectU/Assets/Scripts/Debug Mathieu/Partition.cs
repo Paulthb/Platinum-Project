@@ -207,12 +207,15 @@ public class Partition : MonoBehaviour {
             if(offsetY < partitionManager.badOffsetY)
             {
                 if (frontNode.isStone)
+                {
                     BossManager.Instance.TriggerNextAttackStone();
+                    frontNode.updateSprite(BossManager.Instance.GetStoneLife());
+                }
                 if (offsetY < partitionManager.perfectOffsetY) //perfect hit
                 {
                     //fait quelque chose sur le gameplay selon la qualité du hit
                     frontNode.PerfectHit();
-                    ChargeRole(PartitionManager.Rank.PERFECT);
+                        ChargeRole(PartitionManager.Rank.PERFECT);
 
                     //SendBeatHit to particle
                     tracks[trackNumber].PlayParticle(PartitionManager.Rank.PERFECT);

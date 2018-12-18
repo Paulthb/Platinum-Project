@@ -203,4 +203,9 @@ public class MusicNode : MonoBehaviour
     {
 
     }
+
+    public void updateSprite(int idSprite)
+    {
+        StoneSprite.sprite = StoneSrpiteTab[idSprite];
+    }
 }

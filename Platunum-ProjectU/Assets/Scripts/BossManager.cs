@@ -273,6 +273,11 @@ public class BossManager : MonoBehaviour {
             MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
         }
     }
+
+    public int GetStoneLife()
+    {
+        return StoneLife;
+    }
 }
 
 [System.Serializable]
