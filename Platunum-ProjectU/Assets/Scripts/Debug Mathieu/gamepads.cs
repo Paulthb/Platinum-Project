@@ -85,4 +85,9 @@ public class gamepads
         Serial.Write(ledId.ToString());
         
     }
+
+    public void CloseSerial()
+    {
+        Serial.Close();
+    }
 }
