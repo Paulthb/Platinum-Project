@@ -1733,9 +1733,9 @@ MonoBehaviour:
   SHIELDPerfectPowerToStack: 10
   SHIELDGoodPowerToStack: 5
   SHIELDBadPowerToStack: 2
-  HARMONIEPerfect: 10
-  HARMONIEGood: 8
-  HARMONIEBad: 3
+  HARMONIEPerfect: 3
+  HARMONIEGood: 2
+  HARMONIEBad: 1
 --- !u!198 &198003980719525804
 ParticleSystem:
   m_ObjectHideFlags: 1
