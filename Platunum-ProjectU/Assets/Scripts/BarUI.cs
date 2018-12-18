@@ -4,27 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BarUI : MonoBehaviour {
-    //Settings
-    public bool StartEmpty;
-
     //Value
+    private float CooldownTimer;
     private float TempValue;
     private float OldValue;
-    public float Value;
-    public float MaxValue;
-
-    //Time
-    float CooldownTimer;
-    public float PercentagePerSecond;
-    public float CooldownBar;
+    protected float Value;
 
     //UI
     private Image Temp;
     private Image Current;
 
-    //REF
-    public Transform BarFolder;
-    
+    //Settings
+    [Header("Settings")]
+    public bool StartEmpty;
+    public bool ResetCooldown;
+    public float PercentagePerSecond;
+    public float CooldownBar;
+    public float MaxValue;
+
+
     // Use this for initialization
     protected void BarStart () {
         if (!StartEmpty)
@@ -40,8 +38,8 @@ public class BarUI : MonoBehaviour {
             TempValue = 0;
         }
         CooldownTimer = 0;
-        Temp = BarFolder.GetChild(0).GetComponent<Image>();
-        Current = BarFolder.GetChild(1).GetComponent<Image>();
+        Temp = transform.GetChild(0).GetComponent<Image>();
+        Current = transform.GetChild(1).GetComponent<Image>();
     }
 	
 	// Update is called once per frame
@@ -97,6 +95,30 @@ public class BarUI : MonoBehaviour {
     {
         if(CooldownTimer < CooldownBar)
             CooldownTimer = 0;
+    }
+
+    protected void AddToValue(float value)
+    {
+        this.Value += value;
+        if (ResetCooldown)
+            ResetCooldownTimer();
+    }
+
+    protected void SoustractToValue(float value)
+    {
+        this.Value -= value;
+        if (ResetCooldown)
+            ResetCooldownTimer();
+    }
+
+    protected void SetValue(float value)
+    {
+        this.Value = value;
+    }
+
+    public float GetValue()
+    {
+        return Value;
     }
     /*
     protected void AddToBuffer(float value)

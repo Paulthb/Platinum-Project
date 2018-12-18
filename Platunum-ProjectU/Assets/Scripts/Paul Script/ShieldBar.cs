@@ -40,25 +40,25 @@ public class ShieldBar : BarUI {
 
     public void WinArmor(int armorPt)
     {
-        Value += armorPt * HarmonieBar.Instance.GetMultiplier();
+        AddToValue(armorPt * HarmonieBar.Instance.GetMultiplier());
         if (Value > MaxValue) //récuperer la somme de armor groupe max
         {
-            Value = MaxValue;
+            SetValue(MaxValue);
         }
         UpdateIsArmor();
     }
 
     public void TakeDamage(int damagePt)
     {
-        Value -= damagePt;
+        SoustractToValue(damagePt);
         if (Value < 0)
         {
             HealthBar.Instance.TakeDamage(Mathf.Abs(Value));
-            Value = 0;
+            SetValue(0);
         }
         else if(Value > MaxValue)
         {
-            Value = MaxValue;
+            SetValue(MaxValue);
         }
         UpdateIsArmor();
     }

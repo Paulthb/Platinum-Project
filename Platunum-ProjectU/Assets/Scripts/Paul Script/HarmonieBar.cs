@@ -8,6 +8,14 @@ public class HarmonieBar : BarUI {
     private bool emptying = false;
     private float Timer = 0f;
     public float multiplierDuration = 20f;
+    public Text multiplierText;
+
+    //UI
+    private float speed = 0.1f;
+    private float TimerUI = 0;
+    private float targetScale = 1.25f;
+    public float minScale = 1;
+    public float maxScale = 1.5f;
 
     private static HarmonieBar instance;
     public static HarmonieBar Instance
@@ -26,6 +34,7 @@ public class HarmonieBar : BarUI {
     // Use this for initialization
     void Start ()
     {
+        multiplierText.transform.localScale = Vector3.one * minScale;
         BarStart();
     }
 	
@@ -44,11 +53,33 @@ public class HarmonieBar : BarUI {
         }
         if (emptying)
         {
-            Value -= (MaxValue / multiplierDuration) * Time.deltaTime;
+            SoustractToValue((MaxValue / multiplierDuration) * Time.deltaTime);
             if (Value <= 0)
             {
                 emptying = false;
                 multiplier = 1;
+
+                //Reset UI
+                multiplierText.enabled = false;
+                multiplierText.transform.localScale = Vector3.one * minScale;
+                targetScale = maxScale;
+                TimerUI = 0;
+            }
+
+            TimerUI += Time.deltaTime;
+            float scale = Mathf.Lerp(multiplierText.transform.localScale.x, targetScale, TimerUI);
+            multiplierText.transform.localScale = new Vector3(scale, scale, scale);
+            if(Mathf.Abs(targetScale - scale) < 0.1f)
+            {
+                if(targetScale == maxScale)
+                {
+                    targetScale = minScale;
+                }
+                else
+                {
+                    targetScale = maxScale;
+                }
+                TimerUI = 0;
             }
         }
         BarUpdate();
@@ -58,10 +89,10 @@ public class HarmonieBar : BarUI {
     {
         if (!emptying)
         {
-            Value += harmoniePt;
+            AddToValue(harmoniePt);
             if (Value >= MaxValue)
             {
-                Value = MaxValue;
+                SetValue(MaxValue);
                 TriggerMultiplier();
             }
         }
@@ -71,6 +102,7 @@ public class HarmonieBar : BarUI {
     {
         multiplier = 2;
         emptying = true;
+        multiplierText.enabled = true;
     }
 
     public int GetMultiplier()

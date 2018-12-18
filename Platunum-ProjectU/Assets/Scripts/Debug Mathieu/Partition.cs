@@ -385,7 +385,7 @@ public class Partition : MonoBehaviour {
                 case PartitionManager.Rank.PERFECT:
                     if (BossManager.Instance.goMalediction)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value >= ManaBurnPerAttack)
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {
                         powerStack += ATKPerfectPowerToStack;
                         if (attackHitNumber >= AttackCountBurnMana)
@@ -409,7 +409,7 @@ public class Partition : MonoBehaviour {
                 case PartitionManager.Rank.GOOD:
                     if (BossManager.Instance.goMalediction)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value >= ManaBurnPerAttack)
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {
                         powerStack += ATKGoodPowerToStack;
                         if (attackHitNumber == AttackCountBurnMana)
@@ -433,7 +433,7 @@ public class Partition : MonoBehaviour {
                 case PartitionManager.Rank.BAD:
                     if (BossManager.Instance.goMalediction)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
-                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.Value >= ManaBurnPerAttack)
+                    if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {
                         powerStack += ATKBadPowerToStack;
                         if (attackHitNumber == AttackCountBurnMana)

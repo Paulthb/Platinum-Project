@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class ManaBar : BarUI {
     public Text debugText;
     public bool debug;
+    public float ManaPerAttack = 50f;
     void Update()
     {
         //pour les tests
@@ -47,7 +48,7 @@ public class ManaBar : BarUI {
 
     public void WinMana(int manaPt)
     {
-        base.Value += manaPt * HarmonieBar.Instance.GetMultiplier();
+        AddToValue(manaPt * HarmonieBar.Instance.GetMultiplier());
         if (Value > MaxValue) //récuperer la somme de mana groupe max
         {
             Value = MaxValue;
@@ -56,12 +57,10 @@ public class ManaBar : BarUI {
 
     public void Attack()
     {
-        
-        ResetCooldownTimer();
-        Value -= 50;
+        SoustractToValue(ManaPerAttack);
         if (base.Value < 0)
         {
-            Value = 0;
+            SetValue(0);
         }
 
         //UpdateBar();
