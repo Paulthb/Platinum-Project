@@ -1,0 +1,118 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1679901278477494}
+  m_IsPrefabAsset: 1
+--- !u!1 &1679901278477494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4942444468118760}
+  - component: {fileID: 114987461671457166}
+  m_Layer: 0
+  m_Name: SoundManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4942444468118760
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679901278477494}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114987461671457166
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1679901278477494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc71987abf8cf74889dffcc0a153df4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: FailBass1
+    clip: {fileID: 8300000, guid: 76654645823cf6846a5a11e02f3b3e79, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBass2
+    clip: {fileID: 8300000, guid: 08329822a586305468ebdbe7c2aace94, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBass3
+    clip: {fileID: 8300000, guid: df37f466b2416504ab6b8e144aa5c64d, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBass4
+    clip: {fileID: 8300000, guid: aab99be0b038dd443adc2a77efdfb559, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBell1
+    clip: {fileID: 8300000, guid: c1784f56d766d474e8adebab300700b7, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBell2
+    clip: {fileID: 8300000, guid: 2a895032e55e6d344b75e12286af7e12, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBell3
+    clip: {fileID: 8300000, guid: 5498307174c451a42835da92a471cc4b, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailBell4
+    clip: {fileID: 8300000, guid: 2f99b98bb361ea1409a98fe9dfd07411, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar1
+    clip: {fileID: 8300000, guid: 8457820554870404f9174a81033be5c5, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar2
+    clip: {fileID: 8300000, guid: 5cdc48d31eab40a4bac68f44bae5213c, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar3
+    clip: {fileID: 8300000, guid: e9244c4d6c4c5d245b8be168c0c6d979, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailGuitar4
+    clip: {fileID: 8300000, guid: 2194b3f39b7674841a578596d50484a6, type: 3}
+    volume: 0.6
+    pitch: 1
+  - name: FailPiano1
+    clip: {fileID: 8300000, guid: 88ed6051c69a33f488ed00502b63c1ea, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano2
+    clip: {fileID: 8300000, guid: f6f3b23ef98875346b196c7fcf543c2e, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano3
+    clip: {fileID: 8300000, guid: 2ee67aa6d9920684f96340bc9f64c289, type: 3}
+    volume: 2
+    pitch: 1
+  - name: FailPiano4
+    clip: {fileID: 8300000, guid: afa2326584a319047a0bc17206b9a9ae, type: 3}
+    volume: 2
+    pitch: 1
