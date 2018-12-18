@@ -232,7 +232,7 @@ public class BossManager : MonoBehaviour {
     {
         StoneLife--;
         //Debug.Log("nb de partitions " + StoneRemainingPartitions.Count);
-        if(StoneLife == 0)
+        if(StoneLife == 0 || StoneRemainingPartitions.Count == 0)
         {
             //Augmenter l'unisson
             HarmonieBar.Instance.GiveHarmonie(blocGiveHarmony);
