@@ -59,6 +59,5 @@ public class ShieldBar : BarUI {
         {
             SetValue(MaxValue);
         }
-        UpdateIsArmor();
     }
 }
