@@ -27,7 +27,8 @@ public class PlayerManager : MonoBehaviour
                 instance.PlayerColorList = new Color[4] { Color.green, Color.red, Color.blue, Color.yellow };
 
                 #if UNITY_EDITOR
-                    instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste", null)[0]), typeof(Personnage));
+                    Debug.Log("load debug perso");
+                    instance.DebugPerso = (Personnage)AssetDatabase.LoadAssetAtPath(AssetDatabase.GUIDToAssetPath(AssetDatabase.FindAssets("Demoniste")[0]), typeof(Personnage));
                 #endif
             }
             return instance;
@@ -129,16 +130,21 @@ public class PlayerManager : MonoBehaviour
 
     public void AddDebugPlayer()
     {
-        if(Input.GetJoystickNames().Length > 0)
-        {
-            if(Input.GetJoystickNames()[0] != "")
-                AddPlayer(1, DebugPerso);
-        }
-        if(System.IO.Ports.SerialPort.GetPortNames().Length > 0)
+        if (System.IO.Ports.SerialPort.GetPortNames().Length > 0)
         {
             string str = System.IO.Ports.SerialPort.GetPortNames()[0];
             gamepads pads = new gamepads((int)char.GetNumericValue(str[str.Length - 1]));
             AddPlayer(1, DebugPerso, pads);
+        }
+        else if (Input.GetJoystickNames().Length > 0)
+        {
+            if(Input.GetJoystickNames()[0] != "")
+                AddPlayer(1, DebugPerso);
+        }
+        else
+        {
+            Debug.Log("debug azerty");
+            AddPlayer(-1, DebugPerso);
         }
     }
 }
