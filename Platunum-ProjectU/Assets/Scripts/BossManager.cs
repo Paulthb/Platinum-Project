@@ -161,9 +161,9 @@ public class BossManager : MonoBehaviour {
                 //La partie basse des partitions est cachée
                 animatorBoss.SetTrigger("BrouillardTrigger");
                 StartCoroutine(BrouillardTime());
-                foreach (Player player in PlayerManager.Instance.GetPlayers())
-                    player.GetPartition().ShowBrouillard(brouillardTime);
-                    break;
+                //foreach (Player player in PlayerManager.Instance.GetPlayers())
+                //    player.GetPartition().ShowBrouillard(brouillardTime);
+                break;
             case BossAttack.INVINCIBLITE:
                 //Le boss est invincible pdt x sec
                 animatorBoss.SetTrigger("invincibilité");
@@ -228,8 +228,12 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         brouillardObject.SetActive(true);
+        foreach (Player player in PlayerManager.Instance.GetPlayers())
+            player.GetPartition().ShowBrouillard(brouillardTime);
+
         yield return new WaitForSeconds(brouillardTime);
         animatorBrouillard.SetTrigger("BrouillardFinTrigger");
+
         yield return new WaitForSeconds(1f);
         brouillardObject.SetActive(false);
     }
