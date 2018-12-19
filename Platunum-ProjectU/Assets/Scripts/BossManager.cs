@@ -114,7 +114,13 @@ public class BossManager : MonoBehaviour {
                 ultralaserTimer = 0;
             }
         }
+        if (Input.GetKeyDown("p"))/////////////////////////////////////
+        {
+            animatorBoss.SetTrigger("GameOverTrigger");
+        }
 
+        if (BarManager.Instance.endGame)
+            animatorBoss.SetTrigger("GameOverTrigger");
         animatorBoss.SetFloat("BossLife", BossBar.Instance.GetValue());
     }
 
@@ -337,9 +343,12 @@ public class BossManager : MonoBehaviour {
         return StoneLife;
     }
 
-    public void PeronnageDead()
+    public void PersonnageDead()
     {
-
+        PartitionManager.Instance.Rodeur.SetActive(false);
+        PartitionManager.Instance.Assassin.SetActive(false);
+        PartitionManager.Instance.Demoniste.SetActive(false);
+        PartitionManager.Instance.Druide.SetActive(false);
     }
 }
 
