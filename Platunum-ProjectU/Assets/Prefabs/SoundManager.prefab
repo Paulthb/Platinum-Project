@@ -125,6 +125,10 @@ MonoBehaviour:
     volume: 2
     pitch: 1
   - name: AttqUltralaser
-    clip: {fileID: 8300000, guid: 0cbe66f449e31b34682f193353be9a99, type: 3}
+    clip: {fileID: 8300000, guid: 7b1b625eed84a0146b53ad23ca426592, type: 3}
+    volume: 2
+    pitch: 1
+  - name: AttqBloc
+    clip: {fileID: 8300000, guid: fdf30f753ee006c49996b07937a88306, type: 3}
     volume: 2
     pitch: 1
