@@ -194,6 +194,7 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
+                SoundMgr.Instance.PlaySound("AttqFlamme");
                 StartCoroutine(LanceflammeDamageTime());
                 //ShieldBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
@@ -346,10 +347,14 @@ public class BossManager : MonoBehaviour {
 
     public void PersonnageDead()
     {
-        PartitionManager.Instance.Rodeur.SetActive(false);
-        PartitionManager.Instance.Assassin.SetActive(false);
-        PartitionManager.Instance.Demoniste.SetActive(false);
-        PartitionManager.Instance.Druide.SetActive(false);
+        if(PartitionManager.Instance.Rodeur)
+            PartitionManager.Instance.Rodeur.SetActive(false);
+        if (PartitionManager.Instance.Assassin)
+            PartitionManager.Instance.Assassin.SetActive(false);
+        if (PartitionManager.Instance.Demoniste)
+            PartitionManager.Instance.Demoniste.SetActive(false);
+        if (PartitionManager.Instance.Druide)
+            PartitionManager.Instance.Druide.SetActive(false);
     }
 }
 
