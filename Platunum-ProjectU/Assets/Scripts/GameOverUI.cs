@@ -8,7 +8,6 @@ public class GameOverUI : MonoBehaviour {
 
     private void Start()
     {
-        PlayerManager.Instance.EndGame();
         StartCoroutine(WaitUntilLobby());
     }
 
@@ -16,6 +15,7 @@ public class GameOverUI : MonoBehaviour {
     {
         PlayerManager.Instance.EndGame();
         yield return new WaitForSeconds(10f);
+        ConductorCustom.Instance.pause();
         SceneManager.LoadScene("Lobby");
     }
 }

@@ -7,13 +7,14 @@ public class WinGameUI : MonoBehaviour {
 
     private void Start()
     {
-        Destroy(PlayerManager.Instance);
         StartCoroutine(WaitUntilLobby());
     }
 
     IEnumerator WaitUntilLobby()
     {
+        PlayerManager.Instance.EndGame();
         yield return new WaitForSeconds(10f);
+        ConductorCustom.Instance.pause();
         SceneManager.LoadScene("Lobby");
     }
 }

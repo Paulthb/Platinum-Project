@@ -30,7 +30,6 @@ public class BarManager : MonoBehaviour {
     public void EndGame()
     {
         endGame = true;
-        ConductorCustom.Instance.pause();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
@@ -39,7 +38,6 @@ public class BarManager : MonoBehaviour {
     public void WinGame()
     {
         endGame = true;
-        ConductorCustom.Instance.pause();
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
         PartitionManagerUI.SetActive(false);
