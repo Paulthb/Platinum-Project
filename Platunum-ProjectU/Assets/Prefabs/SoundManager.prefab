@@ -136,3 +136,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 24d01ef0f8f005b4594d386686397424, type: 3}
     volume: 2
     pitch: 1
+  - name: AttqFlamme
+    clip: {fileID: 8300000, guid: 346d82f5ea840264fbc5ee235fe8c0cd, type: 3}
+    volume: 2
+    pitch: 1

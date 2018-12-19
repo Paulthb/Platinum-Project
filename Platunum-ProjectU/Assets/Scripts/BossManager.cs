@@ -194,6 +194,7 @@ public class BossManager : MonoBehaviour {
             case BossAttack.LANCEFLAMME:
                 //Lance flamme qui fait des dégâts à l'équipe
                 animatorBoss.SetTrigger("LanceFlamme");
+                SoundMgr.Instance.PlaySound("AttqFlamme");
                 StartCoroutine(LanceflammeDamageTime());
                 //ShieldBar.Instance.TakeDamage(damageLanceFlamme);
                 break;
