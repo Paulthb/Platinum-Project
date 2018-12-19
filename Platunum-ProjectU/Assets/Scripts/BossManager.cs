@@ -179,6 +179,7 @@ public class BossManager : MonoBehaviour {
             case BossAttack.BROUILLARD:
                 //La partie basse des partitions est cachée
                 animatorBoss.SetTrigger("BrouillardTrigger");
+                SoundMgr.Instance.PlaySound("AttqBrouillard");
                 StartCoroutine(BrouillardTime());
                 //foreach (Player player in PlayerManager.Instance.GetPlayers())
                 //    player.GetPartition().ShowBrouillard(brouillardTime);
