@@ -50,6 +50,8 @@ public class Partition : MonoBehaviour {
     public SpriteRenderer BackgroundSteleSprite;
     public SpriteRenderer BackgroundSprite;
 
+    public Transform CadreMaudit;
+
     public GameObject fireBallObject;
     public float fireBallTimer;
 

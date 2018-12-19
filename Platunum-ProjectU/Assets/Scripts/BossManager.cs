@@ -13,12 +13,13 @@ public class BossManager : MonoBehaviour {
     public Animator animatorBrouillard;
     public GameObject brouillardStele;
     public GameObject brouillardSteleFin;
-    public Role.RoleStates randomRoleState;
 
+    public Role.RoleStates randomRoleState;
     public GameObject MaledictionStelePrefab;
-    public GameObject HurlementStelePrefab;
     public GameObject MaledictionCadre;
-    private GameObject MaledictionArriere;
+    public List<int> partitionsMaudites;
+
+    public GameObject HurlementStelePrefab;
     private GameObject HurlementSteleArriere;
 
     public Transform targetBoss;
@@ -203,8 +204,10 @@ public class BossManager : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         LoopAnimMalediction();
         yield return new WaitForSeconds(maledictionTime);
-        Destroy(MaledictionCadre);
-        Destroy(MaledictionArriere);
+        foreach(Player player in PlayerManager.Instance.GetPlayers())
+        {
+            player.GetPartition().CadreMaudit.gameObject.SetActive(false);
+        }
         goMalediction = false;
     }
     IEnumerator HurlementTime()
@@ -320,13 +323,8 @@ public class BossManager : MonoBehaviour {
 
             if (currentRole == randomRoleState)
             {
-                partition.transform.Find("Background/malediction poison4").gameObject.SetActive(true);
-
-                // Créé le cadre maudit
-                /*
-                MaledictionCadre = Instantiate(MaledictionStelePrefab, CadrePosition, Quaternion.identity) as GameObject;
-                MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
-                */
+                partition.CadreMaudit.gameObject.SetActive(true);
+                //partitionsMaudites.Add(partition.partitionId);
             }
         }
     }
