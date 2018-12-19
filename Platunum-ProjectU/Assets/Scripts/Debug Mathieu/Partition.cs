@@ -399,8 +399,11 @@ public class Partition : MonoBehaviour {
     }
 
     public void ChargeRole(PartitionManager.Rank rank)
-    {   
-        CountNote++;
+    {
+        if (currentRole.RoleState != Role.RoleStates.Attack)
+            CountNote++;
+        else if (ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
+            CountNote++;
         attackHitNumber++;
         roleSprite.fillAmount = (CountNote / maxNbNote);
         if (CountNote < maxNbNote)
