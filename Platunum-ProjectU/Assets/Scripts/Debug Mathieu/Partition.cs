@@ -141,10 +141,10 @@ public class Partition : MonoBehaviour {
 
     private void Update()
     {
-        //if (Input.GetKeyDown("p"))/////////////////////////////////////
-        //{
-        //    FireBall();
-        //}
+        if (Input.GetKeyDown("p"))/////////////////////////////////////
+        {
+            FireBall();
+        }
 
         if (!ConductorCustom.Instance.paused)
         {
