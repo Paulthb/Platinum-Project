@@ -493,7 +493,8 @@ public class Partition : MonoBehaviour {
         if (currentRole.RoleState == Role.RoleStates.Attack)
         {
             BossBar.Instance.TakeDamage(powerStack);
-            FireBall();
+            if(powerStack != 0)
+                FireBall();
         }
         else if (currentRole.RoleState == Role.RoleStates.Mana)
             ManaBar.Instance.WinMana(powerStack);
