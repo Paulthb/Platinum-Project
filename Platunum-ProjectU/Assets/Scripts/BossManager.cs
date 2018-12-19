@@ -96,6 +96,7 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Cancel");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserBreak");
+                SoundMgr.Instance.PlaySound("AttqUltralaserBreak");
                 //lancer animation de réduction de cast
                 goUltralaser = false;
                 StackDmg = 0;
