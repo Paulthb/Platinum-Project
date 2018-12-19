@@ -42,9 +42,7 @@ public class Partition : MonoBehaviour {
     private PartitionManager partitionManager;
     private SongInfo songInfo;
 
-    private int TrackCount; 
-
-    public GameObject brouillard;
+    private int TrackCount;
 
     //Sprite Partition
     public Image roleSprite;
@@ -382,18 +380,6 @@ public class Partition : MonoBehaviour {
             //BarManager.Instance.GetImpact(currentRole, PartitionManager.Rank.MISS);
             ChargeRole(PartitionManager.Rank.MISS);
         }*/
-    }
-
-    public void ShowBrouillard(float duration)
-    {
-        brouillard.SetActive(true);
-        StartCoroutine(BrouillardTime(duration));
-    }
-
-    IEnumerator BrouillardTime(float duration)
-    {
-        yield return new WaitForSeconds(duration);
-        brouillard.SetActive(false);
     }
 
     public void ChangeRole(Role role)
