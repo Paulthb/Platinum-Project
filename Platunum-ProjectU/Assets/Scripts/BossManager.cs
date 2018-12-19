@@ -11,6 +11,8 @@ public class BossManager : MonoBehaviour {
     private Animator animatorBoss;
     public GameObject brouillardObject;
     public Animator animatorBrouillard;
+    public GameObject brouillardStele;
+    public GameObject brouillardSteleFin;
 
     public GameObject StelePrefab;
     public GameObject SteleArrierePrefab;
@@ -252,14 +254,17 @@ public class BossManager : MonoBehaviour {
     {
         yield return new WaitForSeconds(2f);
         brouillardObject.SetActive(true);
-        foreach (Player player in PlayerManager.Instance.GetPlayers())
-            player.GetPartition().ShowBrouillard(brouillardTime);
+        brouillardStele.SetActive(true);
 
         yield return new WaitForSeconds(brouillardTime);
         animatorBrouillard.SetTrigger("BrouillardFinTrigger");
-
+        
         yield return new WaitForSeconds(1f);
+        brouillardSteleFin.SetActive(true);
         brouillardObject.SetActive(false);
+        brouillardStele.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
+        brouillardSteleFin.SetActive(false);
     }
 
     private void InitStoneAttack()
