@@ -21,6 +21,7 @@ public class BossManager : MonoBehaviour {
     private GameObject MaledictionArriere;
     private GameObject HurlementSteleArriere;
 
+    public Transform targetBoss;
     public float StackDmg;
     public int damageCoupDeQueue = 20;
     public float volumeDownUltrason = 0.16f;
