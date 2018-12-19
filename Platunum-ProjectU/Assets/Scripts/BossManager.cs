@@ -114,13 +114,6 @@ public class BossManager : MonoBehaviour {
                 ultralaserTimer = 0;
             }
         }
-        if (Input.GetKeyDown("p"))/////////////////////////////////////
-        {
-            animatorBoss.SetTrigger("GameOverTrigger");
-        }
-
-        if (BarManager.Instance.endGame)
-            animatorBoss.SetTrigger("GameOverTrigger");
         animatorBoss.SetFloat("BossLife", BossBar.Instance.GetValue());
     }
 
@@ -342,6 +335,11 @@ public class BossManager : MonoBehaviour {
     public int GetStoneLife()
     {
         return StoneLife;
+    }
+
+    public void GameOverBoss()
+    {
+        animatorBoss.SetTrigger("GameOverTrigger");
     }
 
     public void PersonnageDead()

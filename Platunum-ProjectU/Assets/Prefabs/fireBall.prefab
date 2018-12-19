@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4616462537282824}
   - component: {fileID: 212458563802745226}
   - component: {fileID: 96824761790139058}
+  - component: {fileID: 95607832368889428}
+  - component: {fileID: 114335891180582130}
   m_Layer: 0
   m_Name: fireBall
   m_TagString: Untagged
@@ -35,12 +37,30 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1352254554348744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.44, y: 0.1, z: -0.015}
-  m_LocalScale: {x: 0.2810319, y: 0.2810319, z: 0.2810319}
+  m_LocalPosition: {x: 1.39, y: 1.79, z: -0.015}
+  m_LocalScale: {x: 0.81555456, y: 0.81555456, z: 0.81555456}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &95607832368889428
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352254554348744}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 877a4ec2cc41f054b84948f647190790, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!96 &96824761790139058
 TrailRenderer:
   serializedVersion: 2
@@ -86,7 +106,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.6000004
+        value: 0.36153603
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -142,6 +162,18 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!114 &114335891180582130
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1352254554348744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f465dcc15e1446b42a4f9bd75214ef1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorFireBall: {fileID: 95607832368889428}
 --- !u!212 &212458563802745226
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -177,7 +209,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5ac1702e4d6de5e4591bb48b2459b6ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 133bf493f88804742b6655606959322a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

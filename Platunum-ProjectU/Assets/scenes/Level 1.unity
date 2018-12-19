@@ -1038,6 +1038,8 @@ MonoBehaviour:
   WinGameUI: {fileID: 1541507772}
   PartitionManagerUI: {fileID: 1583683581}
   endGame: 0
+  GameWin: 0
+  GameOver: 0
 --- !u!114 &396785782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2181,6 +2183,56 @@ MonoBehaviour:
     type: 2}
   RodeurPrefab: {fileID: 1478463967543830, guid: 3bbd1fc789ebe8044bf1f38c47ce2dc4,
     type: 2}
+  Assassin: {fileID: 0}
+  Demoniste: {fileID: 0}
+  Druide: {fileID: 0}
+  Rodeur: {fileID: 0}
+--- !u!1001 &1782942317
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4616462537282824, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1352254554348744, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 12fd59e98fd958b4a9b6d129c35b0f55, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!224 &1828539143 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 224649169029932462, guid: 90cd631fc8d7ff646a56bf470513d092,
