@@ -80,7 +80,7 @@ public class BossManager : MonoBehaviour {
     void Update () {
         if (QueueAttack.Count > 0)
         {
-            if (ConductorCustom.Instance.audioSource.time >= nextAttack.Time)
+            if (ConductorCustom.Instance.audioSource.time >= nextAttack.Time && BarManager.Instance.endGame == false)
             {
                 Attack(nextAttack.Attack);
                 nextAttack = QueueAttack.Peek();
