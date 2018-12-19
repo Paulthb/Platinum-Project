@@ -398,7 +398,7 @@ public class Partition : MonoBehaviour {
             switch (rank)
             {
                 case PartitionManager.Rank.PERFECT:
-                    if (BossManager.Instance.goMalediction)
+                    if (BossManager.Instance.goMalediction && currentRole.RoleState == BossManager.Instance.randomRoleState)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {
@@ -422,7 +422,7 @@ public class Partition : MonoBehaviour {
                     break;
 
                 case PartitionManager.Rank.GOOD:
-                    if (BossManager.Instance.goMalediction)
+                    if (BossManager.Instance.goMalediction && currentRole.RoleState == BossManager.Instance.randomRoleState)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {
@@ -446,7 +446,7 @@ public class Partition : MonoBehaviour {
                     break;
 
                 case PartitionManager.Rank.BAD:
-                    if (BossManager.Instance.goMalediction)
+                    if (BossManager.Instance.goMalediction && currentRole.RoleState == BossManager.Instance.randomRoleState)
                         ShieldBar.Instance.TakeDamage(MaledictionDamage);
                     if (currentRole.RoleState == Role.RoleStates.Attack && ManaBar.Instance.GetValue() >= ManaBurnPerAttack)
                     {

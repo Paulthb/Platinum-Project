@@ -138,6 +138,11 @@ public class Player : MonoBehaviour
 
     public void SwitchRole()
     {
+        if (partition.transform.Find("Background/malediction poison4(Clone)") != null)
+        {
+            Destroy(BossManager.Instance.MaledictionCadre);
+        }
+            
         if (partition.CurrentRole == Personnage.AvailableRole[0])
         {
             partition.ChangeRole(Personnage.AvailableRole[0]);

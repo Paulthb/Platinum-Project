@@ -13,11 +13,11 @@ public class BossManager : MonoBehaviour {
     public Animator animatorBrouillard;
     public GameObject brouillardStele;
     public GameObject brouillardSteleFin;
+    public Role.RoleStates randomRoleState;
 
     public GameObject MaledictionStelePrefab;
-    public GameObject MaledictionSteleArrierePrefab;
     public GameObject HurlementStelePrefab;
-    private GameObject MaledictionCadre;
+    public GameObject MaledictionCadre;
     private GameObject MaledictionArriere;
     private GameObject HurlementSteleArriere;
 
@@ -307,19 +307,26 @@ public class BossManager : MonoBehaviour {
 
     public void LoopAnimMalediction()
     {
-        Player playerMaudit = PlayerManager.Instance.GetPlayer(1);
-        Vector3 CadrePosition = playerMaudit.GetPartition().BackgroundSprite.transform.position;
-        Vector3 SteleArrierePosition = playerMaudit.GetPartition().BackgroundSteleSprite.transform.position;
+        // choisit un role à maudir
+        randomRoleState = (Role.RoleStates)Random.Range(0, 3);
 
-        // Créé le cadre maudit
-        MaledictionCadre = Instantiate(MaledictionStelePrefab, CadrePosition, Quaternion.identity) as GameObject;
-        MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
-
-        //Créé le cadre arrière maudit si 2 roles sont possibles
-        if (playerMaudit.Personnage.AvailableRole.Length > 1)
+        // on regarde si les joueurs sont actuellement sur ce role
+        foreach (Player playerMaudit in PlayerManager.Instance.GetPlayers())
         {
-            MaledictionArriere = Instantiate(MaledictionSteleArrierePrefab, SteleArrierePosition, Quaternion.identity) as GameObject;
-            MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
+            Partition partition = playerMaudit.GetPartition();
+            Role.RoleStates currentRole = partition.CurrentRole.RoleState;
+            Vector3 CadrePosition = partition.BackgroundSprite.transform.position;
+
+            if (currentRole == randomRoleState)
+            {
+                partition.transform.Find("Background/malediction poison4").gameObject.SetActive(true);
+
+                // Créé le cadre maudit
+                /*
+                MaledictionCadre = Instantiate(MaledictionStelePrefab, CadrePosition, Quaternion.identity) as GameObject;
+                MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
+                */
+            }
         }
     }
 
