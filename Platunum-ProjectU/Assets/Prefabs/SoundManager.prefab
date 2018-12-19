@@ -132,3 +132,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: fdf30f753ee006c49996b07937a88306, type: 3}
     volume: 2
     pitch: 1
+  - name: AttqUltrason
+    clip: {fileID: 8300000, guid: 24d01ef0f8f005b4594d386686397424, type: 3}
+    volume: 2
+    pitch: 1
