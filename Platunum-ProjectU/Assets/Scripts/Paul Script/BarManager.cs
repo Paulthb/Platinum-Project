@@ -31,6 +31,7 @@ public class BarManager : MonoBehaviour {
 
     public void EndGame()
     {
+        Debug.Log("end");
         endGame = true;
         GameOver = true;
         BossManager.Instance.GameOverBoss();

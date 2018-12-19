@@ -34,7 +34,7 @@ public class HealthBar : BarUI {
     public void TakeDamage(float damagePt)
     {
         SoustractToValue(damagePt);
-        if (Value < 0)
+        if (Value < 0 && !BarManager.Instance.endGame)
         {
             SetValue(0);
             BarManager.Instance.EndGame();
