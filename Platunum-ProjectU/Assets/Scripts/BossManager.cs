@@ -170,6 +170,7 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.BLOC:
                 animatorBoss.SetTrigger("BlocPierreTrigger");
+                SoundMgr.Instance.PlaySound("AttqBloc");
                 goBloc = true;
                 InitStoneAttack();
                 TriggerNextAttackStone();

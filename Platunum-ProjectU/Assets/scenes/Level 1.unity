@@ -2166,7 +2166,7 @@ MonoBehaviour:
   goodOffsetY: 0.2
   perfectOffsetY: 0.1
   PartitionSize: 5
-  PartitionSpace: 5
+  PartitionSpace: 4.75
   trackColor:
   - {r: 0, g: 1, b: 0, a: 1}
   - {r: 1, g: 0.11694183, b: 0, a: 1}
