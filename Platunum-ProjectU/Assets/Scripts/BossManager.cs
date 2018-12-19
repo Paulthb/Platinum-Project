@@ -212,7 +212,8 @@ public class BossManager : MonoBehaviour {
         yield return new WaitForSeconds(hurlementTime);
         foreach(Player player in PlayerManager.Instance.GetPlayers())
         {
-            Destroy(player.GetPartition().BackgroundSteleSprite.transform.GetChild(0).gameObject);
+            if(player.Personnage.id != 0)
+                Destroy(player.GetPartition().BackgroundSteleSprite.transform.GetChild(0).gameObject);
         }
         goHurlement = false;
     }
