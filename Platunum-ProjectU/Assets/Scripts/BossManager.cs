@@ -347,10 +347,14 @@ public class BossManager : MonoBehaviour {
 
     public void PersonnageDead()
     {
-        PartitionManager.Instance.Rodeur.SetActive(false);
-        PartitionManager.Instance.Assassin.SetActive(false);
-        PartitionManager.Instance.Demoniste.SetActive(false);
-        PartitionManager.Instance.Druide.SetActive(false);
+        if(PartitionManager.Instance.Rodeur)
+            PartitionManager.Instance.Rodeur.SetActive(false);
+        if (PartitionManager.Instance.Assassin)
+            PartitionManager.Instance.Assassin.SetActive(false);
+        if (PartitionManager.Instance.Demoniste)
+            PartitionManager.Instance.Demoniste.SetActive(false);
+        if (PartitionManager.Instance.Druide)
+            PartitionManager.Instance.Druide.SetActive(false);
     }
 }
 
