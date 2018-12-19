@@ -2732,17 +2732,17 @@ Prefab:
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[8].Attack
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[10].Attack
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[7].Attack
-      value: 0
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
@@ -2757,12 +2757,52 @@ Prefab:
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[13].Attack
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
         type: 2}
       propertyPath: ListAttack.Array.data[12].Attack
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[0].Time
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[1].Time
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[6].Attack
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: invincibiliteTime
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[8].Time
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[10].Time
+      value: 234
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[12].Time
+      value: 280
+      objectReference: {fileID: 0}
+    - target: {fileID: 114712632539440780, guid: 0423560d0c53d4347b2091d98d410d77,
+        type: 2}
+      propertyPath: ListAttack.Array.data[14].Time
+      value: 302
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0423560d0c53d4347b2091d98d410d77, type: 2}
