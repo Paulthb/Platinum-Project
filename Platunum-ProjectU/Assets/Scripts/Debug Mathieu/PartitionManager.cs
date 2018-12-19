@@ -29,6 +29,11 @@ public class PartitionManager : MonoBehaviour {
     public GameObject DruidePrefab;
     public GameObject RodeurPrefab;
 
+    public GameObject Assassin;
+    public GameObject Demoniste;
+    public GameObject Druide;
+    public GameObject Rodeur;
+
     private SpriteRenderer assRenderer;
     private SpriteRenderer demRenderer;
     private SpriteRenderer druRenderer;
@@ -102,7 +107,7 @@ public class PartitionManager : MonoBehaviour {
 
             if (player.Personnage.id == 0)
             {
-                GameObject Assassin = Instantiate(AssassinPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                Assassin = Instantiate(AssassinPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform) as GameObject;
                 assRenderer = Assassin.gameObject.GetComponent<SpriteRenderer>();
                 if (partition.idplayer >= 3)
                     assRenderer.flipX = true;
@@ -111,7 +116,7 @@ public class PartitionManager : MonoBehaviour {
             }
             else if (player.Personnage.id == 1)
             {
-                GameObject Demoniste = Instantiate(DemonistePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                Demoniste = Instantiate(DemonistePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform) as GameObject;
                 demRenderer = Demoniste.gameObject.GetComponent<SpriteRenderer>();
                 if (partition.idplayer >= 3)
                     demRenderer.flipX = true;
@@ -120,7 +125,7 @@ public class PartitionManager : MonoBehaviour {
             }
             else if (player.Personnage.id == 2)
             {
-                GameObject Druide = Instantiate(DruidePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                Druide = Instantiate(DruidePrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform) as GameObject;
                 druRenderer = Druide.gameObject.GetComponent<SpriteRenderer>();
                 if (partition.idplayer >= 3)
                     druRenderer.flipX = true;
@@ -129,7 +134,7 @@ public class PartitionManager : MonoBehaviour {
             }
             else if (player.Personnage.id == 3)
             {
-                GameObject Rodeur = Instantiate(RodeurPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform);
+                Rodeur = Instantiate(RodeurPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform) as GameObject;
                 rodRenderer = Rodeur.gameObject.GetComponent<SpriteRenderer>();
                 if (partition.idplayer >= 3)
                     rodRenderer.flipX = true;
