@@ -210,7 +210,10 @@ public class BossManager : MonoBehaviour {
     IEnumerator HurlementTime()
     {
         yield return new WaitForSeconds(hurlementTime);
-        Destroy(HurlementSteleArriere);
+        foreach(Player player in PlayerManager.Instance.GetPlayers())
+        {
+            Destroy(player.GetPartition().BackgroundSteleSprite.transform.GetChild(0).gameObject);
+        }
         goHurlement = false;
     }
     IEnumerator UltrasonTime()
