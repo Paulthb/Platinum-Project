@@ -14,8 +14,8 @@ public class BossManager : MonoBehaviour {
     public GameObject brouillardStele;
     public GameObject brouillardSteleFin;
 
-    public GameObject StelePrefab;
-    public GameObject SteleArrierePrefab;
+    public GameObject MaledictionStelePrefab;
+    public GameObject MaledictionSteleArrierePrefab;
     public GameObject HurlementStelePrefab;
     private GameObject MaledictionCadre;
     private GameObject MaledictionArriere;
@@ -312,13 +312,13 @@ public class BossManager : MonoBehaviour {
         Vector3 SteleArrierePosition = playerMaudit.GetPartition().BackgroundSteleSprite.transform.position;
 
         // Créé le cadre maudit
-        MaledictionCadre = Instantiate(StelePrefab, CadrePosition, Quaternion.identity) as GameObject;
+        MaledictionCadre = Instantiate(MaledictionStelePrefab, CadrePosition, Quaternion.identity) as GameObject;
         MaledictionCadre.transform.parent = playerMaudit.GetPartition().BackgroundSprite.transform;
 
         //Créé le cadre arrière maudit si 2 roles sont possibles
         if (playerMaudit.Personnage.AvailableRole.Length > 1)
         {
-            MaledictionArriere = Instantiate(SteleArrierePrefab, SteleArrierePosition, Quaternion.identity) as GameObject;
+            MaledictionArriere = Instantiate(MaledictionSteleArrierePrefab, SteleArrierePosition, Quaternion.identity) as GameObject;
             MaledictionArriere.transform.parent = playerMaudit.GetPartition().BackgroundSteleSprite.transform;
         }
     }
