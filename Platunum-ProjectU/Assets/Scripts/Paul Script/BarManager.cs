@@ -37,7 +37,9 @@ public class BarManager : MonoBehaviour {
         BossManager.Instance.GameOverBoss();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
-        PartitionManagerUI.SetActive(false);
+        //PartitionManagerUI.SetActive(false);
+        foreach (Player player in PlayerManager.Instance.GetPlayers())
+            player.GetPartition().gameObject.SetActive(false);
     }
 
     public void WinGame()
@@ -46,6 +48,8 @@ public class BarManager : MonoBehaviour {
         GameWin = true;
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
-        PartitionManagerUI.SetActive(false);
+        //PartitionManagerUI.SetActive(false);
+        foreach (Player player in PlayerManager.Instance.GetPlayers())
+            player.GetPartition().gameObject.SetActive(false);
     }
 }
