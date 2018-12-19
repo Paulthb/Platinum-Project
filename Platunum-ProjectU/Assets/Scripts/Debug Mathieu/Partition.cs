@@ -55,6 +55,11 @@ public class Partition : MonoBehaviour {
     public GameObject fireBallObject;
     public float fireBallTimer;
 
+    public ParticleSystem ManaParticle;
+    public ParticleSystem ShieldParticle;
+    public float ParticleTimer;
+
+
     //Count & Stack
     private float CountNote = 0;
     public float maxNbNote;
@@ -496,13 +501,21 @@ public class Partition : MonoBehaviour {
         if (currentRole.RoleState == Role.RoleStates.Attack)
         {
             BossBar.Instance.TakeDamage(powerStack);
-            if(powerStack != 0)
+            if(powerStack > 0)
                 FireBall();
         }
         else if (currentRole.RoleState == Role.RoleStates.Mana)
+        {
             ManaBar.Instance.WinMana(powerStack);
+            if (powerStack > 0)
+                StartCoroutine(ManaHeal());
+        }
         else if (currentRole.RoleState == Role.RoleStates.Defence)
+        {
             ShieldBar.Instance.WinArmor(powerStack);
+            if (powerStack > 0)
+                StartCoroutine(ShieldHeal());
+        }
 
         powerStack = 0;
         CountNote = 0;
@@ -530,5 +543,19 @@ public class Partition : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         Destroy(fireBall);
+    }
+
+    IEnumerator ManaHeal()
+    {
+        ManaParticle.Play();
+        yield return new WaitForSeconds(ParticleTimer);
+        ManaParticle.Stop();
+    }
+
+    IEnumerator ShieldHeal()
+    {
+        ShieldParticle.Play();
+        yield return new WaitForSeconds(ParticleTimer);
+        ShieldParticle.Stop();
     }
 }

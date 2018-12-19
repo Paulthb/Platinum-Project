@@ -90,7 +90,7 @@ public class PartitionManager : MonoBehaviour {
                 offsetX = 0;
             }
         }
-
+        int i = 0;
         foreach (Player player in PlayerManager.Instance.GetPlayers())
         {
             Partition partition = Instantiate(PartitionPrefabs, new Vector3(offsetX, finishLineY, 0), Quaternion.identity, transform).GetComponent<Partition>();
@@ -104,7 +104,9 @@ public class PartitionManager : MonoBehaviour {
             else
                 partition.transform.Find("BackgroundStele").gameObject.SetActive(false);
             offsetX += PartitionSpace;
-
+            if (i + 1 == 2)
+                offsetX += 0.2f;
+            i++;
             if (player.Personnage.id == 0)
             {
                 Assassin = Instantiate(AssassinPrefab, partition.transform.position + new Vector3(0, 5.775f, 0), Quaternion.identity, transform) as GameObject;
