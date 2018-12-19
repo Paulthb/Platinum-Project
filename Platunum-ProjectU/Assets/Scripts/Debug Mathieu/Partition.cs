@@ -50,6 +50,9 @@ public class Partition : MonoBehaviour {
     public SpriteRenderer BackgroundSteleSprite;
     public SpriteRenderer BackgroundSprite;
 
+    public GameObject fireBallObject;
+    public float fireBallTimer;
+
     //Count & Stack
     private float CountNote = 0;
     public float maxNbNote;
@@ -131,6 +134,11 @@ public class Partition : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.GetKeyDown("p"))/////////////////////////////////////
+        {
+            FireBall();
+        }
+
         if (!ConductorCustom.Instance.paused)
         {
             //check if need to instantiate new nodes
@@ -481,7 +489,10 @@ public class Partition : MonoBehaviour {
     public void RoleFire()
     {
         if (currentRole.RoleState == Role.RoleStates.Attack)
+        {
             BossBar.Instance.TakeDamage(powerStack);
+            FireBall();
+        }
         else if (currentRole.RoleState == Role.RoleStates.Mana)
             ManaBar.Instance.WinMana(powerStack);
         else if (currentRole.RoleState == Role.RoleStates.Defence)
@@ -490,5 +501,28 @@ public class Partition : MonoBehaviour {
         powerStack = 0;
         CountNote = 0;
         roleSprite.fillAmount = 0;
+    }
+
+    public void FireBall()
+    {
+        GameObject fireballGao = Instantiate(fireBallObject, transform.position, Quaternion.identity);
+        float personnageX = transform.position.x;
+        float personnageY = transform.position.y + 5.775f;
+        StartCoroutine(LaunchFireBall(fireballGao, personnageX, personnageY));
+    }
+
+    IEnumerator LaunchFireBall(GameObject fireBall, float personnageX, float personnageY)
+    {
+        float ratio = 0;
+        float timer = 0f;
+
+        while (timer < fireBallTimer)
+        {
+            timer += Time.deltaTime;
+            ratio = timer / fireBallTimer;
+            fireBall.transform.position = new Vector3(Mathf.Lerp(personnageX, BossManager.Instance.targetBoss.position.x, ratio), Mathf.Lerp(personnageY, BossManager.Instance.targetBoss.position.y, ratio), 0);
+            yield return new WaitForEndOfFrame();
+        }
+        Destroy(fireBall);
     }
 }
