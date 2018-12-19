@@ -338,6 +338,11 @@ public class BossManager : MonoBehaviour {
     {
         return StoneLife;
     }
+
+    public void PeronnageDead()
+    {
+
+    }
 }
 
 [System.Serializable]
