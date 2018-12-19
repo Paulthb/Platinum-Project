@@ -67,7 +67,6 @@ namespace Manager
             //DEBUG AZERTY
             if (Input.GetKeyDown(KeyCode.LeftControl) && !playerManager.IsPlayerAlreadyInLobby(-1, false))
             {
-                Debug.Log("add debug azerty");
                 AddPlayerToLobby(-1);
             }
             if (playerManager.IsPlayerAlreadyInLobby(-1, false))
