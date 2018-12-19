@@ -1800,7 +1800,7 @@ MonoBehaviour:
   attackHitNumber: 0
   MissDamage: 8
   MaledictionDamage: 4
-  ManaBurnPerAttack: 40
+  ManaBurnPerAttack: 25
   AttackCountBurnMana: 1
   ATKPerfectPowerToStack: 200
   ATKGoodPowerToStack: 100
