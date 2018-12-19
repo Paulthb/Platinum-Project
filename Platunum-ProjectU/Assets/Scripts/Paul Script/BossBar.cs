@@ -30,9 +30,9 @@ public class BossBar : BarUI {
     void Update()
     {
         //pour les tests
-        if (Input.GetKeyDown("v"))
+        if (Input.GetKey("v"))
         {
-            TakeDamage(damage);
+            TakeDamage(damage * 10);
         }
         if (Input.GetKeyDown("f"))
         {
