@@ -1040,6 +1040,7 @@ MonoBehaviour:
   endGame: 0
   GameWin: 0
   GameOver: 0
+  Conductor: {fileID: 638975753}
 --- !u!114 &396785782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2934,7 +2935,7 @@ Prefab:
     - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
         type: 2}
       propertyPath: sounds.Array.size
-      value: 24
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
       propertyPath: m_LocalPosition.x
@@ -2986,6 +2987,46 @@ Prefab:
     - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
         type: 2}
       propertyPath: sounds.Array.data[23].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[24].name
+      value: WinGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[24].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f8f3a5bbd87806a4b8833159934feb06, type: 3}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[24].volume
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[24].pitch
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[25].name
+      value: DefeatGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[25].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 4fedeb164f2dddb42ae4dc62c8081de1, type: 3}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[25].volume
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114242543628266336, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47,
+        type: 2}
+      propertyPath: sounds.Array.data[25].pitch
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
