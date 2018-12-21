@@ -125,7 +125,7 @@ MonoBehaviour:
     volume: 2
     pitch: 1
   - name: AttqUltralaser
-    clip: {fileID: 8300000, guid: 7b1b625eed84a0146b53ad23ca426592, type: 3}
+    clip: {fileID: 8300000, guid: 179f3552573358d4a89f8421227b9d70, type: 3}
     volume: 2
     pitch: 1
   - name: AttqBloc
@@ -142,5 +142,49 @@ MonoBehaviour:
     pitch: 1
   - name: AttqBrouillard
     clip: {fileID: 8300000, guid: ef0b35b594e5cc94e9bc4ca0ee457b70, type: 3}
+    volume: 2
+    pitch: 1
+  - name: AttqUltralaserBreak
+    clip: {fileID: 8300000, guid: c45a5326cab61f84c9aaadc14f124057, type: 3}
+    volume: 2
+    pitch: 1
+  - name: WinGame
+    clip: {fileID: 8300000, guid: f8f3a5bbd87806a4b8833159934feb06, type: 3}
+    volume: 2
+    pitch: 1
+  - name: DefeatGame
+    clip: {fileID: 8300000, guid: 4fedeb164f2dddb42ae4dc62c8081de1, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Switch
+    clip: {fileID: 8300000, guid: 8833b776749d1f142901c59fc55f07e1, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Cant_Switch
+    clip: {fileID: 8300000, guid: 777540bd35bc77b4cbaa2438344fa4bb, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_All_Char_Selected
+    clip: {fileID: 8300000, guid: 52c44a07aaeed2145a580a04d4bcb43e, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Change_Char
+    clip: {fileID: 8300000, guid: c9672f354f3190647b57d93e4c4319b8, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Select_Assa
+    clip: {fileID: 8300000, guid: c927eb6f8e5562e4d849378a9d3d3ca9, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Select_Demo
+    clip: {fileID: 8300000, guid: eaee859a4edc96c4fba9572fb6312371, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Select_Druid
+    clip: {fileID: 8300000, guid: 340ee8b6b264bcf46b281a1c2de07d6e, type: 3}
+    volume: 2
+    pitch: 1
+  - name: Snd_Select_Rode
+    clip: {fileID: 8300000, guid: 30e5f5ed0bdba2e43897d365eb03bedb, type: 3}
     volume: 2
     pitch: 1
