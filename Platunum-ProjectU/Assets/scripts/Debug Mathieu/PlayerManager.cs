@@ -152,6 +152,7 @@ public class PlayerManager : MonoBehaviour
         {
             if (player.pads != null)
             {
+                player.pads.SetLed(0);
                 player.pads.CloseSerial();
             }
         }
