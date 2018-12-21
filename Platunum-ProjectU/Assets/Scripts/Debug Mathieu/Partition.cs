@@ -399,6 +399,7 @@ public class Partition : MonoBehaviour {
 
     public void ChangeRole(Role role)
     {
+        SoundMgr.Instance.PlaySound("Snd_Switch");
         BackgroundSteleSprite.sprite = role.BackgroundStele;
         RoleFire();
     }

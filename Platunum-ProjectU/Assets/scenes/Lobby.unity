@@ -113,6 +113,48 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &39138643
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4460300372575128, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 54a1f0f48dbe8f04fbccf0d176ae3f47, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1001 &302839702
 Prefab:
   m_ObjectHideFlags: 0
@@ -1337,7 +1379,7 @@ MonoBehaviour:
   - {fileID: 789192629}
   - {fileID: 1185454431}
   - {fileID: 302839703}
-  ReadyTimeHold: 1
+  ReadyTimeHold: 3
   timer: 0
   SceneToLoad: Level 1
   HPBarTeam: {fileID: 1841257888}
@@ -1349,6 +1391,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ad8e241c2bd12e6469a45a8f89b65c65, type: 2}
   - {fileID: 11400000, guid: 6f8d9b59595f72b4483063433aa7f3f2, type: 2}
   SelectedList: 
+  flag: 0
 --- !u!4 &1411369170
 Transform:
   m_ObjectHideFlags: 0

@@ -31,7 +31,11 @@ namespace Manager
         //Personnage
         public Personnage[] PersonnageAvailable;
         public bool[] SelectedList;
-        
+
+        private Coroutine StartGameCo;
+        public bool flag;
+        private bool lobbyStarted = false;
+
         // Use this for initialization
         void Start () {
             playerManager = PlayerManager.Instance;
@@ -187,7 +191,7 @@ namespace Manager
 
         private void CheckReadyPlayer()
         {
-            bool flag = true;
+            flag = true;
             //Check Si tous les joueurs sont ready
             foreach (KeyValuePair<int,bool> PlayerReadyState in ReadyPlayerList)
             {
@@ -197,14 +201,17 @@ namespace Manager
             //Si tout les joueurs ont étaient détecté ready
             if (flag && ReadyPlayerList.Count > 0)
             {
-                timer += Time.deltaTime;
+                if (!lobbyStarted)
+                {
+                    SoundMgr.Instance.PlaySound("Snd_All_Char_Selected");
+                    StartCoroutine(StartGame());
+                    lobbyStarted = true;
+                }
             }
-            else //un joueur n'est plus pret
-                timer = 0;
-            //Si temps total des joueurs ready atteint lancé le niveau
-            if (timer >= ReadyTimeHold)
+            else
             {
-                StartGame();
+                SoundMgr.Instance.StopSound("Snd_All_Char_Selected");
+                lobbyStarted = false;
             }
         }
 
@@ -216,22 +223,40 @@ namespace Manager
                 PlayerUI[PlayerId - 1].Find("State").gameObject.SetActive(state);
                 ReadyPlayerList[PlayerId] = state;
                 SelectedList[playerManager.GetPlayer(PlayerId).Personnage.id] = state;
+                if (state)
+                {
+                    switch (playerManager.GetPlayer(PlayerId).Personnage.id)
+                    {
+                        case 0:
+                            SoundMgr.Instance.PlaySound("Snd_Select_Assa");
+                            break;
+                        case 1:
+                            SoundMgr.Instance.PlaySound("Snd_Select_Demo");
+                            break;
+                        case 2:
+                            SoundMgr.Instance.PlaySound("Snd_Select_Druid");
+                            break;
+                        case 3:
+                            SoundMgr.Instance.PlaySound("Snd_Select_Rode");
+                            break;
+                    }
+                }
             }
         }
 
         private void CheckIfavailable(Player player)
         {
-            bool flag = true;
+            bool flagcheck = true;
             foreach (Player playerInLobby in playerManager.GetPlayers())
             {
                 if (playerInLobby.id != player.id && playerInLobby.Personnage.id == player.Personnage.id && ReadyPlayerList[playerInLobby.id])
                 {
-                    flag = false;
+                    flagcheck = false;
                     Debug.Log("already selected");
                 }
             }
             //Player Ready
-            if (flag)
+            if (flagcheck)
             {
                 ChangeReadyState(player.id, !ReadyPlayerList[player.id]);
             }
@@ -239,10 +264,11 @@ namespace Manager
 
         //Lorsque tous les joueurs sont ready
         //Charge la nouvelle scène
-        private void StartGame()
+        IEnumerator StartGame()
         {
-            SceneManager.LoadScene(SceneToLoad);
-            //StartGameBool = true;
+            yield return new WaitForSeconds(ReadyTimeHold);
+            if(flag)
+                SceneManager.LoadScene(SceneToLoad);
         }
 
         private void LoadRatioStatsToBar(Transform bar ,float value, float maxValue)
@@ -309,7 +335,7 @@ namespace Manager
         {
             if (!ReadyPlayerList[player.id])
             {
-
+                SoundMgr.Instance.PlaySound("Snd_Change_Char");
                 //Le joueur de se controleur souhaite changer de class
                 int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
                 SelectedList[CurrentPerso] = false;

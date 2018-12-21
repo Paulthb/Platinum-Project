@@ -109,27 +109,34 @@ public class Player : MonoBehaviour
 
             if (partition != null && Personnage.AvailableRole.Length > 1)
             {
-                //RoleSwitch();
-                if (!BossManager.Instance.goHurlement)
+                if(pads != null)
                 {
-                    if(pads != null)
+                    if (pads.GetKeyDown(4))
                     {
-                        if (pads.GetKeyDown(4))
+                        if (!BossManager.Instance.goHurlement)
                             SwitchRole();
+                        else
+                            SoundMgr.Instance.PlaySound("Snd_Cant_Switch");
                     }
-                    else if(ControllerId >= 0)
+                }
+                else if(ControllerId >= 0)
+                {
+                    if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
                     {
-                        if (Input.GetKeyDown(KeyCodeUtils.GetKeyCode("Joystick" + ControllerId + "Button5")))
-                        {
+                        if (!BossManager.Instance.goHurlement)
                             SwitchRole();
-                        }
+                        else
+                            SoundMgr.Instance.PlaySound("Snd_Cant_Switch");
                     }
-                    else
+                }
+                else
+                {
+                    if (Input.GetKeyDown(KeyCode.Space))
                     {
-                        if (Input.GetKeyDown(KeyCode.Space))
-                        {
+                        if (!BossManager.Instance.goHurlement)
                             SwitchRole();
-                        }
+                        else
+                            SoundMgr.Instance.PlaySound("Snd_Cant_Switch");
                     }
                 }
             }
