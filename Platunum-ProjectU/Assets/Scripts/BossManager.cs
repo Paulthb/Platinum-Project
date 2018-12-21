@@ -114,6 +114,7 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Success");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserShoot");
+                SoundMgr.Instance.PlaySound("AttqUltralaser");
                 StartCoroutine(UltralaserDamageTime());
                 //ShieldBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
