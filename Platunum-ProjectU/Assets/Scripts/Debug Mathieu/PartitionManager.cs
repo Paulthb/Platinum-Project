@@ -76,7 +76,7 @@ public class PartitionManager : MonoBehaviour {
             }
             else
             {
-                offsetX = -5f;
+                offsetX = -2.5f;
             }
         }
         else
