@@ -75,7 +75,7 @@ namespace Manager
                 bool currentReadyState = ReadyPlayerList[player.id];
                 if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    ChangeReadyState(player.id, !currentReadyState);
+                    CheckIfavailable(player);
                 }
                 if(Input.GetKeyDown(KeyCode.A))
                     changePersonnage(player, 4);
@@ -115,8 +115,7 @@ namespace Manager
                     //Ready Gestion
                     if (Gamepads[i].GetKeyDown(4))
                     {
-                        //Player Ready
-                        ChangeReadyState(player.id, !currentReadyState);
+                        CheckIfavailable(player);
                     }
 
                 }
@@ -216,6 +215,25 @@ namespace Manager
             {
                 PlayerUI[PlayerId - 1].Find("State").gameObject.SetActive(state);
                 ReadyPlayerList[PlayerId] = state;
+                SelectedList[playerManager.GetPlayer(PlayerId).Personnage.id] = state;
+            }
+        }
+
+        private void CheckIfavailable(Player player)
+        {
+            bool flag = true;
+            foreach (Player playerInLobby in playerManager.GetPlayers())
+            {
+                if (playerInLobby.id != player.id && playerInLobby.Personnage.id == player.Personnage.id && ReadyPlayerList[playerInLobby.id])
+                {
+                    flag = false;
+                    Debug.Log("already selected");
+                }
+            }
+            //Player Ready
+            if (flag)
+            {
+                ChangeReadyState(player.id, !ReadyPlayerList[player.id]);
             }
         }
 
@@ -266,13 +284,15 @@ namespace Manager
 
         public void AddPlayerToLobby(int id, gamepads pads = null)
         {
-            int i = 0;
+            /* i = 0;
             while (SelectedList[i])
             {
                 i++;
             }
-            SelectedList[i] = true;
-            Player player = playerManager.AddPlayer(id, PersonnageAvailable[i], pads);
+            SelectedList[i] = true;*/
+            Player player = playerManager.AddPlayer(id, PersonnageAvailable[0], pads);
+            Debug.Log(player.id);
+            player.Personnage = PersonnageAvailable[player.id-1];
             ReadyPlayerList.Add(player.id, false);
             
             updateUI(player);
@@ -287,23 +307,26 @@ namespace Manager
 
         private void changePersonnage(Player player, int idButton)
         {
-            //Le joueur de se controleur souhaite changer de class
-            int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
-            SelectedList[CurrentPerso] = false;
+            if (!ReadyPlayerList[player.id])
+            {
 
-            int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
-                                        // Gère les problèmes de tableau pour evité le out of range
-            int incrementation = 0;
-            if (idButton == 5)
-            {
-                incrementation++;
-            }
-            else //Button 4
-            {
-                incrementation--;
-            }
-            do
-            {
+                //Le joueur de se controleur souhaite changer de class
+                int CurrentPerso = player.Personnage.id; ;//récupère la classes du joueur
+                SelectedList[CurrentPerso] = false;
+
+                int newPerso = CurrentPerso;//la variable newclass déterminera la prochaine classes
+                                            // Gère les problèmes de tableau pour evité le out of range
+                int incrementation = 0;
+                if (idButton == 5)
+                {
+                    incrementation++;
+                }
+                else //Button 4
+                {
+                    incrementation--;
+                }
+                //do
+                //{
                 //newPerso += incrementation;
                 if (incrementation > 0)
                 {
@@ -314,14 +337,14 @@ namespace Manager
                     if (newPerso > 0)
                         newPerso--;
                     else
-                        newPerso = PersonnageAvailable.Length -1;
+                        newPerso = PersonnageAvailable.Length - 1;
                 }
-            } while (SelectedList[newPerso]);
-            //ajoute la nouvelle classe au joueur
-            SelectedList[newPerso] = true;
-            player.Personnage = PersonnageAvailable[newPerso];
+                //} while (SelectedList[newPerso]);
+                //ajoute la nouvelle classe au joueur
+                player.Personnage = PersonnageAvailable[newPerso];
 
-            updateUI(player);
+                updateUI(player);
+            }
         }
 
         private void updateUI(Player player)
@@ -365,17 +388,6 @@ namespace Manager
             LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
             LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
         }
-        //déclenche le chargement du niveau
-        /*
-        private void onSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            if (StartGameBool)
-            {
-                playerManager.LoadScene();
-                Destroy(this.gameObject);
-            }
-        }
-        */
     }
 }
 
