@@ -40,7 +40,7 @@ public class BarManager : MonoBehaviour {
         BossManager.Instance.GameOverBoss();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
-        myAudio.volume = 0f;
+        ConductorCustom.Instance.pause();
         SoundMgr.Instance.PlaySound("DefeatGame");
         foreach (Player player in PlayerManager.Instance.GetPlayers())
             player.GetPartition().gameObject.SetActive(false);
@@ -52,7 +52,7 @@ public class BarManager : MonoBehaviour {
         GameWin = true;
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
-        myAudio.volume = 0f;
+        ConductorCustom.Instance.pause();
         SoundMgr.Instance.PlaySound("WinGame");
         foreach (Player player in PlayerManager.Instance.GetPlayers())
             player.GetPartition().gameObject.SetActive(false);

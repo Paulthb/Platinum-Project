@@ -14,7 +14,6 @@ public class WinGameUI : MonoBehaviour {
     {
         PlayerManager.Instance.EndGame();
         yield return new WaitForSeconds(10f);
-        ConductorCustom.Instance.pause();
         SceneManager.LoadScene("Lobby");
     }
 }
