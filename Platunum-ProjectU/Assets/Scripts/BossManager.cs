@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossManager : MonoBehaviour {
 
     private bool goAttack1, goAttack2, goAttack3, goAttack4, goAttack5;
-    [System.NonSerialized] public bool goMalediction, goHurlement, goInvincibilite, goBloc, goUltralaser;
+    [System.NonSerialized] public bool goMalediction, goHurlement, goInvincibilite, goBloc, goUltralaser, goUltrason;
     public GameObject Conductor;
     private AudioSource myAudio;
     private Animator animatorBoss;
@@ -45,6 +45,12 @@ public class BossManager : MonoBehaviour {
     //Stone
     private int StoneLife = 5;
 
+    //Ultrason
+    private float Timer;
+    private float soundVolume;
+    [Header("Ultrason Settings")]
+    public float fadeOut = 1f;
+
     public List<AttackBoss> ListAttack;
     public Queue<AttackBoss> QueueAttack;
     private AttackBoss nextAttack;
@@ -72,6 +78,7 @@ public class BossManager : MonoBehaviour {
     {
         animatorBoss = GetComponent<Animator>();
         myAudio = Conductor.GetComponent<AudioSource>();
+        soundVolume = myAudio.volume;
         QueueAttack = new Queue<AttackBoss>(ListAttack);
         nextAttack = QueueAttack.Peek();
         QueueAttack.Dequeue();
@@ -116,6 +123,20 @@ public class BossManager : MonoBehaviour {
             }
         }
         animatorBoss.SetFloat("BossLife", BossBar.Instance.GetValue());
+
+        if (!goUltrason)
+        {
+            if(myAudio.volume < soundVolume)
+            {
+                Timer += fadeOut * Time.deltaTime;
+                myAudio.volume = Mathf.Lerp(volumeDownUltrason, soundVolume, Timer);
+            }
+            else
+            {
+                myAudio.volume = soundVolume;
+                Timer = 0;
+            }
+        }
     }
 
     public void Attack (BossAttack AttackBoss)
@@ -153,6 +174,8 @@ public class BossManager : MonoBehaviour {
                 break;
             case BossAttack.ULTRASON:
                 //Etouffer le son de la musique pdt x sec
+                goUltrason = true;
+                soundVolume = myAudio.volume;
                 animatorBoss.SetTrigger("UltrasonTrigger");
                 SoundMgr.Instance.PlaySound("AttqUltrason");
                 StartCoroutine(UltrasonTime());
@@ -228,7 +251,7 @@ public class BossManager : MonoBehaviour {
     {
         myAudio.volume = volumeDownUltrason;
         yield return new WaitForSeconds(ultrasonTime);
-        myAudio.volume = 0.6f;
+        goUltrason = false;
     }
     IEnumerator InvincibiliteTime()
     {
