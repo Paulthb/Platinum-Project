@@ -103,6 +103,7 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Cancel");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserBreak");
+                SoundMgr.Instance.StopSound("AttqUltralaser");
                 SoundMgr.Instance.PlaySound("AttqUltralaserBreak");
                 //lancer animation de réduction de cast
                 goUltralaser = false;
@@ -114,7 +115,6 @@ public class BossManager : MonoBehaviour {
                 Debug.Log("Ultralaser Success");
                 animatorBoss.SetBool("UltralaserLoop", false);
                 animatorBoss.SetTrigger("UltralaserShoot");
-                SoundMgr.Instance.PlaySound("AttqUltralaser");
                 StartCoroutine(UltralaserDamageTime());
                 //ShieldBar.Instance.TakeDamage(ultralaserDamage);
                 //lancer animation de réduction de cast
@@ -187,6 +187,7 @@ public class BossManager : MonoBehaviour {
                 //Sinon l'attaque du boss est annulée
                 animatorBoss.SetTrigger("ultralaserStart");
                 animatorBoss.SetBool("UltralaserLoop", true);
+                SoundMgr.Instance.PlaySound("AttqUltralaser");
                 goUltralaser = true;
                 //créer un compeur de dégats
                 //lancer une coroutine
