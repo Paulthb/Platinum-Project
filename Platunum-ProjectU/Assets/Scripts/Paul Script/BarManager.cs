@@ -9,6 +9,8 @@ public class BarManager : MonoBehaviour {
     public bool endGame;
     public bool GameWin;
     public bool GameOver;
+    public GameObject Conductor;
+    private AudioSource myAudio;
 
     private static BarManager instance;
     public static BarManager Instance
@@ -27,6 +29,7 @@ public class BarManager : MonoBehaviour {
     {
         endGame = false;
         ConductorCustom.songCompletedEvent += EndGame;
+        myAudio = Conductor.GetComponent<AudioSource>();
     }
 
     public void EndGame()
@@ -37,7 +40,8 @@ public class BarManager : MonoBehaviour {
         BossManager.Instance.GameOverBoss();
         BossBar.Instance.hide();
         GameOverUI.SetActive(true);
-        //PartitionManagerUI.SetActive(false);
+        myAudio.volume = 0f;
+        SoundMgr.Instance.PlaySound("DefeatGame");
         foreach (Player player in PlayerManager.Instance.GetPlayers())
             player.GetPartition().gameObject.SetActive(false);
     }
@@ -48,7 +52,8 @@ public class BarManager : MonoBehaviour {
         GameWin = true;
         BossBar.Instance.hide();
         WinGameUI.SetActive(true);
-        //PartitionManagerUI.SetActive(false);
+        myAudio.volume = 0f;
+        SoundMgr.Instance.PlaySound("WinGame");
         foreach (Player player in PlayerManager.Instance.GetPlayers())
             player.GetPartition().gameObject.SetActive(false);
     }
