@@ -43,14 +43,17 @@ public class BossBar : BarUI {
 
     public void TakeDamage(float damage)
     {
-        SoustractToValue(damage * HarmonieBar.Instance.GetMultiplier());
-        if (bossManager.goUltralaser)
-            bossManager.StackDmg += damage;
-        if (Value <= 0)
+        if (!bossManager.goInvincibilite)
         {
-            SetValue(0);
-            Debug.Log("le boss est mort !");
-            BarManager.Instance.WinGame();
+            SoustractToValue(damage * HarmonieBar.Instance.GetMultiplier());
+            if (bossManager.goUltralaser)
+                bossManager.StackDmg += damage;
+            if (Value <= 0)
+            {
+                SetValue(0);
+                Debug.Log("le boss est mort !");
+                BarManager.Instance.WinGame();
+            }
         }
     }
 
