@@ -410,9 +410,9 @@ namespace Manager
                 }
             }
 
-            LoadRatioStatsToBar(HPBarTeam, hpTeam, 950);
-            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 300);
-            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 900);
+            LoadRatioStatsToBar(HPBarTeam, hpTeam, 1600);
+            LoadRatioStatsToBar(ShieldBarTeam, shieldTeam, 400);
+            LoadRatioStatsToBar(ManaBarTeam, manaTeam, 1400);
         }
     }
 }
